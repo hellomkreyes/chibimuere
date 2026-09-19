@@ -1,11 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap");
-
 :root {
   --ink: #2d2330;
   --muted: #716775;
-  --paper: #f4eee5;
+  --paper: #d9c9cf;
   --coral: #b94f68;
-  --blue: #c9bdcf;
+  --blue: #a9a0b8;
   --yellow: #d4b05a;
   --line: rgba(45, 35, 48, 0.2);
   --orbit: rgba(45, 35, 48, 0.45);
@@ -39,6 +37,14 @@ body {
   font-family: var(--sans);
   font-size: 1rem;
   line-height: 1.6;
+}
+
+.portfolio-section,
+.resume-section,
+.dream-section,
+.contact-band {
+  content-visibility: auto;
+  contain-intrinsic-size: 0 600px;
 }
 
 :focus-visible {
@@ -351,9 +357,44 @@ h2 em {
 }
 
 .intro-band {
+  --cloud-color: var(--yellow);
+  isolation: isolate;
+  position: relative;
   padding: 4rem 0;
   background: var(--yellow);
 }
+.intro-band::before,
+.intro-band::after {
+  position: absolute;
+  right: 0;
+  left: 0;
+  z-index: 0;
+  height: 2.25rem;
+  background: radial-gradient(
+      ellipse 3rem 2.25rem at 50% 100%,
+      var(--cloud-color) 99%,
+      transparent 100%
+    )
+    repeat-x;
+  background-size: 6rem 2.25rem;
+  content: "";
+  pointer-events: none;
+}
+
+.intro-band::before {
+  top: -2rem;
+}
+
+.intro-band::after {
+  bottom: -2rem;
+  transform: rotate(180deg);
+}
+
+.intro-band > * {
+  position: relative;
+  z-index: 1;
+}
+
 .intro-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -390,23 +431,92 @@ h2 {
 .page-heading h1 {
   max-width: 35rem;
 }
-.about-content {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-  padding: 4rem 0 5rem;
-}
-.about-mark {
-  font-family: var(--serif);
-  font-size: 5rem;
-  line-height: 0.8;
-}
-.about-mark span {
-  color: var(--coral);
-  font-size: 5rem;
-}
 .portfolio-section {
   padding: 4rem 0 5rem;
+}
+.brands-section {
+  padding: 4rem 0 0;
+}
+.brands-intro {
+  margin-bottom: 2.5rem;
+}
+.brands-intro h2 {
+  margin-bottom: 1.25rem;
+}
+.brands-intro p:last-child {
+  max-width: 38rem;
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 1.1rem;
+}
+.brands {
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.brands-window {
+  overflow: hidden;
+  padding: 1.25rem 0;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 8%,
+    black 92%,
+    transparent
+  );
+}
+.brands-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  animation: brands-marquee 28s linear infinite;
+}
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 0 1.5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.brand-logo::after {
+  color: var(--coral);
+  content: "✦";
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.brand-logo-serif {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.brand-logo-script {
+  color: var(--coral);
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.brands.is-paused .brands-track {
+  animation-play-state: paused;
+}
+@keyframes brands-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 .portfolio-heading {
   display: flex;
@@ -431,7 +541,7 @@ h2 {
   min-height: 28rem;
   padding: 0.65rem;
   background: var(--card-background, var(--paper));
-  color: var(--card-ink, var(--ink));
+  color: var(--ink);
   box-shadow: 0.5rem 0.5rem 0 var(--ink);
 }
 .tarot-card::before {
@@ -593,47 +703,18 @@ h2 {
 .rotation-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
   gap: 0.5rem;
   margin-top: 2rem;
 }
 .rotation-grid img {
   display: block;
   aspect-ratio: 1;
+  height: 100%;
   width: 100%;
   border: 1px solid var(--line);
   object-fit: cover;
   filter: saturate(0.8) contrast(1.05);
-}
-.about-copy h2 {
-  font-family: var(--serif);
-  font-size: 3rem;
-  font-weight: 400;
-  letter-spacing: 0;
-}
-.values-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  counter-reset: values;
-}
-.values-list li {
-  display: grid;
-  grid-template-columns: 3rem 1fr;
-  gap: 1rem;
-  padding: 1.5rem 0;
-  border-top: 1px solid var(--line);
-  counter-increment: values;
-}
-.values-list li::before {
-  color: var(--coral);
-  content: "0" counter(values);
-  font-size: 0.8rem;
-  font-weight: 700;
-}
-.values-list strong {
-  display: block;
-  margin-bottom: 0.2rem;
-  font-size: 1.2rem;
 }
 .contact-band {
   padding: 4rem 0;
@@ -745,13 +826,17 @@ h2 {
   .page-heading {
     padding: 7rem 0 6rem;
   }
-  .about-content {
-    grid-template-columns: 0.4fr 1fr;
-    gap: 4rem;
-    padding: 6rem 0 7rem;
-  }
   .portfolio-section {
     padding: 6rem 0 7rem;
+  }
+  .brands-section {
+    padding-top: 6rem;
+  }
+  .brands-intro {
+    margin-bottom: 4rem;
+  }
+  .brands {
+    margin-bottom: 0;
   }
   .portfolio-heading {
     align-items: end;
@@ -791,9 +876,6 @@ h2 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0.75rem;
   }
-  .about-mark {
-    font-size: 8rem;
-  }
   .contact-inner {
     align-items: center;
     flex-direction: row;
@@ -808,6 +890,9 @@ h2 {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .brands-track {
+    animation-play-state: paused;
+  }
   html {
     scroll-behavior: auto;
   }
@@ -833,6 +918,10 @@ h2 {
   .resume-page .skip-link,
   .resume-page .contact-band,
   .resume-page .resume-cta {
+    display: none;
+  }
+  .intro-band::before,
+  .intro-band::after {
     display: none;
   }
   .resume-page .page-heading {

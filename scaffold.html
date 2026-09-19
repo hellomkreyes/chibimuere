@@ -8,46 +8,48 @@
       content="Chibi Muere is a small studio for soft, strange, and thoughtful things."
     />
     <title>chibi muere</title>
-
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-    />
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
-  <body id="top">
+  <body id="body-wrapper">
     <a class="skip-link" href="#main-content">Skip to content</a>
 
     <header class="site-header">
       <div class="shell header-inner">
-        <a class="wordmark" href="#top" aria-label="chibi muere - return to top of the page"
-          >chibi muere<span aria-hidden="true">.</span></a>
+        <a class="wordmark" href="#body-wrapper" aria-label="chibi muere home"
+          >chibi muere<span aria-hidden="true">.</span></a
+        >
         <button
           class="menu-toggle"
           type="button"
           aria-controls="primary-navigation"
           aria-expanded="false"
-          aria-label="Open navigation menu">
+          aria-label="Open navigation menu"
+        >
           <span aria-hidden="true">☰</span>
         </button>
         <nav
           class="site-nav"
           id="primary-navigation"
-          aria-label="Primary navigation">
-          <a href="#bio"><span aria-hidden="true">💀</span> Bio</a>
-          <a href="#portfolio"><span aria-hidden="true">🔮</span> Portfolio</a>
-          <a href="#artsy"><span aria-hidden="true">🎨</span> Artsy</a>
-          <a href="#fartsy"><span aria-hidden="true">💩</span> Fartsy</a>
-          <a href="#contact"><span aria-hidden="true">💌</span> Contact</a>
+          aria-label="Primary navigation"
+        >
+          <a href="#about"><span aria-hidden="true">✦</span> About</a>
+          <a href="#work"><span aria-hidden="true">✷</span> Work</a>
+          <a href="#resume"><span aria-hidden="true">▣</span> CV / Resume</a>
+          <a href="#dream-collabs"
+            ><span aria-hidden="true">✧</span> Dream Collabs</a
+          >
+          <a href="#dream-blunt-rotation"
+            ><span aria-hidden="true">☄</span> Dream Blunt Rotation</a
+          >
+          <a href="#contact"><span aria-hidden="true">♡</span> Contact</a>
         </nav>
         <button
           class="theme-toggle"
           type="button"
           aria-label="Switch to night mode"
-          aria-pressed="false">
+          aria-pressed="false"
+        >
           <span class="moon-icon" aria-hidden="true">☾</span>
           <svg class="eye-icon eye-open" viewBox="0 0 24 24" aria-hidden="true">
             <path
@@ -60,14 +62,17 @@
     </header>
 
     <main id="main-content">
-      <!-- Hero -->
       <section class="hero shell" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <p class="eyebrow">a tiny vessel of big ideas</p>
-          <h1 id="hero-title">chibi<br /><em>muere</em></h1>
+          <p class="eyebrow">A little studio for big feelings</p>
+          <h1 id="hero-title">Soft things.<br /><em>Sharp edges.</em></h1>
           <p class="lede">
-            I am a tech witch and a child of the internet. Join me as I try to reclaim the artistry, mystery, and stupidity of this matrix that we love.
+            chibi muere makes tender, offbeat objects for people who notice the
+            tiny details.
           </p>
+          <a class="button" href="#about"
+            >Meet the studio <span aria-hidden="true">&#8594;</span></a
+          >
         </div>
         <div
           class="hero-art"
@@ -84,15 +89,9 @@
         </div>
       </section>
 
-      <!-- About -->
-      <section class="intro-band" id="bio" aria-labelledby="intro-title">
+      <section class="intro-band" id="about" aria-labelledby="intro-title">
         <div class="shell intro-grid">
-          <div>
-            <p class="section-number" aria-hidden="true">
-              a/s/l<br/>
-              16/m/viridian city
-            </p>
-          </div>
+          <p class="section-number" aria-hidden="true">01</p>
           <div>
             <h2 id="intro-title">Made slowly,<br />meant to linger.</h2>
             <p>
@@ -105,90 +104,8 @@
         </div>
       </section>
 
-      <!-- Brands -->
-      <section id="portfolio" class="brands-section" aria-labelledby="brands-title">
-        <div class="shell brands-intro">
-          <div>
-            <p class="eyebrow">In good company</p>
-            <h2 id="brands-title">Brands we&apos;ve<br /><em>worked with.</em></h2>
-            <p>
-              A few of the brands we&apos;ve worked with and for, from thoughtful
-              collaborations to the behind-the-scenes work that helps good
-              ideas find their shape.
-            </p>
-          </div>
-        </div>
-        <div class="brands" aria-label="Selected brand collaborations">
-          <div class="shell brands-window">
-            <div class="brands-track">
-              <span class="brand-logo brand-logo-serif">Morrow</span>
-              <span class="brand-logo">soft / hard</span>
-              <span class="brand-logo brand-logo-script">Lumen</span>
-              <span class="brand-logo">Common Room</span>
-              <span class="brand-logo brand-logo-serif">Elsewhere</span>
-              <span class="brand-logo">Good Weather</span>
-              <span class="brand-logo brand-logo-script">Morrow</span>
-              <span class="brand-logo">soft / hard</span>
-              <span class="brand-logo brand-logo-serif">Lumen</span>
-              <span class="brand-logo">Common Room</span>
-              <span class="brand-logo brand-logo-script">Elsewhere</span>
-              <span class="brand-logo">Good Weather</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-            <!-- CV / Resume -->
       <section
-        class="resume-section"
-        id="resume"
-        aria-labelledby="resume-title">
-        <div class="shell resume-grid">
-          <p class="section-number" aria-hidden="true">03</p>
-          <div>
-            <p class="eyebrow">The practical paperwork</p>
-            <h2 id="resume-title">CV / Resume</h2>
-            <div class="resume-list">
-              <div class="resume-entry">
-                <p class="resume-year">2024 — now</p>
-                <div>
-                  <h3>Founder, chibi muere</h3>
-                  <p>
-                    Small-batch objects, visual worlds, and thoughtful
-                    experiments.
-                  </p>
-                </div>
-              </div>
-              <div class="resume-entry">
-                <p class="resume-year">2022 — 2024</p>
-                <div>
-                  <h3>Independent creative practice</h3>
-                  <p>
-                    Identity, editorial, and digital work for people with good
-                    questions.
-                  </p>
-                </div>
-              </div>
-              <div class="resume-entry">
-                <p class="resume-year">Always</p>
-                <div>
-                  <h3>Student of the almost useful</h3>
-                  <p>
-                    Collecting references, making notes, and leaving room for
-                    surprise.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <a class="button resume-cta" href="resume.html"
-              >View full CV <span aria-hidden="true">&#8599;</span></a
-            >
-          </div>
-        </div>
-      </section>
-
-      <!-- Portfolio -->
-      <section
+        id="work"
         class="portfolio-section"
         aria-labelledby="portfolio-title"
       >
@@ -298,7 +215,55 @@
         </div>
       </section>
 
-      <!-- Dream Collabs -->
+      <section
+        class="resume-section"
+        id="resume"
+        aria-labelledby="resume-title"
+      >
+        <div class="shell resume-grid">
+          <p class="section-number" aria-hidden="true">03</p>
+          <div>
+            <p class="eyebrow">The practical paperwork</p>
+            <h2 id="resume-title">CV / Resume</h2>
+            <div class="resume-list">
+              <div class="resume-entry">
+                <p class="resume-year">2024 — now</p>
+                <div>
+                  <h3>Founder, chibi muere</h3>
+                  <p>
+                    Small-batch objects, visual worlds, and thoughtful
+                    experiments.
+                  </p>
+                </div>
+              </div>
+              <div class="resume-entry">
+                <p class="resume-year">2022 — 2024</p>
+                <div>
+                  <h3>Independent creative practice</h3>
+                  <p>
+                    Identity, editorial, and digital work for people with good
+                    questions.
+                  </p>
+                </div>
+              </div>
+              <div class="resume-entry">
+                <p class="resume-year">Always</p>
+                <div>
+                  <h3>Student of the almost useful</h3>
+                  <p>
+                    Collecting references, making notes, and leaving room for
+                    surprise.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <a class="button resume-cta" href="resume.html"
+              >View full CV <span aria-hidden="true">&#8599;</span></a
+            >
+          </div>
+        </div>
+      </section>
+
       <section
         class="dream-section dream-collabs"
         id="dream-collabs"
@@ -331,7 +296,6 @@
         </div>
       </section>
 
-      <!-- Dream Blunt Rotation -->
       <section
         class="dream-section dream-rotation"
         id="dream-blunt-rotation"
@@ -351,32 +315,31 @@
               role="group"
               aria-label="Dream Blunt Rotation image grid"
             >
-              <img src="https://picsum.photos/seed/chibi-rotation-01/500/500" srcset="https://picsum.photos/seed/chibi-rotation-01/320/320 320w, https://picsum.photos/seed/chibi-rotation-01/500/500 500w" sizes="(min-width: 701px) 252px, 175px" alt="" width="500" height="500" loading="lazy" fetchpriority="low" decoding="async" />
-              <img src="https://picsum.photos/seed/chibi-rotation-02/500/500" srcset="https://picsum.photos/seed/chibi-rotation-02/320/320 320w, https://picsum.photos/seed/chibi-rotation-02/500/500 500w" sizes="(min-width: 701px) 252px, 175px" alt="" width="500" height="500" loading="lazy" fetchpriority="low" decoding="async" />
-              <img src="https://picsum.photos/seed/chibi-rotation-03/500/500" srcset="https://picsum.photos/seed/chibi-rotation-03/320/320 320w, https://picsum.photos/seed/chibi-rotation-03/500/500 500w" sizes="(min-width: 701px) 252px, 175px" alt="" width="500" height="500" loading="lazy" fetchpriority="low" decoding="async" />
-              <img src="https://picsum.photos/seed/chibi-rotation-04/500/500" srcset="https://picsum.photos/seed/chibi-rotation-04/320/320 320w, https://picsum.photos/seed/chibi-rotation-04/500/500 500w" sizes="(min-width: 701px) 252px, 175px" alt="" width="500" height="500" loading="lazy" fetchpriority="low" decoding="async" />
-              <img src="https://picsum.photos/seed/chibi-rotation-05/500/500" srcset="https://picsum.photos/seed/chibi-rotation-05/320/320 320w, https://picsum.photos/seed/chibi-rotation-05/500/500 500w" sizes="(min-width: 701px) 252px, 175px" alt="" width="500" height="500" loading="lazy" fetchpriority="low" decoding="async" />
-              <img src="https://picsum.photos/seed/chibi-rotation-06/500/500" srcset="https://picsum.photos/seed/chibi-rotation-06/320/320 320w, https://picsum.photos/seed/chibi-rotation-06/500/500 500w" sizes="(min-width: 701px) 252px, 175px" alt="" width="500" height="500" loading="lazy" fetchpriority="low" decoding="async" />
-              <img src="https://picsum.photos/seed/chibi-rotation-07/500/500" srcset="https://picsum.photos/seed/chibi-rotation-07/320/320 320w, https://picsum.photos/seed/chibi-rotation-07/500/500 500w" sizes="(min-width: 701px) 252px, 175px" alt="" width="500" height="500" loading="lazy" fetchpriority="low" decoding="async" />
-              <img src="https://picsum.photos/seed/chibi-rotation-08/500/500" srcset="https://picsum.photos/seed/chibi-rotation-08/320/320 320w, https://picsum.photos/seed/chibi-rotation-08/500/500 500w" sizes="(min-width: 701px) 252px, 175px" alt="" width="500" height="500" loading="lazy" fetchpriority="low" decoding="async" />
-              <img src="https://picsum.photos/seed/chibi-rotation-09/500/500" srcset="https://picsum.photos/seed/chibi-rotation-09/320/320 320w, https://picsum.photos/seed/chibi-rotation-09/500/500 500w" sizes="(min-width: 701px) 252px, 175px" alt="" width="500" height="500" loading="lazy" fetchpriority="low" decoding="async" />
+              <img src="https://picsum.photos/seed/chibi-rotation-01/500/500" alt="" loading="lazy" decoding="async" />
+              <img src="https://picsum.photos/seed/chibi-rotation-02/500/500" alt="" loading="lazy" decoding="async" />
+              <img src="https://picsum.photos/seed/chibi-rotation-03/500/500" alt="" loading="lazy" decoding="async" />
+              <img src="https://picsum.photos/seed/chibi-rotation-04/500/500" alt="" loading="lazy" decoding="async" />
+              <img src="https://picsum.photos/seed/chibi-rotation-05/500/500" alt="" loading="lazy" decoding="async" />
+              <img src="https://picsum.photos/seed/chibi-rotation-06/500/500" alt="" loading="lazy" decoding="async" />
+              <img src="https://picsum.photos/seed/chibi-rotation-07/500/500" alt="" loading="lazy" decoding="async" />
+              <img src="https://picsum.photos/seed/chibi-rotation-08/500/500" alt="" loading="lazy" decoding="async" />
+              <img src="https://picsum.photos/seed/chibi-rotation-09/500/500" alt="" loading="lazy" decoding="async" />
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Contact -->
-      <section id="contact" class="contact-band" aria-labelledby="contact-title">
+      <section class="contact-band" aria-labelledby="contact-title">
         <div class="shell contact-inner">
           <div>
-            <p class="eyebrow">How to contact me:</p>
+            <p class="eyebrow">Have a good question?</p>
             <h2 id="contact-title">
-              don't.
+              Let&apos;s make<br />something odd.
             </h2>
           </div>
-          <div>
-            <!-- Include social media links here -->
-          </div>
+          <a class="button button-light" href="mailto:hello@chibimuere.example"
+            >Say hello <span aria-hidden="true">&#8599;</span></a
+          >
         </div>
       </section>
     </main>
