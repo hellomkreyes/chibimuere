@@ -34,6 +34,35 @@ with `data-copy` in the HTML get their copy baked in at build time by
 `scripts/content-plugin.js` (and live in dev, reloading when the JSON changes).
 The text in the HTML is just a placeholder; `content.json` wins.
 
+## Day / Night 🌞🌚
+
+The look comes from the day/night mockup (v4): soft prism light by day, a
+glitchy CRT terminal by night.
+
+- `src/styles/main.css`: all the styles, grouped by section (tokens → layers →
+  nav → hero → sections → cursors → transitions).
+- `src/js/theme.js`: the toggle, the flash/CRT transition, saving the choice
+  (`chibi-theme` in localStorage) and following the system setting until
+  someone picks. A tiny inline script in each page's `<head>` sets the theme
+  before first paint so there's no flash of day at night.
+- `src/js/effects.js`: sparkle canvas + butterfly. Capped at 30fps, 1x
+  resolution, sprite-based, and it tones itself down on low-power devices and
+  for `prefers-reduced-motion`.
+- `src/js/cursors.js`: the glass (day) and pixel (night) cursors.
+- `src/js/nav.js`: the mobile menu and the frosted header on scroll.
+
+Show something in only one theme with `class="day-only"` or `class="night-only"`.
+
+## Current year
+
+`src/js/current-year.js` keeps "this year" up to date, but only where you ask
+it to, so project dates like "Place / 2026" stay put:
+
+```html
+<time data-current-year>2026</time>            <!-- becomes this year -->
+<span data-years-since="1997">29</span> years  <!-- becomes years since 1997 -->
+```
+
 ## Before and After
 
 `public/scaffold.html` is the original Copilot scaffold, frozen with its own

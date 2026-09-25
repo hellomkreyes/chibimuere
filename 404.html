@@ -1,20 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="day">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#f7f3ee" />
     <title>Page not found | chibi muere</title>
+    <script>
+      // Pick the theme before first paint so night visitors never see a flash of day.
+      (function () {
+        var theme = null;
+        try { theme = localStorage.getItem("chibi-theme"); } catch (e) {}
+        theme = { light: "day", dark: "night" }[theme] || theme;
+        if (theme !== "day" && theme !== "night") {
+          theme = window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "night" : "day";
+        }
+        document.documentElement.dataset.theme = theme;
+        var themeColor = document.querySelector('meta[name="theme-color"]');
+        if (themeColor && theme === "night") themeColor.content = "#07060a";
+      })();
+    </script>
+
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..500&family=Pirata+One&family=Space+Mono:wght@400;700&display=swap"
     />
     <link rel="stylesheet" href="/src/styles/main.css" />
   </head>
   <body>
+    <!-- CSS-only atmosphere: no scripts load on this page -->
+    <div class="fx-layers" aria-hidden="true">
+      <div class="light">
+        <div class="haze haze-1"></div>
+        <div class="haze haze-2"></div>
+        <div class="haze haze-3"></div>
+        <div class="beam"></div>
+      </div>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+      <div class="scanlines"></div>
+    </div>
     <main class="error-page" aria-labelledby="error-title">
       <p class="eyebrow">404</p>
       <h1 id="error-title">This page wandered off.</h1>

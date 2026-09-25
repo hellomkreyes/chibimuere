@@ -2,7 +2,9 @@
   "home": {
     "hero": {
       "eyebrow": "a tiny vessel of big ideas",
-      "lede": "I am a tech witch and a child of the internet. Join me as I try to reclaim the artistry, mystery, and stupidity of this matrix that we love."
+      "lede": "I am a tech witch and a child of the internet. Join me as I try to reclaim the artistry, mystery, and stupidity of this matrix that we love.",
+      "role": "WEB_DEVELOPER",
+      "status": "AWAKE AFTER DARK"
     },
     "bio": {
       "title": "just a smol death",
