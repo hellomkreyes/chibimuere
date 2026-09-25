@@ -3,8 +3,30 @@ const siteHeader = document.querySelector(".site-header");
 const menuToggle = document.querySelector(".menu-toggle");
 const navigationLinks = document.querySelectorAll(".site-nav a");
 const brands = document.querySelector(".brands");
+const contentPage = document.body.dataset.contentPage;
 const savedTheme = localStorage.getItem("chibi-theme");
 const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+function getContentValue(content, key) {
+  return key.split(".").reduce((value, part) => value?.[part], content);
+}
+
+async function loadContent() {
+  if (!contentPage) return;
+  try {
+    const response = await fetch("assets/content.json");
+    if (!response.ok) throw new Error(`Content request failed: ${response.status}`);
+    const content = await response.json();
+    document.querySelectorAll("[data-copy]").forEach((element) => {
+      const value = getContentValue(content[contentPage], element.dataset.copy);
+      if (typeof value === "string") element.innerHTML = value;
+    });
+  } catch (error) {
+    console.error("Could not load site content.", error);
+  }
+}
+
+loadContent();
 
 function setTheme(theme) {
   const isDark = theme === "dark";

@@ -14,7 +14,7 @@
     />
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
-  <body class="resume-page" id="body-wrapper">
+  <body class="resume-page" id="body-wrapper" data-content-page="resume">
     <a class="skip-link" href="#main-content">Skip to content</a>
 
     <header class="site-header">
@@ -47,23 +47,18 @@
           aria-label="Switch to night mode"
           aria-pressed="false"
         >
-          <span class="moon-icon" aria-hidden="true">☾</span>
-          <svg class="eye-icon eye-open" viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              d="M3 12c2.2-3.2 5.2-4.8 9-4.8s6.8 1.6 9 4.8c-2.2 3.2-5.2 4.8-9 4.8S5.2 15.2 3 12Z"
-            />
-            <circle cx="12" cy="12" r="2.2" />
-          </svg>
-        </button>
+          <span class="theme-icon theme-icon-sun" aria-hidden="true">☀️</span>
+          <span class="theme-icon theme-icon-moon" aria-hidden="true">🌙</span>
+          </button>
       </div>
     </header>
 
     <main id="main-content">
       <section class="page-heading" aria-labelledby="resume-page-title">
         <div class="shell">
-          <p class="eyebrow">The practical paperwork</p>
-          <h1 id="resume-page-title">A record of the work.</h1>
-          <p class="lede">
+          <p class="eyebrow" data-copy="heading.eyebrow">The practical paperwork</p>
+          <h1 id="resume-page-title" data-copy="heading.title">A record of the work.</h1>
+          <p class="lede" data-copy="heading.lede">
             A little context for the things I make, the questions I keep, and
             the ways I like to collaborate.
           </p>
@@ -75,14 +70,14 @@
         <div class="shell resume-grid">
           <p class="section-number" aria-hidden="true">01</p>
           <div>
-            <p class="eyebrow">Experience</p>
-            <h2 id="experience-title">Work, slowly collected.</h2>
+            <p class="eyebrow" data-copy="experience.eyebrow">Experience</p>
+            <h2 id="experience-title" data-copy="experience.title">Work, slowly collected.</h2>
             <div class="resume-list">
               <div class="resume-entry">
                 <p class="resume-year">2024 &mdash; now</p>
                 <div>
                   <h3>Founder, chibi muere</h3>
-                  <p>
+                  <p data-copy="experience.founderDescription">
                     Small-batch objects, visual worlds, and thoughtful
                     experiments from a little independent studio.
                   </p>
@@ -92,7 +87,7 @@
                 <p class="resume-year">2022 &mdash; 2024</p>
                 <div>
                   <h3>Independent creative practice</h3>
-                  <p>
+                  <p data-copy="experience.practiceDescription">
                     Identity, editorial, and digital work for people with good
                     questions and unusual briefs.
                   </p>
@@ -102,7 +97,7 @@
                 <p class="resume-year">Always</p>
                 <div>
                   <h3>Student of the almost useful</h3>
-                  <p>
+                  <p data-copy="experience.studentDescription">
                     Collecting references, making notes, and leaving room for
                     surprise.
                   </p>
@@ -117,18 +112,18 @@
         <div class="shell resume-grid">
           <p class="section-number" aria-hidden="true">02</p>
           <div>
-            <p class="eyebrow">Practice</p>
-            <h2 id="practice-title">Ways of working.</h2>
+            <p class="eyebrow" data-copy="practice.eyebrow">Practice</p>
+            <h2 id="practice-title" data-copy="practice.title">Ways of working.</h2>
             <div class="resume-detail-list">
-              <p>
+              <p data-copy="practice.making">
                 <strong>Making</strong> Art direction, visual identity,
                 editorial systems, and small physical objects.
               </p>
-              <p>
+              <p data-copy="practice.thinking">
                 <strong>Thinking</strong> Concept development, cultural
                 research, naming, writing, and gentle problem solving.
               </p>
-              <p>
+              <p data-copy="practice.collaborating">
                 <strong>Collaborating</strong> Working with curious people who
                 care about details, atmosphere, and a little strangeness.
               </p>

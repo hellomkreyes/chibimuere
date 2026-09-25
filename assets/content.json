@@ -1,0 +1,65 @@
+{
+  "home": {
+    "hero": {
+      "eyebrow": "a tiny vessel of big ideas",
+      "lede": "I am a tech witch and a child of the internet. Join me as I try to reclaim the artistry, mystery, and stupidity of this matrix that we love."
+    },
+    "bio": {
+      "title": "Made slowly,<br>meant to linger.",
+      "body": "We are interested in the space between cute and uncanny, the useful and the unnecessary, the thing you keep and the thing you give away.",
+      "sideNote": "Small-batch<br>ideas since 2024"
+    },
+    "brands": {
+      "eyebrow": "In good company",
+      "title": "Brands we&apos;ve<br><em>worked with.</em>",
+      "body": "A few of the brands we&apos;ve worked with and for, from thoughtful collaborations to the behind-the-scenes work that helps good ideas find their shape."
+    },
+    "resume": {
+      "eyebrow": "The practical paperwork",
+      "title": "CV / Resume",
+      "founderDescription": "Small-batch objects, visual worlds, and thoughtful experiments.",
+      "practiceDescription": "Identity, editorial, and digital work for people with good questions.",
+      "studentDescription": "Collecting references, making notes, and leaving room for surprise."
+    },
+    "portfolio": {
+      "eyebrow": "Selected works and curiosities",
+      "title": "A small deck<br><em>of projects.</em>",
+      "sideNote": "Six cards<br>in the making"
+    },
+    "dreamCollabs": {
+      "eyebrow": "A wish list in progress",
+      "title": "Dream Collabs",
+      "intro": "The people, places, and odd little worlds we would love to make something with."
+    },
+    "rotation": {
+      "eyebrow": "People we would happily overthink with",
+      "title": "Dream Blunt Rotation",
+      "intro": "A lovingly imaginary table for curious minds, good questions, and conversations that take the scenic route."
+    },
+    "contact": {
+      "eyebrow": "How to contact me:",
+      "title": "don&apos;t."
+    }
+  },
+  "resume": {
+    "heading": {
+      "eyebrow": "The practical paperwork",
+      "title": "A record of the work.",
+      "lede": "A little context for the things I make, the questions I keep, and the ways I like to collaborate."
+    },
+    "experience": {
+      "eyebrow": "Experience",
+      "title": "Work, slowly collected.",
+      "founderDescription": "Small-batch objects, visual worlds, and thoughtful experiments from a little independent studio.",
+      "practiceDescription": "Identity, editorial, and digital work for people with good questions and unusual briefs.",
+      "studentDescription": "Collecting references, making notes, and leaving room for surprise."
+    },
+    "practice": {
+      "eyebrow": "Practice",
+      "title": "Ways of working.",
+      "making": "<strong>Making</strong> Art direction, visual identity, editorial systems, and small physical objects.",
+      "thinking": "<strong>Thinking</strong> Concept development, cultural research, naming, writing, and gentle problem solving.",
+      "collaborating": "<strong>Collaborating</strong> Working with curious people who care about details, atmosphere, and a little strangeness."
+    }
+  }
+}

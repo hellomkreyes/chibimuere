@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Chibi Muere is a small studio for soft, strange, and thoughtful things."
+      content="chibi muere is a web developer, tech momager, and child of the internet. Welcome to my little cobweb in this vast world wide web."
     />
     <title>chibi muere</title>
 
@@ -18,12 +18,12 @@
     />
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
-  <body id="top">
+  <body id="top" data-content-page="home">
     <a class="skip-link" href="#main-content">Skip to content</a>
 
     <header class="site-header">
       <div class="shell header-inner">
-        <a class="wordmark" href="#top" aria-label="chibi muere - return to top of the page"
+        <a class="wordmark" href="#top" aria-label="chibi muere - return to home"
           >chibi muere<span aria-hidden="true">.</span></a>
         <button
           class="menu-toggle"
@@ -48,14 +48,9 @@
           type="button"
           aria-label="Switch to night mode"
           aria-pressed="false">
-          <span class="moon-icon" aria-hidden="true">☾</span>
-          <svg class="eye-icon eye-open" viewBox="0 0 24 24" aria-hidden="true">
-            <path
-              d="M3 12c2.2-3.2 5.2-4.8 9-4.8s6.8 1.6 9 4.8c-2.2 3.2-5.2 4.8-9 4.8S5.2 15.2 3 12Z"
-            />
-            <circle cx="12" cy="12" r="2.2" />
-          </svg>
-        </button>
+          <span class="theme-icon theme-icon-sun" aria-hidden="true">☀️</span>
+          <span class="theme-icon theme-icon-moon" aria-hidden="true">🌙</span>
+          </button>
       </div>
     </header>
 
@@ -63,9 +58,9 @@
       <!-- Hero -->
       <section class="hero shell" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <p class="eyebrow">a tiny vessel of big ideas</p>
+          <p class="eyebrow" data-copy="hero.eyebrow">a tiny vessel of big ideas</p>
           <h1 id="hero-title">chibi<br /><em>muere</em></h1>
-          <p class="lede">
+          <p class="lede" data-copy="hero.lede">
             I am a tech witch and a child of the internet. Join me as I try to reclaim the artistry, mystery, and stupidity of this matrix that we love.
           </p>
         </div>
@@ -94,14 +89,14 @@
             </p>
           </div>
           <div>
-            <h2 id="intro-title">Made slowly,<br />meant to linger.</h2>
-            <p>
+            <h2 id="intro-title" data-copy="bio.title">Made slowly,<br />meant to linger.</h2>
+            <p data-copy="bio.body">
               We are interested in the space between cute and uncanny, the
               useful and the unnecessary, the thing you keep and the thing you
               give away.
             </p>
           </div>
-          <p class="side-note">Small-batch<br />ideas since 2024</p>
+          <p class="side-note" data-copy="bio.sideNote">Small-batch<br />ideas since 2024</p>
         </div>
       </section>
 
@@ -109,9 +104,9 @@
       <section id="portfolio" class="brands-section" aria-labelledby="brands-title">
         <div class="shell brands-intro">
           <div>
-            <p class="eyebrow">In good company</p>
-            <h2 id="brands-title">Brands we&apos;ve<br /><em>worked with.</em></h2>
-            <p>
+            <p class="eyebrow" data-copy="brands.eyebrow">In good company</p>
+            <h2 id="brands-title" data-copy="brands.title">Brands we&apos;ve<br /><em>worked with.</em></h2>
+            <p data-copy="brands.body">
               A few of the brands we&apos;ve worked with and for, from thoughtful
               collaborations to the behind-the-scenes work that helps good
               ideas find their shape.
@@ -146,14 +141,14 @@
         <div class="shell resume-grid">
           <p class="section-number" aria-hidden="true">03</p>
           <div>
-            <p class="eyebrow">The practical paperwork</p>
-            <h2 id="resume-title">CV / Resume</h2>
+            <p class="eyebrow" data-copy="resume.eyebrow">The practical paperwork</p>
+            <h2 id="resume-title" data-copy="resume.title">CV / Resume</h2>
             <div class="resume-list">
               <div class="resume-entry">
                 <p class="resume-year">2024 — now</p>
                 <div>
                   <h3>Founder, chibi muere</h3>
-                  <p>
+                  <p data-copy="resume.founderDescription">
                     Small-batch objects, visual worlds, and thoughtful
                     experiments.
                   </p>
@@ -163,7 +158,7 @@
                 <p class="resume-year">2022 — 2024</p>
                 <div>
                   <h3>Independent creative practice</h3>
-                  <p>
+                  <p data-copy="resume.practiceDescription">
                     Identity, editorial, and digital work for people with good
                     questions.
                   </p>
@@ -173,7 +168,7 @@
                 <p class="resume-year">Always</p>
                 <div>
                   <h3>Student of the almost useful</h3>
-                  <p>
+                  <p data-copy="resume.studentDescription">
                     Collecting references, making notes, and leaving room for
                     surprise.
                   </p>
@@ -196,12 +191,12 @@
           <div class="portfolio-heading">
             <div>
               <p class="section-number" aria-hidden="true">02</p>
-              <p class="eyebrow">Selected works and curiosities</p>
-              <h2 id="portfolio-title">
+              <p class="eyebrow" data-copy="portfolio.eyebrow">Selected works and curiosities</p>
+              <h2 id="portfolio-title" data-copy="portfolio.title">
                 A small deck<br /><em>of projects.</em>
               </h2>
             </div>
-            <p class="side-note">Six cards<br />in the making</p>
+            <p class="side-note" data-copy="portfolio.sideNote">Six cards<br />in the making</p>
           </div>
           <div class="portfolio-grid">
             <article class="tarot-card card-rose">
@@ -307,9 +302,9 @@
         <div class="shell dream-grid">
           <p class="section-number" aria-hidden="true">04</p>
           <div>
-            <p class="eyebrow">A wish list in progress</p>
-            <h2 id="collabs-title">Dream Collabs</h2>
-            <p class="dream-intro">
+            <p class="eyebrow" data-copy="dreamCollabs.eyebrow">A wish list in progress</p>
+            <h2 id="collabs-title" data-copy="dreamCollabs.title">Dream Collabs</h2>
+            <p class="dream-intro" data-copy="dreamCollabs.intro">
               The people, places, and odd little worlds we would love to make
               something with.
             </p>
@@ -340,9 +335,9 @@
         <div class="shell dream-grid">
           <p class="section-number" aria-hidden="true">05</p>
           <div>
-            <p class="eyebrow">People we would happily overthink with</p>
-            <h2 id="rotation-title">Dream Blunt Rotation</h2>
-            <p class="dream-intro">
+            <p class="eyebrow" data-copy="rotation.eyebrow">People we would happily overthink with</p>
+            <h2 id="rotation-title" data-copy="rotation.title">Dream Blunt Rotation</h2>
+            <p class="dream-intro" data-copy="rotation.intro">
               A lovingly imaginary table for curious minds, good questions, and
               conversations that take the scenic route.
             </p>
@@ -369,7 +364,7 @@
       <section id="contact" class="contact-band" aria-labelledby="contact-title">
         <div class="shell contact-inner">
           <div>
-            <p class="eyebrow">How to contact me:</p>
+            <p class="eyebrow" data-copy="contact.eyebrow">How to contact me:</p>
             <h2 id="contact-title">
               don't.
             </h2>
