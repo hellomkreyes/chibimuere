@@ -184,6 +184,9 @@ body {
   font-size: 1.35rem;
   line-height: 1;
 }
+.theme-icon-sun {
+  display: none;
+}
 .theme-icon-moon {
   display: block;
 }
