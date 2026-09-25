@@ -1,7 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
-  <title>chibi muere mark</title>
-  <rect width="64" height="64" fill="#f2c14e"/>
-  <circle cx="29" cy="29" r="18" fill="#202326"/>
-  <circle cx="36" cy="24" r="18" fill="#f2c14e"/>
-  <path d="M45 42c-2-5-7-8-12-8s-10 3-12 8c4 5 8 8 12 8s8-3 12-8Z" fill="#e76f51"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>chibi muere</title>
+  <!-- Day: a butterfly caught in prism light -->
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fbe3d8"/>
+      <stop offset=".45" stop-color="#f3e6f5"/>
+      <stop offset=".75" stop-color="#dde9f8"/>
+      <stop offset="1" stop-color="#e6f5ea"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".5" cy=".45" r=".5">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#sky)"/>
+  <circle cx="32" cy="30" r="26" fill="url(#glow)"/>
+  <path d="M31 20 Q28 12 23.5 10.5 M33 20 Q36 12 40.5 10.5" fill="none" stroke="#5a4e46" stroke-width="2.2" stroke-linecap="round"/>
+  <g fill="#5a4e46">
+    <ellipse cx="19.5" cy="23" rx="13" ry="10" transform="rotate(-28 19.5 23)"/>
+    <ellipse cx="44.5" cy="23" rx="13" ry="10" transform="rotate(28 44.5 23)"/>
+    <ellipse cx="22.5" cy="40.5" rx="8.5" ry="7" transform="rotate(30 22.5 40.5)"/>
+    <ellipse cx="41.5" cy="40.5" rx="8.5" ry="7" transform="rotate(-30 41.5 40.5)"/>
+    <rect x="30.4" y="19" width="3.2" height="28" rx="1.6"/>
+  </g>
+  <g fill="#fff" opacity=".9">
+    <circle cx="15" cy="21" r="2.6"/>
+    <circle cx="49" cy="21" r="2.6"/>
+  </g>
 </svg>
