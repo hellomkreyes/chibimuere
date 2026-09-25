@@ -1,13 +1,15 @@
+import { initMotion } from "./js/motion.js";
 import { initTheme } from "./js/theme.js";
 import { initNav } from "./js/nav.js";
 import { initCursors } from "./js/cursors.js";
 import { initEffects } from "./js/effects.js";
 import { syncCurrentYear } from "./js/current-year.js";
-
-const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+import { initNudge } from "./js/nudge.js";
 
 syncCurrentYear();
-initTheme({ reduceMotion });
+initMotion();
+initTheme();
 initNav();
 initCursors();
-initEffects({ reduceMotion });
+initEffects();
+initNudge();

@@ -6,6 +6,8 @@
  * that: the toggle, the transition effects, saving the choice, and following
  * the system setting until the visitor picks a side.
  */
+import { motionEnabled } from "./motion.js";
+
 const STORAGE_KEY = "chibi-theme";
 // Earlier versions of the site saved "light" / "dark".
 const LEGACY_THEMES = { light: "day", dark: "night" };
@@ -42,9 +44,14 @@ function applyTheme(theme) {
   root.dataset.theme = theme;
   const meta = document.querySelector('meta[name="theme-color"]');
   if (meta) meta.content = THEME_COLORS[theme];
+  // The tab icon follows the site theme (favicon.svg by day, favicon-night.svg by night).
+  const icon = document.querySelector('link[rel="icon"][type="image/svg+xml"]');
+  if (icon) {
+    icon.href = icon.href.replace(/favicon(-night)?\.svg/, theme === "night" ? "favicon-night.svg" : "favicon.svg");
+  }
 }
 
-export function initTheme({ reduceMotion = false } = {}) {
+export function initTheme() {
   const toggles = document.querySelectorAll(".theme-toggle");
   const flash = document.getElementById("flash");
   const body = document.body;
@@ -61,7 +68,7 @@ export function initTheme({ reduceMotion = false } = {}) {
       const next = (target ?? currentTheme()) === "night" ? "day" : "night";
       saveTheme(next);
 
-      if (reduceMotion || !flash) {
+      if (!motionEnabled() || !flash) {
         applyTheme(next);
         return;
       }

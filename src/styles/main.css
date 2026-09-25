@@ -4,7 +4,7 @@
    frozen separately in public/scaffold/styles.css.
 
    Contents
-   1. Tokens
+   1. Fonts + tokens
    2. Base
    3. Background layers (light, sparkle canvas, grain, scanlines, flash)
    4. Header + navigation
@@ -22,12 +22,58 @@
    16. Responsive, motion, low-power, print
    ========================================================================== */
 
-/* 1. Tokens ================================================================ */
+/* 1. Fonts + tokens ======================================================= */
+
+/* Self-hosted, Latin-subset WOFF2s in public/fonts (licences alongside).
+   Replaces the Google Fonts stylesheet: no third-party connection, no
+   render-blocking CSS from another origin, and ~62 KB for all four files. */
+@font-face {
+  font-family: "Manrope";
+  font-style: normal;
+  font-weight: 200 500;
+  font-display: swap;
+  src: url("/fonts/manrope-latin-var.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/space-mono-latin-400.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Space Mono";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/space-mono-latin-700.woff2") format("woff2");
+}
+
+/* Day hero title only: Gloock, a high-contrast display serif with soft,
+   ball-ended curves; bold and a little coquette. */
+@font-face {
+  font-family: "Gloock";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/gloock-latin-400.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Pirata One";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/pirata-one-latin-400.woff2") format("woff2");
+}
 
 :root {
   --font-display: "Manrope", system-ui, sans-serif;
   --font-mono: "Space Mono", ui-monospace, monospace;
   --font-gothic: "Pirata One", "Manrope", serif;
+  --font-coquette: "Gloock", Georgia, serif;
   --gutter: clamp(16px, 4vw, 48px);
   --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
   --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
@@ -43,6 +89,10 @@
   --line: rgba(120, 100, 90, 0.18);
   --card: rgba(255, 255, 255, 0.42);
   --card-edge: rgba(255, 255, 255, 0.7);
+  --panel: rgba(255, 255, 255, 0.45);
+  --panel-blur: blur(14px);
+  --line-soft: rgba(120, 100, 90, 0.14);
+  --title-ink: #6e3f52;
   --accent: #a8506e;
   --focus: #a8506e;
   --cur: var(--cur-day, auto);
@@ -57,6 +107,8 @@
   --line: #3a3a44;
   --card: #0d0c12;
   --card-edge: #3a3a44;
+  --panel: rgba(7, 6, 10, 0.55);
+  --panel-blur: none;
   --red: #ff2a4f;
   --cyan: #19e3f0;
   --accent: var(--red);
@@ -112,7 +164,7 @@ a {
 
 a,
 button,
-.card {
+.card:has(.card-link) {
   cursor: var(--cur-hover);
 }
 
@@ -407,8 +459,8 @@ main,
 
 .menu-toggle {
   display: none;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   padding: 0;
   font-size: 18px;
   letter-spacing: 0;
@@ -483,6 +535,9 @@ main,
 }
 
 /* 5. Hero ================================================================== */
+/* A single left-aligned "terminal window" for both themes (night's layout):
+   status row → title → [day: tagline + intro] → role / uptime / status cells.
+   Night looks exactly as before; day swaps in its own skin. */
 
 .hero {
   display: grid;
@@ -490,7 +545,6 @@ main,
   min-height: 100svh;
   place-items: center;
   padding: 120px var(--gutter) 80px;
-  text-align: center;
 }
 
 .eyebrow {
@@ -501,13 +555,56 @@ main,
   text-transform: uppercase;
 }
 
-.hero .eyebrow {
-  margin-bottom: 28px;
+.panel {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  -webkit-backdrop-filter: var(--panel-blur);
+  backdrop-filter: var(--panel-blur);
 }
 
-.hero-day h1 {
+.n-wrap {
+  width: min(1100px, 100%);
+  text-align: left;
+}
+
+.n-row {
+  display: flex;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.n-row > span {
+  padding: 10px 16px;
+  border-right: 1px solid var(--line);
+}
+
+.n-row > span:last-child {
+  margin-left: auto;
+  border-right: 0;
+  color: var(--accent);
+}
+
+:root:not([data-theme="night"]) .n-row > span:last-child {
+  border-left: 1px solid var(--line);
+}
+
+.n-title {
+  position: relative;
+  padding: clamp(20px, 4vw, 48px) clamp(16px, 3vw, 40px) 10px;
+}
+
+:root:not([data-theme="night"]) .n-title {
+  padding-bottom: clamp(12px, 2vw, 20px);
+}
+
+/* Day title: thin Manrope in a soft glow */
+.hero-title {
+  display: inline-block;
   font-family: var(--font-display);
-  font-size: clamp(56px, 12vw, 176px);
+  font-size: clamp(56px, 11vw, 160px);
   font-weight: 200;
   line-height: 0.95;
   letter-spacing: -0.045em;
@@ -516,55 +613,9 @@ main,
     0 0 90px rgba(255, 240, 225, 0.8);
 }
 
-.tag {
-  margin-top: 28px;
-  color: var(--ink-soft);
-  font-size: clamp(13px, 1.3vw, 16px);
-  letter-spacing: 0.06em;
-}
-
-.hero-lede {
-  max-width: 34rem;
-  margin: 1.25rem auto 0;
-  font-size: 0.9rem;
-}
-
-/* Night hero: terminal window */
-.n-wrap {
-  width: min(1100px, 100%);
-  border: 1px solid var(--line);
-  background: rgba(7, 6, 10, 0.55);
-  text-align: left;
-}
-
-.n-row {
-  display: flex;
-  border-bottom: 1px solid var(--line);
-  color: var(--ink-soft);
-  font-size: 11px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.n-row span {
-  padding: 10px 16px;
-  border-right: 1px solid var(--line);
-}
-
-.n-row span:last-child {
-  margin-left: auto;
-  border-right: 0;
-  color: var(--red);
-}
-
-.n-title {
+/* Night title: chrome blackletter with a red/cyan glitch */
+:root[data-theme="night"] .glitch {
   position: relative;
-  padding: clamp(20px, 4vw, 48px) clamp(16px, 3vw, 40px) 10px;
-}
-
-.glitch {
-  position: relative;
-  display: inline-block;
   background: linear-gradient(180deg, #fff 0%, #c9c9d4 38%, #3a3a46 50%, #e6e6ee 58%, #8d8d99 80%, #fff 100%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -572,13 +623,16 @@ main,
   font-size: clamp(70px, 15vw, 210px);
   font-weight: 400;
   line-height: 0.85;
+  letter-spacing: 0;
+  text-shadow: none;
   -webkit-text-fill-color: transparent;
 }
 
-.glitch::before,
-.glitch::after {
+:root[data-theme="night"] .glitch::before,
+:root[data-theme="night"] .glitch::after {
   position: absolute;
   inset: 0;
+  clip-path: inset(100% 0 0 0); /* hidden between glitches, and when motion is off */
   background: none;
   content: attr(data-text);
   content: attr(data-text) / ""; /* decorative copies: keep them out of the accessible name */
@@ -587,12 +641,12 @@ main,
   -webkit-text-fill-color: currentColor;
 }
 
-.glitch::before {
+:root[data-theme="night"] .glitch::before {
   color: var(--red);
   animation: g1 3.2s infinite steps(1);
 }
 
-.glitch::after {
+:root[data-theme="night"] .glitch::after {
   color: var(--cyan);
   animation: g2 2.7s infinite steps(1);
 }
@@ -635,6 +689,30 @@ main,
   }
 }
 
+/* Tagline + intro: two cells */
+.n-lede {
+  display: grid;
+  grid-template-columns: 0.4fr 1fr;
+  border-top: 1px solid var(--line);
+}
+
+.n-lede > * {
+  padding: 16px;
+}
+
+.n-lede .tag {
+  border-right: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.hero-lede {
+  max-width: 44rem;
+  font-size: 0.9rem;
+}
+
 .n-meta {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -655,7 +733,7 @@ main,
 .n-meta b {
   display: block;
   color: var(--ink-soft);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 400;
   letter-spacing: 0.2em;
 }
@@ -663,7 +741,7 @@ main,
 .cursor {
   display: inline-block;
   width: 0.6em;
-  background: var(--red);
+  background: var(--accent);
   animation: blink 1s steps(1) infinite;
 }
 
@@ -674,7 +752,87 @@ main,
 }
 
 .cross {
-  color: var(--red);
+  color: var(--accent);
+}
+
+/* Day skin for the hero panel: matches the portfolio cards. The same rounded
+   glass shell (28px radius, white edge, soft shadow, 14px inset), with the title
+   in a pastel "thumb" and the rows as soft ruled lines underneath.
+   Night is untouched: every rule below is day-only. */
+:root:not([data-theme="night"]) .n-wrap {
+  padding: 14px;
+  border-color: var(--card-edge);
+  border-radius: 28px;
+  background: var(--card);
+  box-shadow: 0 20px 60px -30px rgba(160, 120, 100, 0.35);
+}
+
+:root:not([data-theme="night"]) .n-row,
+:root:not([data-theme="night"]) .n-lede,
+:root:not([data-theme="night"]) .n-meta,
+:root:not([data-theme="night"]) .n-row > span,
+:root:not([data-theme="night"]) .n-lede .tag,
+:root:not([data-theme="night"]) .n-meta div {
+  border-color: var(--line-soft);
+}
+
+:root:not([data-theme="night"]) .n-row {
+  border-bottom: 0;
+  padding: 0 0 10px;
+}
+
+:root:not([data-theme="night"]) .n-row > span {
+  padding: 4px 12px;
+}
+
+:root:not([data-theme="night"]) .n-row > span:first-child {
+  padding-left: 8px;
+}
+
+:root:not([data-theme="night"]) .n-row > span:last-child {
+  border-left: 0;
+}
+
+/* The title sits in a pastel thumb, like the card images. */
+:root:not([data-theme="night"]) .n-title {
+  overflow: hidden;
+  padding: clamp(28px, 5vw, 64px) clamp(20px, 4vw, 48px);
+  border-radius: 18px;
+  background:
+    radial-gradient(ellipse at 30% 20%, #fff 0%, transparent 55%),
+    linear-gradient(160deg, #fbe3d8, #f3e6f5 45%, #dde9f8 75%, #e6f5ea);
+}
+
+:root:not([data-theme="night"]) .hero-title {
+  color: var(--title-ink);
+  font-family: var(--font-coquette);
+  font-size: clamp(56px, 10.5vw, 150px);
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.85);
+}
+
+:root:not([data-theme="night"]) .n-lede {
+  border-top: 0;
+}
+
+:root:not([data-theme="night"]) .n-lede > *,
+:root:not([data-theme="night"]) .n-meta div {
+  padding: 14px 8px;
+}
+
+:root:not([data-theme="night"]) .n-lede .tag {
+  padding-right: 16px;
+}
+
+:root:not([data-theme="night"]) .hero-lede {
+  padding-left: 16px;
+}
+
+:root:not([data-theme="night"]) .n-meta div + div {
+  padding-left: 16px;
 }
 
 /* 6. Shared section pieces ================================================= */
@@ -704,7 +862,7 @@ h2 em {
 .section-number,
 .side-note {
   color: var(--ink-soft);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.2em;
   line-height: 1.8;
   text-transform: uppercase;
@@ -731,48 +889,420 @@ h2 em {
   letter-spacing: 0;
 }
 
-/* 7. Bio =================================================================== */
+/* 7. Bio: messenger window ================================================= */
+/* A classic desktop-messenger conversation window: title bar, menu, title
+   header with presence + personal message, chat log, display pictures,
+   a (read-only) compose box with a working nudge, and a status bar.
+   Day: pastel glass with rounded corners. Night: ruled terminal. */
 
-.intro-grid {
-  display: grid;
-  grid-template-columns: 0.35fr 1fr 0.45fr;
-  gap: clamp(1.5rem, 4vw, 3rem);
-  padding: clamp(1.5rem, 4vw, 3rem);
-  border: 1px solid var(--card-edge);
-  border-radius: 28px;
-  background: var(--card);
-  box-shadow: 0 20px 60px -30px rgba(160, 120, 100, 0.35);
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
+.msn {
+  max-width: 900px;
+  margin-inline: auto;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  -webkit-backdrop-filter: var(--panel-blur);
+  backdrop-filter: var(--panel-blur);
 }
 
-.intro-grid .side-note {
-  justify-self: end;
+/* Title bar + window buttons */
+.msn-titlebar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--line);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+
+.msn-app {
+  display: inline-grid;
+  width: 18px;
+  height: 18px;
+  color: var(--accent);
+}
+
+.msn-app svg {
+  width: 100%;
+  height: 100%;
+}
+
+.msn-title {
+  flex: 1;
+  font-weight: 700;
+}
+
+.msn-winbtns {
+  display: flex;
+  gap: 4px;
+}
+
+.msn-winbtns i {
+  display: grid;
+  width: 22px;
+  height: 18px;
+  place-items: center;
+  border: 1px solid var(--line);
+  font-size: 11px;
+  font-style: normal;
+  line-height: 1;
+}
+
+/* Menu bar */
+.msn-menu {
+  display: flex;
+  gap: 18px;
+  padding: 4px 14px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 12px;
+}
+
+/* Header: display name (the section heading) as the title, then presence + personal message */
+.msn-to {
+  padding: 14px 16px 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.msn-to h2 {
+  margin: 0;
+  font-size: clamp(1.9rem, 4.2vw, 3rem);
+  line-height: 1;
+}
+
+.msn-presence {
+  margin-top: 6px;
+  color: var(--ink-soft);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.msn-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin-right: 2px;
+  border-radius: 50%;
+  background: #7cc49a;
+  vertical-align: 0.05em;
+}
+
+.msn-psm {
+  font-style: italic;
+}
+
+.msn-psm::before {
+  content: "♫ ";
+  content: "♫ " / "";
+  font-style: normal;
+}
+
+/* Body: conversation on the left, display pictures on the right */
+.msn-body {
+  display: grid;
+  grid-template-columns: 1fr 168px;
+  gap: 14px;
+  padding: 14px;
+}
+
+.msn-convo {
+  display: grid;
+  gap: 10px;
+  min-width: 0;
+}
+
+.msn-log {
+  min-height: 16rem;
+  margin: 0;
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  list-style: none;
+}
+
+.msn-line + .msn-line {
+  margin-top: 12px;
+}
+
+.msn-says {
+  display: block;
+  color: var(--ink-soft);
+  font-size: 12px;
+}
+
+.msn-line p {
+  max-width: 40rem;
+  margin: 2px 0 0 14px;
+}
+
+.msn-me .msn-says {
+  color: var(--accent);
+}
+
+.msn-system {
+  color: var(--ink-soft);
+  font-size: 12px;
+  font-style: italic;
+}
+
+/* Compose: toolbar, read-only input, disabled Send */
+.msn-compose {
+  border: 1px solid var(--line);
+}
+
+.msn-tools {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 6px;
+  border-bottom: 1px solid var(--line);
+}
+
+.msn-tool {
+  display: inline-grid;
+  min-width: 30px;
+  height: 30px;
+  padding: 0 8px;
+  place-items: center;
+  border: 1px solid transparent;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  font-size: 13px;
+}
+
+.msn-nudge {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  min-height: 30px;
+  border-color: var(--line);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+.msn-nudge:hover {
+  background: var(--hover-bg, #fff);
+  color: var(--hover-ink, var(--ink));
+}
+
+.msn-input {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+  justify-content: space-between;
+  min-height: 4.5rem;
+  padding: 10px 10px 10px 14px;
+}
+
+.msn-placeholder {
+  color: var(--ink-soft);
+  font-size: 12px;
+}
+
+.msn-send {
+  padding: 8px 18px;
+  border: 1px solid var(--line);
+  background: none;
+  color: var(--ink-soft);
+  font: inherit;
+  font-size: 12px;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Display pictures */
+.msn-pics {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.msn-pic {
+  margin: 0;
+}
+
+.msn-pic-glyph {
+  display: grid;
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid var(--line);
+  font-size: 3.5rem;
+  line-height: 1;
+}
+
+.msn-pic-you .msn-pic-glyph {
+  width: 70%;
+  margin-left: auto;
+  font-size: 2rem;
+}
+
+.msn-pic figcaption {
+  margin-top: 6px;
+  color: var(--ink-soft);
+  font-size: 12px;
   text-align: right;
 }
 
-.intro-grid p:not(.section-number):not(.side-note) {
-  max-width: 34rem;
+/* Status bar */
+.msn-status {
+  padding: 6px 14px;
+  border-top: 1px solid var(--line);
+  color: var(--ink-soft);
+  font-size: 12px;
 }
 
-:root[data-theme="night"] .intro-grid {
-  gap: 0;
-  padding: 0;
-  border-color: var(--line);
-  border-radius: 0;
-  background: rgba(7, 6, 10, 0.55);
-  box-shadow: none;
-  -webkit-backdrop-filter: none;
-  backdrop-filter: none;
+.msn-typing i {
+  font-style: normal;
+  animation: msn-typing 1.2s infinite;
 }
 
-:root[data-theme="night"] .intro-grid > * {
-  padding: 24px;
-  border-right: 1px solid var(--line);
+.msn-typing i:nth-child(2) {
+  animation-delay: 0.2s;
 }
 
-:root[data-theme="night"] .intro-grid > :last-child {
-  border-right: 0;
+.msn-typing i:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes msn-typing {
+  0%,
+  60%,
+  100% {
+    opacity: 0.2;
+  }
+  30% {
+    opacity: 1;
+  }
+}
+
+/* Nudge: shake the whole window */
+.msn.is-nudged {
+  animation: msn-nudge 0.6s steps(12);
+}
+
+@keyframes msn-nudge {
+  0%,
+  100% {
+    transform: none;
+  }
+  10%,
+  50%,
+  90% {
+    transform: translate(-6px, 2px);
+  }
+  30%,
+  70% {
+    transform: translate(6px, -2px);
+  }
+}
+
+/* Day skin: pastel glass, rounded like the cards */
+:root:not([data-theme="night"]) .msn {
+  border-color: var(--card-edge);
+  border-radius: 22px;
+  background: var(--card);
+  box-shadow: 0 20px 60px -30px rgba(160, 120, 100, 0.35);
+}
+
+:root:not([data-theme="night"]) .msn-titlebar {
+  border: 0;
+  background: linear-gradient(90deg, #f9c9d4, #fbd9bd, #fbf1b8, #d3f3d2, #c6e6fb, #dcd0f7);
+}
+
+:root:not([data-theme="night"]) .msn-winbtns i {
+  border-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+:root:not([data-theme="night"]) .msn-menu,
+:root:not([data-theme="night"]) .msn-to,
+:root:not([data-theme="night"]) .msn-tools,
+:root:not([data-theme="night"]) .msn-status {
+  border-color: var(--line-soft);
+}
+
+:root:not([data-theme="night"]) .msn-log,
+:root:not([data-theme="night"]) .msn-compose {
+  border-color: var(--line-soft);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+:root:not([data-theme="night"]) .msn-nudge,
+:root:not([data-theme="night"]) .msn-send {
+  border-color: var(--line-soft);
+  border-radius: 999px;
+}
+
+:root:not([data-theme="night"]) .msn-pic-glyph {
+  border: 3px solid #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px -14px rgba(160, 120, 100, 0.6);
+  color: var(--title-ink);
+  text-shadow: 0 0 18px rgba(255, 255, 255, 0.95);
+  background:
+    radial-gradient(ellipse at 40% 30%, #fff 0%, transparent 55%),
+    linear-gradient(170deg, #f1e7fb, #fde9e0 55%, #e2f3f1);
+}
+
+:root:not([data-theme="night"]) .msn-pic-you .msn-pic-glyph {
+  background:
+    radial-gradient(ellipse at 40% 30%, #fff 0%, transparent 55%),
+    linear-gradient(200deg, #e3ecfb, #f7e8f1 50%, #fdf3dc);
+}
+
+/* Night skin: terminal chrome, red/cyan accents, static-noise pictures */
+:root[data-theme="night"] .msn-titlebar {
+  color: var(--ink-soft);
+}
+
+:root[data-theme="night"] .msn-app {
+  color: var(--red);
+}
+
+:root[data-theme="night"] .msn-winbtns i:last-child {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+:root[data-theme="night"] .msn-dot {
+  background: var(--cyan);
+}
+
+:root[data-theme="night"] .msn-me .msn-says {
+  color: var(--red);
+}
+
+:root[data-theme="night"] .msn-line p::before {
+  color: var(--ink-soft);
+  content: "> ";
+  content: "> " / "";
+}
+
+:root[data-theme="night"] .msn-nudge {
+  color: var(--cyan);
+}
+
+:root[data-theme="night"] .msn-nudge:hover {
+  background: var(--cyan);
+  color: #000;
+}
+
+:root[data-theme="night"] .msn-pic-glyph {
+  background:
+    repeating-linear-gradient(45deg, #1a1920 0 1px, transparent 1px 7px),
+    #0b0a10;
+  color: var(--red);
+}
+
+:root[data-theme="night"] .msn-pic-you .msn-pic-glyph {
+  color: var(--ink-soft);
 }
 
 /* 8. Brands marquee ======================================================== */
@@ -905,6 +1435,7 @@ h2 em {
 }
 
 .card {
+  position: relative; /* anchors the stretched .card-link */
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -991,7 +1522,7 @@ h2 em {
 .card-type {
   margin-bottom: 6px;
   color: var(--ink-soft);
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.24em;
   text-transform: uppercase;
 }
@@ -1009,6 +1540,42 @@ h2 em {
   color: var(--ink-soft);
   font-size: 12px;
   line-height: 1.55;
+}
+
+/* A card whose title is a link: the whole card is clickable (stretched link),
+   but only the title is announced as the link. */
+.card-link {
+  text-decoration: none;
+}
+
+.card-link::after {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  content: "";
+}
+
+.card-arrow {
+  display: inline-block;
+  margin-left: 0.2em;
+  font-size: 0.7em;
+  vertical-align: 0.3em;
+  transition: transform 0.4s var(--ease-out);
+}
+
+.card:hover .card-arrow {
+  transform: translate(3px, -3px);
+}
+
+@supports selector(:has(*)) {
+  .card-link:focus-visible {
+    outline: none;
+  }
+
+  .card:has(.card-link:focus-visible) {
+    outline: 2px solid var(--focus);
+    outline-offset: 4px;
+  }
 }
 
 .card .num {
@@ -1055,7 +1622,7 @@ h2 em {
   color: var(--ink-soft);
   content: "NO_SIGNAL";
   content: "NO_SIGNAL" / "";
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.3em;
 }
 
@@ -1190,9 +1757,35 @@ h2 em {
   gap: 0.5rem 2rem;
   padding-block: 1.5rem;
   color: var(--ink-soft);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
+}
+
+.motion-toggle {
+  min-height: 44px; /* comfortable tap target */
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+}
+
+.motion-toggle::after {
+  margin-left: 0.6em;
+  content: "[ ]";
+  letter-spacing: 0;
+}
+
+.motion-toggle[aria-pressed="true"]::after {
+  color: var(--accent);
+  content: "[x]";
+}
+
+.motion-toggle:hover {
+  color: var(--ink);
 }
 
 :root[data-theme="night"] .site-footer {
@@ -1284,7 +1877,7 @@ h2 em {
 
 .resume-year {
   color: var(--accent) !important;
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
@@ -1489,22 +2082,39 @@ h2 em {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .intro-grid {
+  /* Messenger: display pictures move into a strip above the conversation */
+  .msn-body {
     grid-template-columns: 1fr;
   }
 
-  .intro-grid .side-note {
-    justify-self: start;
+  .msn-pics {
+    flex-direction: row;
+    order: -1;
+    align-items: flex-end;
+    justify-content: flex-start;
+  }
+
+  .msn-pic {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+  }
+
+  .msn-pic-glyph,
+  .msn-pic-you .msn-pic-glyph {
+    width: 64px;
+    margin: 0;
+    font-size: 2rem;
+  }
+
+  .msn-pic-you .msn-pic-glyph {
+    width: 44px;
+    font-size: 1.25rem;
+  }
+
+  .msn-pic figcaption {
+    margin: 0;
     text-align: left;
-  }
-
-  :root[data-theme="night"] .intro-grid > * {
-    border-right: 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  :root[data-theme="night"] .intro-grid > :last-child {
-    border-bottom: 0;
   }
 }
 
@@ -1520,7 +2130,7 @@ h2 em {
 
   .theme-toggle {
     padding-inline: 12px;
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 0.1em;
   }
 
@@ -1582,6 +2192,59 @@ h2 em {
     padding-inline: 16px;
   }
 
+  .n-lede {
+    grid-template-columns: 1fr;
+  }
+
+  .msn-menu span:nth-child(n + 4) {
+    display: none;
+  }
+
+  .msn-to {
+    padding-inline: 12px;
+  }
+
+  .msn-body {
+    padding: 10px;
+  }
+
+  .msn-log {
+    min-height: 0;
+    padding: 12px;
+  }
+
+  .msn-line p {
+    margin-left: 0;
+  }
+
+  .msn-input {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .msn-send {
+    align-self: flex-end;
+  }
+
+  :root:not([data-theme="night"]) .n-wrap {
+    padding: 10px;
+    border-radius: 22px;
+  }
+
+  :root:not([data-theme="night"]) .n-title {
+    border-radius: 14px;
+  }
+
+  :root:not([data-theme="night"]) .hero-lede,
+  :root:not([data-theme="night"]) .n-meta div + div {
+    padding-left: 8px;
+  }
+
+  .n-lede .tag {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
   .n-meta {
     grid-template-columns: 1fr;
   }
@@ -1595,7 +2258,7 @@ h2 em {
     border-bottom: 0;
   }
 
-  .n-row span:nth-child(2) {
+  .n-row > span:nth-child(2) {
     display: none;
   }
 
@@ -1641,6 +2304,14 @@ h2 em {
   }
 }
 
+/* Touch screens have no cursor for the butterfly to follow, so it wanders on
+   its own: tuck it behind the content (main is z-index 5) so it never covers text. */
+@media (hover: none) {
+  .fly {
+    z-index: 4;
+  }
+}
+
 /* Touch screens: a tap leaves :hover stuck on, so don't let the toggles stay lit. */
 @media (hover: none) {
   .theme-toggle:hover,
@@ -1656,19 +2327,36 @@ h2 em {
   }
 }
 
+/* Motion off: the footer "pause motion" toggle sets data-motion="off". Without a
+   choice (no data-motion), the OS "reduce motion" setting decides. */
+:root[data-motion="off"] *,
+:root[data-motion="off"] *::before,
+:root[data-motion="off"] *::after {
+  animation: none !important;
+  transition: none !important;
+}
+
+:root[data-motion="off"] {
+  scroll-behavior: auto;
+}
+
+:root[data-motion="off"] .fly {
+  display: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  :root:not([data-motion="on"]) *,
+  :root:not([data-motion="on"]) *::before,
+  :root:not([data-motion="on"]) *::after {
     animation: none !important;
     transition: none !important;
   }
 
-  html {
+  :root:not([data-motion="on"]) {
     scroll-behavior: auto;
   }
 
-  .fly {
+  :root:not([data-motion="on"]) .fly {
     display: none;
   }
 }
@@ -1676,7 +2364,8 @@ h2 em {
 /* Set by src/js/effects.js on ≤4 cores / ≤4GB RAM / Save-Data: skip the blur
    work that would otherwise re-composite over the animated canvas every frame. */
 .low-power .card,
-.low-power .intro-grid,
+.low-power .msn,
+.low-power .panel,
 .low-power .site-header,
 .low-power .theme-toggle,
 .low-power .menu-toggle,
@@ -1686,7 +2375,8 @@ h2 em {
 }
 
 :root.low-power:not([data-theme="night"]) .card,
-:root.low-power:not([data-theme="night"]) .intro-grid {
+:root.low-power:not([data-theme="night"]) .msn,
+:root.low-power:not([data-theme="night"]) .panel {
   background: rgba(255, 255, 255, 0.68);
 }
 
