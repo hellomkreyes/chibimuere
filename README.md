@@ -8,7 +8,7 @@ Built in collaboration with co-pilot. Co-pilot was in charge of the boring scaff
 
 Make friends with 🤖! You'll never know who your boss will be in the future. I hope my future boss is Keanu Reeves.
 
-## running it
+## how to run an environment 👟
 
 Built with [Vite](https://vite.dev) as a multi-page static site.
 
