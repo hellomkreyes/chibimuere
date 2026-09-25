@@ -536,15 +536,15 @@ main,
 
 /* 5. Hero ================================================================== */
 /* A single left-aligned "terminal window" for both themes (night's layout):
-   status row → title → [day: tagline + intro] → role / uptime / status cells.
-   Night looks exactly as before; day swaps in its own skin. */
+   status row → title → tagline + intro → role / uptime / status cells.
+   Day swaps in its own skin. */
 
 .hero {
   display: grid;
   min-height: 100vh;
   min-height: 100svh;
   place-items: center;
-  padding: 120px var(--gutter) 80px;
+  padding: 120px var(--gutter) 64px;
 }
 
 .eyebrow {
@@ -713,6 +713,14 @@ main,
   font-size: 0.9rem;
 }
 
+/* Night: the tagline reads like the other terminal prompts */
+:root[data-theme="night"] .n-lede .tag::before {
+  color: var(--red);
+  content: "> ";
+  content: "> " / "";
+  letter-spacing: 0;
+}
+
 .n-meta {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -841,7 +849,7 @@ main,
 .brands-section,
 .portfolio-section,
 .contact-band {
-  padding-block: clamp(4rem, 10vw, 8rem);
+  padding-block: clamp(3.5rem, 8vw, 6.5rem);
 }
 
 h2 {
@@ -895,9 +903,8 @@ h2 em {
    a (read-only) compose box with a working nudge, and a status bar.
    Day: pastel glass with rounded corners. Night: ruled terminal. */
 
+/* Full .shell width, so it lines up with the hero panel and the portfolio grid */
 .msn {
-  max-width: 900px;
-  margin-inline: auto;
   overflow: hidden;
   border: 1px solid var(--line);
   background: var(--panel);
