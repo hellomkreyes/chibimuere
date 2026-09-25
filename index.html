@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="day">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -7,32 +7,60 @@
       name="description"
       content="chibi muere is a web developer, tech momager, and child of the internet. Welcome to my little cobweb in this vast world wide web."
     />
+    <meta name="theme-color" content="#f7f3ee" />
     <title>chibi muere</title>
+    <script>
+      // Pick the theme before first paint so night visitors never see a flash of day.
+      (function () {
+        var theme = null;
+        try { theme = localStorage.getItem("chibi-theme"); } catch (e) {}
+        theme = { light: "day", dark: "night" }[theme] || theme;
+        if (theme !== "day" && theme !== "night") {
+          theme = window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "night" : "day";
+        }
+        document.documentElement.dataset.theme = theme;
+        var themeColor = document.querySelector('meta[name="theme-color"]');
+        if (themeColor && theme === "night") themeColor.content = "#07060a";
+      })();
+    </script>
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..500&family=Pirata+One&family=Space+Mono:wght@400;700&display=swap"
     />
     <link rel="stylesheet" href="/src/styles/main.css" />
   </head>
   <body id="top" data-content-page="home">
     <a class="skip-link" href="#main-content">Skip to content</a>
 
+    <!-- Atmosphere: day light, sparkle canvas, grain, CRT, transition flash, butterfly -->
+    <div class="fx-layers" aria-hidden="true">
+      <div class="light">
+        <div class="haze haze-1"></div>
+        <div class="haze haze-2"></div>
+        <div class="haze haze-3"></div>
+        <div class="beam"></div>
+      </div>
+      <canvas id="fx"></canvas>
+      <div class="vignette"></div>
+      <div class="grain"></div>
+      <div class="scanlines"></div>
+      <div id="flash"></div>
+      <div class="fly">
+        <svg viewBox="0 0 100 100" focusable="false">
+          <g class="wing wl"><path d="M50 50 C30 10 2 18 8 42 C2 60 22 80 50 56Z" /></g>
+          <g class="wing wr"><path d="M50 50 C70 10 98 18 92 42 C98 60 78 80 50 56Z" /></g>
+        </svg>
+      </div>
+    </div>
+
     <header class="site-header">
-      <div class="shell header-inner">
-        <a class="wordmark" href="#top" aria-label="chibi muere - return to home"
-          >chibi muere<span aria-hidden="true">.</span></a>
-        <button
-          class="menu-toggle"
-          type="button"
-          aria-controls="primary-navigation"
-          aria-expanded="false"
-          aria-label="Open navigation menu">
-          <span aria-hidden="true">☰</span>
-        </button>
+      <a class="wordmark" href="#top" aria-label="chibi muere - return to home"
+        >chibi muere<span aria-hidden="true">.</span></a>
+      <div class="header-actions">
         <nav
           class="site-nav"
           id="primary-navigation"
@@ -44,50 +72,58 @@
           <a href="#contact"><span aria-hidden="true">💌</span> Contact</a>
         </nav>
         <button
-          class="theme-toggle"
+          class="menu-toggle"
           type="button"
-          aria-label="Switch to night mode"
-          aria-pressed="false">
-          <span class="theme-icon theme-icon-sun" aria-hidden="true">☀️</span>
-          <span class="theme-icon theme-icon-moon" aria-hidden="true">🌙</span>
-          </button>
+          aria-controls="primary-navigation"
+          aria-expanded="false"
+          aria-label="Open navigation menu">
+          <span aria-hidden="true">☰</span>
+        </button>
+        <button class="theme-toggle" type="button">
+          <span class="day-only">enter night</span>
+          <span class="night-only">return to day</span>
+        </button>
       </div>
     </header>
 
     <main id="main-content">
-      <!-- Hero -->
-      <section class="hero shell" aria-labelledby="hero-title">
-        <div class="hero-copy">
-          <p class="eyebrow" data-copy="hero.eyebrow">a tiny vessel of big ideas</p>
-          <h1 id="hero-title">chibi<br /><em>muere</em></h1>
-          <p class="lede" data-copy="hero.lede">
+      <!-- Hero: one version per theme; only the active one is rendered -->
+      <section class="hero" aria-label="Introduction">
+        <div class="hero-day day-only">
+          <p class="eyebrow">portfolio · <time data-current-year datetime="2026">2026</time></p>
+          <h1>chibi muere</h1>
+          <p class="tag" data-copy="hero.eyebrow">a tiny vessel of big ideas</p>
+          <p class="hero-lede" data-copy="hero.lede">
             I am a tech witch and a child of the internet. Join me as I try to reclaim the artistry, mystery, and stupidity of this matrix that we love.
           </p>
         </div>
-        <div
-          class="hero-art"
-          aria-label="Abstract illustration of a moon, a flower, and a small star"
-          role="img"
-        >
-          <div class="moon"></div>
-          <div class="petal petal-one"></div>
-          <div class="petal petal-two"></div>
-          <div class="petal petal-three"></div>
-          <span class="star star-one" aria-hidden="true">+</span>
-          <span class="star star-two" aria-hidden="true">+</span>
-          <span class="orbit orbit-one" aria-hidden="true"></span>
+        <div class="hero-night night-only n-wrap">
+          <div class="n-row" aria-hidden="true">
+            <span>CHIBI.SYS</span><span>NODE://PORTFOLIO</span><span>● LIVE</span>
+          </div>
+          <div class="n-title">
+            <h1 class="glitch" data-text="chibi muere">chibi muere</h1>
+          </div>
+          <div class="n-meta">
+            <div><b>ROLE</b><span data-copy="hero.role">WEB_DEVELOPER</span></div>
+            <div>
+              <b>UPTIME</b><span data-years-since="1997">29</span> YRS
+              <span class="cross" aria-hidden="true">†</span> AND COUNTING
+            </div>
+            <div>
+              <b>STATUS</b><span data-copy="hero.status">AWAKE AFTER DARK</span><span class="cursor" aria-hidden="true">&nbsp;</span>
+            </div>
+          </div>
         </div>
       </section>
 
       <!-- About -->
       <section class="intro-band" id="bio" aria-labelledby="intro-title">
         <div class="shell intro-grid">
-          <div>
-            <p class="section-number" aria-hidden="true">
-              a/s/l<br/>
-              16/m/viridian city
-            </p>
-          </div>
+          <p class="section-number" aria-hidden="true">
+            a/s/l<br />
+            16/m/viridian city
+          </p>
           <div>
             <h2 id="intro-title" data-copy="bio.title">Made slowly,<br />meant to linger.</h2>
             <p data-copy="bio.body">
@@ -103,18 +139,17 @@
       <!-- Brands -->
       <section id="portfolio" class="brands-section" aria-labelledby="brands-title">
         <div class="shell brands-intro">
-          <div>
-            <p class="eyebrow" data-copy="brands.eyebrow">In good company</p>
-            <h2 id="brands-title" data-copy="brands.title">Brands we&apos;ve<br /><em>worked with.</em></h2>
-            <p data-copy="brands.body">
-              A few of the brands we&apos;ve worked with and for, from thoughtful
-              collaborations to the behind-the-scenes work that helps good
-              ideas find their shape.
-            </p>
-          </div>
+          <p class="eyebrow" data-copy="brands.eyebrow">In good company</p>
+          <h2 id="brands-title" data-copy="brands.title">Brands we&apos;ve<br /><em>worked with.</em></h2>
+          <p data-copy="brands.body">
+            A few of the brands we&apos;ve worked with and for, from thoughtful
+            collaborations to the behind-the-scenes work that helps good
+            ideas find their shape.
+          </p>
         </div>
         <div class="brands" aria-label="Selected brand collaborations">
           <div class="shell brands-window">
+            <!-- The list runs twice for a seamless loop; the copy is hidden from screen readers. -->
             <div class="brands-track">
               <span class="brand-logo brand-logo-serif">Morrow</span>
               <span class="brand-logo">soft / hard</span>
@@ -122,71 +157,19 @@
               <span class="brand-logo">Common Room</span>
               <span class="brand-logo brand-logo-serif">Elsewhere</span>
               <span class="brand-logo">Good Weather</span>
-              <span class="brand-logo brand-logo-script">Morrow</span>
-              <span class="brand-logo">soft / hard</span>
-              <span class="brand-logo brand-logo-serif">Lumen</span>
-              <span class="brand-logo">Common Room</span>
-              <span class="brand-logo brand-logo-script">Elsewhere</span>
-              <span class="brand-logo">Good Weather</span>
+              <span aria-hidden="true" class="brand-logo brand-logo-script">Morrow</span>
+              <span aria-hidden="true" class="brand-logo">soft / hard</span>
+              <span aria-hidden="true" class="brand-logo brand-logo-serif">Lumen</span>
+              <span aria-hidden="true" class="brand-logo">Common Room</span>
+              <span aria-hidden="true" class="brand-logo brand-logo-script">Elsewhere</span>
+              <span aria-hidden="true" class="brand-logo">Good Weather</span>
             </div>
-          </div>
-        </div>
-      </section>
-
-            <!-- CV / Resume -->
-      <section
-        class="resume-section"
-        id="resume"
-        aria-labelledby="resume-title">
-        <div class="shell resume-grid">
-          <p class="section-number" aria-hidden="true">03</p>
-          <div>
-            <p class="eyebrow" data-copy="resume.eyebrow">The practical paperwork</p>
-            <h2 id="resume-title" data-copy="resume.title">CV / Resume</h2>
-            <div class="resume-list">
-              <div class="resume-entry">
-                <p class="resume-year">2024 — now</p>
-                <div>
-                  <h3>Founder, chibi muere</h3>
-                  <p data-copy="resume.founderDescription">
-                    Small-batch objects, visual worlds, and thoughtful
-                    experiments.
-                  </p>
-                </div>
-              </div>
-              <div class="resume-entry">
-                <p class="resume-year">2022 — 2024</p>
-                <div>
-                  <h3>Independent creative practice</h3>
-                  <p data-copy="resume.practiceDescription">
-                    Identity, editorial, and digital work for people with good
-                    questions.
-                  </p>
-                </div>
-              </div>
-              <div class="resume-entry">
-                <p class="resume-year">Always</p>
-                <div>
-                  <h3>Student of the almost useful</h3>
-                  <p data-copy="resume.studentDescription">
-                    Collecting references, making notes, and leaving room for
-                    surprise.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <a class="button resume-cta" href="resume.html"
-              >View full CV <span aria-hidden="true">&#8599;</span></a
-            >
           </div>
         </div>
       </section>
 
       <!-- Portfolio -->
-      <section
-        class="portfolio-section"
-        aria-labelledby="portfolio-title"
-      >
+      <section class="portfolio-section" aria-labelledby="portfolio-title">
         <div class="shell">
           <div class="portfolio-heading">
             <div>
@@ -199,163 +182,73 @@
             <p class="side-note" data-copy="portfolio.sideNote">Six cards<br />in the making</p>
           </div>
           <div class="portfolio-grid">
-            <article class="tarot-card card-rose">
-              <div class="tarot-card-inner">
-                <p class="tarot-number">I</p>
-                <div class="tarot-symbol" aria-hidden="true">✦</div>
-                <div class="tarot-card-copy">
-                  <p class="tarot-type">Objects / 2024</p>
+            <article class="card">
+              <div class="thumb" aria-hidden="true"><span class="thumb-glyph">✦</span></div>
+              <div class="card-meta">
+                <div>
+                  <p class="card-type">Objects / 2024</p>
                   <h3>The Soft Launch</h3>
-                  <p>
-                    A study in first impressions, folded corners, and making an
-                    entrance quietly.
-                  </p>
+                  <p>A study in first impressions, folded corners, and making an entrance quietly.</p>
                 </div>
-                <p class="tarot-suit" aria-hidden="true">✦</p>
+                <span class="num" aria-hidden="true">01</span>
               </div>
             </article>
-            <article class="tarot-card card-gold">
-              <div class="tarot-card-inner">
-                <p class="tarot-number">II</p>
-                <div class="tarot-symbol" aria-hidden="true">◌</div>
-                <div class="tarot-card-copy">
-                  <p class="tarot-type">Identity / 2024</p>
+            <article class="card">
+              <div class="thumb" aria-hidden="true"><span class="thumb-glyph">◌</span></div>
+              <div class="card-meta">
+                <div>
+                  <p class="card-type">Identity / 2024</p>
                   <h3>Object No. 01</h3>
-                  <p>
-                    A tiny visual language for things that are useful, strange,
-                    and worth keeping.
-                  </p>
+                  <p>A tiny visual language for things that are useful, strange, and worth keeping.</p>
                 </div>
-                <p class="tarot-suit" aria-hidden="true">◌</p>
+                <span class="num" aria-hidden="true">02</span>
               </div>
             </article>
-            <article class="tarot-card card-lilac">
-              <div class="tarot-card-inner">
-                <p class="tarot-number">III</p>
-                <div class="tarot-symbol" aria-hidden="true">☽</div>
-                <div class="tarot-card-copy">
-                  <p class="tarot-type">Editorial / 2025</p>
+            <article class="card">
+              <div class="thumb" aria-hidden="true"><span class="thumb-glyph">☽&#xFE0E;</span></div>
+              <div class="card-meta">
+                <div>
+                  <p class="card-type">Editorial / 2025</p>
                   <h3>Small Strange Things</h3>
-                  <p>
-                    An archive of overlooked details, private jokes, and
-                    beautiful little almosts.
-                  </p>
+                  <p>An archive of overlooked details, private jokes, and beautiful little almosts.</p>
                 </div>
-                <p class="tarot-suit" aria-hidden="true">☽</p>
+                <span class="num" aria-hidden="true">03</span>
               </div>
             </article>
-            <article class="tarot-card card-rose">
-              <div class="tarot-card-inner">
-                <p class="tarot-number">IV</p>
-                <div class="tarot-symbol" aria-hidden="true">✷</div>
-                <div class="tarot-card-copy">
-                  <p class="tarot-type">Research / 2025</p>
+            <article class="card">
+              <div class="thumb" aria-hidden="true"><span class="thumb-glyph">✷</span></div>
+              <div class="card-meta">
+                <div>
+                  <p class="card-type">Research / 2025</p>
                   <h3>Field Notes</h3>
-                  <p>
-                    Observations from the soft edges of daily life, collected
-                    without a deadline.
-                  </p>
+                  <p>Observations from the soft edges of daily life, collected without a deadline.</p>
                 </div>
-                <p class="tarot-suit" aria-hidden="true">✷</p>
+                <span class="num" aria-hidden="true">04</span>
               </div>
             </article>
-            <article class="tarot-card card-gold">
-              <div class="tarot-card-inner">
-                <p class="tarot-number">V</p>
-                <div class="tarot-symbol" aria-hidden="true">♡</div>
-                <div class="tarot-card-copy">
-                  <p class="tarot-type">Care / 2025</p>
+            <article class="card">
+              <div class="thumb" aria-hidden="true"><span class="thumb-glyph">♡&#xFE0E;</span></div>
+              <div class="card-meta">
+                <div>
+                  <p class="card-type">Care / 2025</p>
                   <h3>Aftercare</h3>
-                  <p>
-                    A gentle toolkit for the day after the big feeling, when
-                    everything is tender.
-                  </p>
+                  <p>A gentle toolkit for the day after the big feeling, when everything is tender.</p>
                 </div>
-                <p class="tarot-suit" aria-hidden="true">♡</p>
+                <span class="num" aria-hidden="true">05</span>
               </div>
             </article>
-            <article class="tarot-card card-lilac">
-              <div class="tarot-card-inner">
-                <p class="tarot-number">VI</p>
-                <div class="tarot-symbol" aria-hidden="true">☼</div>
-                <div class="tarot-card-copy">
-                  <p class="tarot-type">Place / 2026</p>
+            <article class="card">
+              <div class="thumb" aria-hidden="true"><span class="thumb-glyph">☼&#xFE0E;</span></div>
+              <div class="card-meta">
+                <div>
+                  <!-- A project date, not "this year": leave it out of the current-year script. -->
+                  <p class="card-type">Place / 2026</p>
                   <h3>House of Almost</h3>
-                  <p>
-                    A room for unfinished ideas, near-misses, and the joy of not
-                    knowing yet.
-                  </p>
+                  <p>A room for unfinished ideas, near-misses, and the joy of not knowing yet.</p>
                 </div>
-                <p class="tarot-suit" aria-hidden="true">☼</p>
+                <span class="num" aria-hidden="true">06</span>
               </div>
             </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- Dream Collabs -->
-      <section
-        class="dream-section dream-collabs"
-        id="dream-collabs"
-        aria-labelledby="collabs-title"
-      >
-        <div class="shell dream-grid">
-          <p class="section-number" aria-hidden="true">04</p>
-          <div>
-            <p class="eyebrow" data-copy="dreamCollabs.eyebrow">A wish list in progress</p>
-            <h2 id="collabs-title" data-copy="dreamCollabs.title">Dream Collabs</h2>
-            <p class="dream-intro" data-copy="dreamCollabs.intro">
-              The people, places, and odd little worlds we would love to make
-              something with.
-            </p>
-            <ul class="dream-list">
-              <li>
-                <strong>A florist with a haunted greenhouse.</strong> Tiny
-                arrangements for very specific moods.
-              </li>
-              <li>
-                <strong>A ceramicist who likes imperfect edges.</strong> Useful
-                vessels with secret faces.
-              </li>
-              <li>
-                <strong>A musician who makes rooms feel larger.</strong> Objects
-                to hold while the song changes shape.
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- Dream Blunt Rotation -->
-      <section
-        class="dream-section dream-rotation"
-        id="dream-blunt-rotation"
-        aria-labelledby="rotation-title"
-      >
-        <div class="shell dream-grid">
-          <p class="section-number" aria-hidden="true">05</p>
-          <div>
-            <p class="eyebrow" data-copy="rotation.eyebrow">People we would happily overthink with</p>
-            <h2 id="rotation-title" data-copy="rotation.title">Dream Blunt Rotation</h2>
-            <p class="dream-intro" data-copy="rotation.intro">
-              A lovingly imaginary table for curious minds, good questions, and
-              conversations that take the scenic route.
-            </p>
-            <div
-              class="rotation-grid"
-              role="group"
-              aria-label="Dream Blunt Rotation image grid"
-            >
-              <img src="https://picsum.photos/seed/chibi-rotation-01/500/500" srcset="https://picsum.photos/seed/chibi-rotation-01/320/320 320w, https://picsum.photos/seed/chibi-rotation-01/500/500 500w" sizes="(min-width: 701px) 252px, 175px" alt="" width="500" height="500" loading="lazy" fetchpriority="low" decoding="async" />
-              <img src="https://picsum.photos/seed/chibi-rotation-02/500/500" srcset="https://picsum.photos/seed/chibi-rotation-02/320/320 320w, https://picsum.photos/seed/chibi-rotation-02/500/500 500w" sizes="(min-width: 701px) 252px, 175px" alt="" width="500" height="500" loading="lazy" fetchpriority="low" decoding="async" />
-              <img src="https://picsum.photos/seed/chibi-rotation-03/500/500" srcset="https://picsum.photos/seed/chibi-rotation-03/320/320 320w, https://picsum.photos/seed/chibi-rotation-03/500/500 500w" sizes="(min-width: 701px) 252px, 175px" alt="" width="500" height="500" loading="lazy" fetchpriority="low" decoding="async" />
-              <img src="https://picsum.photos/seed/chibi-rotation-04/500/500" srcset="https://picsum.photos/seed/chibi-rotation-04/320/320 320w, https://picsum.photos/seed/chibi-rotation-04/500/500 500w" sizes="(min-width: 701px) 252px, 175px" alt="" width="500" height="500" loading="lazy" fetchpriority="low" decoding="async" />
-              <img src="https://picsum.photos/seed/chibi-rotation-05/500/500" srcset="https://picsum.photos/seed/chibi-rotation-05/320/320 320w, https://picsum.photos/seed/chibi-rotation-05/500/500 500w" sizes="(min-width: 701px) 252px, 175px" alt="" width="500" height="500" loading="lazy" fetchpriority="low" decoding="async" />
-              <img src="https://picsum.photos/seed/chibi-rotation-06/500/500" srcset="https://picsum.photos/seed/chibi-rotation-06/320/320 320w, https://picsum.photos/seed/chibi-rotation-06/500/500 500w" sizes="(min-width: 701px) 252px, 175px" alt="" width="500" height="500" loading="lazy" fetchpriority="low" decoding="async" />
-              <img src="https://picsum.photos/seed/chibi-rotation-07/500/500" srcset="https://picsum.photos/seed/chibi-rotation-07/320/320 320w, https://picsum.photos/seed/chibi-rotation-07/500/500 500w" sizes="(min-width: 701px) 252px, 175px" alt="" width="500" height="500" loading="lazy" fetchpriority="low" decoding="async" />
-              <img src="https://picsum.photos/seed/chibi-rotation-08/500/500" srcset="https://picsum.photos/seed/chibi-rotation-08/320/320 320w, https://picsum.photos/seed/chibi-rotation-08/500/500 500w" sizes="(min-width: 701px) 252px, 175px" alt="" width="500" height="500" loading="lazy" fetchpriority="low" decoding="async" />
-              <img src="https://picsum.photos/seed/chibi-rotation-09/500/500" srcset="https://picsum.photos/seed/chibi-rotation-09/320/320 320w, https://picsum.photos/seed/chibi-rotation-09/500/500 500w" sizes="(min-width: 701px) 252px, 175px" alt="" width="500" height="500" loading="lazy" fetchpriority="low" decoding="async" />
-            </div>
           </div>
         </div>
       </section>
@@ -363,22 +256,16 @@
       <!-- Contact -->
       <section id="contact" class="contact-band" aria-labelledby="contact-title">
         <div class="shell contact-inner">
-          <div>
-            <p class="eyebrow" data-copy="contact.eyebrow">How to contact me:</p>
-            <h2 id="contact-title">
-              don't.
-            </h2>
-          </div>
-          <div>
-            <!-- Include social media links here -->
-          </div>
+          <p class="eyebrow" data-copy="contact.eyebrow">How to contact me:</p>
+          <h2 id="contact-title">don't.</h2>
+          <!-- Include social media links here -->
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="shell footer-inner">
-        <p>&copy; 3005 chibi muere</p>
+        <p>&copy; 2026 chibi muere</p>
         <p>Made in collaboration with the AI overlords</p>
       </div>
     </footer>
