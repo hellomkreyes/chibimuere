@@ -53,6 +53,19 @@ glitchy CRT terminal by night.
 
 Show something in only one theme with `class="day-only"` or `class="night-only"`.
 
+Motion: the footer "pause motion" toggle stops every animation (saved as
+`chibi-motion`). Until a visitor chooses, the OS "reduce motion" setting decides.
+Logic lives in `src/js/motion.js`.
+
+## Fonts and icons
+
+- Fonts are self-hosted from `public/fonts/`: Latin-subset WOFF2s of Manrope
+  (variable, 200–500), Space Mono 400/700 and Pirata One, with their OFL
+  licences. No Google Fonts request.
+- Favicons: `public/favicon.svg` (day butterfly) and `public/favicon-night.svg`
+  (night moth), swapped with the theme; `favicon.ico` and
+  `apple-touch-icon.png` are the fallbacks.
+
 ## Current year
 
 `src/js/current-year.js` keeps "this year" up to date, but only where you ask

@@ -6,28 +6,44 @@
     <meta name="description" content="The CV and resume of chibi muere." />
     <meta name="theme-color" content="#f7f3ee" />
     <title>CV / Resume | chibi muere</title>
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <script>
-      // Pick the theme before first paint so night visitors never see a flash of day.
+      // Runs before first paint so nothing flashes: theme, motion setting, and the matching favicon.
       (function () {
+        var root = document.documentElement;
         var theme = null;
-        try { theme = localStorage.getItem("chibi-theme"); } catch (e) {}
+        var motion = null;
+        try {
+          theme = localStorage.getItem("chibi-theme");
+          motion = localStorage.getItem("chibi-motion");
+        } catch (e) {}
         theme = { light: "day", dark: "night" }[theme] || theme;
         if (theme !== "day" && theme !== "night") {
           theme = window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "night" : "day";
         }
-        document.documentElement.dataset.theme = theme;
-        var themeColor = document.querySelector('meta[name="theme-color"]');
-        if (themeColor && theme === "night") themeColor.content = "#07060a";
+        root.dataset.theme = theme;
+        if (motion === "on" || motion === "off") root.dataset.motion = motion;
+        if (theme === "night") {
+          document.querySelector('meta[name="theme-color"]').content = "#07060a";
+          var icon = document.querySelector('link[rel="icon"][type="image/svg+xml"]');
+          icon.href = icon.href.replace("favicon.svg", "favicon-night.svg");
+          // Night headings use Pirata One: fetch it early so the title doesn't shift when it arrives.
+          var font = document.createElement("link");
+          font.rel = "preload";
+          font.as = "font";
+          font.type = "font/woff2";
+          font.crossOrigin = "";
+          font.href = icon.href.replace("favicon-night.svg", "fonts/pirata-one-latin-400.woff2");
+          document.head.appendChild(font);
+        }
       })();
     </script>
 
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..500&family=Pirata+One&family=Space+Mono:wght@400;700&display=swap"
-    />
+    <!-- Self-hosted fonts (public/fonts). Preload the two every page uses; Pirata One only loads at night. -->
+    <link rel="preload" href="/fonts/manrope-latin-var.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/space-mono-latin-400.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/src/styles/main.css" />
   </head>
   <body class="resume-page" id="body-wrapper" data-content-page="resume">
@@ -181,6 +197,7 @@
       <div class="shell footer-inner">
         <p>&copy; 3005 chibi muere</p>
         <p>Made in collaboration with the AI overlords</p>
+        <button class="motion-toggle" type="button" aria-pressed="false">pause motion</button>
       </div>
     </footer>
     <script type="module" src="/src/main.js"></script>

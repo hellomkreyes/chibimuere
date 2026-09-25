@@ -11,9 +11,12 @@
  *  4. Particle count scales with screen area, and halves on low-power hints
  *     (≤4 cores, ≤4GB RAM, Save-Data) — which also switch off backdrop blurs
  *     via the .low-power class.
- *  5. requestAnimationFrame pauses by itself in background tabs; with
- *     prefers-reduced-motion we draw one still frame and stop.
+ *  5. requestAnimationFrame pauses by itself in background tabs; with motion
+ *     off (footer toggle or prefers-reduced-motion) the loop is cancelled and
+ *     one still frame is drawn.
  */
+import { motionEnabled, onMotionChange } from "./motion.js";
+
 const root = document.documentElement;
 const R = Math.random;
 
@@ -147,7 +150,7 @@ function createSparkles(canvas, lowPower) {
     ctx.globalAlpha = 1;
   }
 
-  let glitchAt = 0;
+  let glitchAt = -1e9; // no glitch band in the very first (or a paused) frame
   function night(t) {
     let current = -1;
     for (const p of pixels) {
@@ -238,13 +241,36 @@ function createButterfly(el) {
   };
 }
 
-export function initEffects({ reduceMotion = false } = {}) {
+export function initEffects() {
   const lowPower = isLowPower();
   root.classList.toggle("low-power", lowPower);
 
   const canvas = document.getElementById("fx");
   const flyEl = document.querySelector(".fly");
   const sparkles = canvas?.getContext ? createSparkles(canvas, lowPower) : null;
+  const updateFly = flyEl ? createButterfly(flyEl) : null;
+
+  let rafId = 0; // 0 = loop stopped
+  let lastDraw = 0;
+  const stillFrame = () => sparkles?.draw(0);
+
+  function frame(t) {
+    rafId = requestAnimationFrame(frame);
+    updateFly?.(t);
+    if (!sparkles || t - lastDraw < 33) return; // 30fps cap for the sparkle canvas
+    lastDraw = t;
+    sparkles.draw(t);
+  }
+
+  function setRunning(on) {
+    if (on && !rafId) {
+      rafId = requestAnimationFrame(frame);
+    } else if (!on && rafId) {
+      cancelAnimationFrame(rafId);
+      rafId = 0;
+      stillFrame();
+    }
+  }
 
   if (sparkles) {
     let timer;
@@ -255,31 +281,16 @@ export function initEffects({ reduceMotion = false } = {}) {
         // height-only changes rather than reallocating the canvas each time.
         if (innerWidth === sparkles.width && Math.abs(innerHeight - sparkles.height) < 120) return;
         sparkles.resize();
-        if (reduceMotion) sparkles.draw(0);
+        if (!rafId) stillFrame();
       }, 150);
     });
+    // While paused, redraw the still frame when the theme flips.
+    new MutationObserver(() => {
+      if (!rafId) stillFrame();
+    }).observe(root, { attributes: true, attributeFilter: ["data-theme"] });
   }
 
-  if (reduceMotion) {
-    // One still frame, redrawn when the theme changes. The butterfly stays hidden (CSS).
-    if (sparkles) {
-      sparkles.draw(0);
-      new MutationObserver(() => sparkles.draw(0)).observe(root, {
-        attributes: true,
-        attributeFilter: ["data-theme"],
-      });
-    }
-    return;
-  }
-
-  const updateFly = flyEl ? createButterfly(flyEl) : null;
-  let lastDraw = 0;
-  function frame(t) {
-    requestAnimationFrame(frame);
-    updateFly?.(t);
-    if (!sparkles || t - lastDraw < 33) return; // 30fps cap for the sparkle canvas
-    lastDraw = t;
-    sparkles.draw(t);
-  }
-  requestAnimationFrame(frame);
+  if (motionEnabled()) setRunning(true);
+  else stillFrame();
+  onMotionChange(setRunning);
 }

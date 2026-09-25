@@ -9,28 +9,54 @@
     />
     <meta name="theme-color" content="#f7f3ee" />
     <title>chibi muere</title>
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <script>
-      // Pick the theme before first paint so night visitors never see a flash of day.
+      // Runs before first paint so nothing flashes: theme, motion setting, and the matching favicon.
       (function () {
+        var root = document.documentElement;
         var theme = null;
-        try { theme = localStorage.getItem("chibi-theme"); } catch (e) {}
+        var motion = null;
+        try {
+          theme = localStorage.getItem("chibi-theme");
+          motion = localStorage.getItem("chibi-motion");
+        } catch (e) {}
         theme = { light: "day", dark: "night" }[theme] || theme;
         if (theme !== "day" && theme !== "night") {
           theme = window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "night" : "day";
         }
-        document.documentElement.dataset.theme = theme;
-        var themeColor = document.querySelector('meta[name="theme-color"]');
-        if (themeColor && theme === "night") themeColor.content = "#07060a";
+        root.dataset.theme = theme;
+        if (motion === "on" || motion === "off") root.dataset.motion = motion;
+        if (theme === "night") {
+          document.querySelector('meta[name="theme-color"]').content = "#07060a";
+          var icon = document.querySelector('link[rel="icon"][type="image/svg+xml"]');
+          icon.href = icon.href.replace("favicon.svg", "favicon-night.svg");
+          // Night headings use Pirata One: fetch it early so the title doesn't shift when it arrives.
+          var font = document.createElement("link");
+          font.rel = "preload";
+          font.as = "font";
+          font.type = "font/woff2";
+          font.crossOrigin = "";
+          font.href = icon.href.replace("favicon-night.svg", "fonts/pirata-one-latin-400.woff2");
+          document.head.appendChild(font);
+        } else {
+          // Day hero title uses Gloock (only on this page): fetch it early too.
+          var dayFont = document.createElement("link");
+          var dayIcon = document.querySelector('link[rel="icon"][type="image/svg+xml"]');
+          dayFont.rel = "preload";
+          dayFont.as = "font";
+          dayFont.type = "font/woff2";
+          dayFont.crossOrigin = "";
+          dayFont.href = dayIcon.href.replace("favicon.svg", "fonts/gloock-latin-400.woff2");
+          document.head.appendChild(dayFont);
+        }
       })();
     </script>
 
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..500&family=Pirata+One&family=Space+Mono:wght@400;700&display=swap"
-    />
+    <!-- Self-hosted fonts (public/fonts). Preload the two every page uses; Pirata One only loads at night. -->
+    <link rel="preload" href="/fonts/manrope-latin-var.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/space-mono-latin-400.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/src/styles/main.css" />
   </head>
   <body id="top" data-content-page="home">
@@ -89,50 +115,116 @@
     <main id="main-content">
       <!-- Hero: one version per theme; only the active one is rendered -->
       <section class="hero" aria-label="Introduction">
-        <div class="hero-day day-only">
-          <p class="eyebrow">portfolio · <time data-current-year datetime="2026">2026</time></p>
-          <h1>chibi muere</h1>
-          <p class="tag" data-copy="hero.eyebrow">a tiny vessel of big ideas</p>
-          <p class="hero-lede" data-copy="hero.lede">
-            I am a tech witch and a child of the internet. Join me as I try to reclaim the artistry, mystery, and stupidity of this matrix that we love.
-          </p>
-        </div>
-        <div class="hero-night night-only n-wrap">
-          <div class="n-row" aria-hidden="true">
-            <span>CHIBI.SYS</span><span>NODE://PORTFOLIO</span><span>● LIVE</span>
+        <!-- One left-aligned "terminal window" for both themes. Night is unchanged;
+             day adds the tagline + intro row and its own skin. -->
+        <div class="n-wrap panel">
+          <div class="n-row">
+            <span
+              ><span class="day-only">portfolio · <time data-current-year datetime="2026">2026</time></span
+              ><span class="night-only" aria-hidden="true">CHIBI.SYS</span></span
+            >
+            <span aria-hidden="true">NODE://PORTFOLIO</span>
+            <span aria-hidden="true">● LIVE</span>
           </div>
           <div class="n-title">
-            <h1 class="glitch" data-text="chibi muere">chibi muere</h1>
+            <h1 class="hero-title glitch" data-text="chibi muere">chibi muere</h1>
+          </div>
+          <div class="n-lede day-only">
+            <p class="tag" data-copy="hero.eyebrow">a tiny vessel of big ideas</p>
+            <p class="hero-lede" data-copy="hero.lede">
+              I am a tech witch and a child of the internet. Join me as I try to reclaim the artistry, mystery, and stupidity of this matrix that we love.
+            </p>
           </div>
           <div class="n-meta">
-            <div><b>ROLE</b><span data-copy="hero.role">WEB_DEVELOPER</span></div>
+            <div><b>ROLE</b><span data-copy="hero.role">WEB_DEVELOPER | TECH_LEAD</span></div>
             <div>
-              <b>IDENTITY</b><span data-copy="hero.identity">MANIC PIXIE GRIM REAPER</span>
-              <span class="cross" aria-hidden="true">†</span>
+              <b>UPTIME</b><span data-years-since="1997">29</span> YRS
+              <span class="cross" aria-hidden="true">†</span> AND COUNTING
             </div>
             <div>
-              <b>STATUS</b><span data-copy="hero.status">AWAKE AFTER DARK</span><span class="cursor" aria-hidden="true">&nbsp;</span>
+              <b>STATUS</b>
+              <!-- keep each data-copy element's closing tag as a plain </span> (the content plugin looks for it) -->
+              <span class="day-only" data-copy="hero.statusDay">SUNBATHING IN THE DOM</span><span class="night-only" data-copy="hero.status">AWAKE AFTER DARK</span><span class="cursor" aria-hidden="true">&nbsp;</span>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- About -->
+      <!-- About: a messenger conversation window (option C, messenger-style) -->
       <section class="intro-band" id="bio" aria-labelledby="intro-title">
-        <div class="shell intro-grid">
-          <p class="section-number" aria-hidden="true">
-            a/s/l<br />
-            16/m/viridian city
-          </p>
-          <div>
-            <h2 id="intro-title" data-copy="bio.title">Made slowly,<br />meant to linger.</h2>
-            <p data-copy="bio.body">
-              We are interested in the space between cute and uncanny, the
-              useful and the unnecessary, the thing you keep and the thing you
-              give away.
+        <div class="shell">
+          <div class="msn" data-msn>
+            <div class="msn-titlebar">
+              <span class="msn-app" aria-hidden="true">
+                <svg viewBox="0 0 64 64" focusable="false"><g fill="currentColor"><ellipse cx="19.5" cy="23" rx="13" ry="10" transform="rotate(-28 19.5 23)"/><ellipse cx="44.5" cy="23" rx="13" ry="10" transform="rotate(28 44.5 23)"/><ellipse cx="22.5" cy="40.5" rx="8.5" ry="7" transform="rotate(30 22.5 40.5)"/><ellipse cx="41.5" cy="40.5" rx="8.5" ry="7" transform="rotate(-30 41.5 40.5)"/></g></svg>
+              </span>
+              <span class="msn-title">chibimuere · Conversation</span>
+              <span class="msn-winbtns" aria-hidden="true"><i>–</i><i>□</i><i>×</i></span>
+            </div>
+            <div class="msn-menu" aria-hidden="true">
+              <span>File</span><span>Edit</span><span>Actions</span><span>Tools</span><span>Help</span>
+            </div>
+
+            <div class="msn-to">
+              <h2 id="intro-title" data-copy="bio.title">Made slowly,<br />meant to linger.</h2>
+              <p class="msn-presence">
+                <span class="msn-dot" aria-hidden="true"></span> online ·
+                <span class="msn-psm" data-copy="bio.sideNote">Small-batch ideas since 2024</span>
+              </p>
+            </div>
+
+            <div class="msn-body">
+              <div class="msn-convo">
+                <ol class="msn-log" aria-label="Conversation" aria-live="polite" data-msn-log>
+                  <li class="msn-line msn-them">
+                    <span class="msn-says">xXstrangerXx says:</span>
+                    <p>a/s/l?</p>
+                  </li>
+                  <li class="msn-line msn-me">
+                    <span class="msn-says">chibimuere says:</span>
+                    <p>16/m/viridian city</p>
+                  </li>
+                  <li class="msn-line msn-me">
+                    <span class="msn-says">chibimuere says:</span>
+                    <p data-copy="bio.body">
+                      We are interested in the space between cute and uncanny, the
+                      useful and the unnecessary, the thing you keep and the thing you
+                      give away.
+                    </p>
+                  </li>
+                </ol>
+
+                <div class="msn-compose">
+                  <div class="msn-tools">
+                    <span class="msn-tool" aria-hidden="true">A</span>
+                    <span class="msn-tool" aria-hidden="true">☺&#xFE0E;</span>
+                    <button class="msn-tool msn-nudge" type="button" data-msn-nudge>
+                      <span aria-hidden="true">〰</span> nudge
+                    </button>
+                  </div>
+                  <div class="msn-input">
+                    <p class="msn-placeholder">you can&apos;t reply to this one. (see: how to contact me)</p>
+                    <button class="msn-send" type="button" disabled>Send</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="msn-pics" aria-hidden="true">
+                <figure class="msn-pic msn-pic-them">
+                  <span class="msn-pic-glyph">☠&#xFE0E;</span>
+                  <figcaption>chibimuere</figcaption>
+                </figure>
+                <figure class="msn-pic msn-pic-you">
+                  <span class="msn-pic-glyph">?</span>
+                  <figcaption>you</figcaption>
+                </figure>
+              </div>
+            </div>
+
+            <p class="msn-status" aria-hidden="true">
+              chibimuere is typing a message<span class="msn-typing"><i>.</i><i>.</i><i>.</i></span>
             </p>
           </div>
-          <p class="side-note" data-copy="bio.sideNote">Small-batch<br />ideas since 2024</p>
         </div>
       </section>
 
@@ -186,8 +278,12 @@
               <div class="thumb" aria-hidden="true"><span class="thumb-glyph">✦</span></div>
               <div class="card-meta">
                 <div>
-                  <p class="card-type">Objects / 2024</p>
-                  <h3>The Soft Launch</h3>
+                  <p class="card-type">Archive / 2026</p>
+                  <h3>
+                    <a class="card-link" href="scaffold.html"
+                      >The Soft Launch<span class="card-arrow" aria-hidden="true">↗</span></a
+                    >
+                  </h3>
                   <p>A study in first impressions, folded corners, and making an entrance quietly.</p>
                 </div>
                 <span class="num" aria-hidden="true">01</span>
@@ -265,8 +361,9 @@
 
     <footer class="site-footer">
       <div class="shell footer-inner">
-        <p>&copy; 2026 chibi muere</p>
+        <p>&copy; 3005 chibi muere</p>
         <p>Made in collaboration with the AI overlords</p>
+        <button class="motion-toggle" type="button" aria-pressed="false">pause motion</button>
       </div>
     </footer>
     <script type="module" src="/src/main.js"></script>

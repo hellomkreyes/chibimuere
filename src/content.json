@@ -3,13 +3,14 @@
     "hero": {
       "eyebrow": "a tiny vessel of big ideas",
       "lede": "I am a tech witch and a child of the internet. Join me as I try to reclaim the artistry, mystery, and stupidity of this matrix that we love.",
-      "role": "WEB_DEVELOPER",
-      "status": "AWAKE AFTER DARK"
+      "role": "WEB_DEVELOPER | TECH_LEAD",
+      "status": "AWAKE AFTER DARK",
+      "statusDay": "SUNBATHING IN THE DOM"
     },
     "bio": {
       "title": "just a smol death",
       "body": "Hello 👋 my name is M.K. Muere - my last name means death! 💀 I am a web developer from Toronto, ON. My specialty is leading agile tech teams, and building unique yet accessible e-commerce experiences. <br/><br/>Formality aside, I practice in digital witchcraft and general internet buffoonery.",
-      "sideNote": "Developing somewhere<br>on geocities since 1997."
+      "sideNote": "Developing somewhere on geocities since 1997."
     },
     "brands": {
       "eyebrow": "a throwback to my past works",

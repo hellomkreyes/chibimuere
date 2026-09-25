@@ -1,6 +1,6 @@
 /**
  * Keeps "this year" references current without touching dates that only look
- * like this year (project dates, resume ranges).
+ * like this year (project dates, resume ranges, the © 3005 joke).
  *
  * It's opt-in so context decides, not a find-and-replace:
  *
