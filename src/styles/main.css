@@ -194,6 +194,16 @@ button,
   transform: none;
 }
 
+/* Read by screen readers, not shown (e.g. "opens in a new tab"). */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
 /* Only one of these is rendered (and read by screen readers) per theme. */
 :root[data-theme="night"] .day-only,
 :root:not([data-theme="night"]) .night-only {
@@ -1752,7 +1762,7 @@ h2 em {
   border: 1px solid var(--line);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.55);
-  font-size: var(--text-xs);
+  font-size: 12px; /* a touch under --text-xs */
   letter-spacing: 0.16em;
   text-decoration: none;
   text-transform: uppercase;
@@ -1800,7 +1810,7 @@ h2 em {
   gap: 0.5rem 2rem;
   padding-block: 1.5rem calc(1.5rem + env(safe-area-inset-bottom, 0px));
   color: var(--ink-soft);
-  font-size: var(--text-xs);
+  font-size: 12px; /* a touch under --text-xs */
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
