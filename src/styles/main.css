@@ -528,6 +528,7 @@ main,
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  max-width: 146px;
 }
 
 :root[data-theme="night"] .header-actions,
@@ -2273,6 +2274,7 @@ h2 em {
     box-shadow: none;
     -webkit-backdrop-filter: none;
     backdrop-filter: none;
+    transform: translate(0, 1px);
   }
 
   :root[data-theme="night"] .site-nav a {
@@ -2369,6 +2371,7 @@ h2 em {
     left: 0;
     border-top: 1px solid var(--line);
     border-bottom: 0;
+    transform: translate(0, -1px);
   }
 
   :root[data-theme="night"] .wordmark,
