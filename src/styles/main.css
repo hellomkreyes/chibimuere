@@ -446,7 +446,8 @@ main,
 }
 
 .theme-toggle,
-.menu-toggle {
+.menu-toggle,
+.motion-icon {
   margin-left: 8px;
   padding: 9px 16px;
   border: 1px solid var(--line);
@@ -466,7 +467,8 @@ main,
 }
 
 .theme-toggle:hover,
-.menu-toggle:hover {
+.menu-toggle:hover,
+.motion-icon:hover {
   background: #fff;
   box-shadow:
     0 0 0 1px #fff,
@@ -482,6 +484,30 @@ main,
   font-size: 18px;
   letter-spacing: 0;
   line-height: 1;
+}
+
+/* Pause / play motion: shows ⏸ while things move, ▶ once paused (aria-pressed="true"). */
+.motion-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+}
+
+.motion-icon svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+.motion-icon[aria-pressed="true"] {
+  color: var(--accent);
+}
+
+.motion-icon[aria-pressed="true"] .motion-icon-pause,
+.motion-icon:not([aria-pressed="true"]) .motion-icon-play {
+  display: none;
 }
 
 /* Night: flush terminal bar with ruled cells */
@@ -531,7 +557,8 @@ main,
 }
 
 :root[data-theme="night"] .theme-toggle,
-:root[data-theme="night"] .menu-toggle {
+:root[data-theme="night"] .menu-toggle,
+:root[data-theme="night"] .motion-icon {
   height: auto;
   margin: 0;
   padding: 16px 20px;
@@ -545,10 +572,20 @@ main,
 }
 
 :root[data-theme="night"] .theme-toggle:hover,
-:root[data-theme="night"] .menu-toggle:hover {
+:root[data-theme="night"] .menu-toggle:hover,
+:root[data-theme="night"] .motion-icon:hover {
   background: var(--cyan);
   box-shadow: none;
   color: #000;
+}
+
+:root[data-theme="night"] .motion-icon {
+  width: auto;
+  padding-inline: 18px;
+}
+
+:root[data-theme="night"] .motion-icon[aria-pressed="true"] {
+  color: var(--red);
 }
 
 /* 5. Hero ================================================================== */
@@ -781,13 +818,13 @@ main,
 }
 
 /* Day skin for the hero panel: matches the portfolio cards. The same rounded
-   glass shell (28px radius, white edge, soft shadow, 14px inset), with the title
+   glass shell (14px radius, white edge, soft shadow, 14px inset), with the title
    in a pastel "thumb" and the rows as soft ruled lines underneath.
    Night is untouched: every rule below is day-only. */
 :root:not([data-theme="night"]) .n-wrap {
   padding: 14px;
   border-color: var(--card-edge);
-  border-radius: 28px;
+  border-radius: 14px;
   background: var(--card);
   box-shadow: 0 20px 60px -30px rgba(160, 120, 100, 0.35);
 }
@@ -822,7 +859,7 @@ main,
 :root:not([data-theme="night"]) .n-title {
   overflow: hidden;
   padding: clamp(28px, 5vw, 64px) clamp(20px, 4vw, 48px);
-  border-radius: 18px;
+  border-radius: 14px;
   background:
     radial-gradient(ellipse at 30% 20%, #fff 0%, transparent 55%),
     linear-gradient(160deg, #fbe3d8, #f3e6f5 45%, #dde9f8 75%, #e6f5ea);
@@ -997,7 +1034,7 @@ h2 em {
 }
 
 .msn-presence {
-  margin-top: 6px;
+  margin-top: 14px; /* clears the descenders in the title (the j in "just") */
   color: var(--ink-soft);
   font-size: var(--text-xs);
   letter-spacing: 0.04em;
@@ -1229,7 +1266,7 @@ h2 em {
 /* Day skin: pastel glass, rounded like the cards */
 :root:not([data-theme="night"]) .msn {
   border-color: var(--card-edge);
-  border-radius: 22px;
+  border-radius: 14px;
   background: var(--card);
   box-shadow: 0 20px 60px -30px rgba(160, 120, 100, 0.35);
 }
@@ -1466,7 +1503,7 @@ h2 em {
   gap: 18px;
   padding: 14px 14px 22px;
   border: 1px solid var(--card-edge);
-  border-radius: 28px;
+  border-radius: 14px;
   background: var(--card);
   box-shadow: 0 20px 60px -30px rgba(160, 120, 100, 0.35);
   -webkit-backdrop-filter: blur(14px);
@@ -1486,7 +1523,7 @@ h2 em {
   position: relative;
   aspect-ratio: 1 / 1;
   overflow: hidden;
-  border-radius: 18px;
+  border-radius: 14px;
   background:
     radial-gradient(ellipse at 30% 20%, #fff 0%, transparent 55%),
     linear-gradient(160deg, #fbe3d8, #f3e6f5 45%, #dde9f8 75%, #e6f5ea);
@@ -1730,6 +1767,21 @@ h2 em {
 
 .contact-inner .social-links .button {
   margin-top: 0;
+}
+
+/* Logo-only buttons; the name is visually hidden text inside each link. */
+.button.social-link {
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+}
+
+.social-link svg {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
 }
 
 /* Artsy / Fartsy: placeholder sections until the real content lands */
@@ -2171,20 +2223,12 @@ h2 em {
   }
 }
 
-@media (max-width: 700px) {
-  .site-header {
-    padding-block: 14px;
-  }
-
+/* Below ~1140px the full nav (six links + pause + theme) no longer fits on one
+   line: fold the links into the ☰ menu, which drops down from the top bar. */
+@media (max-width: 1140px) {
   .menu-toggle {
     display: inline-grid;
     place-items: center;
-  }
-
-  .theme-toggle {
-    padding-inline: 12px;
-    font-size: var(--text-xs);
-    letter-spacing: 0.1em;
   }
 
   .site-nav {
@@ -2196,14 +2240,14 @@ h2 em {
     align-items: stretch;
     min-width: 12rem;
     /* Short screens (landscape phones, 400% zoom): the menu hangs off a fixed
-       header, so page scroll can't reach its last links. Let it scroll itself. */
+       bar, so page scroll can't reach its far links. Let it scroll itself. */
     max-height: calc(100vh - 5rem - env(safe-area-inset-top, 0px));
     max-height: calc(100dvh - 5rem - env(safe-area-inset-top, 0px));
     overflow-y: auto;
     overscroll-behavior: contain;
     padding: 8px;
     border: 1px solid var(--card-edge);
-    border-radius: 20px;
+    border-radius: 14px;
     background: rgba(247, 243, 238, 0.9);
     box-shadow: 0 20px 60px -30px rgba(160, 120, 100, 0.45);
     -webkit-backdrop-filter: blur(14px);
@@ -2240,14 +2284,109 @@ h2 em {
     border-bottom: 0;
   }
 
+  :root[data-theme="night"] .menu-toggle {
+    width: auto;
+    padding-inline: 16px;
+  }
+}
+
+@media (max-width: 700px) {
+  /* Phones: the wordmark stays at the top and scrolls away with the page; the
+     buttons move to a bar fixed along the bottom, in easy thumb reach, and the
+     menu opens upward from it. */
+  html {
+    scroll-padding-top: 1rem;
+    scroll-padding-bottom: 5.5rem; /* keeps focused things clear of the bottom bar */
+  }
+
+  body {
+    padding-bottom: 4.5rem; /* so the bar never covers the end of the footer */
+  }
+
+  .site-header {
+    position: absolute;
+    padding-block: 14px;
+  }
+
+  /* No fixed top bar to frost on phones. (A backdrop-filter here would also
+     trap the fixed bottom bar inside the header.) */
+  :root:not([data-theme="night"]) .site-header.is-scrolled {
+    padding-block: 14px;
+    border-bottom-color: transparent;
+    background: none;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .header-actions {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    padding: 10px var(--gutter) calc(10px + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid var(--line);
+    background: rgba(247, 243, 238, 0.8);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+
+  .hero {
+    padding-bottom: 96px; /* clear of the bottom bar */
+  }
+
+  .menu-toggle {
+    margin: 0 auto 0 0; /* menu on the left, motion + theme on the right */
+  }
+
+  .theme-toggle {
+    padding-inline: 12px;
+    font-size: var(--text-xs);
+    letter-spacing: 0.1em;
+  }
+
+  .site-nav {
+    top: auto;
+    right: auto;
+    bottom: calc(100% + 8px);
+    left: var(--gutter);
+    max-height: calc(100vh - 6rem - env(safe-area-inset-bottom, 0px));
+    max-height: calc(100dvh - 6rem - env(safe-area-inset-bottom, 0px));
+    box-shadow: 0 -20px 60px -30px rgba(160, 120, 100, 0.45);
+  }
+
+  :root[data-theme="night"] .header-actions {
+    padding: 0 env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+    background: rgba(7, 6, 10, 0.92);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  :root[data-theme="night"] .site-nav {
+    top: auto;
+    right: auto;
+    bottom: 100%;
+    left: 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 0;
+  }
+
   :root[data-theme="night"] .wordmark,
   :root[data-theme="night"] .theme-toggle,
-  :root[data-theme="night"] .menu-toggle {
+  :root[data-theme="night"] .menu-toggle,
+  :root[data-theme="night"] .motion-icon {
     padding: 14px 12px;
   }
 
   :root[data-theme="night"] .menu-toggle {
     width: auto;
+    margin-right: auto;
+    padding-inline: 16px;
+    border-right: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  :root[data-theme="night"] .motion-icon {
     padding-inline: 16px;
   }
 
@@ -2287,7 +2426,7 @@ h2 em {
 
   :root:not([data-theme="night"]) .n-wrap {
     padding: 10px;
-    border-radius: 22px;
+    border-radius: 14px;
   }
 
   :root:not([data-theme="night"]) .n-title {
@@ -2341,10 +2480,6 @@ h2 em {
   .portfolio-grid {
     grid-template-columns: 1fr;
   }
-
-  .thumb {
-    aspect-ratio: 4 / 3;
-  }
 }
 
 @media (max-width: 380px) {
@@ -2375,15 +2510,21 @@ h2 em {
 /* Touch screens: a tap leaves :hover stuck on, so don't let the toggles stay lit. */
 @media (hover: none) {
   .theme-toggle:hover,
-  .menu-toggle:hover {
+  .menu-toggle:hover,
+  .motion-icon:hover {
     background: rgba(255, 255, 255, 0.55);
     box-shadow: none;
   }
 
   :root[data-theme="night"] .theme-toggle:hover,
-  :root[data-theme="night"] .menu-toggle:hover {
+  :root[data-theme="night"] .menu-toggle:hover,
+  :root[data-theme="night"] .motion-icon:hover {
     background: transparent;
     color: var(--cyan);
+  }
+
+  :root[data-theme="night"] .motion-icon[aria-pressed="true"]:hover {
+    color: var(--red);
   }
 }
 
@@ -2429,6 +2570,8 @@ h2 em {
 .low-power .site-header,
 .low-power .theme-toggle,
 .low-power .menu-toggle,
+.low-power .motion-icon,
+.low-power .header-actions,
 .low-power .site-nav {
   -webkit-backdrop-filter: none !important;
   backdrop-filter: none !important;

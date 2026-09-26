@@ -100,6 +100,16 @@
           aria-label="Open navigation menu">
           <span aria-hidden="true">☰</span>
         </button>
+        <button
+          class="motion-icon"
+          type="button"
+          data-motion-toggle
+          aria-pressed="false"
+          aria-label="Pause motion"
+          title="Pause motion">
+          <svg class="motion-icon-pause" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3" y="2" width="3.5" height="12" /><rect x="9.5" y="2" width="3.5" height="12" /></svg>
+          <svg class="motion-icon-play" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 2 14 8 4 14Z" /></svg>
+        </button>
         <button class="theme-toggle" type="button">
           <span class="day-only">enter night</span>
           <span class="night-only">return to day</span>
@@ -205,7 +215,7 @@
       <div class="shell footer-inner">
         <p>&copy; 3005 chibi muere</p>
         <p>Made in collaboration with the AI overlords</p>
-        <button class="motion-toggle" type="button" aria-pressed="false">pause motion</button>
+        <button class="motion-toggle" type="button" data-motion-toggle aria-pressed="false">pause motion</button>
       </div>
     </footer>
     <script type="module" src="/src/main.js"></script>

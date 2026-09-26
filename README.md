@@ -49,19 +49,23 @@ glitchy CRT terminal by night.
   resolution, sprite-based, and it tones itself down on low-power devices and
   for `prefers-reduced-motion`.
 - `src/js/cursors.js`: the glass (day) and pixel (night) cursors.
-- `src/js/nav.js`: the mobile menu and the frosted header on scroll.
+- `src/js/nav.js`: the ☰ menu and the frosted header on scroll. Below 1140px
+  the nav links fold into the ☰ menu; on phones (≤700px) the buttons move to a
+  bar along the bottom of the screen and the menu opens upward.
 
 Show something in only one theme with `class="day-only"` or `class="night-only"`.
 
-Motion: the footer "pause motion" toggle stops every animation (saved as
-`chibi-motion`). Until a visitor chooses, the OS "reduce motion" setting decides.
-Logic lives in `src/js/motion.js`.
+Motion: the ⏸ / ▶ button in the header (and "pause motion" in the footer)
+stops every animation (saved as `chibi-motion`). Any button with
+`data-motion-toggle` works and they stay in sync. Until a visitor chooses, the
+OS "reduce motion" setting decides. Logic lives in `src/js/motion.js`.
 
 ## Fonts and icons
 
 - Fonts are self-hosted from `public/fonts/`: Latin-subset WOFF2s of Manrope
   (variable, 200–500), Space Mono 400/700 and Pirata One, with their OFL
   licences. No Google Fonts request.
+- Social icons: inline SVGs from [Simple Icons](https://simpleicons.org) (CC0).
 - Favicons: `public/favicon.svg` (day butterfly) and `public/favicon-night.svg`
   (night moth), swapped with the theme; `favicon.ico` and
   `apple-touch-icon.png` are the fallbacks.

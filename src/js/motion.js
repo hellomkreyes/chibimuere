@@ -1,9 +1,10 @@
 /**
  * Motion on/off.
  *
- * Visitors can pause every animation with the footer "pause motion" toggle
- * (WCAG 2.2.2: anything that moves for more than 5 seconds needs a way to stop
- * it). Until they choose, the OS "reduce motion" setting decides.
+ * Visitors can pause every animation with a [data-motion-toggle] button: the
+ * ⏸ / ▶ icon in the header, or "pause motion" in the footer (WCAG 2.2.2:
+ * anything that moves for more than 5 seconds needs a way to stop it). They
+ * stay in sync. Until visitors choose, the OS "reduce motion" setting decides.
  *
  *   <html data-motion="off">  → paused (visitor's choice, saved)
  *   <html data-motion="on">   → playing (visitor's choice, saved)
@@ -28,14 +29,22 @@ export function onMotionChange(fn) {
   listeners.add(fn);
 }
 
+// aria-pressed carries the state; the icon button's tooltip follows what a click will do.
+function syncButtons(on) {
+  buttons.forEach((button) => {
+    button.setAttribute("aria-pressed", String(!on));
+    if (button.hasAttribute("title")) button.title = on ? "Pause motion" : "Play motion";
+  });
+}
+
 function sync() {
   const on = motionEnabled();
-  buttons.forEach((button) => button.setAttribute("aria-pressed", String(!on)));
+  syncButtons(on);
   listeners.forEach((fn) => fn(on));
 }
 
 export function initMotion() {
-  buttons = [...document.querySelectorAll(".motion-toggle")];
+  buttons = [...document.querySelectorAll("[data-motion-toggle]")];
   buttons.forEach((button) =>
     button.addEventListener("click", () => {
       const next = motionEnabled() ? "off" : "on";
@@ -51,5 +60,5 @@ export function initMotion() {
   systemReduce.addEventListener?.("change", () => {
     if (!root.dataset.motion) sync();
   });
-  buttons.forEach((button) => button.setAttribute("aria-pressed", String(!motionEnabled())));
+  syncButtons(motionEnabled());
 }
