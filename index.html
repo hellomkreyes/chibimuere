@@ -9,6 +9,16 @@
     />
     <meta name="theme-color" content="#f7f3ee" />
     <title>chibi muere</title>
+    <!-- Social cards. TODO: add og:image (day/night split preview) and switch twitter:card to summary_large_image -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="chibi muere" />
+    <meta property="og:title" content="chibi muere" />
+    <meta
+      property="og:description"
+      content="chibi muere is a web developer, tech momager, and child of the internet. Welcome to my little cobweb in this vast world wide web."
+    />
+    <meta property="og:url" content="https://hellomkreyes.github.io/chibimuere/" />
+    <meta name="twitter:card" content="summary" />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -95,6 +105,7 @@
           <a href="#portfolio"><span aria-hidden="true">🔮</span> Portfolio</a>
           <a href="#artsy"><span aria-hidden="true">🎨</span> Artsy</a>
           <a href="#fartsy"><span aria-hidden="true">💩</span> Fartsy</a>
+          <a href="resume.html"><span aria-hidden="true">📜</span> Resume</a>
           <a href="#contact"><span aria-hidden="true">💌</span> Contact</a>
         </nav>
         <button
@@ -232,9 +243,9 @@
       <section id="portfolio" class="brands-section" aria-labelledby="brands-title">
         <div class="shell brands-intro">
           <p class="eyebrow" data-copy="brands.eyebrow">In good company</p>
-          <h2 id="brands-title" data-copy="brands.title">Brands we&apos;ve<br /><em>worked with.</em></h2>
+          <h2 id="brands-title" data-copy="brands.title">Brands I have<br /><em>collaborated with.</em></h2>
           <p data-copy="brands.body">
-            A few of the brands we&apos;ve worked with and for, from thoughtful
+            A few of the brands I&apos;ve worked with and for, from thoughtful
             collaborations to the behind-the-scenes work that helps good
             ideas find their shape.
           </p>
@@ -349,12 +360,37 @@
         </div>
       </section>
 
+      <!-- Artsy: placeholder until the content is fleshed out -->
+      <section id="artsy" class="placeholder-section" aria-labelledby="artsy-title">
+        <div class="shell">
+          <p class="eyebrow" data-copy="artsy.eyebrow">Art in progress</p>
+          <h2 id="artsy-title" data-copy="artsy.title">Artsy</h2>
+          <p class="placeholder-note" data-copy="artsy.body">Still drying. Check back soon.</p>
+        </div>
+      </section>
+
+      <!-- Fartsy: placeholder until the content is fleshed out -->
+      <section id="fartsy" class="placeholder-section" aria-labelledby="fartsy-title">
+        <div class="shell">
+          <p class="eyebrow" data-copy="fartsy.eyebrow">Nonsense in progress</p>
+          <h2 id="fartsy-title" data-copy="fartsy.title">Fartsy</h2>
+          <p class="placeholder-note" data-copy="fartsy.body">Something is brewing. Check back soon.</p>
+        </div>
+      </section>
+
       <!-- Contact -->
       <section id="contact" class="contact-band" aria-labelledby="contact-title">
         <div class="shell contact-inner">
           <p class="eyebrow" data-copy="contact.eyebrow">How to contact me:</p>
           <h2 id="contact-title">don't.</h2>
-          <!-- Include social media links here -->
+          <p class="contact-aside" data-copy="contact.aside">(but if you must)</p>
+          <ul class="social-links" aria-label="Social links">
+            <li><a class="button" href="https://github.com/hellomkreyes/" rel="me">GitHub</a></li>
+            <li><a class="button" href="https://www.instagram.com/chibi.muere" rel="me">Instagram</a></li>
+            <li><a class="button" href="https://www.linkedin.com/in/mkreyes" rel="me">LinkedIn</a></li>
+            <li><a class="button" href="https://thechibicoven.substack.com/" rel="me">Substack</a></li>
+            <li><a class="button" href="https://www.behance.net/hellomkreyes" rel="me">Behance</a></li>
+          </ul>
         </div>
       </section>
     </main>
