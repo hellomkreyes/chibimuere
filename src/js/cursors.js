@@ -3,13 +3,18 @@
  *
  * Built as SVG once at load and handed to CSS `cursor:` through custom
  * properties — the OS draws them, so there's no lag and no JS per frame.
- * 32×32 keeps them within every browser's cursor size limit; browsers that
- * don't support SVG cursors fall back to the default arrow / pointer.
+ * Drawn on a 32-unit grid and rendered at 48×48 (1.5x) so they're easier to
+ * see. Chrome swaps cursors over 32px for the default arrow when they touch
+ * the window edge; browsers that don't support SVG cursors fall back to the
+ * default arrow / pointer.
  */
+const SIZE = 48;
+const SCALE = SIZE / 32;
+// Hotspots are given in grid units and scaled to the rendered size.
 const url = (svg, x, y, fallback) =>
-  `url("data:image/svg+xml,${encodeURIComponent(svg)}") ${x} ${y}, ${fallback}`;
+  `url("data:image/svg+xml,${encodeURIComponent(svg)}") ${Math.round(x * SCALE)} ${Math.round(y * SCALE)}, ${fallback}`;
 const svg = (body) =>
-  `<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">${body}</svg>`;
+  `<svg xmlns="http://www.w3.org/2000/svg" width="${SIZE}" height="${SIZE}" viewBox="0 0 32 32">${body}</svg>`;
 
 // DAY — glass arrow: frosted translucent body, iridescent rim, specular highlight, soft shadow.
 const ARROW = "M4 3 L4 23 L9.2 18.3 L12.6 26 L16 24.5 L12.7 17 L19.5 17 Z";
