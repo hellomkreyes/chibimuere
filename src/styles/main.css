@@ -77,6 +77,8 @@
   /* viewport-fit=cover lets the page run under notches and the home indicator;
      the gutter grows to clear a landscape notch. */
   --gutter: max(clamp(16px, 4vw, 48px), env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px));
+  /* Smallest copy on the site: labels, eyebrows, meta, buttons, footer. */
+  --text-xs: 13px;
   --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
   --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
 }
@@ -442,7 +444,7 @@ main,
   background: rgba(255, 255, 255, 0.55);
   color: var(--ink);
   font: inherit;
-  font-size: 12px;
+  font-size: var(--text-xs);
   letter-spacing: 0.16em;
   text-transform: uppercase;
   white-space: nowrap;
@@ -504,7 +506,7 @@ main,
   padding: 16px 20px;
   border-left: 1px solid var(--line);
   border-radius: 0;
-  font-size: 12px;
+  font-size: var(--text-xs);
   text-transform: uppercase;
 }
 
@@ -555,7 +557,7 @@ main,
 .eyebrow {
   margin-bottom: 1.5rem;
   color: var(--ink-soft);
-  font-size: 12px;
+  font-size: var(--text-xs);
   letter-spacing: 0.4em;
   text-transform: uppercase;
 }
@@ -576,7 +578,7 @@ main,
   display: flex;
   border-bottom: 1px solid var(--line);
   color: var(--ink-soft);
-  font-size: 12px;
+  font-size: var(--text-xs);
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
@@ -708,7 +710,7 @@ main,
 .n-lede .tag {
   border-right: 1px solid var(--line);
   color: var(--ink-soft);
-  font-size: 12px;
+  font-size: var(--text-xs);
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
@@ -735,7 +737,7 @@ main,
 .n-meta div {
   padding: 16px;
   border-right: 1px solid var(--line);
-  font-size: 12px;
+  font-size: var(--text-xs);
   line-height: 1.7;
 }
 
@@ -746,7 +748,7 @@ main,
 .n-meta b {
   display: block;
   color: var(--ink-soft);
-  font-size: 12px;
+  font-size: var(--text-xs);
   font-weight: 400;
   letter-spacing: 0.2em;
 }
@@ -876,7 +878,7 @@ h2 em {
 .section-number,
 .side-note {
   color: var(--ink-soft);
-  font-size: 12px;
+  font-size: var(--text-xs);
   letter-spacing: 0.2em;
   line-height: 1.8;
   text-transform: uppercase;
@@ -925,7 +927,7 @@ h2 em {
   gap: 10px;
   padding: 8px 12px;
   border-bottom: 1px solid var(--line);
-  font-size: 12px;
+  font-size: var(--text-xs);
   letter-spacing: 0.08em;
 }
 
@@ -969,7 +971,7 @@ h2 em {
   padding: 4px 14px;
   border-bottom: 1px solid var(--line);
   color: var(--ink-soft);
-  font-size: 12px;
+  font-size: var(--text-xs);
 }
 
 /* Header: display name (the section heading) as the title, then presence + personal message */
@@ -987,7 +989,7 @@ h2 em {
 .msn-presence {
   margin-top: 6px;
   color: var(--ink-soft);
-  font-size: 12px;
+  font-size: var(--text-xs);
   letter-spacing: 0.04em;
 }
 
@@ -1040,7 +1042,7 @@ h2 em {
 .msn-says {
   display: block;
   color: var(--ink-soft);
-  font-size: 12px;
+  font-size: var(--text-xs);
 }
 
 .msn-line p {
@@ -1054,7 +1056,7 @@ h2 em {
 
 .msn-system {
   color: var(--ink-soft);
-  font-size: 12px;
+  font-size: var(--text-xs);
   font-style: italic;
 }
 
@@ -1090,7 +1092,7 @@ h2 em {
   align-items: center;
   min-height: 30px;
   border-color: var(--line);
-  font-size: 12px;
+  font-size: var(--text-xs);
   letter-spacing: 0.06em;
   transition:
     background-color 0.3s,
@@ -1113,7 +1115,7 @@ h2 em {
 
 .msn-placeholder {
   color: var(--ink-soft);
-  font-size: 12px;
+  font-size: var(--text-xs);
 }
 
 .msn-send {
@@ -1122,7 +1124,7 @@ h2 em {
   background: none;
   color: var(--ink-soft);
   font: inherit;
-  font-size: 12px;
+  font-size: var(--text-xs);
   opacity: 0.6;
   cursor: not-allowed;
 }
@@ -1157,7 +1159,7 @@ h2 em {
 .msn-pic figcaption {
   margin-top: 6px;
   color: var(--ink-soft);
-  font-size: 12px;
+  font-size: var(--text-xs);
   text-align: right;
 }
 
@@ -1166,7 +1168,7 @@ h2 em {
   padding: 6px 14px;
   border-top: 1px solid var(--line);
   color: var(--ink-soft);
-  font-size: 12px;
+  font-size: var(--text-xs);
 }
 
 .msn-typing i {
@@ -1359,7 +1361,7 @@ h2 em {
   gap: 1.5rem;
   padding: 0 1.5rem;
   color: var(--ink-soft);
-  font-size: 12px;
+  font-size: var(--text-xs);
   letter-spacing: 0.3em;
   text-transform: uppercase;
   white-space: nowrap;
@@ -1535,7 +1537,7 @@ h2 em {
 .card-type {
   margin-bottom: 6px;
   color: var(--ink-soft);
-  font-size: 12px;
+  font-size: var(--text-xs);
   letter-spacing: 0.24em;
   text-transform: uppercase;
 }
@@ -1551,7 +1553,7 @@ h2 em {
 .card-meta p:last-child {
   margin-top: 6px;
   color: var(--ink-soft);
-  font-size: 12px;
+  font-size: var(--text-xs);
   line-height: 1.55;
 }
 
@@ -1593,7 +1595,7 @@ h2 em {
 
 .card .num {
   color: var(--ink-soft);
-  font-size: 12px;
+  font-size: var(--text-xs);
   letter-spacing: 0.3em;
 }
 
@@ -1635,7 +1637,7 @@ h2 em {
   color: var(--ink-soft);
   content: "NO_SIGNAL";
   content: "NO_SIGNAL" / "";
-  font-size: 12px;
+  font-size: var(--text-xs);
   letter-spacing: 0.3em;
 }
 
@@ -1701,7 +1703,7 @@ h2 em {
 .contact-aside {
   margin-top: 1.5rem;
   color: var(--ink-soft);
-  font-size: 12px;
+  font-size: var(--text-xs);
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
@@ -1750,7 +1752,7 @@ h2 em {
   border: 1px solid var(--line);
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.55);
-  font-size: 12px;
+  font-size: var(--text-xs);
   letter-spacing: 0.16em;
   text-decoration: none;
   text-transform: uppercase;
@@ -1798,7 +1800,7 @@ h2 em {
   gap: 0.5rem 2rem;
   padding-block: 1.5rem calc(1.5rem + env(safe-area-inset-bottom, 0px));
   color: var(--ink-soft);
-  font-size: 12px;
+  font-size: var(--text-xs);
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
@@ -1918,7 +1920,7 @@ h2 em {
 
 .resume-year {
   color: var(--accent) !important;
-  font-size: 12px;
+  font-size: var(--text-xs);
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
@@ -2171,7 +2173,7 @@ h2 em {
 
   .theme-toggle {
     padding-inline: 12px;
-    font-size: 12px;
+    font-size: var(--text-xs);
     letter-spacing: 0.1em;
   }
 
@@ -2341,11 +2343,12 @@ h2 em {
   }
 
   :root[data-theme="night"] .wordmark {
-    font-size: 11px;
+    font-size: 12px;
     letter-spacing: 0.04em;
   }
 
-  .theme-toggle {
+  .theme-toggle,
+  :root[data-theme="night"] .theme-toggle {
     padding-inline: 10px;
     letter-spacing: 0.06em;
   }
