@@ -1,12 +1,12 @@
 /**
- * Touch stand-ins for the hover-only moments.
+ * Touch stand-ins for the hover-only moments, plus the tap/click sparkle.
  *
  *  - Card spotlight: with no hover, the project card crossing the middle of
  *    the screen gets .is-lit, which shares the :hover styles (the day lift and
  *    the night red flip).
- *  - Tap sparkle: tapping a link or button drops a little sparkle (day) or a
- *    glitched pixel (night), like the hover cursors do with a mouse. Skipped
- *    when motion is off.
+ *  - Tap sparkle: tapping or clicking a link or button drops a little sparkle
+ *    (day) or a glitched pixel (night). Started as the touch stand-in for the
+ *    hover cursors; clicks get it too. Skipped when motion is off.
  */
 import { motionEnabled } from "./motion.js";
 
@@ -26,7 +26,7 @@ function initTapSparkle() {
   document.addEventListener(
     "pointerdown",
     (event) => {
-      if (event.pointerType !== "touch" || !motionEnabled()) return;
+      if (event.button !== 0 || !motionEnabled()) return; // primary tap / left click only
       if (!event.target.closest?.("a, button")) return;
 
       const spark = document.createElement("span");

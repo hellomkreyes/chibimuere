@@ -2429,8 +2429,8 @@ h2 em {
 
 /* Touch */
 
-/* Tap sparkle: the touch stand-in for the day hover cursor's sparkle (and the
-   night cursor's red flip). Added by src/js/touch.js on links and buttons. */
+/* Tap / click sparkle: echoes the day hover cursor's sparkle (and the night
+   cursor's red flip). Added by src/js/touch.js on links and buttons. */
 .tap-spark {
   position: fixed;
   top: 0;
