@@ -12,7 +12,6 @@ Last updated Sep 26, 2026. Finished items are removed as their PRs land.
 
 ## Content & sections
 - [ ] `[new]` Replace the scaffold placeholders with real content: the six project cards, the brand names in the marquee, and the resume page copy. Collected in `site-copy.xlsx`
-- [ ] `[new]` Project cards driven by `content.json`, each with an optional Substack write-up link (case study / devlog). Projects get added one at a time as they're built for the EM interview orchestrator demo
 - [ ] `[existing]` 404 page: aesthetic fancy-restaurant washroom easter egg, building on the current 404
 - [ ] `[existing]` Redo CV/Resume teaser
 - [ ] `[existing]` Redo Dream Collabs
