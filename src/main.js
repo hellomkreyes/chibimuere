@@ -5,6 +5,7 @@ import { initCursors } from "./js/cursors.js";
 import { initEffects } from "./js/effects.js";
 import { syncCurrentYear } from "./js/current-year.js";
 import { initNudge } from "./js/nudge.js";
+import { initTouch } from "./js/touch.js";
 
 syncCurrentYear();
 initMotion();
@@ -13,3 +14,4 @@ initNav();
 initCursors();
 initEffects();
 initNudge();
+initTouch();

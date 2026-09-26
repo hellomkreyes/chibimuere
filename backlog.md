@@ -25,14 +25,8 @@ Last updated Sep 25, 2026. Finished items are removed as their PRs land.
 - [ ] `[new]` One small native moment for breadth: CSS scroll-driven animations or the View Transitions API (resume ↔ home, or into the 404)
 
 ## Accessibility
-- [ ] `[new]` Forced-colors fallback: the glitch title's `background-clip:text` + transparent fill can vanish in Windows High Contrast; check the glass panels too
+- [ ] `[new]` Check the forced-colors fallback in real Windows High Contrast (the CSS is in; it can't be emulated from macOS): night title visible, panel edges, lit cards outlined
 - [ ] `[new]` Screen reader check of the glitch title in VoiceOver and NVDA (the CSS already hides the `data-text` copies; confirm it's read once)
-- [ ] `[new]` 400% zoom reflow on the hero table and the messenger window
-
-## Mobile-first
-- [ ] `[new]` Touch equivalents for hover-only moments (night card red flip, cursor sparkle)
-- [ ] `[new]` Safe-area insets on the fixed nav (the hero already uses `100svh`)
-- [ ] `[new]` Pause the sparkle canvas when it's offscreen (IntersectionObserver), not just in background tabs
 
 ## Personality & easter eggs
 - [ ] `[new]` `console.log` greeting and an ASCII art comment in view-source
