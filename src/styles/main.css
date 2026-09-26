@@ -848,6 +848,7 @@ main,
 .intro-band,
 .brands-section,
 .portfolio-section,
+.placeholder-section,
 .contact-band {
   padding-block: clamp(3.5rem, 8vw, 6.5rem);
 }
@@ -1690,6 +1691,34 @@ h2 em {
 
 .contact-inner .button {
   margin-top: 2rem;
+}
+
+.contact-aside {
+  margin-top: 1.5rem;
+  color: var(--ink-soft);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.contact-inner .social-links .button {
+  margin-top: 0;
+}
+
+/* Artsy / Fartsy: placeholder sections until the real content lands */
+.placeholder-note {
+  max-width: 38rem;
+  color: var(--ink-soft);
 }
 
 :root[data-theme="night"] .contact-inner h2 {

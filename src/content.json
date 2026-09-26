@@ -15,7 +15,7 @@
     "brands": {
       "eyebrow": "a throwback to my past works",
       "title": "Brands I have<br><em>collaborated with.</em>",
-      "body": "A few of the brands we&apos;ve worked with and for, from thoughtful collaborations to the behind-the-scenes work that helps good ideas find their shape."
+      "body": "A few of the brands I&apos;ve worked with and for, from thoughtful collaborations to the behind-the-scenes work that helps good ideas find their shape."
     },
     "resume": {
       "eyebrow": "The practical paperwork",
@@ -39,9 +39,20 @@
       "title": "Dream Blunt Rotation",
       "intro": "A lovingly imaginary table for curious minds, good questions, and conversations that take the scenic route."
     },
+    "artsy": {
+      "eyebrow": "Art in progress",
+      "title": "Artsy",
+      "body": "Still drying. Check back soon."
+    },
+    "fartsy": {
+      "eyebrow": "Nonsense in progress",
+      "title": "Fartsy",
+      "body": "Something is brewing. Check back soon."
+    },
     "contact": {
       "eyebrow": "How to contact me:",
-      "title": "don&apos;t."
+      "title": "don&apos;t.",
+      "aside": "(but if you must)"
     }
   },
   "resume": {
