@@ -29,10 +29,32 @@ Pushing to `main` builds and deploys to GitHub Pages via `.github/workflows/depl
 
 ## Content JSON
 
-Editable homepage and resume copy lives in `src/content.json`. Elements marked
-with `data-copy` in the HTML get their copy baked in at build time by
-`scripts/content-plugin.js` (and live in dev, reloading when the JSON changes).
-The text in the HTML is just a placeholder; `content.json` wins.
+All site copy lives in `src/content.json`: every heading, paragraph, label,
+button, meta tag and screen-reader label, plus the project cards, brand names,
+resume entries and social links. `scripts/content-plugin.js` bakes it into the
+HTML at build time (and live in dev, reloading when the JSON changes). The text
+in the HTML is only a fallback; `content.json` wins.
+
+- `site`: shared by every page (name, nav, theme button, footer, social links,
+  and `site.ui` strings the scripts use, read through `src/js/copy.js`)
+- `home`, `resume`, `notFound`: one section per page
+  (`<body data-content-page="…">`)
+
+Hooks in the HTML:
+
+```html
+<p data-copy="hero.lede">…</p>                          <!-- inner HTML -->
+<meta data-copy-attr="content={{meta.description}}">    <!-- attributes -->
+<template data-copy-list="portfolio.projects">…</template> <!-- one copy per item -->
+```
+
+Keys starting with `site.` read the shared section; anything else reads the
+page's own. List templates use `{{field}}`, `{{#field}}…{{/field}}` (only when
+set), `{{^field}}…{{/field}}` (only when not) and `{{@num}}` (01, 02, …); items
+with `"show": false` are skipped.
+
+Project cards: `link` makes the title clickable and `writeup` adds a "Read the
+write-up" link (for the Substack case study or devlog). Both are optional.
 
 ## Day / Night 🌞🌚
 

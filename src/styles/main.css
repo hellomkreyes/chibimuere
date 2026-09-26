@@ -404,7 +404,7 @@ main,
   white-space: nowrap;
 }
 
-.wordmark span {
+.wordmark-dot {
   color: var(--accent);
 }
 
@@ -433,7 +433,8 @@ main,
     box-shadow 0.3s;
 }
 
-.site-nav a span {
+/* The emoji; the label is the other span. */
+.site-nav a span[aria-hidden="true"] {
   margin-right: 0.2em;
   letter-spacing: 0;
 }
@@ -547,7 +548,7 @@ main,
   text-transform: uppercase;
 }
 
-:root[data-theme="night"] .site-nav a span {
+:root[data-theme="night"] .site-nav a span[aria-hidden="true"] {
   filter: grayscale(1);
 }
 
@@ -1641,6 +1642,19 @@ h2 em {
   }
 }
 
+/* Optional Substack write-up link. The title link stretches over the whole
+   card, so this one sits above it to stay clickable. */
+.card-writeup {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  margin-top: 0.75rem;
+  color: var(--accent);
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
 .card .num {
   color: var(--ink-soft);
   font-size: var(--text-xs);
@@ -1708,7 +1722,8 @@ h2 em {
 :root[data-theme="night"] .card:is(:hover, .is-lit) .thumb::after,
 :root[data-theme="night"] .card:is(:hover, .is-lit) .num,
 :root[data-theme="night"] .card:is(:hover, .is-lit) .card-type,
-:root[data-theme="night"] .card:is(:hover, .is-lit) .card-meta p {
+:root[data-theme="night"] .card:is(:hover, .is-lit) .card-meta p,
+:root[data-theme="night"] .card:is(:hover, .is-lit) .card-writeup {
   color: #000;
 }
 
@@ -1833,7 +1848,8 @@ h2 em {
     0 6px 24px -6px rgba(170, 200, 240, 0.7);
 }
 
-.button span {
+/* Arrow glyphs, not the label text. */
+.button > span[aria-hidden="true"] {
   font-size: 1.1em;
   letter-spacing: 0;
 }
