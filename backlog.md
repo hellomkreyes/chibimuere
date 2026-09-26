@@ -28,9 +28,6 @@ Last updated Sep 25, 2026. Finished items are removed as their PRs land.
 - [ ] `[new]` Check the forced-colors fallback in real Windows High Contrast (the CSS is in; it can't be emulated from macOS): night title visible, panel edges, lit cards outlined
 - [ ] `[new]` Screen reader check of the glitch title in VoiceOver and NVDA (the CSS already hides the `data-text` copies; confirm it's read once)
 
-## Mobile-first
-- [ ] `[new]` Header clips below 320px wide: the night "RETURN TO DAY" toggle gets cut off (seen at 290px). Wordmark + menu + toggle need ~296px even at 12px, so shorten the label, stack, or shrink them on the narrowest screens. 320px (WCAG reflow) already fits
-
 ## Personality & easter eggs
 - [ ] `[new]` `console.log` greeting and an ASCII art comment in view-source
 - [ ] `[new]` Nudge vibrates on Android (`navigator.vibrate`), gated by the motion toggle
