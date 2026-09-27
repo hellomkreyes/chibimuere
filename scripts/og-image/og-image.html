@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!-- Link-preview image (og:image), concept A "split name": day "chibi" / night "muere". Render with: sh scripts/og-image/render.sh --><html><head><meta charset="utf-8"><link rel="stylesheet" href="og.css"><style>
+.half { position: absolute; inset: 0; }
+.day { clip-path: polygon(0 0, 60% 0, 44% 100%, 0 100%); }
+.night { clip-path: polygon(60% 0, 100% 0, 100% 100%, 44% 100%); }
+.seam { position: absolute; left: 0; top: 0; width: 1200px; height: 630px; }
+</style></head><body>
+<div class="half night night-bg"><i class="px" style="left:78%;top:12%;background:#e7e7ee"></i><i class="px" style="left:88%;top:22%;background:#ff2a4f"></i><i class="px" style="left:70%;top:40%;background:#19e3f0"></i><i class="px" style="left:94%;top:48%;background:#e7e7ee"></i><i class="px" style="left:64%;top:78%;background:#e7e7ee"></i><i class="px" style="left:83%;top:90%;background:#ff2a4f"></i><i class="px" style="left:96%;top:8%;background:#19e3f0"></i><i class="px" style="left:58%;top:60%;background:#e7e7ee"></i><div class="night-grain"></div><div class="scan"></div>
+  <p class="night-label" style="position:absolute;right:56px;top:52px">awake after dark<span class="cursor-block"></span></p>
+  <h1 class="chrome" data-text="muere" style="position:absolute;right:52px;bottom:118px;font-size:220px;font-weight:400">muere</h1>
+  <div class="moth" style="position:absolute;right:92px;top:150px;width:74px;height:74px;transform:rotate(14deg)"><svg viewBox="0 0 100 100"><path d="M50 50 C30 10 2 18 8 42 C2 60 22 80 50 56Z"/><path d="M50 50 C70 10 98 18 92 42 C98 60 78 80 50 56Z"/></svg></div>
+  <p class="url" style="position:absolute;right:58px;bottom:52px;color:var(--cyan)">chibimuere.com</p>
+</div>
+<div class="half day day-bg"><div class="prism" style="left:260px;top:-160px"></div><div class="grain"></div>
+  <p class="day-label" style="position:absolute;left:60px;top:56px">portfolio · 2026</p>
+  <h1 class="day-title" style="position:absolute;left:52px;top:150px;font-size:210px;font-weight:400">chibi</h1>
+  <div class="fly" style="position:absolute;left:560px;top:120px;width:78px;height:78px;transform:rotate(-12deg)"><svg viewBox="0 0 100 100"><path d="M50 50 C30 10 2 18 8 42 C2 60 22 80 50 56Z"/><path d="M50 50 C70 10 98 18 92 42 C98 60 78 80 50 56Z"/></svg></div>
+  <p class="day-label" style="position:absolute;left:60px;bottom:56px">a tiny vessel of big ideas</p>
+</div>
+<svg class="seam" viewBox="0 0 1200 630"><defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset=".5" stop-color="#f6e89a"/><stop offset="1" stop-color="#a9d8f5"/></linearGradient><filter id="b"><feGaussianBlur stdDeviation="3"/></filter></defs>
+<line x1="720" y1="0" x2="528" y2="630" stroke="url(#g)" stroke-width="6" filter="url(#b)" opacity=".9"/><line x1="720" y1="0" x2="528" y2="630" stroke="#fff" stroke-width="1.5"/></svg>
+</body></html>

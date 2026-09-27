@@ -6,8 +6,7 @@ Last updated Sep 27, 2026. Finished items are removed as their PRs land.
 
 ## Up next
 1. Real content via the copy spreadsheet (`site-copy.xlsx`, kept out of git): projects, brands, resume, email
-2. og:image preview (mockups in progress)
-3. Lighthouse + axe audit on the live site
+2. Lighthouse + axe audit on the live site
 
 ## Content & sections
 - [ ] `[new]` Replace the scaffold placeholders with real content: the project cards (Luna Pie is card 01; five placeholders to go), the brand names in the marquee, and the resume page copy. Collected in `site-copy.xlsx`
@@ -22,7 +21,6 @@ Last updated Sep 27, 2026. Finished items are removed as their PRs land.
 
 ## Navigation & meta
 - [ ] `[new]` One favicon shape: a single butterfly (inspired by the MSN butterfly) for both themes, replacing the day butterfly / night moth pair (`favicon.svg`, `favicon-night.svg`, `favicon.ico`, `apple-touch-icon.png`, and the theme swap in each page's head script)
-- [ ] `[existing]` og:image: design a day/night split preview (1200×630 PNG in `public/`), add `og:image` (absolute `https://chibimuere.com/...` URL) + `og:image:alt` to index.html and resume.html, switch `twitter:card` to `summary_large_image`, and remove the TODO comments. Social meta is already in place (PR 1)
 
 ## GSAP & animation (additive; day ↔ night transitions stay untouched)
 - [ ] `[new]` Central motion controller with `gsap.matchMedia()` tied to `prefers-reduced-motion` and the Pause Motion toggle (do this first)

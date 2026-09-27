@@ -6,13 +6,18 @@
     <meta name="description" data-copy-attr="content={{meta.description}}" content="The CV and resume of chibi muere." />
     <meta name="theme-color" content="#f7f3ee" />
     <title data-copy="meta.title">CV / Resume | chibi muere</title>
-    <!-- Social cards. TODO: add og:image once the preview image exists -->
+    <!-- Social cards. The image is rendered from scripts/og-image (see its render.sh). -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" data-copy-attr="content={{site.name}}" content="chibi muere" />
     <meta property="og:title" data-copy-attr="content={{meta.title}}" content="CV / Resume | chibi muere" />
     <meta property="og:description" data-copy-attr="content={{meta.description}}" content="The CV and resume of chibi muere." />
     <meta property="og:url" data-copy-attr="content={{meta.url}}" content="https://chibimuere.com/resume.html" />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" data-copy-attr="content={{site.og.image}}" content="https://chibimuere.com/og-image.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" data-copy-attr="content={{site.og.imageAlt}}" content="chibi muere, split in two: day and night" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />

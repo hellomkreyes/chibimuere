@@ -3,6 +3,10 @@
     "name": "chibi muere",
     "homeLabel": "chibi muere home",
     "skipLink": "Skip to content",
+    "og": {
+      "image": "https://chibimuere.com/og-image.jpg",
+      "imageAlt": "chibi muere, split in two: \"chibi\" in soft plum on a pastel day side, \"muere\" in glitchy chrome on a black night side. chibimuere.com"
+    },
     "nav": {
       "label": "Primary navigation",
       "bio": {
