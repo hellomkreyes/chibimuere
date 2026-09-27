@@ -1,14 +1,13 @@
 # chibimuere backlog
 
-Last updated Sep 26, 2026. Finished items are removed as their PRs land.
+Last updated Sep 27, 2026. Finished items are removed as their PRs land.
 
 `[existing]` = from the original open threads · `[new]` = suggested during the Sep 25 review
 
 ## Up next
 1. Real content via the copy spreadsheet (`site-copy.xlsx`, kept out of git): projects, brands, resume, email
-2. Move to chibimuere.com (so og:image and og:url point at the final address)
-3. og:image preview (mockups in progress)
-4. Lighthouse + axe audit on the live site
+2. og:image preview (mockups in progress)
+3. Lighthouse + axe audit on the live site
 
 ## Content & sections
 - [ ] `[new]` Replace the scaffold placeholders with real content: the project cards (Luna Pie is card 01; five placeholders to go), the brand names in the marquee, and the resume page copy. Collected in `site-copy.xlsx`
@@ -23,7 +22,7 @@ Last updated Sep 26, 2026. Finished items are removed as their PRs land.
 
 ## Navigation & meta
 - [ ] `[new]` One favicon shape: a single butterfly (inspired by the MSN butterfly) for both themes, replacing the day butterfly / night moth pair (`favicon.svg`, `favicon-night.svg`, `favicon.ico`, `apple-touch-icon.png`, and the theme swap in each page's head script)
-- [ ] `[existing]` og:image: design a day/night split preview (1200×630 PNG in `public/`), add `og:image` + `og:image:alt` to index.html and resume.html, switch `twitter:card` to `summary_large_image`, and remove the TODO comments. Social meta is already in place (PR 1)
+- [ ] `[existing]` og:image: design a day/night split preview (1200×630 PNG in `public/`), add `og:image` (absolute `https://chibimuere.com/...` URL) + `og:image:alt` to index.html and resume.html, switch `twitter:card` to `summary_large_image`, and remove the TODO comments. Social meta is already in place (PR 1)
 
 ## GSAP & animation (additive; day ↔ night transitions stay untouched)
 - [ ] `[new]` Central motion controller with `gsap.matchMedia()` tied to `prefers-reduced-motion` and the Pause Motion toggle (do this first)
@@ -47,7 +46,6 @@ Last updated Sep 26, 2026. Finished items are removed as their PRs land.
 - [ ] `[new]` Playwright screenshot tests for both themes, to protect the transitions
 
 ## Domain & ops
-- [ ] `[new]` Custom domain chibimuere.com (registered at Hover): point DNS at GitHub Pages (A/AAAA records for the apex, CNAME for www), set the custom domain in the repo's Pages settings, enforce HTTPS, switch Vite `base` to "/", update og:url (and og:image), re-check the 404
 - [ ] `[new]` Cookie-free analytics, e.g. Cloudflare Web Analytics (works without moving DNS to Cloudflare)
 
 ## Noted by choice (not a to-do)

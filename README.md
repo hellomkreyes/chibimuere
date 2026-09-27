@@ -1,4 +1,4 @@
-# 🔮 chibi muere 💀 [(visit here 👋)](https://hellomkreyes.github.io/chibimuere/)
+# 🔮 chibi muere 💀 [(visit here 👋)](https://chibimuere.com/)
 
 A static portfolio site for GitHub Pages.
 
