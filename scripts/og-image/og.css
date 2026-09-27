@@ -1,0 +1,75 @@
+@font-face { font-family: "Gloock"; src: url("../../public/fonts/gloock-latin-400.woff2") format("woff2"); }
+@font-face { font-family: "Pirata One"; src: url("../../public/fonts/pirata-one-latin-400.woff2") format("woff2"); }
+@font-face { font-family: "Space Mono"; font-weight: 400; src: url("../../public/fonts/space-mono-latin-400.woff2") format("woff2"); }
+@font-face { font-family: "Space Mono"; font-weight: 700; src: url("../../public/fonts/space-mono-latin-700.woff2") format("woff2"); }
+@font-face { font-family: "Manrope"; font-weight: 200 500; src: url("../../public/fonts/manrope-latin-var.woff2") format("woff2"); }
+
+:root {
+  --bg-day: #f7f3ee;
+  --ink-day: #5a4e46;
+  --ink-soft-day: #766760;
+  --title-ink: #6e3f52;
+  --accent-day: #a8506e;
+  --bg-night: #07060a;
+  --ink-night: #e7e7ee;
+  --ink-soft-night: #8a8a96;
+  --line-night: #3a3a44;
+  --red: #ff2a4f;
+  --cyan: #19e3f0;
+  --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .55 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+}
+
+* { box-sizing: border-box; margin: 0; }
+html, body { width: 1200px; height: 630px; overflow: hidden; }
+body { position: relative; font-family: "Space Mono", monospace; }
+
+/* --- Day pieces --- */
+.day-bg {
+  background:
+    radial-gradient(ellipse 60% 70% at 20% 10%, #fff 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 80% 90%, rgba(221, 233, 248, 0.9) 0%, transparent 70%),
+    linear-gradient(160deg, #fbe3d8, #f7f3ee 35%, #f3e6f5 60%, #dde9f8 85%, #e6f5ea);
+}
+.prism {
+  position: absolute;
+  width: 260px;
+  height: 900px;
+  background: linear-gradient(90deg,
+    rgba(247, 184, 200, 0) 0%, rgba(247, 184, 200, 0.55) 18%, rgba(246, 232, 154, 0.55) 38%,
+    rgba(169, 216, 245, 0.55) 62%, rgba(203, 184, 242, 0.5) 82%, rgba(203, 184, 242, 0) 100%);
+  filter: blur(28px);
+  transform: rotate(18deg);
+  opacity: 0.8;
+}
+.grain { position: absolute; inset: 0; background-image: var(--grain); opacity: 0.16; mix-blend-mode: multiply; pointer-events: none; }
+.day-title { font-family: "Gloock", Georgia, serif; color: var(--title-ink); line-height: 0.9; letter-spacing: -0.02em; text-shadow: 0 0 40px rgba(255, 255, 255, 0.9); }
+.day-label { color: var(--ink-soft-day); font-size: 17px; letter-spacing: 0.32em; text-transform: uppercase; }
+.fly path { fill: #fff; }
+.fly { filter: drop-shadow(0 0 14px rgba(255, 236, 220, 0.95)) drop-shadow(0 0 2px rgba(168, 80, 110, 0.35)); }
+
+/* --- Night pieces --- */
+.night-bg { background: radial-gradient(ellipse at center, #0d0c14 0%, var(--bg-night) 70%); }
+.scan { position: absolute; inset: 0; background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.45) 0 1px, transparent 1px 3px); pointer-events: none; }
+.night-grain { position: absolute; inset: 0; background-image: var(--grain); opacity: 0.1; mix-blend-mode: screen; pointer-events: none; }
+.chrome {
+  position: relative;
+  font-family: "Pirata One", serif;
+  line-height: 0.85;
+  background: linear-gradient(180deg, #fff 0%, #c9c9d4 38%, #3a3a46 50%, #e6e6ee 58%, #8d8d99 80%, #fff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.chrome::before, .chrome::after {
+  position: absolute; inset: 0; content: attr(data-text);
+  -webkit-text-fill-color: currentColor; mix-blend-mode: screen; opacity: 0.85;
+}
+.chrome::before { color: var(--red); clip-path: inset(30% 0 62% 0); transform: translate(-6px, 0); }
+.chrome::after { color: var(--cyan); clip-path: inset(68% 0 24% 0); transform: translate(5px, 0); }
+.night-label { color: var(--ink-soft-night); font-size: 17px; letter-spacing: 0.32em; text-transform: uppercase; }
+.night-label::before { content: "> "; color: var(--red); letter-spacing: 0; }
+.moth path { fill: #5d5a66; }
+.moth { filter: drop-shadow(0 0 12px rgba(25, 227, 240, 0.35)); }
+.px { position: absolute; width: 3px; height: 3px; }
+.cursor-block { display: inline-block; width: 0.6em; height: 1em; background: var(--red); vertical-align: -0.12em; margin-left: 4px; }
+.url { font-size: 20px; letter-spacing: 0.12em; }

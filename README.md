@@ -92,6 +92,9 @@ OS "reduce motion" setting decides. Logic lives in `src/js/motion.js`.
   (variable, 200–500), Space Mono 400/700 and Pirata One, with their OFL
   licences. No Google Fonts request.
 - Social icons: inline SVGs from [Simple Icons](https://simpleicons.org) (CC0).
+- Link preview: `public/og-image.jpg` (1200×630) is rendered from
+  `scripts/og-image/og-image.html` with `sh scripts/og-image/render.sh` (needs
+  Chrome). Its address and alt text live in `content.json` under `site.og`.
 - Favicons: `public/favicon.svg` (day butterfly) and `public/favicon-night.svg`
   (night moth), swapped with the theme; `favicon.ico` and
   `apple-touch-icon.png` are the fallbacks.
