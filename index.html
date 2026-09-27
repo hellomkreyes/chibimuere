@@ -298,7 +298,7 @@
                 <div class="card-meta">
                   <div>
                     <p class="card-type">{{type}} / {{year}}</p>
-                    <h3>{{#link}}<a class="card-link" href="{{link}}">{{title}}<span class="card-arrow" aria-hidden="true">↗</span></a>{{/link}}{{^link}}{{title}}{{/link}}</h3>
+                    <h3>{{#link}}<a class="card-link" href="{{link}}"{{#newTab}} target="_blank" rel="noopener"{{/newTab}}>{{title}}<span class="card-arrow" aria-hidden="true">↗</span>{{#newTab}}<span class="visually-hidden"> {{site.social.newTab}}</span>{{/newTab}}</a>{{/link}}{{^link}}{{title}}{{/link}}</h3>
                     <p>{{description}}</p>
                     {{#writeup}}<a class="card-writeup" href="{{writeup}}" target="_blank" rel="noopener">{{site.ui.readWriteup}}<span aria-hidden="true"> ↗</span><span class="visually-hidden"> {{site.social.newTab}}</span></a>{{/writeup}}
                   </div>

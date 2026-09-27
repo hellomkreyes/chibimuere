@@ -26,7 +26,8 @@ import { resolve } from "node:path";
  *
  * Templates: {{key}} inserts a value (item fields first, then page/site keys),
  * {{#key}}…{{/key}} renders only when the value is set, {{^key}}…{{/key}} only
- * when it isn't, and {{@num}} is the item's position as 01, 02, ….
+ * when it isn't (sections can nest), and {{@num}} is the item's position as
+ * 01, 02, ….
  */
 
 const PAGE_PATTERN = /<body\b[^>]*\bdata-content-page="([^"]+)"/;
@@ -48,10 +49,15 @@ const safe = (value) => String(value).replaceAll('"', "&quot;");
 
 function render(template, lookup) {
   const isSet = (value) => value !== undefined && value !== null && value !== "" && value !== false;
-  return template
-    .replace(SECTION_PATTERN, (_, kind, key, inner) =>
+  // Repeat until nothing changes, so a section can sit inside another one.
+  let out = template;
+  for (let prev; out !== prev; ) {
+    prev = out;
+    out = out.replace(SECTION_PATTERN, (_, kind, key, inner) =>
       isSet(lookup(key)) === (kind === "#") ? inner : ""
-    )
+    );
+  }
+  return out
     .replace(VAR_PATTERN, (match, key) => {
       const value = lookup(key);
       return isSet(value) ? safe(value) : "";

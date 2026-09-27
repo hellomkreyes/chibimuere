@@ -55,6 +55,8 @@ with `"show": false` are skipped.
 
 Project cards: `link` makes the title clickable and `writeup` adds a "Read the
 write-up" link (for the Substack case study or devlog). Both are optional.
+Add `"newTab": true` to open the title link in a new tab, for links that leave
+the site, such as a GitHub repo. Write-up links always open in a new tab.
 
 ## Day / Night 🌞🌚
 
