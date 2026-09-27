@@ -168,6 +168,15 @@
       "sideNote": "Six cards<br>in the making",
       "projects": [
         {
+          "title": "Luna Pie",
+          "type": "Systems",
+          "year": "2026",
+          "glyph": "☾&#xFE0E;",
+          "description": "Luna plans, I approve, and a small solar system of AI agents builds, tests, and reviews.",
+          "link": "https://github.com/hellomkreyes/luna-pie",
+          "writeup": ""
+        },
+        {
           "title": "The Soft Launch",
           "type": "Archive",
           "year": "2026",
@@ -219,7 +228,8 @@
           "glyph": "☼&#xFE0E;",
           "description": "A room for unfinished ideas, near-misses, and the joy of not knowing yet.",
           "link": "",
-          "writeup": ""
+          "writeup": "",
+          "show": false
         }
       ]
     },
