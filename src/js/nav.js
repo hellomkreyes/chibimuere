@@ -2,6 +2,8 @@
  * Header behaviour: the small-screen menu, and a "scrolled" state that frosts
  * the day header once the hero has moved out of the way.
  */
+import { ui } from "./copy.js";
+
 export function initNav() {
   const header = document.querySelector(".site-header");
   const menuToggle = document.querySelector(".menu-toggle");
@@ -12,7 +14,10 @@ export function initNav() {
     const setMenuOpen = (isOpen) => {
       header.classList.toggle("menu-open", isOpen);
       menuToggle.setAttribute("aria-expanded", String(isOpen));
-      menuToggle.setAttribute("aria-label", isOpen ? "Close navigation menu" : "Open navigation menu");
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? ui("menuClose", "Close navigation menu") : ui("menuOpen", "Open navigation menu")
+      );
     };
 
     menuToggle.addEventListener("click", () => setMenuOpen(!header.classList.contains("menu-open")));

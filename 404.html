@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="robots" content="noindex" />
     <meta name="theme-color" content="#f7f3ee" />
-    <title>Page not found | chibi muere</title>
+    <title data-copy="meta.title">Page not found | chibi muere</title>
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
@@ -46,7 +46,7 @@
     <link rel="preload" href="/fonts/space-mono-latin-400.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href="/src/styles/main.css" />
   </head>
-  <body>
+  <body data-content-page="notFound">
     <!-- CSS-only atmosphere: no scripts load on this page -->
     <div class="fx-layers" aria-hidden="true">
       <div class="light">
@@ -60,13 +60,13 @@
       <div class="scanlines"></div>
     </div>
     <main class="error-page" aria-labelledby="error-title">
-      <p class="eyebrow">404</p>
-      <h1 id="error-title">This page wandered off.</h1>
-      <p class="lede">
+      <p class="eyebrow" data-copy="eyebrow">404</p>
+      <h1 id="error-title" data-copy="title">This page wandered off.</h1>
+      <p class="lede" data-copy="lede">
         The address may be out of date, or the page may never have existed.
       </p>
       <a class="button" href="%BASE_URL%"
-        >Back to chibi muere <span aria-hidden="true">&#8594;</span></a
+        ><span data-copy="button">Back to chibi muere</span> <span aria-hidden="true">&#8594;</span></a
       >
     </main>
   </body>

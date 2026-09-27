@@ -3,15 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="description" content="The CV and resume of chibi muere." />
+    <meta name="description" data-copy-attr="content={{meta.description}}" content="The CV and resume of chibi muere." />
     <meta name="theme-color" content="#f7f3ee" />
-    <title>CV / Resume | chibi muere</title>
+    <title data-copy="meta.title">CV / Resume | chibi muere</title>
     <!-- Social cards. TODO: add og:image once the preview image exists -->
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="chibi muere" />
-    <meta property="og:title" content="CV / Resume | chibi muere" />
-    <meta property="og:description" content="The CV and resume of chibi muere." />
-    <meta property="og:url" content="https://hellomkreyes.github.io/chibimuere/resume.html" />
+    <meta property="og:site_name" data-copy-attr="content={{site.name}}" content="chibi muere" />
+    <meta property="og:title" data-copy-attr="content={{meta.title}}" content="CV / Resume | chibi muere" />
+    <meta property="og:description" data-copy-attr="content={{meta.description}}" content="The CV and resume of chibi muere." />
+    <meta property="og:url" data-copy-attr="content={{meta.url}}" content="https://hellomkreyes.github.io/chibimuere/resume.html" />
     <meta name="twitter:card" content="summary" />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -54,7 +54,7 @@
     <link rel="stylesheet" href="/src/styles/main.css" />
   </head>
   <body class="resume-page" id="body-wrapper" data-content-page="resume">
-    <a class="skip-link" href="#main-content">Skip to content</a>
+    <a class="skip-link" href="#main-content" data-copy="site.skipLink">Skip to content</a>
 
     <!-- Atmosphere: day light, sparkle canvas, grain, CRT, transition flash, butterfly -->
     <div class="fx-layers" aria-hidden="true">
@@ -78,25 +78,27 @@
     </div>
 
     <header class="site-header">
-      <a class="wordmark" href="index.html" aria-label="chibi muere home"
-        >chibi muere<span aria-hidden="true">.</span></a>
+      <a class="wordmark" href="index.html" data-copy-attr="aria-label={{site.homeLabel}}" aria-label="chibi muere home"
+        ><span data-copy="site.name">chibi muere</span><span class="wordmark-dot" aria-hidden="true">.</span></a>
       <div class="header-actions">
         <nav
           class="site-nav"
           id="primary-navigation"
+          data-copy-attr="aria-label={{site.nav.label}}"
           aria-label="Primary navigation">
-          <a href="index.html#bio"><span aria-hidden="true">💀</span> Bio</a>
-          <a href="index.html#portfolio"><span aria-hidden="true">🔮</span> Portfolio</a>
-          <a href="index.html#artsy"><span aria-hidden="true">🎨</span> Artsy</a>
-          <a href="index.html#fartsy"><span aria-hidden="true">💩</span> Fartsy</a>
-          <a href="resume.html" aria-current="page"><span aria-hidden="true">📜</span> Resume</a>
-          <a href="index.html#contact"><span aria-hidden="true">💌</span> Contact</a>
+          <a href="index.html#bio"><span aria-hidden="true" data-copy="site.nav.bio.emoji">💀</span> <span data-copy="site.nav.bio.label">Bio</span></a>
+          <a href="index.html#portfolio"><span aria-hidden="true" data-copy="site.nav.portfolio.emoji">🔮</span> <span data-copy="site.nav.portfolio.label">Portfolio</span></a>
+          <a href="index.html#artsy"><span aria-hidden="true" data-copy="site.nav.artsy.emoji">🎨</span> <span data-copy="site.nav.artsy.label">Artsy</span></a>
+          <a href="index.html#fartsy"><span aria-hidden="true" data-copy="site.nav.fartsy.emoji">💩</span> <span data-copy="site.nav.fartsy.label">Fartsy</span></a>
+          <a href="resume.html" aria-current="page"><span aria-hidden="true" data-copy="site.nav.resume.emoji">📜</span> <span data-copy="site.nav.resume.label">Resume</span></a>
+          <a href="index.html#contact"><span aria-hidden="true" data-copy="site.nav.contact.emoji">💌</span> <span data-copy="site.nav.contact.label">Contact</span></a>
         </nav>
         <button
           class="menu-toggle"
           type="button"
           aria-controls="primary-navigation"
           aria-expanded="false"
+          data-copy-attr="aria-label={{site.ui.menuOpen}}"
           aria-label="Open navigation menu">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false"><rect x="2" y="3" width="12" height="1.5" /><rect x="2" y="7.25" width="12" height="1.5" /><rect x="2" y="11.5" width="12" height="1.5" /></svg>
         </button>
@@ -105,14 +107,15 @@
           type="button"
           data-motion-toggle
           aria-pressed="false"
+          data-copy-attr="aria-label={{site.ui.pauseMotion}}; title={{site.ui.pauseMotion}}"
           aria-label="Pause motion"
           title="Pause motion">
           <svg class="motion-icon-pause" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><rect x="3" y="2" width="3.5" height="12" /><rect x="9.5" y="2" width="3.5" height="12" /></svg>
           <svg class="motion-icon-play" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 2 14 8 4 14Z" /></svg>
         </button>
         <button class="theme-toggle" type="button">
-          <span class="day-only">enter night</span>
-          <span class="night-only">return to day</span>
+          <span class="day-only" data-copy="site.theme.toNight">enter night</span>
+          <span class="night-only" data-copy="site.theme.toDay">return to day</span>
         </button>
       </div>
     </header>
@@ -126,7 +129,7 @@
             A little context for the things I make, the questions I keep, and
             the ways I like to collaborate.
           </p>
-          <p class="resume-print-contact">hello@chibimuere.example</p>
+          <p class="resume-print-contact" data-copy="email">hello@chibimuere.example</p>
         </div>
       </section>
 
@@ -137,36 +140,15 @@
             <p class="eyebrow" data-copy="experience.eyebrow">Experience</p>
             <h2 id="experience-title" data-copy="experience.title">Work, slowly collected.</h2>
             <div class="resume-list">
-              <div class="resume-entry">
-                <p class="resume-year">2024 &mdash; now</p>
-                <div>
-                  <h3>Founder, chibi muere</h3>
-                  <p data-copy="experience.founderDescription">
-                    Small-batch objects, visual worlds, and thoughtful
-                    experiments from a little independent studio.
-                  </p>
+              <template data-copy-list="experience.entries">
+                <div class="resume-entry">
+                  <p class="resume-year">{{years}}</p>
+                  <div>
+                    <h3>{{role}}{{#org}}, {{org}}{{/org}}</h3>
+                    <p>{{description}}</p>
+                  </div>
                 </div>
-              </div>
-              <div class="resume-entry">
-                <p class="resume-year">2022 &mdash; 2024</p>
-                <div>
-                  <h3>Independent creative practice</h3>
-                  <p data-copy="experience.practiceDescription">
-                    Identity, editorial, and digital work for people with good
-                    questions and unusual briefs.
-                  </p>
-                </div>
-              </div>
-              <div class="resume-entry">
-                <p class="resume-year">Always</p>
-                <div>
-                  <h3>Student of the almost useful</h3>
-                  <p data-copy="experience.studentDescription">
-                    Collecting references, making notes, and leaving room for
-                    surprise.
-                  </p>
-                </div>
-              </div>
+              </template>
             </div>
           </div>
         </div>
@@ -199,13 +181,13 @@
       <section class="contact-band" aria-labelledby="resume-contact-title">
         <div class="shell contact-inner">
           <div>
-            <p class="eyebrow">Have a good question?</p>
-            <h2 id="resume-contact-title">
+            <p class="eyebrow" data-copy="contact.eyebrow">Have a good question?</p>
+            <h2 id="resume-contact-title" data-copy="contact.title">
               Let&apos;s make<br />something odd.
             </h2>
           </div>
-          <a class="button button-light" href="mailto:hello@chibimuere.example"
-            >Say hello <span aria-hidden="true">&#8599;</span></a
+          <a class="button button-light" data-copy-attr="href=mailto:{{email}}" href="mailto:hello@chibimuere.example"
+            ><span data-copy="contact.button">Say hello</span> <span aria-hidden="true">&#8599;</span></a
           >
         </div>
       </section>
@@ -213,11 +195,13 @@
 
     <footer class="site-footer">
       <div class="shell footer-inner">
-        <p>&copy; 3005 chibi muere</p>
-        <p>Made in collaboration with the AI overlords</p>
-        <button class="motion-toggle" type="button" data-motion-toggle aria-pressed="false">pause motion</button>
+        <p data-copy="site.footer.copyright">&copy; 3005 chibi muere</p>
+        <p data-copy="site.footer.credit">Made in collaboration with the AI overlords</p>
+        <button class="motion-toggle" type="button" data-motion-toggle aria-pressed="false" data-copy="site.footer.pauseMotion">pause motion</button>
       </div>
     </footer>
+    <!-- Strings the scripts put on the page (see src/js/copy.js) -->
+    <script type="application/json" id="ui-copy" data-copy-json="site.ui"></script>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

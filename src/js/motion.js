@@ -12,6 +12,8 @@
  *
  * The saved choice is applied before first paint by the inline <head> script.
  */
+import { ui } from "./copy.js";
+
 const STORAGE_KEY = "chibi-motion";
 const root = document.documentElement;
 const systemReduce = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -33,7 +35,7 @@ export function onMotionChange(fn) {
 function syncButtons(on) {
   buttons.forEach((button) => {
     button.setAttribute("aria-pressed", String(!on));
-    if (button.hasAttribute("title")) button.title = on ? "Pause motion" : "Play motion";
+    if (button.hasAttribute("title")) button.title = on ? ui("pauseMotion", "Pause motion") : ui("playMotion", "Play motion");
   });
 }
 
