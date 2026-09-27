@@ -39,6 +39,7 @@ Last updated Sep 27, 2026. Finished items are removed as their PRs land.
 - [ ] `[new]` `console.log` greeting and an ASCII art comment in view-source
 - [ ] `[new]` Nudge vibrates on Android (`navigator.vibrate`), gated by the motion toggle
 - [ ] `[new]` Auto night after local sunset on first visit, when no preference is saved
+- [ ] `[new]` Parody cookie banner: looks like the usual consent pop-up but says the site has no cookies (e.g. "We use 0 cookies 🍪" with "Accept" / "Also accept" buttons, and a night-theme variant). It's a joke, not a real consent flow: it never blocks content, dismisses with Esc and a real close button, is announced politely to screen readers, stores the dismissal in localStorage (so the joke stays true), and honors reduced motion. Pairs with the cookie-free analytics item
 
 ## Quality & tooling
 - [ ] `[existing]` Run Lighthouse and axe on the deployed site
