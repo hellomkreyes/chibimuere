@@ -5,7 +5,7 @@
 import { motionEnabled } from "./motion.js";
 import { ui } from "./copy.js";
 
-const MAX_NUDGES = 5; // after this, chibimuere stops being polite about it
+const MAX_NUDGES = 3; // after this, chibimuere stops being polite about it
 
 export function initNudge() {
   const win = document.querySelector("[data-msn]");
