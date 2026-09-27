@@ -3,9 +3,8 @@ import { resolve } from "node:path";
 import { contentPlugin } from "./scripts/content-plugin.js";
 
 export default defineConfig({
-  // Repo name for GitHub Pages project sites. Switch to "/" once the
-  // custom domain is pointed at the site.
-  base: "/chibimuere/",
+  // Served from the root of chibimuere.com (custom domain via public/CNAME).
+  base: "/",
   plugins: [contentPlugin("src/content.json")],
   build: {
     rolldownOptions: {
