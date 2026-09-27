@@ -45,7 +45,6 @@ Last updated Sep 26, 2026. Finished items are removed as their PRs land.
 - [ ] `[existing]` Run Lighthouse and axe on the deployed site
 - [ ] `[new]` Lighthouse CI + axe in Playwright as GitHub Actions (free)
 - [ ] `[new]` Playwright screenshot tests for both themes, to protect the transitions
-- [ ] `[new]` Move the regex constants out of `scripts/content-plugin.js` (`PAGE_PATTERN`, `COPY_PATTERN`, `ATTR_PATTERN`, `LIST_PATTERN`, `JSON_PATTERN`, `SECTION_PATTERN`, `VAR_PATTERN`) into their own file, e.g. `scripts/content-patterns.js`. Give each one a plain-English comment with an example of the HTML or template text it matches, so future updates don't mean decoding regex
 
 ## Domain & ops
 - [ ] `[new]` Custom domain chibimuere.com (registered at Hover): point DNS at GitHub Pages (A/AAAA records for the apex, CNAME for www), set the custom domain in the repo's Pages settings, enforce HTTPS, switch Vite `base` to "/", update og:url (and og:image), re-check the 404

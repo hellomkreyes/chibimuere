@@ -32,8 +32,10 @@ Pushing to `main` builds and deploys to GitHub Pages via `.github/workflows/depl
 All site copy lives in `src/content.json`: every heading, paragraph, label,
 button, meta tag and screen-reader label, plus the project cards, brand names,
 resume entries and social links. `scripts/content-plugin.js` bakes it into the
-HTML at build time (and live in dev, reloading when the JSON changes). The text
-in the HTML is only a fallback; `content.json` wins.
+HTML at build time (and live in dev, reloading when the JSON changes). The
+plugin's regex patterns live in `scripts/content-patterns.js`, each with a
+plain-English comment and an example of the text it matches. The text in the
+HTML is only a fallback; `content.json` wins.
 
 - `site`: shared by every page (name, nav, theme button, footer, social links,
   and `site.ui` strings the scripts use, read through `src/js/copy.js`)
