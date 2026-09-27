@@ -1,5 +1,17 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import {
+  PAGE_PATTERN,
+  COPY_PATTERN,
+  ATTR_PATTERN,
+  LIST_PATTERN,
+  JSON_PATTERN,
+  SECTION_PATTERN,
+  VAR_PATTERN,
+  STRIP_COPY_ATTR_PATTERN,
+  attrValuePattern,
+  TAG_END_PATTERN,
+} from "./content-patterns.js";
 
 /*
  * Every piece of site copy lives in src/content.json and is baked into the
@@ -29,15 +41,6 @@ import { resolve } from "node:path";
  * when it isn't (sections can nest), and {{@num}} is the item's position as
  * 01, 02, ….
  */
-
-const PAGE_PATTERN = /<body\b[^>]*\bdata-content-page="([^"]+)"/;
-const COPY_PATTERN =
-  /(<([a-z][a-z0-9]*)\b[^>]*?\sdata-copy="([^"]+)"[^>]*>)([\s\S]*?)(<\/\2>)/gi;
-const ATTR_PATTERN = /<[a-z][a-z0-9]*\b[^>]*?\sdata-copy-attr="([^"]+)"[^>]*>/gi;
-const LIST_PATTERN = /<template\b[^>]*\bdata-copy-list="([^"]+)"[^>]*>([\s\S]*?)<\/template>/gi;
-const JSON_PATTERN = /(<script\b[^>]*\bdata-copy-json="([^"]+)"[^>]*>)[\s\S]*?(<\/script>)/gi;
-const SECTION_PATTERN = /{{([#^])([\w.]+)}}([\s\S]*?){{\/\2}}/g;
-const VAR_PATTERN = /{{([@\w.]+)}}/g;
 
 function getValue(source, key) {
   return key.split(".").reduce((value, part) => value?.[part], source);
@@ -95,7 +98,7 @@ export function injectContent(html, content, warn = console.warn) {
         .join("\n");
     })
     .replace(ATTR_PATTERN, (tag, spec) => {
-      let out = tag.replace(/\sdata-copy-attr="[^"]*"/, "");
+      let out = tag.replace(STRIP_COPY_ATTR_PATTERN, "");
       for (const pair of spec.split(";")) {
         const eq = pair.indexOf("=");
         if (eq < 0) continue;
@@ -105,10 +108,10 @@ export function injectContent(html, content, warn = console.warn) {
           if (found === undefined) missing(key);
           return found;
         });
-        const attrPattern = new RegExp(`(\\s${attr}=")[^"]*(")`);
+        const attrPattern = attrValuePattern(attr);
         out = attrPattern.test(out)
           ? out.replace(attrPattern, (_, start, end) => `${start}${value}${end}`)
-          : out.replace(/\s*\/?>$/, (end) => ` ${attr}="${value}"${end}`);
+          : out.replace(TAG_END_PATTERN, (end) => ` ${attr}="${value}"${end}`);
       }
       return out;
     })
