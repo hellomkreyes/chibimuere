@@ -183,6 +183,16 @@
           "writeup": ""
         },
         {
+          "title": "Mercury RX",
+          "type": "Tracker",
+          "year": "2026",
+          "glyph": "☿&#xFE0E;",
+          "description": "Is Mercury in the microwave? A pixel-art tracker for its retrograde and shadow phases.",
+          "link": "https://rx.chibimuere.com/",
+          "newTab": true,
+          "writeup": ""
+        },
+        {
           "title": "The Soft Launch",
           "type": "Archive",
           "year": "2026",
@@ -225,7 +235,8 @@
           "glyph": "♡&#xFE0E;",
           "description": "A gentle toolkit for the day after the big feeling, when everything is tender.",
           "link": "",
-          "writeup": ""
+          "writeup": "",
+          "show": false
         },
         {
           "title": "House of Almost",
