@@ -9,7 +9,7 @@ Last updated Sep 27, 2026. Finished items are removed as their PRs land.
 2. Lighthouse + axe audit on the live site
 
 ## Content & sections
-- [ ] `[new]` Replace the scaffold placeholders with real content: the project cards (Luna Pie is card 01; five placeholders to go), the brand names in the marquee, and the resume page copy. Collected in `site-copy.xlsx`
+- [ ] `[new]` Replace the scaffold placeholders with real content: the project cards (Luna Pie is card 01, Mercury RX is card 02; four placeholders to go), the brand names in the marquee, and the resume page copy. Collected in `site-copy.xlsx`
 - [ ] `[existing]` 404 page: aesthetic fancy-restaurant washroom easter egg, building on the current 404
 - [ ] `[existing]` Redo CV/Resume teaser
 - [ ] `[existing]` Redo Dream Collabs
