@@ -23,6 +23,7 @@ npm install
 npm run dev      # run locally with live reload
 npm run build    # bundle production build into dist/
 npm run preview  # preview the production build
+npm test         # unit tests for the content plugin (node:test)
 ```
 
 Pushing to `main` builds and deploys to GitHub Pages via `.github/workflows/deploy.yml`.
@@ -48,10 +49,18 @@ Hooks in the HTML:
 <p data-copy="hero.lede">…</p>                          <!-- inner HTML -->
 <meta data-copy-attr="content={{meta.description}}">    <!-- attributes -->
 <template data-copy-list="portfolio.projects">…</template> <!-- one copy per item -->
+<section data-copy-if="artsy.pictures artsy.webring">…</section> <!-- only if one has content -->
 ```
 
-Keys starting with `site.` read the shared section; anything else reads the
-page's own. List templates use `{{field}}`, `{{#field}}…{{/field}}` (only when
+Keys starting with `site.` read the shared section, `page:key` reads another
+page's section (`home:artsy.pictures` from resume.html), and anything else
+reads the page's own.
+
+`data-copy-if` drops the whole element at build time unless at least one of
+its space-separated keys has content (an empty string, `false`, `{}` or a list
+whose items are all `"show": false` count as empty). Put the same keys on a
+section and on its nav links (on every page) so placeholders and broken
+anchors never ship. Artsy and Fartsy use it until their new sections land. List templates use `{{field}}`, `{{#field}}…{{/field}}` (only when
 set), `{{^field}}…{{/field}}` (only when not) and `{{@num}}` (01, 02, …); items
 with `"show": false` are skipped.
 
@@ -85,6 +94,27 @@ Motion: the ⏸ / ▶ button in the header (and "pause motion" in the footer)
 stops every animation (saved as `chibi-motion`). Any button with
 `data-motion-toggle` works and they stay in sync. Until a visitor chooses, the
 OS "reduce motion" setting decides. Logic lives in `src/js/motion.js`.
+
+## Sections and GSAP
+
+Each homepage section is one module in `src/js/sections/`, loaded by
+`src/js/sections.js` only when the section comes within about a screen of the
+viewport:
+
+```html
+<section data-section="pictures">…</section>  <!-- runs src/js/sections/pictures.js -->
+```
+
+The module's default export gets the element; when it's done the element gets
+`data-section-ready`. The built HTML is complete without it, so a failed
+import leaves a working static section.
+
+Sections never check the motion setting themselves. They hand their GSAP work
+to `animateSection()` in `src/js/motion-controller.js`, which reverts every
+section's GSAP context on each motion change and then rebuilds it or renders
+the still state. GSAP and its plugins are imported on first use, so they're
+not part of the first visit (and never load while motion is off). See the
+comment at the top of that file for the API.
 
 ## Fonts and icons
 

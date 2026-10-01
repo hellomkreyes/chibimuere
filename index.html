@@ -123,8 +123,8 @@
           aria-label="Primary navigation">
           <a href="#bio"><span aria-hidden="true" data-copy="site.nav.bio.emoji">💀</span> <span data-copy="site.nav.bio.label">Bio</span></a>
           <a href="#portfolio"><span aria-hidden="true" data-copy="site.nav.portfolio.emoji">🔮</span> <span data-copy="site.nav.portfolio.label">Portfolio</span></a>
-          <a href="#artsy"><span aria-hidden="true" data-copy="site.nav.artsy.emoji">🎨</span> <span data-copy="site.nav.artsy.label">Artsy</span></a>
-          <a href="#fartsy"><span aria-hidden="true" data-copy="site.nav.fartsy.emoji">💩</span> <span data-copy="site.nav.fartsy.label">Fartsy</span></a>
+          <a href="#artsy" data-copy-if="artsy.pictures artsy.webring"><span aria-hidden="true" data-copy="site.nav.artsy.emoji">🎨</span> <span data-copy="site.nav.artsy.label">Artsy</span></a>
+          <a href="#fartsy" data-copy-if="fartsy.collabs fartsy.rotation"><span aria-hidden="true" data-copy="site.nav.fartsy.emoji">💩</span> <span data-copy="site.nav.fartsy.label">Fartsy</span></a>
           <a href="resume.html"><span aria-hidden="true" data-copy="site.nav.resume.emoji">📜</span> <span data-copy="site.nav.resume.label">Resume</span></a>
           <a href="#contact"><span aria-hidden="true" data-copy="site.nav.contact.emoji">💌</span> <span data-copy="site.nav.contact.label">Contact</span></a>
         </nav>
@@ -327,8 +327,8 @@
         </div>
       </section>
 
-      <!-- Artsy: placeholder until the content is fleshed out -->
-      <section id="artsy" class="placeholder-section" aria-labelledby="artsy-title">
+      <!-- Artsy: My Pictures + Webring. Dropped at build time (with its nav link) until one has content. -->
+      <section id="artsy" class="placeholder-section" data-copy-if="artsy.pictures artsy.webring" aria-labelledby="artsy-title">
         <div class="shell">
           <p class="eyebrow" data-copy="artsy.eyebrow">Art in progress</p>
           <h2 id="artsy-title" data-copy="artsy.title">Artsy</h2>
@@ -336,8 +336,8 @@
         </div>
       </section>
 
-      <!-- Fartsy: placeholder until the content is fleshed out -->
-      <section id="fartsy" class="placeholder-section" aria-labelledby="fartsy-title">
+      <!-- Fartsy: Dream Collabs + Blunt Rotation. Dropped at build time (with its nav link) until one has content. -->
+      <section id="fartsy" class="placeholder-section" data-copy-if="fartsy.collabs fartsy.rotation" aria-labelledby="fartsy-title">
         <div class="shell">
           <p class="eyebrow" data-copy="fartsy.eyebrow">Nonsense in progress</p>
           <h2 id="fartsy-title" data-copy="fartsy.title">Fartsy</h2>

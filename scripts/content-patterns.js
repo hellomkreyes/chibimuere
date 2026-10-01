@@ -31,6 +31,23 @@ export const COPY_PATTERN =
   /(<([a-z][a-z0-9]*)\b[^>]*?\sdata-copy="([^"]+)"[^>]*>)([\s\S]*?)(<\/\2>)/gi;
 
 /**
+ * Matches an element carrying a `data-copy-if="…"` attribute, along with
+ * everything up to its closing tag, so the whole element can be dropped
+ * when its content key is empty.
+ *
+ * Captures the opening tag up to the attribute, the tag name, the content
+ * key(s), and the rest of the element (opening tag remainder, children and
+ * closing tag).
+ *
+ * Known limit: like `data-copy`, it stops at the first closing tag of the
+ * same name, so the element can't contain another element of its own tag.
+ *
+ * Example: `<section id="artsy" data-copy-if="artsy.pictures">…</section>`
+ */
+export const IF_PATTERN =
+  /(<([a-z][a-z0-9]*)\b[^>]*?)\sdata-copy-if="([^"]+)"([^>]*>[\s\S]*?<\/\2>)/gi;
+
+/**
  * Matches a whole opening tag that carries a `data-copy-attr="…"`
  * attribute, whose value lists one or more `attr={{template}}` pairs
  * separated by `;`.
