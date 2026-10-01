@@ -7,6 +7,7 @@ import { syncCurrentYear } from "./js/current-year.js";
 import { initNudge } from "./js/nudge.js";
 import { initTouch } from "./js/touch.js";
 import { initGreeting } from "./js/greeting.js";
+import { initSections } from "./js/sections.js";
 
 syncCurrentYear();
 initMotion();
@@ -17,3 +18,4 @@ initEffects();
 initNudge();
 initTouch();
 initGreeting();
+initSections();

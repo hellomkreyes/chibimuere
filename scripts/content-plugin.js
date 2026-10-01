@@ -3,6 +3,7 @@ import { resolve } from "node:path";
 import {
   PAGE_PATTERN,
   COPY_PATTERN,
+  IF_PATTERN,
   ATTR_PATTERN,
   LIST_PATTERN,
   JSON_PATTERN,
@@ -20,7 +21,8 @@ import {
  *
  * Keys resolve against the page's section (<body data-content-page="home">
  * reads content.home), except keys starting with "site.", which read the
- * shared content.site section used by every page.
+ * shared content.site section used by every page, and "page:key", which reads
+ * another page's section (resume.html's nav uses "home:artsy.pictures").
  *
  *   <p data-copy="hero.lede">…</p>
  *     → the element's inner HTML. Only for elements with no nested element of
@@ -36,6 +38,14 @@ import {
  *   <script type="application/json" data-copy-json="site.ui"></script>
  *     → that value as JSON, for strings the scripts put on the page.
  *
+ *   <section id="artsy" data-copy-if="artsy.pictures artsy.webring">…</section>
+ *   <a href="#artsy" data-copy-if="artsy.pictures artsy.webring">…</a>
+ *     → the whole element is dropped unless at least one of the
+ *       space-separated keys has content (not unset, "", false, an empty
+ *       object, or a list with no shown items), so a section and its nav link
+ *       only ship once their content exists. Runs before the other hooks.
+ *       Same nesting limit as data-copy.
+ *
  * Templates: {{key}} inserts a value (item fields first, then page/site keys),
  * {{#key}}…{{/key}} renders only when the value is set, {{^key}}…{{/key}} only
  * when it isn't (sections can nest), and {{@num}} is the item's position as
@@ -44,6 +54,13 @@ import {
 
 function getValue(source, key) {
   return key.split(".").reduce((value, part) => value?.[part], source);
+}
+
+function hasContent(value) {
+  if (value === undefined || value === null || value === "" || value === false) return false;
+  if (Array.isArray(value)) return value.some((item) => item?.show !== false);
+  if (typeof value === "object") return Object.keys(value).length > 0;
+  return true;
 }
 
 // Values are authored HTML (so <em>, <br> and entities pass through), but a
@@ -75,11 +92,19 @@ export function injectContent(html, content, warn = console.warn) {
     warn(`[content] No "${page}" section in content.json`);
     return html;
   }
-  const resolveKey = (key) =>
-    key.startsWith("site.") ? getValue(content, key) : getValue(pageContent, key);
-  const missing = (key) => warn(`[content] Missing "${key.startsWith("site.") ? key : `${page}.${key}`}", keeping the HTML fallback`);
+  const resolveKey = (key) => {
+    if (key.startsWith("site.")) return getValue(content, key);
+    const colon = key.indexOf(":");
+    if (colon > 0) return getValue(content[key.slice(0, colon)], key.slice(colon + 1));
+    return getValue(pageContent, key);
+  };
+  const missing = (key) =>
+    warn(`[content] Missing "${key.startsWith("site.") ? key : key.includes(":") ? key.replace(":", ".") : `${page}.${key}`}", keeping the HTML fallback`);
 
   return html
+    .replace(IF_PATTERN, (match, open, _tag, keys, rest) =>
+      keys.trim().split(/\s+/).some((key) => hasContent(resolveKey(key))) ? `${open}${rest}` : ""
+    )
     .replace(LIST_PATTERN, (match, key, template) => {
       const items = resolveKey(key);
       if (!Array.isArray(items)) {
