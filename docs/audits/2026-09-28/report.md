@@ -129,3 +129,12 @@ No other incomplete rule ids were found in the completed scans.
 6. **[info] Verify link-preview (Open Graph) rendering on Facebook/Instagram/iMessage.** `robots.txt` disallows `User-agent: *` (and additionally lists `Meta-ExternalAgent`) with `Disallow: /`. It's unverified whether the crawlers Facebook/Instagram/iMessage actually use for link-preview unfurling (typically `facebookexternalhit`) respect this blanket disallow and whether that would suppress Open Graph preview cards when the site is shared. This is a question to verify, not a confirmed problem.
 7. **[info] Lighthouse performance/accessibility/best-practices are clean.** All 36 runs scored 1.00 (aside from one isolated 0.96 run-to-run outlier on mobile-night-resume that didn't affect any median). No failing or flagged performance opportunities were reported in any of the 12 median configs. No action needed at this time.
 8. **[info] Day mode LCP is consistently higher than night.** LCP is higher in day mode across all 6 device/page pairs (e.g. desktop home 279 ms vs 46 ms, mobile home 1089 ms vs 224 ms) — see Day vs night differences. No score impact: Performance is still 100 everywhere and LCP stays in the "good" range throughout. Cause not determined by this audit.
+9. **[info] Unscored Lighthouse insights.** The same 12 configs also flag four insights that don't affect any score (found in the per-config HTML reports):
+   - **Cache lifetimes** (all pages): GitHub Pages serves the CSS, JS and fonts with a 10-minute cache, which can't be changed on Pages.
+   - **Render-blocking requests** (all pages, flagged hardest at night): the main stylesheet blocks first paint.
+   - **Network dependency tree** (day pages): Space Mono 700 isn't preloaded, so it waits for the CSS (longest chain 124 ms on mobile).
+   - **Forced reflow** (day home on all devices, night home on tablet): the main script reads layout during start-up, about 93 ms on mobile.
+
+## Follow-up (Oct 1)
+
+The PR checks workflow (`.github/workflows/checks.yml`) now runs Playwright + axe on every PR in Chromium, WebKit and a mobile Chromium profile, including `404.html`, which closes findings 4 and 5 for future changes. Lighthouse CI runs on every PR with the budgets from the sections plan.

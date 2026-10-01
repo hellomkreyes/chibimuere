@@ -12,13 +12,12 @@ Last updated Oct 1, 2026. Finished items are removed as their PRs land.
 - [ ] `[priority]` Decide where it lives: a route on this site or its own subdomain (open question in the spec)
 - [ ] `[priority]` Retro browser chrome + era skin tokens: 3 skins for the 3 V1 editions, our own browser name and icons, each skin contrast-checked
 - [ ] `[priority]` Routes and feature pages from verified JSON (`/editions/<edition>/<tier>/<feature>`), with real deep links in the address bar
-- [ ] `[priority]` Motion layer: View Transitions between pages, GSAP era morph on edition switch, loading moments under 400 ms, all with reduced-motion fallbacks
+- [ ] `[priority]` Motion layer: View Transitions between pages, GSAP era morph on edition switch, loading moments under 400 ms, all with reduced-motion fallbacks. GSAP goes through `animateSection()` in `src/js/motion-controller.js`
 - [ ] `[priority]` Keyboard window controls (move, resize, maximize/reader mode) and route announcements
 - [ ] `[priority]` Project card + case study linking out to the technical breakdown
 
 ## Sections plan (Oct 2026)
-Specs, schedule and gates live in the "chibimuere Sections: Technical Plan" doc. Phase 0 (`data-copy-if`, section loader, motion controller) is in.
-- [ ] PR checks workflow: build, Playwright (both themes + reduced motion), axe, screenshot tests, Lighthouse CI. `deploy.yml` stays as is; M.K. turns on branch protection after
+Specs, schedule and gates live in the "chibimuere Sections: Technical Plan" doc. Phase 0 (`data-copy-if`, section loader, motion controller, PR checks) is in.
 - [ ] MSN window revisions + winks (Bio)
 - [ ] Cookie corner tab (site-wide). Replaces the parody cookie banner idea and keeps its guardrails: never blocks content, Esc + a real close button, polite announcement, dismissal in localStorage, honors reduced motion
 - [ ] My Pictures folder (Artsy), with `scripts/images.js` pre-converting to AVIF + WebP at 1x/2x
@@ -39,7 +38,6 @@ Specs, schedule and gates live in the "chibimuere Sections: Technical Plan" doc.
 - [ ] `[new]` One favicon shape: a single butterfly (inspired by the MSN butterfly) for both themes, replacing the day butterfly / night moth pair (`favicon.svg`, `favicon-night.svg`, `favicon.ico`, `apple-touch-icon.png`, and the theme swap in each page's head script)
 
 ## GSAP & animation (additive; day ↔ night transitions stay untouched)
-- [ ] `[new]` Central motion controller with `gsap.matchMedia()` tied to `prefers-reduced-motion` and the Pause Motion toggle (do this first; the Editions Explorer motion layer builds on it)
 - [ ] `[new]` ScrollTrigger + Flip: deal the project deck like tarot cards on scroll
 - [ ] `[new]` SplitText / ScrambleText hero entrance: day letters drift in like light, night letters decode like a terminal
 - [ ] `[new]` MorphSVG butterfly ↔ moth morph on theme toggle
@@ -54,9 +52,7 @@ Specs, schedule and gates live in the "chibimuere Sections: Technical Plan" doc.
 - [ ] `[new]` Auto night after local sunset on first visit, when no preference is saved
 
 ## Quality & tooling
-- [ ] `[new]` Lighthouse CI + axe in Playwright as GitHub Actions (free). Include WebKit: the Sep 28 audit has no Safari/WebKit axe data because Playwright's WebKit hangs on macOS 14, and Linux runners don't have that problem
-- [ ] `[new]` Playwright screenshot tests for both themes, to protect the transitions
-- [ ] `[existing]` Run Lighthouse and axe on the deployed site
+- [ ] `[new]` Turn on branch protection for `main` requiring the five PR checks, once they've run green on a couple of PRs (M.K., in the repo settings; the job names are listed at the top of `.github/workflows/checks.yml`)
 
 ## Domain & ops
 - [ ] `[new]` Cookie-free analytics, e.g. Cloudflare Web Analytics (works without moving DNS to Cloudflare)

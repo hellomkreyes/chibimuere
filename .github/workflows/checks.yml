@@ -1,0 +1,148 @@
+name: PR checks
+
+# Runs on every PR (deploy.yml still publishes main to Pages). Once these pass
+# reliably, branch protection on main can require: "Build, unit tests, budget",
+# "Playwright + axe (chromium)", "Playwright + axe (webkit)",
+# "Playwright + axe (mobile)" and "Lighthouse".
+#
+# Screenshot baselines live in tests/screenshots and are made here on Linux.
+# To create or refresh them, add the "update-screenshots" label to the PR: the
+# last job regenerates them, commits them to the PR branch, removes the label
+# and starts a fresh run of these checks.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: checks-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build, unit tests, budget
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      - run: npm run budget
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          retention-days: 3
+
+  e2e:
+    name: Playwright + axe (${{ matrix.project }})
+    needs: build
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - project: chromium
+            browser: chromium
+          - project: mobile
+            browser: chromium
+          - project: webkit
+            browser: webkit
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+      - run: npx playwright install --with-deps ${{ matrix.browser }}
+      - run: npx playwright test --project=${{ matrix.project }}
+      - if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-${{ matrix.project }}
+          path: |
+            playwright-report
+            test-results
+          retention-days: 7
+
+  lighthouse:
+    name: Lighthouse
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+      - run: npx -y @lhci/cli@0.15.1 autorun
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse
+          path: .lighthouseci
+          retention-days: 7
+
+  update-screenshots:
+    name: Update screenshots
+    if: >-
+      github.event.action == 'labeled' &&
+      github.event.label.name == 'update-screenshots' &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
+    env:
+      BRANCH: ${{ github.event.pull_request.head.ref }}
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+      - run: npx playwright test --grep "screenshot" --project=chromium --project=mobile --update-snapshots=changed
+        env:
+          CI: "true"
+      - name: Commit the new baselines
+        run: |
+          git add tests/screenshots
+          if git diff --cached --quiet; then
+            echo "Screenshots already match; nothing to commit."
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Update screenshot baselines"
+            git push origin "HEAD:$BRANCH"
+          fi
+      - name: Remove the label
+        if: always()
+        run: gh pr edit ${{ github.event.pull_request.number }} --repo ${{ github.repository }} --remove-label update-screenshots
+      # Pushes made with the workflow token don't start new runs, so start one for the new commit.
+      # (Only works once this workflow is on main.)
+      - name: Re-run the checks
+        continue-on-error: true
+        run: gh workflow run checks.yml --repo ${{ github.repository }} --ref "$BRANCH"
