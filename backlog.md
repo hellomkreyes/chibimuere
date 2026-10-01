@@ -1,6 +1,6 @@
 # chibimuere backlog
 
-Last updated Sep 28, 2026. Finished items are removed as their PRs land.
+Last updated Oct 1, 2026. Finished items are removed as their PRs land.
 
 `[existing]` = from the original open threads · `[new]` = suggested during the Sep 25 review · `[priority]` = added Sep 28 after the job description review
 
@@ -16,13 +16,21 @@ Last updated Sep 28, 2026. Finished items are removed as their PRs land.
 - [ ] `[priority]` Keyboard window controls (move, resize, maximize/reader mode) and route announcements
 - [ ] `[priority]` Project card + case study linking out to the technical breakdown
 
+## Sections plan (Oct 2026)
+Specs, schedule and gates live in the "chibimuere Sections: Technical Plan" doc. Phase 0 (`data-copy-if`, section loader, motion controller) is in.
+- [ ] PR checks workflow: build, Playwright (both themes + reduced motion), axe, screenshot tests, Lighthouse CI. `deploy.yml` stays as is; M.K. turns on branch protection after
+- [ ] MSN window revisions + winks (Bio)
+- [ ] Cookie corner tab (site-wide). Replaces the parody cookie banner idea and keeps its guardrails: never blocks content, Esc + a real close button, polite announcement, dismissal in localStorage, honors reduced motion
+- [ ] My Pictures folder (Artsy), with `scripts/images.js` pre-converting to AVIF + WebP at 1x/2x
+- [ ] Dream Blunt Rotation conversation circle (Fartsy)
+- [ ] Webring (Artsy)
+- [ ] Dream Collabs ship chart (Fartsy)
+- [ ] Visitor counter + Cloudflare Worker (site-wide footer)
+
 ## Content & sections
-- [ ] `[new]` Replace the scaffold placeholders with real content: the project cards (Luna Pie is card 01, Editions Explorer is card 02; four placeholders to go), the brand names in the marquee, and the resume page copy. Collected in `site-copy.xlsx`
-- [ ] `[existing]` 404 page: aesthetic fancy-restaurant washroom easter egg, building on the current 404. Run it through Lighthouse + axe once it's built (the Sep 28 audit only covered home and resume)
+- [ ] `[new]` Replace the scaffold placeholders with real content: the project cards (Luna Pie is card 01, Mercury RX is card 02; four placeholders to go), the brand names in the marquee, and the resume page copy. Collected in `site-copy.xlsx`
+- [ ] `[existing]` 404 page: aesthetic fancy-restaurant washroom easter egg, building on the current 404
 - [ ] `[existing]` Redo CV/Resume teaser
-- [ ] `[existing]` Redo Dream Collabs
-- [ ] `[existing]` Redo Dream Blunt Rotation
-- [ ] `[existing]` Flesh out the Artsy and Fartsy placeholder sections
 - [ ] `[existing]` Resume page contact still uses the placeholder `hello@chibimuere.example` (button and print version)
 - [ ] `[new]` "How this was made" devlog (published on Substack, linked from its card): round notes, M.K.-vs-Claude decisions, what got overruled, the scaffold.html before/after. Could double as Project 01
 - [ ] `[new]` Case studies behind the project cards: written up on Substack as technical breakdowns (how it was built, which agent did what, where M.K. overrode them, accessibility + performance calls); the card links out (a Flip-expand preview from the deck could come later)
@@ -44,11 +52,11 @@ Last updated Sep 28, 2026. Finished items are removed as their PRs land.
 ## Personality & easter eggs
 - [ ] `[new]` Nudge vibrates on Android (`navigator.vibrate`), gated by the motion toggle
 - [ ] `[new]` Auto night after local sunset on first visit, when no preference is saved
-- [ ] `[new]` Parody cookie banner: looks like the usual consent pop-up but says the site has no cookies (e.g. "We use 0 cookies 🍪" with "Accept" / "Also accept" buttons, and a night-theme variant). It's a joke, not a real consent flow: it never blocks content, dismisses with Esc and a real close button, is announced politely to screen readers, stores the dismissal in localStorage (so the joke stays true), and honors reduced motion. Pairs with the cookie-free analytics item
 
 ## Quality & tooling
 - [ ] `[new]` Lighthouse CI + axe in Playwright as GitHub Actions (free). Include WebKit: the Sep 28 audit has no Safari/WebKit axe data because Playwright's WebKit hangs on macOS 14, and Linux runners don't have that problem
 - [ ] `[new]` Playwright screenshot tests for both themes, to protect the transitions
+- [ ] `[existing]` Run Lighthouse and axe on the deployed site
 
 ## Domain & ops
 - [ ] `[new]` Cookie-free analytics, e.g. Cloudflare Web Analytics (works without moving DNS to Cloudflare)

@@ -183,6 +183,16 @@
           "writeup": ""
         },
         {
+          "title": "Mercury Rx",
+          "type": "Tracker",
+          "year": "2026",
+          "glyph": "☿&#xFE0E;",
+          "description": "Is Mercury in the microwave? A pixel-art tracker for its retrograde and shadow phases.",
+          "link": "https://rx.chibimuere.com/",
+          "newTab": true,
+          "writeup": ""
+        },
+        {
           "title": "The Soft Launch",
           "type": "Archive",
           "year": "2026",
@@ -225,7 +235,8 @@
           "glyph": "♡&#xFE0E;",
           "description": "A gentle toolkit for the day after the big feeling, when everything is tender.",
           "link": "",
-          "writeup": ""
+          "writeup": "",
+          "show": false
         },
         {
           "title": "House of Almost",
@@ -245,16 +256,6 @@
       "founderDescription": "Small-batch objects, visual worlds, and thoughtful experiments.",
       "practiceDescription": "Identity, editorial, and digital work for people with good questions.",
       "studentDescription": "Collecting references, making notes, and leaving room for surprise."
-    },
-    "dreamCollabs": {
-      "eyebrow": "A wish list in progress",
-      "title": "Dream Collabs",
-      "intro": "The people, places, and odd little worlds we would love to make something with."
-    },
-    "rotation": {
-      "eyebrow": "People we would happily overthink with",
-      "title": "Dream Blunt Rotation",
-      "intro": "A lovingly imaginary table for curious minds, good questions, and conversations that take the scenic route."
     },
     "artsy": {
       "eyebrow": "Art in progress",
