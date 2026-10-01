@@ -30,7 +30,7 @@ npm run e2e      # Playwright + axe against the build (after a build)
 
 `npm run e2e` needs browsers once: `npx playwright install chromium`
 (WebKit hangs on macOS 14, so leave it to CI there:
-`npx playwright test --project=chromium --project=mobile`).
+`npx playwright test --project=chromium`).
 
 Pushing to `main` builds and deploys to GitHub Pages via `.github/workflows/deploy.yml`.
 
@@ -41,12 +41,13 @@ Pushing to `main` builds and deploys to GitHub Pages via `.github/workflows/depl
 - **Build, unit tests, budget**: `npm test`, `npm run build`, then
   `scripts/check-budget.js`. Each page plus the CSS and JS it loads up front
   must stay at or under 35 KB gzipped (fonts and lazy chunks excluded).
-- **Playwright + axe** (Chromium, WebKit, mobile Chromium), from
-  `tests/site.spec.js`: every page in day and night, zero axe violations
-  (WCAG 2.2 AA tags), the theme and motion toggles, the menu, and every
-  in-page link having a target. Section PRs add a spec per section.
-- **Screenshots**: full-page, both themes, Chromium desktop and mobile, with
-  motion off and the clock pinned. Baselines in `tests/screenshots` are made on
+- **Playwright + axe** (Chromium and WebKit), from `tests/site.spec.js`: every
+  page in day and night loads without errors and with zero axe violations
+  (WCAG 2.2 AA tags). Chromium also checks the theme toggle, pause motion, and
+  that every in-page link has a target. Section PRs add one spec per section
+  for its main interaction.
+- **Screenshots** (Chromium): full-page, both themes, desktop and phone width,
+  with motion off and the clock pinned. Baselines in `tests/screenshots` are made on
   GitHub's Linux runner, so screenshot checks are skipped locally. When a
   change is meant to look different (or a new page needs baselines), add the
   `update-screenshots` label to the PR: a bot commits fresh baselines and

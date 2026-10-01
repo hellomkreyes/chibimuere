@@ -52,7 +52,7 @@ Specs, schedule and gates live in the "chibimuere Sections: Technical Plan" doc.
 - [ ] `[new]` Auto night after local sunset on first visit, when no preference is saved
 
 ## Quality & tooling
-- [ ] `[new]` Turn on branch protection for `main` requiring the five PR checks, once they've run green on a couple of PRs (M.K., in the repo settings; the job names are listed at the top of `.github/workflows/checks.yml`)
+- [ ] `[new]` Turn on branch protection for `main` requiring the four PR checks, once they've run green on a couple of PRs (M.K., in the repo settings; the job names are listed at the top of `.github/workflows/checks.yml`)
 
 ## Domain & ops
 - [ ] `[new]` Cookie-free analytics, e.g. Cloudflare Web Analytics (works without moving DNS to Cloudflare)

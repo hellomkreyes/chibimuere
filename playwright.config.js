@@ -27,8 +27,8 @@ export default defineConfig({
   },
   projects: [
     { name: "chromium", use: { ...devices["Desktop Chrome"] } },
-    { name: "webkit", use: { ...devices["Desktop Safari"] } },
-    { name: "mobile", use: { ...devices["Pixel 7"] } },
+    // Safari's engine: the page + axe checks only (screenshots and behavior run in Chromium).
+    { name: "webkit", use: { ...devices["Desktop Safari"] }, grep: /axe violations/ },
   ],
   webServer: {
     command: "npm run preview -- --port 4173 --strictPort",

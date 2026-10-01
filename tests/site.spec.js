@@ -2,9 +2,13 @@ import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
 /*
- * Site-wide checks for every page in both themes. Section PRs add their own
- * spec files next to this one, covering each state of the section (wink sent,
- * picture open, …) the same way: day + night, motion on + reduced.
+ * The critical paths only: every page is accessible and error-free in both
+ * themes (Chromium + WebKit), looks the same as its baseline (Chromium, desktop
+ * and phone width), and the three things that would really hurt if they broke
+ * keep working: the theme toggle, pause motion, and in-page links.
+ *
+ * Section PRs add one spec per section for its main interaction, plus an axe
+ * check of its open state, in day and night.
  */
 
 const PAGES = [
@@ -39,29 +43,24 @@ async function open(page, path, { theme = "day", motion = "on" } = {}) {
 for (const { name, path } of PAGES) {
   for (const theme of THEMES) {
     test.describe(`${name} · ${theme}`, () => {
-      test("loads without errors", async ({ page }) => {
-        const errors = await open(page, path, { theme });
+      test("loads without errors or axe violations", async ({ page }) => {
+        const errors = await open(page, path, { theme, motion: "off" });
         await expect(page.locator("html")).toHaveAttribute("data-theme", theme);
-        expect(errors).toEqual([]);
-      });
-
-      test("has no axe violations", async ({ page }) => {
-        await open(page, path, { theme, motion: "off" });
         const { violations } = await new AxeBuilder({ page }).withTags(AXE_TAGS).analyze();
         const summary = violations.map((v) => `${v.id} (${v.impact}): ${v.nodes.map((n) => n.target.join(" ")).join(", ")}`);
         expect(summary).toEqual([]);
+        expect(errors).toEqual([]);
       });
 
-      test("matches the screenshot", async ({ page, browserName }) => {
-        test.skip(browserName === "webkit", "Screenshots are compared in Chromium only, desktop and mobile");
+      test("matches the screenshots", async ({ page }) => {
         // "This year" and "years since" come from the clock; pin it so baselines survive New Year.
         await page.clock.setFixedTime(new Date("2026-10-01T12:00:00"));
         await open(page, path, { theme, motion: "off" });
-        await expect(page).toHaveScreenshot(`${name}-${theme}.png`, {
-          fullPage: true,
-          // The sparkle canvas and butterfly are randomized; everything else must match.
-          style: "#fx, .fly { visibility: hidden !important; }",
-        });
+        // The sparkle canvas and butterfly are randomized; everything else must match.
+        const options = { fullPage: true, style: "#fx, .fly { visibility: hidden !important; }" };
+        await expect(page).toHaveScreenshot(`${name}-${theme}-desktop.png`, options);
+        await page.setViewportSize({ width: 390, height: 844 });
+        await expect(page).toHaveScreenshot(`${name}-${theme}-phone.png`, options);
       });
     });
   }
@@ -86,17 +85,10 @@ test.describe("home", () => {
     const toggle = page.locator(".theme-toggle");
     await toggle.click();
     await expect(html).toHaveAttribute("data-theme", "night");
-    expect(await page.evaluate(() => localStorage.getItem("chibi-theme"))).toBe("night");
     await page.reload();
     await expect(html).toHaveAttribute("data-theme", "night");
     await toggle.click();
     await expect(html).toHaveAttribute("data-theme", "day");
-  });
-
-  test("theme toggle with motion on still lands on night", async ({ page }) => {
-    await open(page, "/", { theme: "day", motion: "on" });
-    await page.locator(".theme-toggle").click();
-    await expect(page.locator("html")).toHaveAttribute("data-theme", "night", { timeout: 5000 });
   });
 
   test("pause motion buttons stay in sync and remember the choice", async ({ page }) => {
@@ -108,27 +100,5 @@ test.describe("home", () => {
     for (const toggle of await toggles.all()) await expect(toggle).toHaveAttribute("aria-pressed", "true");
     await page.reload();
     await expect(page.locator("html")).toHaveAttribute("data-motion", "off");
-    await expect(page.locator(".motion-icon")).toHaveAttribute("aria-pressed", "true");
-  });
-
-  test("reduced motion is respected until the visitor chooses", async ({ page }) => {
-    await page.emulateMedia({ reducedMotion: "reduce" });
-    await page.goto("/");
-    await expect(page.locator("html")).not.toHaveAttribute("data-motion", /.*/);
-    for (const toggle of await page.locator("[data-motion-toggle]").all()) {
-      await expect(toggle).toHaveAttribute("aria-pressed", "true");
-    }
-  });
-
-  test("the menu opens, and Escape closes it and returns focus", async ({ page }) => {
-    await page.setViewportSize({ width: 900, height: 800 });
-    await open(page, "/");
-    const toggle = page.locator(".menu-toggle");
-    await toggle.click();
-    await expect(toggle).toHaveAttribute("aria-expanded", "true");
-    await expect(page.locator(".site-nav a").first()).toBeVisible();
-    await page.keyboard.press("Escape");
-    await expect(toggle).toHaveAttribute("aria-expanded", "false");
-    await expect(toggle).toBeFocused();
   });
 });

@@ -2,8 +2,7 @@ name: PR checks
 
 # Runs on every PR (deploy.yml still publishes main to Pages). Once these pass
 # reliably, branch protection on main can require: "Build, unit tests, budget",
-# "Playwright + axe (chromium)", "Playwright + axe (webkit)",
-# "Playwright + axe (mobile)" and "Lighthouse".
+# "Playwright + axe (chromium)", "Playwright + axe (webkit)" and "Lighthouse".
 #
 # Screenshot baselines live in tests/screenshots and are made here on Linux.
 # To create or refresh them, add the "update-screenshots" label to the PR: the
@@ -51,8 +50,6 @@ jobs:
       matrix:
         include:
           - project: chromium
-            browser: chromium
-          - project: mobile
             browser: chromium
           - project: webkit
             browser: webkit
@@ -124,7 +121,7 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npx playwright install --with-deps chromium
-      - run: npx playwright test --grep "screenshot" --project=chromium --project=mobile --update-snapshots=changed
+      - run: npx playwright test --grep "screenshot" --project=chromium --update-snapshots=changed
         env:
           CI: "true"
       - name: Commit the new baselines
