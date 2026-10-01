@@ -2,11 +2,19 @@
 
 Last updated Oct 1, 2026. Finished items are removed as their PRs land.
 
-`[existing]` = from the original open threads · `[new]` = suggested during the Sep 25 review
+`[existing]` = from the original open threads · `[new]` = suggested during the Sep 25 review · `[priority]` = added Sep 28 after the job description review
 
 ## Up next
 1. Real content via the copy spreadsheet (`site-copy.xlsx`, kept out of git): projects, brands, resume, email
-2. Lighthouse + axe audit on the live site
+2. Editions Explorer, as the first real Luna Pie mission (spec: https://claude.ai/code/artifact/57a74e74-a34f-490d-9cce-4177814bac2e)
+
+## Editions Explorer
+- [ ] `[priority]` Decide where it lives: a route on this site or its own subdomain (open question in the spec)
+- [ ] `[priority]` Retro browser chrome + era skin tokens: 3 skins for the 3 V1 editions, our own browser name and icons, each skin contrast-checked
+- [ ] `[priority]` Routes and feature pages from verified JSON (`/editions/<edition>/<tier>/<feature>`), with real deep links in the address bar
+- [ ] `[priority]` Motion layer: View Transitions between pages, GSAP era morph on edition switch, loading moments under 400 ms, all with reduced-motion fallbacks
+- [ ] `[priority]` Keyboard window controls (move, resize, maximize/reader mode) and route announcements
+- [ ] `[priority]` Project card + case study linking out to the technical breakdown
 
 ## Sections plan (Oct 2026)
 Specs, schedule and gates live in the "chibimuere Sections: Technical Plan" doc. Phase 0 (`data-copy-if`, section loader, motion controller) is in.
@@ -25,12 +33,13 @@ Specs, schedule and gates live in the "chibimuere Sections: Technical Plan" doc.
 - [ ] `[existing]` Redo CV/Resume teaser
 - [ ] `[existing]` Resume page contact still uses the placeholder `hello@chibimuere.example` (button and print version)
 - [ ] `[new]` "How this was made" devlog (published on Substack, linked from its card): round notes, M.K.-vs-Claude decisions, what got overruled, the scaffold.html before/after. Could double as Project 01
-- [ ] `[new]` Case studies behind the project cards: written up on Substack; the card links out (a Flip-expand preview from the deck could come later)
+- [ ] `[new]` Case studies behind the project cards: written up on Substack as technical breakdowns (how it was built, which agent did what, where M.K. overrode them, accessibility + performance calls); the card links out (a Flip-expand preview from the deck could come later)
 
 ## Navigation & meta
 - [ ] `[new]` One favicon shape: a single butterfly (inspired by the MSN butterfly) for both themes, replacing the day butterfly / night moth pair (`favicon.svg`, `favicon-night.svg`, `favicon.ico`, `apple-touch-icon.png`, and the theme swap in each page's head script)
 
 ## GSAP & animation (additive; day ↔ night transitions stay untouched)
+- [ ] `[new]` Central motion controller with `gsap.matchMedia()` tied to `prefers-reduced-motion` and the Pause Motion toggle (do this first; the Editions Explorer motion layer builds on it)
 - [ ] `[new]` ScrollTrigger + Flip: deal the project deck like tarot cards on scroll
 - [ ] `[new]` SplitText / ScrambleText hero entrance: day letters drift in like light, night letters decode like a terminal
 - [ ] `[new]` MorphSVG butterfly ↔ moth morph on theme toggle
@@ -45,10 +54,16 @@ Specs, schedule and gates live in the "chibimuere Sections: Technical Plan" doc.
 - [ ] `[new]` Auto night after local sunset on first visit, when no preference is saved
 
 ## Quality & tooling
+- [ ] `[new]` Lighthouse CI + axe in Playwright as GitHub Actions (free). Include WebKit: the Sep 28 audit has no Safari/WebKit axe data because Playwright's WebKit hangs on macOS 14, and Linux runners don't have that problem
+- [ ] `[new]` Playwright screenshot tests for both themes, to protect the transitions
 - [ ] `[existing]` Run Lighthouse and axe on the deployed site
 
 ## Domain & ops
 - [ ] `[new]` Cookie-free analytics, e.g. Cloudflare Web Analytics (works without moving DNS to Cloudflare)
 
-## Noted by choice (not a to-do)
-- `[existing]` Night hero has no intro paragraph, on purpose
+## Audit findings (Sep 28)
+From the Lighthouse + axe audit of the live site (report: `docs/audits/2026-09-28/report.md`). Scores were 100 for performance, accessibility and best practices, with 0 axe violations; SEO is 63 only because `robots.txt` blocks crawlers on purpose.
+- [ ] `[new]` Hand-check color contrast in both themes where axe couldn't decide (text over gradients): `site.name`, the nav and theme-toggle labels, and the `.day-only` / `.night-only` resume text
+- [ ] `[new]` Real-device pass on iOS Safari and the Facebook/Instagram in-app browsers, day and night
+- [ ] `[new]` Check that link previews still show on Facebook/Instagram with `robots.txt` blocking crawlers (Meta's Sharing Debugger shows what `facebookexternalhit` gets). iMessage builds previews on the sender's device, so it isn't affected
+- [ ] `[new]` Find out why day-mode LCP is 5–9× night's (desktop home 279 vs 46 ms, mobile home 1089 vs 224 ms). Same element (`h1.hero-title`), longer render delay in day. No score impact yet
