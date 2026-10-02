@@ -310,7 +310,99 @@
     "artsy": {
       "eyebrow": "Art in progress",
       "title": "Artsy",
-      "body": "Still drying. Check back soon."
+      "folder": {
+        "windowTitle": "chibimuere · My Pictures",
+        "hint": "Double-click a picture to open it",
+        "hintTouch": "Tap a picture twice to open it",
+        "items": "items",
+        "back": "Back to all",
+        "previous": "Previous",
+        "next": "Next",
+        "rotate": "Rotate",
+        "slideshow": "Slideshow",
+        "pause": "Pause slideshow",
+        "viewing": "Viewing"
+      },
+      "pictures": [
+        {
+          "src": "img-0042",
+          "file": "IMG_0042.jpg",
+          "title": "Placeholder No. 1 (moon study)",
+          "year": "2026",
+          "medium": "generated pixels",
+          "alt": "Placeholder art: a plum crescent moon in a lilac and peach haze.",
+          "width": 1000,
+          "height": 750,
+          "show": true
+        },
+        {
+          "src": "final-final-v3",
+          "file": "final_FINAL_v3.png",
+          "title": "Placeholder No. 2 (butterfly effect)",
+          "year": "2026",
+          "medium": "generated pixels",
+          "alt": "Placeholder art: a pink butterfly with two small butterflies, lilac and orange, on a pastel gradient.",
+          "width": 600,
+          "height": 800,
+          "show": true
+        },
+        {
+          "src": "sketchbook-scan-07",
+          "file": "sketchbook_scan_07.jpg",
+          "title": "Placeholder No. 3 (warm-up lines)",
+          "year": "2026",
+          "medium": "generated pixels",
+          "alt": "Placeholder art: thin curved plum lines with a hollow circle in the middle, on cream paper.",
+          "width": 1000,
+          "height": 750,
+          "show": true
+        },
+        {
+          "src": "dont-look",
+          "file": "dont_look.bmp",
+          "title": "Placeholder No. 4 (the watcher)",
+          "year": "2026",
+          "medium": "generated pixels",
+          "alt": "Placeholder art: a single wide-open eye with a lilac iris on a pink background.",
+          "width": 800,
+          "height": 800,
+          "show": true
+        },
+        {
+          "src": "moodboard-2",
+          "file": "moodboard (2).png",
+          "title": "Placeholder No. 5 (mood, pending)",
+          "year": "2026",
+          "medium": "generated pixels",
+          "alt": "Placeholder art: six tilted pastel swatches arranged in a grid, like a moodboard.",
+          "width": 1000,
+          "height": 750,
+          "show": true
+        },
+        {
+          "src": "untitled-witchy",
+          "file": "untitled_witchy.png",
+          "title": "Placeholder No. 6 (hat check)",
+          "year": "2026",
+          "medium": "generated pixels",
+          "alt": "Placeholder art: a black witch hat on a dark plum gradient, with a small amber light below it.",
+          "width": 600,
+          "height": 800,
+          "show": true
+        },
+        {
+          "src": "thumbs-db",
+          "file": "Thumbs.db",
+          "title": "you found my secret thumbnail cache. this is the cursed early stuff.",
+          "year": "",
+          "medium": "",
+          "alt": "Placeholder art: glitchy red and cyan scan lines on black, with the words rawr XD.",
+          "cursed": true,
+          "width": 1000,
+          "height": 750,
+          "show": true
+        }
+      ]
     },
     "fartsy": {
       "eyebrow": "Nonsense in progress",

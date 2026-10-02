@@ -99,6 +99,22 @@ write-up" link (for the Substack case study or devlog). Both are optional.
 Add `"newTab": true` to open the title link in a new tab, for links that leave
 the site, such as a GitHub repo. Write-up links always open in a new tab.
 
+## My Pictures (art)
+
+The Artsy folder's pictures live in `public/art/`, made from originals in
+`art-originals/` (git-ignored, so full-size files never get committed):
+
+```sh
+npm run images   # needs the originals in art-originals/
+```
+
+`scripts/images.js` makes AVIF + WebP thumbnails and full-size copies at 1x
+and 2x, turns photos upright, strips all metadata (GPS included), converts
+HEIC on macOS, and adds an entry per new picture to `home.artsy.pictures` in
+`content.json` with `"show": false`. Fill in `title`, `year`, `medium` and
+`alt`, then set `"show": true`. An original named `thumbs-db` becomes the
+Thumbs.db easter egg. The six current pictures are generated placeholders.
+
 ## Day / Night 🌞🌚
 
 The look comes from the day/night mockup (v4): soft prism light by day, a
