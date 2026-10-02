@@ -196,78 +196,71 @@
       <!-- About: a messenger conversation window (option C, messenger-style) -->
       <section class="intro-band" id="bio" aria-labelledby="intro-title">
         <div class="shell">
-          <div class="msn" data-msn>
+          <div class="msn" data-msn data-section="msn">
             <div class="msn-titlebar">
               <span class="msn-app" aria-hidden="true">
                 <svg viewBox="0 0 64 64" focusable="false"><g fill="currentColor"><ellipse cx="19.5" cy="23" rx="13" ry="10" transform="rotate(-28 19.5 23)"/><ellipse cx="44.5" cy="23" rx="13" ry="10" transform="rotate(28 44.5 23)"/><ellipse cx="22.5" cy="40.5" rx="8.5" ry="7" transform="rotate(30 22.5 40.5)"/><ellipse cx="41.5" cy="40.5" rx="8.5" ry="7" transform="rotate(-30 41.5 40.5)"/></g></svg>
               </span>
               <span class="msn-title" data-copy="bio.windowTitle">chibimuere · Conversation</span>
-              <span class="msn-winbtns" aria-hidden="true"><i>–</i><i>□</i><i>×</i></span>
-            </div>
-            <div class="msn-menu" aria-hidden="true">
-              <template data-copy-list="bio.menu"><span>{{value}}</span></template>
             </div>
 
             <div class="msn-to">
-              <h2 id="intro-title" data-copy="bio.title">Made slowly,<br />meant to linger.</h2>
+              <h2 id="intro-title" data-copy="bio.title">just a smol death</h2>
               <p class="msn-presence">
                 <span class="msn-dot" aria-hidden="true"></span> <span data-copy="bio.presence">online</span> ·
-                <span class="msn-psm" data-copy="bio.sideNote">Small-batch ideas since 2024</span>
+                <span class="msn-psm" data-copy="bio.nowPlaying">Cute without the E by Taking Back Sunday</span>
               </p>
             </div>
 
+            <!-- 2x2: conversation | their picture, compose | your picture -->
             <div class="msn-body">
-              <div class="msn-convo">
-                <ol class="msn-log" data-copy-attr="aria-label={{bio.conversationLabel}}" aria-label="Conversation" aria-live="polite" data-msn-log>
-                  <li class="msn-line msn-them">
-                    <span class="msn-says"><span data-copy="bio.stranger">xXstrangerXx</span> <span data-copy="bio.says">says:</span></span>
-                    <p data-copy="bio.strangerLine">a/s/l?</p>
-                  </li>
-                  <li class="msn-line msn-me">
-                    <span class="msn-says"><span data-copy="bio.me">chibimuere</span> <span data-copy="bio.says">says:</span></span>
-                    <p data-copy="bio.reply">16/m/viridian city</p>
-                  </li>
-                  <li class="msn-line msn-me">
-                    <span class="msn-says"><span data-copy="bio.me">chibimuere</span> <span data-copy="bio.says">says:</span></span>
-                    <p data-copy="bio.body">
-                      We are interested in the space between cute and uncanny, the
-                      useful and the unnecessary, the thing you keep and the thing you
-                      give away.
-                    </p>
-                  </li>
-                </ol>
+              <ol class="msn-log" data-copy-attr="aria-label={{bio.conversationLabel}}" aria-label="Conversation" aria-live="polite" data-msn-log>
+                <li class="msn-line msn-them">
+                  <span class="msn-says"><span data-copy="bio.stranger">xXstrangerXx</span> <span data-copy="bio.says">says:</span></span>
+                  <p data-copy="bio.strangerLine">a/s/l?</p>
+                </li>
+                <li class="msn-line msn-me">
+                  <span class="msn-says"><span data-copy="bio.me">chibimuere</span> <span data-copy="bio.says">says:</span></span>
+                  <p data-copy="bio.reply">16/m/viridian city</p>
+                </li>
+                <li class="msn-line msn-me">
+                  <span class="msn-says"><span data-copy="bio.me">chibimuere</span> <span data-copy="bio.says">says:</span></span>
+                  <p data-copy="bio.body">
+                    We are interested in the space between cute and uncanny, the
+                    useful and the unnecessary, the thing you keep and the thing you
+                    give away.
+                  </p>
+                </li>
+              </ol>
 
-                <div class="msn-compose">
-                  <div class="msn-tools">
-                    <span class="msn-tool" aria-hidden="true">A</span>
-                    <span class="msn-tool" aria-hidden="true">☺&#xFE0E;</span>
-                    <button class="msn-tool msn-nudge" type="button" data-msn-nudge>
-                      <span aria-hidden="true">〰</span> <span data-copy="bio.nudge">nudge</span>
-                    </button>
-                  </div>
-                  <div class="msn-input">
-                    <p class="msn-placeholder" data-copy="bio.placeholder">you can&apos;t reply to this one. (see: how to contact me)</p>
-                    <button class="msn-send" type="button" disabled data-copy="bio.send">Send</button>
-                  </div>
+              <figure class="msn-pic msn-pic-them" aria-hidden="true">
+                <span class="msn-pic-glyph">☠&#xFE0E;</span>
+                <figcaption data-copy="bio.me">chibimuere</figcaption>
+              </figure>
+
+              <div class="msn-compose">
+                <div class="msn-tools">
+                  <button class="msn-action" type="button" data-msn-nudge>
+                    <span aria-hidden="true">〰</span> <span data-copy="bio.nudge">nudge</span>
+                  </button>
+                  <!-- Winks: wired up by src/js/sections/msn.js -->
+                  <template data-copy-list="bio.winks"><button class="msn-action" type="button" data-wink="{{id}}" data-label="{{label}}"{{#nightLabel}} data-night-label="{{nightLabel}}"{{/nightLabel}}{{#glyphs}} data-glyphs="{{glyphs}}"{{/glyphs}}><span aria-hidden="true">{{icon}}</span> {{#nightLabel}}<span class="day-only">{{label}}</span><span class="night-only">{{nightLabel}}</span>{{/nightLabel}}{{^nightLabel}}{{label}}{{/nightLabel}}</button></template>
                 </div>
+                <p class="msn-reply" data-copy="bio.noReply">you can&apos;t reply to this one. (see how to <a href="#contact">contact me</a>)</p>
               </div>
 
-              <div class="msn-pics" aria-hidden="true">
-                <figure class="msn-pic msn-pic-them">
-                  <span class="msn-pic-glyph">☠&#xFE0E;</span>
-                  <figcaption data-copy="bio.me">chibimuere</figcaption>
-                </figure>
-                <figure class="msn-pic msn-pic-you">
-                  <span class="msn-pic-glyph">?</span>
-                  <figcaption data-copy="bio.you">you</figcaption>
-                </figure>
-              </div>
+              <figure class="msn-pic msn-pic-you" aria-hidden="true">
+                <span class="msn-pic-glyph">?</span>
+                <figcaption data-copy="bio.you">you</figcaption>
+              </figure>
             </div>
 
             <p class="msn-status" aria-hidden="true">
               <span data-copy="bio.typing">chibimuere is typing a message</span><span class="msn-typing"><i>.</i><i>.</i><i>.</i></span>
             </p>
           </div>
+          <!-- Shown while a wink plays; outside .msn so position: fixed is relative to the viewport. -->
+          <button class="msn-action wink-skip" type="button" hidden data-wink-skip data-copy="site.ui.skipWink">skip wink</button>
         </div>
       </section>
 

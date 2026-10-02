@@ -955,9 +955,9 @@ h2 em {
 }
 
 /* 7. Bio: messenger window ================================================= */
-/* A classic desktop-messenger conversation window: title bar, menu, title
-   header with presence + personal message, chat log, display pictures,
-   a (read-only) compose box with a working nudge, and a status bar.
+/* A classic desktop-messenger conversation window: title bar, title header
+   with presence + personal message, chat log, display pictures, a compose box
+   with a working nudge and winks (no fake controls), and a status bar.
    Day: pastel glass with rounded corners. Night: ruled terminal. */
 
 /* Full .shell width, so it lines up with the hero panel and the portfolio grid */
@@ -969,7 +969,7 @@ h2 em {
   backdrop-filter: var(--panel-blur);
 }
 
-/* Title bar + window buttons */
+/* Title bar */
 .msn-titlebar {
   display: flex;
   align-items: center;
@@ -995,32 +995,6 @@ h2 em {
 .msn-title {
   flex: 1;
   font-weight: 700;
-}
-
-.msn-winbtns {
-  display: flex;
-  gap: 4px;
-}
-
-.msn-winbtns i {
-  display: grid;
-  width: 22px;
-  height: 18px;
-  place-items: center;
-  border: 1px solid var(--line);
-  font-size: 11px;
-  font-style: normal;
-  line-height: 1;
-}
-
-/* Menu bar */
-.msn-menu {
-  display: flex;
-  gap: 18px;
-  padding: 4px 14px;
-  border-bottom: 1px solid var(--line);
-  color: var(--ink-soft);
-  font-size: var(--text-xs);
 }
 
 /* Header: display name (the section heading) as the title, then presence + personal message */
@@ -1062,21 +1036,20 @@ h2 em {
   font-style: normal;
 }
 
-/* Body: conversation on the left, display pictures on the right */
+/* Body: a 2x2 grid, so each display picture sits beside its own box */
 .msn-body {
   display: grid;
-  grid-template-columns: 1fr 168px;
+  grid-template-areas:
+    "log them"
+    "compose you";
+  grid-template-columns: minmax(0, 1fr) 168px;
   gap: 14px;
+  align-items: start;
   padding: 14px;
 }
 
-.msn-convo {
-  display: grid;
-  gap: 10px;
-  min-width: 0;
-}
-
 .msn-log {
+  grid-area: log;
   min-height: 16rem;
   margin: 0;
   padding: 14px 16px;
@@ -1109,85 +1082,72 @@ h2 em {
   font-style: italic;
 }
 
-/* Compose: toolbar, read-only input, disabled Send */
+/* Compose: nudge + winks, then a note instead of a reply box */
 .msn-compose {
+  grid-area: compose;
   border: 1px solid var(--line);
 }
 
 .msn-tools {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 4px;
-  padding: 4px 6px;
+  gap: 6px;
+  padding: 8px;
   border-bottom: 1px solid var(--line);
 }
 
-.msn-tool {
-  display: inline-grid;
-  min-width: 30px;
-  height: 30px;
-  padding: 0 8px;
-  place-items: center;
-  border: 1px solid transparent;
-  background: none;
-  color: var(--ink);
-  font: inherit;
-  font-size: 13px;
-}
-
-.msn-nudge {
+.msn-action {
   display: inline-flex;
   gap: 6px;
   align-items: center;
-  min-height: 30px;
-  border-color: var(--line);
+  min-height: 32px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
+  background: none;
+  color: var(--ink);
+  font: inherit;
   font-size: var(--text-xs);
   letter-spacing: 0.06em;
+  cursor: pointer;
   transition:
     background-color 0.3s,
     color 0.3s;
 }
 
-.msn-nudge:hover {
+.msn-action:hover {
   background: var(--hover-bg, #fff);
   color: var(--hover-ink, var(--ink));
 }
 
-.msn-input {
-  display: flex;
-  gap: 10px;
-  align-items: flex-end;
-  justify-content: space-between;
-  min-height: 4.5rem;
-  padding: 10px 10px 10px 14px;
-}
-
-.msn-placeholder {
-  color: var(--ink-soft);
-  font-size: var(--text-xs);
-}
-
-.msn-send {
-  padding: 8px 18px;
-  border: 1px solid var(--line);
-  background: none;
-  color: var(--ink-soft);
-  font: inherit;
-  font-size: var(--text-xs);
+.msn-action:disabled {
   opacity: 0.6;
   cursor: not-allowed;
 }
 
-/* Display pictures */
-.msn-pics {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 14px;
+.msn-reply {
+  margin: 0;
+  padding: 16px 14px;
+  color: var(--ink-soft);
+  font-size: var(--text-xs);
 }
 
+.msn-reply a {
+  color: var(--accent);
+  text-underline-offset: 4px;
+}
+
+/* Display pictures */
 .msn-pic {
   margin: 0;
+}
+
+.msn-pic-them {
+  grid-area: them;
+}
+
+.msn-pic-you {
+  grid-area: you;
 }
 
 .msn-pic-glyph {
@@ -1200,9 +1160,7 @@ h2 em {
 }
 
 .msn-pic-you .msn-pic-glyph {
-  width: 70%;
-  margin-left: auto;
-  font-size: 2rem;
+  font-size: 2.5rem;
 }
 
 .msn-pic figcaption {
@@ -1265,6 +1223,73 @@ h2 em {
   }
 }
 
+/* Winks: a full-screen overlay (built by src/js/sections/msn.js, hidden from
+   screen readers, never catches clicks) and a Skip button while one plays. */
+.wink-overlay {
+  --wink-1: #b9a3ff;
+  --wink-2: #ff9cc6;
+  --wink-3: #ffc98f;
+  --wink-tint: rgba(247, 243, 238, 0.6);
+  position: fixed;
+  z-index: 90;
+  inset: 0;
+  overflow: hidden;
+  background: var(--wink-tint);
+  pointer-events: none;
+}
+
+:root[data-theme="night"] .wink-overlay {
+  --wink-1: #e8e4ee;
+  --wink-2: var(--red);
+  --wink-3: var(--cyan);
+  --wink-tint: rgba(7, 6, 10, 0.65);
+}
+
+.wink-overlay > * {
+  position: absolute;
+}
+
+.wink-flyer {
+  top: 100%;
+  width: 72px;
+  height: 72px;
+}
+
+.wink-emoji {
+  top: 100%;
+  font-size: 56px;
+  line-height: 1;
+}
+
+.wink-moth {
+  filter: drop-shadow(-2px 0 var(--red)) drop-shadow(2px 0 var(--cyan));
+}
+
+.wink-moon {
+  top: 50%;
+  left: 50%;
+  width: 220px;
+  height: 220px;
+  margin: -110px 0 0 -110px;
+}
+
+.wink-star {
+  width: 32px;
+  height: 32px;
+}
+
+.wink-skip {
+  position: fixed;
+  z-index: 91;
+  top: 84px;
+  right: 20px;
+  background: var(--bg);
+}
+
+.wink-skip[hidden] {
+  display: none;
+}
+
 /* Day skin: pastel glass, rounded like the cards */
 :root:not([data-theme="night"]) .msn {
   border-color: var(--card-edge);
@@ -1278,13 +1303,6 @@ h2 em {
   background: linear-gradient(90deg, #f9c9d4, #fbd9bd, #fbf1b8, #d3f3d2, #c6e6fb, #dcd0f7);
 }
 
-:root:not([data-theme="night"]) .msn-winbtns i {
-  border-color: rgba(255, 255, 255, 0.9);
-  border-radius: 5px;
-  background: rgba(255, 255, 255, 0.55);
-}
-
-:root:not([data-theme="night"]) .msn-menu,
 :root:not([data-theme="night"]) .msn-to,
 :root:not([data-theme="night"]) .msn-tools,
 :root:not([data-theme="night"]) .msn-status {
@@ -1298,8 +1316,7 @@ h2 em {
   background: rgba(255, 255, 255, 0.6);
 }
 
-:root:not([data-theme="night"]) .msn-nudge,
-:root:not([data-theme="night"]) .msn-send {
+:root:not([data-theme="night"]) .msn-action {
   border-color: var(--line-soft);
   border-radius: 999px;
 }
@@ -1330,11 +1347,6 @@ h2 em {
   color: var(--red);
 }
 
-:root[data-theme="night"] .msn-winbtns i:last-child {
-  border-color: var(--red);
-  color: var(--red);
-}
-
 :root[data-theme="night"] .msn-dot {
   background: var(--cyan);
 }
@@ -1349,11 +1361,15 @@ h2 em {
   content: "> " / "";
 }
 
-:root[data-theme="night"] .msn-nudge {
+:root[data-theme="night"] .msn-action {
   color: var(--cyan);
 }
 
-:root[data-theme="night"] .msn-nudge:hover {
+:root[data-theme="night"] .msn-reply a {
+  color: var(--red);
+}
+
+:root[data-theme="night"] .msn-action:hover {
   background: var(--cyan);
   color: #000;
 }
@@ -2204,16 +2220,14 @@ h2 em {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  /* Messenger: display pictures move into a strip above the conversation */
+  /* Messenger: one column; each display picture shrinks to a chip above its box */
   .msn-body {
-    grid-template-columns: 1fr;
-  }
-
-  .msn-pics {
-    flex-direction: row;
-    order: -1;
-    align-items: flex-end;
-    justify-content: flex-start;
+    grid-template-areas:
+      "them"
+      "log"
+      "you"
+      "compose";
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .msn-pic {
@@ -2224,14 +2238,9 @@ h2 em {
 
   .msn-pic-glyph,
   .msn-pic-you .msn-pic-glyph {
-    width: 64px;
+    width: 48px;
     margin: 0;
-    font-size: 2rem;
-  }
-
-  .msn-pic-you .msn-pic-glyph {
-    width: 44px;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
   }
 
   .msn-pic figcaption {
@@ -2413,10 +2422,6 @@ h2 em {
     grid-template-columns: 1fr;
   }
 
-  .msn-menu span:nth-child(n + 4) {
-    display: none;
-  }
-
   .msn-to {
     padding-inline: 12px;
   }
@@ -2432,15 +2437,6 @@ h2 em {
 
   .msn-line p {
     margin-left: 0;
-  }
-
-  .msn-input {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .msn-send {
-    align-self: flex-end;
   }
 
   :root:not([data-theme="night"]) .n-wrap {
