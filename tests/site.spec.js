@@ -28,6 +28,7 @@ async function open(page, path, { theme = "day", motion = "on" } = {}) {
       sessionStorage.setItem("seeded", "1");
       localStorage.setItem("chibi-theme", theme);
       localStorage.setItem("chibi-motion", motion);
+      localStorage.setItem("chibi-cookie-peek", "dismissed"); // tests/cookie.spec.js covers the peek
     },
     [theme, motion]
   );
@@ -37,6 +38,9 @@ async function open(page, path, { theme = "day", motion = "on" } = {}) {
   page.on("console", (message) => message.type() === "error" && errors.push(message.text()));
   await page.goto(path);
   await page.evaluate(() => document.fonts.ready);
+  // The cookie corner appears once its module runs; wait so screenshots are stable.
+  const cookie = page.locator(".cookie-corner");
+  if (await cookie.count()) await expect(cookie).toHaveAttribute("data-section-ready", "");
   return errors;
 }
 

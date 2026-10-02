@@ -1385,6 +1385,200 @@ h2 em {
   color: var(--ink-soft);
 }
 
+/* 7b. Cookie corner ======================================================= */
+/* A bitten cookie with a "0" badge, fixed bottom-left on every page with JS
+   (src/js/sections/cookie.js reveals it). A one-time peek and a short,
+   non-modal policy pop up above it. Never blocks anything: the corner itself
+   lets clicks through; only the cookie and the open cards take them. */
+.cookie-corner {
+  position: fixed;
+  bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+  left: calc(20px + env(safe-area-inset-left, 0px));
+  z-index: 20;
+  width: 56px;
+  height: 56px;
+  pointer-events: none;
+}
+
+.cookie-corner > *,
+.cookie-corner [role="status"] > * {
+  pointer-events: auto;
+}
+
+.cookie-jar {
+  display: grid;
+  position: absolute;
+  inset: 0;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--bg);
+  box-shadow: 0 12px 32px -12px rgba(118, 103, 96, 0.45);
+  cursor: pointer;
+}
+
+.cookie-jar[hidden],
+.cookie-card[hidden] {
+  display: none;
+}
+
+.cookie-jar svg {
+  width: 38px;
+  height: 38px;
+}
+
+.cookie-zero {
+  position: absolute;
+  right: -6px;
+  bottom: -6px;
+  min-width: 22px;
+  height: 22px;
+  border-radius: 11px;
+  background: var(--accent);
+  color: var(--bg);
+  font: 700 12px/22px var(--font-mono);
+  text-align: center;
+}
+
+.cookie-card {
+  position: absolute;
+  bottom: 76px;
+  left: 0;
+  width: min(340px, calc(100vw - 40px));
+  padding: 18px 20px;
+  border: 1px solid var(--card-edge);
+  border-radius: 20px;
+  background: var(--bg);
+  box-shadow: 0 20px 60px -24px rgba(118, 103, 96, 0.5);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  animation: cookie-peek 0.5s cubic-bezier(0.3, 1.5, 0.5, 1) both;
+  transform-origin: bottom left;
+}
+
+@keyframes cookie-peek {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.9);
+  }
+}
+
+.cookie-x {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: var(--ink);
+  font: 400 18px var(--font-mono);
+  cursor: pointer;
+}
+
+.cookie-title {
+  margin: 0 36px 8px 0;
+  color: var(--title-ink, var(--ink));
+  font: 400 24px/1.1 var(--font-coquette);
+  letter-spacing: 0;
+  text-shadow: none;
+}
+
+.cookie-eyebrow {
+  margin: 0 36px 0 0;
+  color: var(--ink-soft);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.cookie-policy .cookie-title {
+  margin-top: 8px;
+}
+
+.cookie-note {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: var(--text-xs);
+  line-height: 1.5;
+}
+
+.cookie-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0 0;
+}
+
+.cookie-btn {
+  min-height: 44px;
+  padding: 0 18px;
+  border: 2px solid rgba(120, 100, 90, 0.3);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  font: 700 var(--text-xs) var(--font-mono);
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+.cookie-btn:hover {
+  border-color: var(--accent);
+}
+
+.cookie-rows {
+  margin: 0 0 12px;
+}
+
+.cookie-rows div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 7px 0;
+  border-bottom: 1px dashed var(--line);
+  font-size: var(--text-xs);
+}
+
+.cookie-rows dd {
+  margin: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Night: square terminal cards, red buttons, gothic titles */
+:root[data-theme="night"] .cookie-jar,
+:root[data-theme="night"] .cookie-card,
+:root[data-theme="night"] .cookie-btn,
+:root[data-theme="night"] .cookie-x {
+  border-radius: 2px;
+}
+
+:root[data-theme="night"] .cookie-jar,
+:root[data-theme="night"] .cookie-card {
+  border-color: var(--line);
+  box-shadow: none;
+}
+
+:root[data-theme="night"] .cookie-title {
+  color: var(--ink);
+  font: 400 28px/1 var(--font-gothic);
+}
+
+:root[data-theme="night"] .cookie-btn {
+  border-color: var(--red);
+  background: var(--bg);
+}
+
+@media (max-width: 700px) {
+  /* Phones: sit above the bottom button bar. */
+  .cookie-corner {
+    bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
 /* 8. Brands marquee ======================================================== */
 
 .brands-intro {
