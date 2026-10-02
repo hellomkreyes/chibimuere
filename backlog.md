@@ -17,9 +17,9 @@ Last updated Oct 1, 2026. Finished items are removed as their PRs land.
 - [ ] `[priority]` Project card + case study linking out to the technical breakdown
 
 ## Sections plan (Oct 2026)
-Specs, schedule and gates live in the "chibimuere Sections: Technical Plan" doc. Phase 0 (`data-copy-if`, section loader, motion controller, PR checks) the MSN window + winks, the cookie corner, and My Pictures (with placeholder art) are in.
+Specs, schedule and gates live in the "chibimuere Sections: Technical Plan" doc. Phase 0 (`data-copy-if`, section loader, motion controller, PR checks) the MSN window + winks, the cookie corner, My Pictures (with placeholder art), and the Dream Blunt Rotation (with placeholder questions) are in.
 - [ ] My Pictures: swap the six generated placeholders (and the Thumbs.db one) for real art: originals into `art-originals/`, `npm run images`, captions + alt text in `content.json`, then hide or delete the placeholder entries and their files in `public/art/`
-- [ ] Dream Blunt Rotation conversation circle (Fartsy)
+- [ ] Dream Blunt Rotation: M.K. picks which placeholder questions to keep or rewrite (`home.fartsy.rotation` in `content.json`). Eren Yeager is benched (`"show": false`); real photos or illustrations can replace the emoji avatars later
 - [ ] Webring (Artsy)
 - [ ] Dream Collabs ship chart (Fartsy)
 - [ ] Visitor counter + Cloudflare Worker (site-wide footer). When it ships, update the cookie policy copy in `site.cookie.policy` (the Analytics row says "none" and the body says nothing is counted)
