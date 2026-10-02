@@ -74,6 +74,43 @@
         }
       ]
     },
+    "cookie": {
+      "label": "Cookies",
+      "jar": "Bitten cookie: 0 cookies. Open the cookie policy",
+      "peek": {
+        "title": "psst. 0 cookies here.",
+        "day": "The only thing tracking you here is my curiosity.",
+        "night": "no cookies. only ghosts. someone already bit this one.",
+        "accept": "Accept all 0",
+        "alsoAccept": "Also accept",
+        "close": "Dismiss the cookie note"
+      },
+      "policy": {
+        "eyebrow": "Cookie policy (it&apos;s short)",
+        "titleDay": "Nothing but crumbs.",
+        "titleNight": "crumbs only.",
+        "rows": [
+          {
+            "name": "Cookies",
+            "value": "0"
+          },
+          {
+            "name": "Trackers",
+            "value": "0"
+          },
+          {
+            "name": "Third-party embeds",
+            "value": "0"
+          },
+          {
+            "name": "Analytics",
+            "value": "none"
+          }
+        ],
+        "body": "Nothing is counted and nobody is followed. Your choices: there&apos;s nothing to choose. Enjoy.",
+        "close": "Close the cookie policy"
+      }
+    },
     "ui": {
       "menuOpen": "Open navigation menu",
       "menuClose": "Close navigation menu",

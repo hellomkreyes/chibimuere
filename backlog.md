@@ -17,13 +17,12 @@ Last updated Oct 1, 2026. Finished items are removed as their PRs land.
 - [ ] `[priority]` Project card + case study linking out to the technical breakdown
 
 ## Sections plan (Oct 2026)
-Specs, schedule and gates live in the "chibimuere Sections: Technical Plan" doc. Phase 0 (`data-copy-if`, section loader, motion controller, PR checks) and the MSN window + winks are in.
-- [ ] Cookie corner tab (site-wide). Replaces the parody cookie banner idea and keeps its guardrails: never blocks content, Esc + a real close button, polite announcement, dismissal in localStorage, honors reduced motion
+Specs, schedule and gates live in the "chibimuere Sections: Technical Plan" doc. Phase 0 (`data-copy-if`, section loader, motion controller, PR checks) the MSN window + winks, and the cookie corner are in.
 - [ ] My Pictures folder (Artsy), with `scripts/images.js` pre-converting to AVIF + WebP at 1x/2x
 - [ ] Dream Blunt Rotation conversation circle (Fartsy)
 - [ ] Webring (Artsy)
 - [ ] Dream Collabs ship chart (Fartsy)
-- [ ] Visitor counter + Cloudflare Worker (site-wide footer)
+- [ ] Visitor counter + Cloudflare Worker (site-wide footer). When it ships, update the cookie policy copy in `site.cookie.policy` (the Analytics row says "none" and the body says nothing is counted)
 
 ## Content & sections
 - [ ] `[new]` Replace the scaffold placeholders with real content: the project cards (Luna Pie is card 01, Mercury RX is card 02; four placeholders to go), the brand names in the marquee, and the resume page copy. Collected in `site-copy.xlsx`
@@ -54,7 +53,7 @@ Specs, schedule and gates live in the "chibimuere Sections: Technical Plan" doc.
 - [ ] `[new]` Turn on branch protection for `main` requiring the four PR checks, once they've run green on a couple of PRs (M.K., in the repo settings; the job names are listed at the top of `.github/workflows/checks.yml`)
 
 ## Domain & ops
-- [ ] `[new]` Cookie-free analytics, e.g. Cloudflare Web Analytics (works without moving DNS to Cloudflare)
+- [ ] `[new]` Cookie-free analytics, e.g. Cloudflare Web Analytics (works without moving DNS to Cloudflare). When it ships, change the cookie policy's Analytics row to "cookie-free"
 
 ## Audit findings (Sep 28)
 From the Lighthouse + axe audit of the live site (report: `docs/audits/2026-09-28/report.md`). Scores were 100 for performance, accessibility and best practices, with 0 axe violations; SEO is 63 only because `robots.txt` blocks crawlers on purpose.
