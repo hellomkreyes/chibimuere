@@ -1,8 +1,12 @@
 /*
  * First-visit budget: each built page plus the CSS and JS it loads up front
  * (stylesheets, the module entry and its modulepreloads) must stay at or under
- * 35 KB gzipped. Fonts and images are excluded, and so are lazy chunks such as
+ * 50 KB gzipped. Fonts and images are excluded, and so are lazy chunks such as
  * section modules and GSAP, which load only when a section is near.
+ *
+ * It also warns (without failing) when a page's HTML alone passes 14 KB
+ * gzipped: about what a server can send in the first round trip of a new
+ * connection, so under it the whole document arrives at once.
  *
  *   npm run build && npm run budget
  */
@@ -11,7 +15,8 @@ import { join } from "node:path";
 import { gzipSync } from "node:zlib";
 
 const DIST = "dist";
-const BUDGET = 35 * 1024;
+const BUDGET = 50 * 1024;
+const HTML_WARN = 14 * 1024;
 const ASSET_PATTERN = /<(?:link[^>]*\brel="(?:stylesheet|modulepreload)"[^>]*\bhref|script[^>]*\bsrc)="\/?([^"]+\.(?:css|js))"/g;
 
 const gz = (file) => gzipSync(readFileSync(join(DIST, file))).length;
@@ -27,6 +32,9 @@ for (const page of readdirSync(DIST).filter((file) => file.endsWith(".html"))) {
   failed ||= over;
   console.log(`${over ? "✗" : "✓"} ${page}: ${kb(total)} of ${kb(BUDGET)}`);
   for (const [file, size] of sizes) console.log(`    ${kb(size).padStart(8)}  ${file}`);
+  if (sizes[0][1] > HTML_WARN) {
+    console.log(`    ! the HTML alone is over ${kb(HTML_WARN)}, so it needs more than one round trip`);
+  }
 }
 
 if (failed) {

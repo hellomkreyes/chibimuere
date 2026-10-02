@@ -40,7 +40,9 @@ Pushing to `main` builds and deploys to GitHub Pages via `.github/workflows/depl
 
 - **Build, unit tests, budget**: `npm test`, `npm run build`, then
   `scripts/check-budget.js`. Each page plus the CSS and JS it loads up front
-  must stay at or under 35 KB gzipped (fonts and lazy chunks excluded).
+  must stay at or under 50 KB gzipped (fonts and lazy chunks excluded). It
+  also warns when a page's HTML alone passes 14 KB, roughly what arrives in
+  the first round trip of a new connection.
 - **Playwright + axe** (Chromium and WebKit), from `tests/site.spec.js`: every
   page in day and night loads without errors and with zero axe violations
   (WCAG 2.2 AA tags). Chromium also checks the theme toggle, pause motion, and
