@@ -1888,7 +1888,6 @@ h2 em {
 .ring-nav[hidden],
 .ring-wall[hidden],
 .ring-entry[hidden],
-.ring-badge[hidden],
 .ring-new[hidden],
 .ring-btn[hidden] {
   display: none;
@@ -2114,21 +2113,16 @@ h2 em {
   box-shadow: 0 0 0 3px var(--accent);
 }
 
-/* Type colours (day): tile and button share them */
-.ring-thumb[data-type="fanfic"],
-.ring-b88[data-type="fanfic"] { background: #ffe0ec; color: #8a2f5c; }
-.ring-thumb[data-type="substack"],
-.ring-b88[data-type="substack"] { background: #ffeedd; color: #7a4a1c; }
-.ring-thumb[data-type="recipe"],
-.ring-b88[data-type="recipe"] { background: #fbf1b8; color: #6a5410; }
-.ring-thumb[data-type="podcast"],
-.ring-b88[data-type="podcast"] { background: #ece2ff; color: #4f3a99; }
-.ring-thumb[data-type="article"],
-.ring-b88[data-type="article"] { background: #fff; color: #2a2320; }
-.ring-thumb[data-type="site"],
-.ring-b88[data-type="site"] { background: #d9f2e8; color: #1f5a44; }
-.ring-thumb[data-type="event"],
-.ring-b88[data-type="event"] { background: #dde8ff; color: #3b3a8f; }
+/* Six tones, assigned per kind by webring.js (a hash of the kind's name), so
+   any new kind gets a stable colour. The tile and its 88x31 button share it. */
+.ring-thumb,
+.ring-b88 { background: #fff; color: #2a2320; }
+:is(.ring-thumb, .ring-b88)[data-tone="1"] { background: #ffe0ec; color: #8a2f5c; }
+:is(.ring-thumb, .ring-b88)[data-tone="2"] { background: #ffeedd; color: #7a4a1c; }
+:is(.ring-thumb, .ring-b88)[data-tone="3"] { background: #fbf1b8; color: #6a5410; }
+:is(.ring-thumb, .ring-b88)[data-tone="4"] { background: #ece2ff; color: #4f3a99; }
+:is(.ring-thumb, .ring-b88)[data-tone="5"] { background: #d9f2e8; color: #1f5a44; }
+:is(.ring-thumb, .ring-b88)[data-tone="6"] { background: #dde8ff; color: #3b3a8f; }
 
 /* Night */
 :root[data-theme="night"] .ring-chip,
@@ -2158,11 +2152,12 @@ h2 em {
   color: #000;
 }
 
-/* Night: three looks, alternating, so neighbouring buttons differ */
-:root[data-theme="night"] .ring-thumb,
-:root[data-theme="night"] .ring-b88 { background: #07060a; color: #e7e7ee; }
-:root[data-theme="night"] :is(.ring-thumb, .ring-b88):is([data-type="fanfic"], [data-type="podcast"], [data-type="event"]) { background: #07060a; color: var(--red); }
-:root[data-theme="night"] :is(.ring-thumb, .ring-b88):is([data-type="substack"], [data-type="article"]) { background: #07060a; color: var(--cyan); }
+/* Night: black tiles; the tone picks the ink */
+:root[data-theme="night"] :is(.ring-thumb, .ring-b88) { background: #07060a; color: #e7e7ee; }
+:root[data-theme="night"] :is(.ring-thumb, .ring-b88):is([data-tone="1"], [data-tone="4"]) { color: var(--red); }
+:root[data-theme="night"] :is(.ring-thumb, .ring-b88):is([data-tone="2"], [data-tone="5"]) { color: var(--cyan); }
+:root[data-theme="night"] :is(.ring-thumb, .ring-b88)[data-tone="3"] { background: var(--cyan); color: #07060a; }
+:root[data-theme="night"] :is(.ring-thumb, .ring-b88)[data-tone="6"] { background: var(--red); color: #07060a; }
 
 @media (max-width: 640px) {
   .ring-entry {

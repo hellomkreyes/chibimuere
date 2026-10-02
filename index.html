@@ -369,7 +369,7 @@
             <div class="ring-main">
               <p class="ring-intro" data-copy="artsy.ring.intro">Tiny corners of the internet worth a visit.</p>
               <ul class="ring-entries">
-                <template data-copy-list="artsy.webring"><li class="ring-entry" data-ring-entry data-type="{{type}}" data-name="{{name}}" data-url="{{url}}" data-added="{{added}}"><span class="ring-thumb" data-type="{{type}}" aria-hidden="true">{{button}}</span><div class="ring-info"><p class="ring-meta"><span class="ring-badge" data-ring-badge hidden></span><span class="ring-new" data-ring-new hidden><span aria-hidden="true">✦</span> {{artsy.ring.new}}</span><span>{{artsy.ring.added}} <time datetime="{{added}}">{{added}}</time></span></p><h4 class="ring-name">{{name}}</h4><p class="ring-note"><strong>{{artsy.ring.why}}</strong> {{note}}</p><p class="ring-actions"><a class="ring-btn" href="{{url}}" target="_blank" rel="noopener"><span data-ring-cta>{{artsy.ring.visit}}</span> <span aria-hidden="true">↗</span><span class="visually-hidden"> {{site.social.newTab}}</span></a><button class="ring-btn" type="button" hidden data-ring-boost>{{artsy.ring.boost}}</button></p></div></li></template>
+                <template data-copy-list="artsy.webring"><li class="ring-entry" data-ring-entry data-kind="{{kind}}" data-cta="{{cta}}" data-name="{{name}}" data-url="{{url}}" data-added="{{added}}"><span class="ring-thumb" aria-hidden="true">{{button}}</span><div class="ring-info"><p class="ring-meta"><span class="ring-badge">{{kind}}</span><span class="ring-new" data-ring-new hidden><span aria-hidden="true">✦</span> {{artsy.ring.new}}</span><span>{{artsy.ring.added}} <time datetime="{{added}}">{{added}}</time></span></p><h4 class="ring-name">{{name}}</h4><p class="ring-note"><strong>{{artsy.ring.why}}</strong> {{note}}</p><p class="ring-actions"><a class="ring-btn" href="{{url}}" target="_blank" rel="noopener"><span data-ring-cta>{{#cta}}{{cta}}{{/cta}}{{^cta}}{{artsy.ring.visit}}{{/cta}}</span> <span aria-hidden="true">↗</span><span class="visually-hidden"> {{site.social.newTab}}</span></a><button class="ring-btn" type="button" hidden data-ring-boost>{{artsy.ring.boost}}</button></p></div></li></template>
               </ul>
               <div class="ring-nav" hidden data-ring-nav>
                 <button class="ring-navbtn" type="button" data-ring-prev data-copy="artsy.ring.prev">‹ prev</button>
@@ -382,7 +382,7 @@
               <div class="ring-wall" hidden data-ring-wall>
                 <h4 class="ring-walltitle" data-copy="artsy.ring.wallTitle">The button wall</h4>
                 <ul class="ring-buttons">
-                  <template data-copy-list="artsy.webring"><li><button class="ring-b88" type="button" data-type="{{type}}" aria-label="{{name}}" data-ring-pick>{{button}}</button></li></template>
+                  <template data-copy-list="artsy.webring"><li><button class="ring-b88" type="button" aria-label="{{name}}, {{kind}}" data-ring-pick>{{button}}</button></li></template>
                 </ul>
               </div>
               <p class="visually-hidden" role="status" data-ring-status></p>

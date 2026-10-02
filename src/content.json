@@ -418,48 +418,41 @@
         "next": "next ›",
         "of": "of",
         "wallTitle": "The button wall",
-        "types": {
-          "fanfic": {
-            "label": "Fanfic",
-            "filter": "Fanfic",
+        "visit": "Go look",
+        "kinds": {
+          "Fanfic": {
+            "plural": "Fanfic",
             "cta": "Read the fic"
           },
-          "substack": {
-            "label": "Substack",
-            "filter": "Substack",
+          "Substack": {
+            "plural": "Substack",
             "cta": "Read on Substack"
           },
-          "recipe": {
-            "label": "Recipe",
-            "filter": "Recipes",
+          "Recipe": {
+            "plural": "Recipes",
             "cta": "Get cooking"
           },
-          "podcast": {
-            "label": "Podcast",
-            "filter": "Podcasts",
+          "Podcast": {
+            "plural": "Podcasts",
             "cta": "Listen"
           },
-          "article": {
-            "label": "Article",
-            "filter": "Articles",
+          "Article": {
+            "plural": "Articles",
             "cta": "Read the article"
           },
-          "site": {
-            "label": "Website",
-            "filter": "Websites",
+          "Website": {
+            "plural": "Websites",
             "cta": "Visit site"
           },
-          "event": {
-            "label": "Challenge",
-            "filter": "Challenges",
+          "Challenge": {
+            "plural": "Challenges",
             "cta": "Join in"
           }
-        },
-        "visit": "Visit"
+        }
       },
       "webring": [
         {
-          "type": "fanfic",
+          "kind": "Fanfic",
           "name": "",
           "url": "",
           "button": "♡ FANFIC",
@@ -468,7 +461,7 @@
           "show": false
         },
         {
-          "type": "substack",
+          "kind": "Substack",
           "name": "The Chibi Coven",
           "url": "https://thechibicoven.substack.com/",
           "button": "✉ COVEN",
@@ -476,7 +469,7 @@
           "note": "Placeholder boost: my own Substack, keeping this seat warm until I add a newsletter I love."
         },
         {
-          "type": "recipe",
+          "kind": "Recipe",
           "name": "",
           "url": "",
           "button": "♨ RECIPE",
@@ -485,7 +478,7 @@
           "show": false
         },
         {
-          "type": "podcast",
+          "kind": "Podcast",
           "name": "",
           "url": "",
           "button": "◉ PODCAST",
@@ -494,7 +487,7 @@
           "show": false
         },
         {
-          "type": "article",
+          "kind": "Article",
           "name": "",
           "url": "",
           "button": "¶ ARTICLE",
@@ -503,7 +496,7 @@
           "show": false
         },
         {
-          "type": "site",
+          "kind": "Website",
           "name": "Mercury Rx",
           "url": "https://rx.chibimuere.com/",
           "button": "MERCURY RX",
@@ -511,7 +504,7 @@
           "note": "Placeholder boost: my own Mercury retrograde tracker, standing in for a website I really like."
         },
         {
-          "type": "event",
+          "kind": "Challenge",
           "name": "",
           "url": "",
           "button": "✦ CHALLENGE",

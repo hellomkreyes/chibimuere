@@ -1,16 +1,26 @@
 /**
  * Webring: one featured entry at a time, with ‹ prev | random | next › ring
- * nav and a position counter, filter chips for the types that have entries,
+ * nav and a position counter, filter chips for the kinds that have entries,
  * and the 88x31 button wall (each button features its entry).
  *
- * Every entry gets its type badge and call to action from content.json
- * (artsy.ring.types), and a "new" sparkle while it was added in the last 30
- * days, worked out here so it expires without a redeploy. "Boost it" opens
- * the share sheet where there is one, and otherwise copies the link.
- * Without JS, all entries are simply listed.
+ * Kinds are free text ("Fanfic", "Zine", "Playlist"…). Each kind gets one of
+ * six colour tones from a hash of its name, so new kinds need no code. Its call
+ * to action comes from the entry's own "cta", else the kind's preset in
+ * content.json (artsy.ring.kinds), else the catch-all. A "new" sparkle shows
+ * for 30 days after "added", worked out here so it expires without a
+ * redeploy. "Boost it" opens the share sheet where there is one, and
+ * otherwise copies the link. Without JS, all entries are simply listed.
  */
 const NEW_FOR_DAYS = 30;
 const DAY_MS = 86_400_000;
+const TONES = 6;
+
+// Same kind, same tone, on every page load.
+function toneFor(kind) {
+  let hash = 0;
+  for (const char of kind.toLowerCase()) hash = (hash * 31 + char.codePointAt(0)) >>> 0;
+  return String((hash % TONES) + 1);
+}
 
 export default function initWebring(ring) {
   const entries = [...ring.querySelectorAll("[data-ring-entry]")];
@@ -23,32 +33,27 @@ export default function initWebring(ring) {
   } catch {
     // Fall back to the labels below.
   }
-  const types = strings.types ?? {};
+  const kinds = strings.kinds ?? {};
   const status = ring.querySelector("[data-ring-status]");
   const position = ring.querySelector("[data-ring-pos]");
   const chips = ring.querySelector("[data-ring-chips]");
   const dateFormat = new Intl.DateTimeFormat(document.documentElement.lang || "en", { dateStyle: "medium", timeZone: "UTC" });
 
-  // Badges, calls to action, "new" and readable dates.
-  entries.forEach((entry) => {
-    const type = types[entry.dataset.type] ?? {};
-    const badge = entry.querySelector("[data-ring-badge]");
-    badge.textContent = type.label ?? entry.dataset.type;
-    badge.hidden = false;
-    entry.querySelector("[data-ring-cta]").textContent = type.cta ?? strings.visit ?? "Visit";
+  // Tones, calls to action, "new" and readable dates.
+  entries.forEach((entry, i) => {
+    const kind = entry.dataset.kind;
+    const tone = toneFor(kind);
+    entry.querySelector(".ring-thumb").dataset.tone = tone;
+    if (picks[i]) picks[i].dataset.tone = tone;
+    if (!entry.dataset.cta && kinds[kind]?.cta) entry.querySelector("[data-ring-cta]").textContent = kinds[kind].cta;
     const added = Date.parse(entry.dataset.added);
     if (Date.now() - added < NEW_FOR_DAYS * DAY_MS) entry.querySelector("[data-ring-new]").hidden = false;
     const time = entry.querySelector("time");
     if (time && !Number.isNaN(added)) time.textContent = dateFormat.format(added);
   });
-  picks.forEach((pick, i) => {
-    const label = types[entries[i].dataset.type]?.label;
-    if (label) pick.setAttribute("aria-label", `${entries[i].dataset.name}, ${label}`);
-  });
-
   let filter = "all";
   let current = entries[0];
-  const pool = () => entries.filter((e) => filter === "all" || e.dataset.type === filter);
+  const pool = () => entries.filter((e) => filter === "all" || e.dataset.kind === filter);
 
   const show = (entry, { announce = true } = {}) => {
     current = entry;
@@ -69,8 +74,8 @@ export default function initWebring(ring) {
     show(list[(list.indexOf(current) + by + list.length) % list.length]);
   };
 
-  // Filter chips: "All" plus one per type that has entries.
-  const present = [...new Set(entries.map((e) => e.dataset.type))];
+  // Filter chips: "All" plus one per kind that has entries, in order of appearance.
+  const present = [...new Set(entries.map((e) => e.dataset.kind))];
   if (present.length > 1) {
     const makeChip = (value, label) => {
       const chip = document.createElement("button");
@@ -85,7 +90,7 @@ export default function initWebring(ring) {
       });
       return chip;
     };
-    chips.append(makeChip("all", strings.all ?? "All"), ...present.map((type) => makeChip(type, types[type]?.filter ?? type)));
+    chips.append(makeChip("all", strings.all ?? "All"), ...present.map((kind) => makeChip(kind, kinds[kind]?.plural ?? kind)));
     chips.hidden = false;
   }
 
