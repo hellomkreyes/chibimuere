@@ -4,3 +4,6 @@ dist/
 .claude/launch.json
 site-copy.xlsx
 docs/audits/**/*.html
+test-results/
+playwright-report/
+.lighthouseci/

@@ -24,9 +24,39 @@ npm run dev      # run locally with live reload
 npm run build    # bundle production build into dist/
 npm run preview  # preview the production build
 npm test         # unit tests for the content plugin (node:test)
+npm run budget   # first-visit size check (after a build)
+npm run e2e      # Playwright + axe against the build (after a build)
 ```
 
+`npm run e2e` needs browsers once: `npx playwright install chromium`
+(WebKit hangs on macOS 14, so leave it to CI there:
+`npx playwright test --project=chromium`).
+
 Pushing to `main` builds and deploys to GitHub Pages via `.github/workflows/deploy.yml`.
+
+## PR checks
+
+`.github/workflows/checks.yml` runs on every pull request:
+
+- **Build, unit tests, budget**: `npm test`, `npm run build`, then
+  `scripts/check-budget.js`. Each page plus the CSS and JS it loads up front
+  must stay at or under 35 KB gzipped (fonts and lazy chunks excluded).
+- **Playwright + axe** (Chromium and WebKit), from `tests/site.spec.js`: every
+  page in day and night loads without errors and with zero axe violations
+  (WCAG 2.2 AA tags). Chromium also checks the theme toggle, pause motion, and
+  that every in-page link has a target. Section PRs add one spec per section
+  for its main interaction.
+- **Screenshots** (Chromium): full-page, both themes, desktop and phone width,
+  with motion off and the clock pinned. Baselines in `tests/screenshots` are made on
+  GitHub's Linux runner, so screenshot checks are skipped locally. When a
+  change is meant to look different (or a new page needs baselines), add the
+  `update-screenshots` label to the PR: a bot commits fresh baselines and
+  re-runs the checks. Look at the committed images in the PR diff before
+  merging.
+- **Lighthouse** (`lighthouserc.json`): mobile, median of 3 runs on the home
+  and resume pages. Performance 90+, CLS under 0.1 and LCP under 2.5 s fail
+  the check; accessibility and best practices under 100 warn. Reports are kept
+  as a build artifact.
 
 ## Content JSON
 
