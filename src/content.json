@@ -82,7 +82,9 @@
       "nudgeSent": "You have just sent a nudge!",
       "nudgeMuted": "chibimuere has muted nudges. rude.",
       "readWriteup": "Read the write-up",
-      "consoleGreeting": "🦋 oh hai, fellow h@x0r! you found the back door to my little cobweb.\nnow all your logs are belong to chibi.muere 💀"
+      "consoleGreeting": "🦋 oh hai, fellow h@x0r! you found the back door to my little cobweb.\nnow all your logs are belong to chibi.muere 💀",
+      "winkSent": "You have sent a wink:",
+      "skipWink": "skip wink"
     }
   },
   "home": {
@@ -112,16 +114,9 @@
     },
     "bio": {
       "windowTitle": "chibimuere · Conversation",
-      "menu": [
-        "File",
-        "Edit",
-        "Actions",
-        "Tools",
-        "Help"
-      ],
       "title": "just a smol death",
       "presence": "online",
-      "sideNote": "Developing somewhere on geocities since 1997.",
+      "nowPlaying": "Cute without the E by Taking Back Sunday",
       "conversationLabel": "Conversation",
       "stranger": "xXstrangerXx",
       "me": "chibimuere",
@@ -130,8 +125,26 @@
       "reply": "16/m/viridian city",
       "body": "Hello 👋 my name is M.K. Muere - my last name means death! 💀 I am a web developer from Toronto, ON. My specialty is leading agile tech teams, and building unique yet accessible e-commerce experiences. <br/><br/>Formality aside, I practice in digital witchcraft and general internet buffoonery.",
       "nudge": "nudge",
-      "placeholder": "you can&apos;t reply to this one. (see: how to contact me)",
-      "send": "Send",
+      "winks": [
+        {
+          "id": "butterflies",
+          "icon": "🦋",
+          "label": "butterfly swarm",
+          "nightLabel": "moth flutter"
+        },
+        {
+          "id": "moon",
+          "icon": "🌙",
+          "label": "moon sparkles"
+        },
+        {
+          "id": "emoji",
+          "icon": "🔮",
+          "label": "emoji swarm",
+          "glyphs": "🔮 ✨ 💀 🌊 ♊️ 🔥 🫠"
+        }
+      ],
+      "noReply": "you can&apos;t reply to this one. (see how to <a href='#contact'>contact me</a>)",
       "you": "you",
       "typing": "chibimuere is typing a message"
     },

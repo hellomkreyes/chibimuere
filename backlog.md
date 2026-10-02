@@ -17,8 +17,7 @@ Last updated Oct 1, 2026. Finished items are removed as their PRs land.
 - [ ] `[priority]` Project card + case study linking out to the technical breakdown
 
 ## Sections plan (Oct 2026)
-Specs, schedule and gates live in the "chibimuere Sections: Technical Plan" doc. Phase 0 (`data-copy-if`, section loader, motion controller, PR checks) is in.
-- [ ] MSN window revisions + winks (Bio)
+Specs, schedule and gates live in the "chibimuere Sections: Technical Plan" doc. Phase 0 (`data-copy-if`, section loader, motion controller, PR checks) and the MSN window + winks are in.
 - [ ] Cookie corner tab (site-wide). Replaces the parody cookie banner idea and keeps its guardrails: never blocks content, Esc + a real close button, polite announcement, dismissal in localStorage, honors reduced motion
 - [ ] My Pictures folder (Artsy), with `scripts/images.js` pre-converting to AVIF + WebP at 1x/2x
 - [ ] Dream Blunt Rotation conversation circle (Fartsy)

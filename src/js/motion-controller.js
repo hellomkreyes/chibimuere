@@ -20,8 +20,13 @@
  *   // One-off motion, such as a wink. Resolves to { animation } (whatever fn
  *   // returns, wrapped because GSAP animations are thenables), or null when
  *   // motion is off. It lives in the section's context, so pausing motion
- *   // mid-wink reverts it too.
- *   const played = await motion.play((gsap) => gsap.timeline().to(…));
+ *   // mid-wink reverts it too; onRevert(fn) registers cleanup for anything
+ *   // fn added to the page (reverting only resets what GSAP animated).
+ *   const played = await motion.play((gsap, onRevert) => {
+ *     overlay.append(…);
+ *     onRevert(() => overlay.replaceChildren());
+ *     return gsap.timeline().to(…);
+ *   });
  *   skipButton.onclick = () => played?.animation.progress(1);
  *
  *   motion.destroy();  // revert and stop listening
@@ -81,7 +86,12 @@ export function animateSection(scope, { animate, still, plugins: sectionPlugins 
       if (run !== section.run || !motionEnabled() || !sections.has(section)) return null;
       let animation = null;
       contextFor(section, gsap).add(() => {
-        animation = fn(gsap);
+        let cleanup = null;
+        animation = fn(gsap, (onRevert) => {
+          cleanup = onRevert;
+        });
+        // GSAP calls a function returned here when the context reverts.
+        return () => cleanup?.();
       });
       return { animation };
     },

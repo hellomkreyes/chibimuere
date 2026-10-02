@@ -7,6 +7,14 @@ import { ui } from "./copy.js";
 
 const MAX_NUDGES = 3; // after this, chibimuere stops being polite about it
 
+/** Adds a system line ("You have just sent a nudge!") to the conversation log. */
+export function addLogLine(log, text) {
+  const li = document.createElement("li");
+  li.className = "msn-line msn-system";
+  li.textContent = text;
+  log.append(li);
+}
+
 export function initNudge() {
   const win = document.querySelector("[data-msn]");
   const button = win?.querySelector("[data-msn-nudge]");
@@ -14,12 +22,7 @@ export function initNudge() {
   if (!win || !button || !log) return;
 
   let count = 0;
-  const addLine = (text) => {
-    const li = document.createElement("li");
-    li.className = "msn-line msn-system";
-    li.textContent = text;
-    log.append(li);
-  };
+  const addLine = (text) => addLogLine(log, text);
 
   button.addEventListener("click", () => {
     if (count >= MAX_NUDGES) return; // muted
