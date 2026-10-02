@@ -1585,7 +1585,8 @@ h2 em {
 /* A folder window of thumbnails (links to the full picture, so it works
    without JS). src/js/sections/pictures.js adds select / open and a viewer
    with Back, Previous, Next, Rotate and Slideshow. */
-.pics {
+.pics,
+.ring {
   margin-top: clamp(1.5rem, 3vw, 2.5rem);
   overflow: hidden;
   border: 1px solid var(--line);
@@ -1799,7 +1800,8 @@ h2 em {
 }
 
 /* Day skin: pastel glass like the messenger */
-:root:not([data-theme="night"]) .pics {
+:root:not([data-theme="night"]) .pics,
+:root:not([data-theme="night"]) .ring {
   border-color: var(--card-edge);
   border-radius: 14px;
   background: var(--card);
@@ -1867,6 +1869,305 @@ h2 em {
   .pics-stage img {
     height: auto;
     max-height: 50vh;
+  }
+}
+
+/* 7c2. Artsy: Webring ===================================================== */
+/* Shares the My Pictures window chrome. Without JS every entry is listed;
+   src/js/sections/webring.js shows one at a time with ring nav, filter chips
+   and the 88x31 button wall. */
+.ring-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.ring-chips[hidden],
+.ring-nav[hidden],
+.ring-wall[hidden],
+.ring-entry[hidden],
+.ring-new[hidden],
+.ring-btn[hidden] {
+  display: none;
+}
+
+.ring-chip {
+  min-height: 34px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.ring-chip[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.ring-main {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 18px 20px 20px;
+}
+
+.ring-intro {
+  color: var(--ink-soft);
+  font-size: var(--text-xs);
+}
+
+.ring-entries {
+  display: grid;
+  gap: 18px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ring-entry {
+  display: flex;
+  gap: 22px;
+}
+
+.ring.is-ready .ring-entry {
+  animation: ring-in 0.35s ease-out both;
+}
+
+@keyframes ring-in {
+  from {
+    opacity: 0;
+    transform: translateX(14px);
+  }
+}
+
+/* Stand-in thumbnail: the entry's 88x31 label on a type-coloured tile */
+.ring-thumb {
+  display: grid;
+  flex-shrink: 0;
+  width: 220px;
+  height: 150px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  font: 700 13px var(--font-mono);
+  letter-spacing: 0.08em;
+}
+
+.ring-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+.ring-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  color: var(--ink-soft);
+  font-size: 11px;
+}
+
+.ring-badge {
+  padding: 3px 10px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ring-new {
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.ring-new span {
+  display: inline-block;
+  animation: ring-twinkle 1.6s ease-in-out infinite;
+}
+
+@keyframes ring-twinkle {
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+}
+
+.ring-name {
+  margin: 0;
+  color: var(--title-ink, var(--ink));
+  font: 400 clamp(1.6rem, 3vw, 2.1rem) / 1.05 var(--font-coquette);
+}
+
+.ring-note {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.ring-note strong {
+  color: var(--accent);
+}
+
+.ring-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.ring-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 44px;
+  padding: 0 18px;
+  border: 2px solid rgba(120, 100, 90, 0.3);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  font: 700 var(--text-xs) var(--font-mono);
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.ring-btn:hover {
+  border-color: var(--accent);
+}
+
+.ring-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 2px 0;
+  border-block: 1px dashed var(--line);
+  color: var(--ink-soft);
+}
+
+.ring-navbtn {
+  min-height: 40px;
+  padding: 0 12px;
+  border: 0;
+  background: none;
+  color: var(--accent);
+  font: 700 var(--text-xs) var(--font-mono);
+  cursor: pointer;
+}
+
+.ring-navbtn:hover {
+  text-decoration: underline;
+}
+
+.ring-pos {
+  margin-left: 12px;
+  font-size: 12px;
+}
+
+.ring-walltitle {
+  margin: 0 0 8px;
+  color: var(--ink-soft);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.ring-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Classic 88x31 buttons, drawn in CSS until real button images arrive */
+.ring-b88 {
+  width: 88px;
+  height: 31px;
+  padding: 0 4px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  font: 700 9px / 1 var(--font-mono);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.ring-b88[aria-current="true"] {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent);
+}
+
+/* Six tones, assigned per kind by webring.js (a hash of the kind's name), so
+   any new kind gets a stable colour. The tile and its 88x31 button share it. */
+.ring-thumb,
+.ring-b88 { background: #fff; color: #2a2320; }
+:is(.ring-thumb, .ring-b88)[data-tone="1"] { background: #ffe0ec; color: #8a2f5c; }
+:is(.ring-thumb, .ring-b88)[data-tone="2"] { background: #ffeedd; color: #7a4a1c; }
+:is(.ring-thumb, .ring-b88)[data-tone="3"] { background: #fbf1b8; color: #6a5410; }
+:is(.ring-thumb, .ring-b88)[data-tone="4"] { background: #ece2ff; color: #4f3a99; }
+:is(.ring-thumb, .ring-b88)[data-tone="5"] { background: #d9f2e8; color: #1f5a44; }
+:is(.ring-thumb, .ring-b88)[data-tone="6"] { background: #dde8ff; color: #3b3a8f; }
+
+/* Night */
+:root[data-theme="night"] .ring-chip,
+:root[data-theme="night"] .ring-thumb,
+:root[data-theme="night"] .ring-badge,
+:root[data-theme="night"] .ring-btn {
+  border-radius: 2px;
+}
+
+:root[data-theme="night"] .ring-name {
+  color: var(--ink);
+  font-family: var(--font-gothic);
+}
+
+:root[data-theme="night"] .ring-badge {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+:root[data-theme="night"] .ring-btn {
+  border-color: var(--red);
+  background: var(--bg);
+}
+
+:root[data-theme="night"] .ring-chip[aria-pressed="true"] {
+  background: var(--red);
+  color: #000;
+}
+
+/* Night: black tiles; the tone picks the ink */
+:root[data-theme="night"] :is(.ring-thumb, .ring-b88) { background: #07060a; color: #e7e7ee; }
+:root[data-theme="night"] :is(.ring-thumb, .ring-b88):is([data-tone="1"], [data-tone="4"]) { color: var(--red); }
+:root[data-theme="night"] :is(.ring-thumb, .ring-b88):is([data-tone="2"], [data-tone="5"]) { color: var(--cyan); }
+:root[data-theme="night"] :is(.ring-thumb, .ring-b88)[data-tone="3"] { background: var(--cyan); color: #07060a; }
+:root[data-theme="night"] :is(.ring-thumb, .ring-b88)[data-tone="6"] { background: var(--red); color: #07060a; }
+
+@media (max-width: 640px) {
+  .ring-entry {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .ring-thumb {
+    width: 100%;
+    height: 96px;
   }
 }
 
@@ -3391,6 +3692,7 @@ h2 em {
 .low-power .card,
 .low-power .msn,
 .low-power .pics,
+.low-power .ring,
 .low-power .panel,
 .low-power .site-header,
 .low-power .theme-toggle,
@@ -3405,6 +3707,7 @@ h2 em {
 :root.low-power:not([data-theme="night"]) .card,
 :root.low-power:not([data-theme="night"]) .msn,
 :root.low-power:not([data-theme="night"]) .pics,
+:root.low-power:not([data-theme="night"]) .ring,
 :root.low-power:not([data-theme="night"]) .panel {
   background: rgba(255, 255, 255, 0.68);
 }
@@ -3498,6 +3801,7 @@ h2 em {
   .panel,
   .msn,
   .pics,
+  .ring,
   .card,
   .site-nav,
   .site-header.is-scrolled {

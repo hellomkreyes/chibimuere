@@ -117,6 +117,29 @@ HEIC on macOS, and adds an entry per new picture to `home.artsy.pictures` in
 `alt`, then set `"show": true`. An original named `thumbs-db` becomes the
 Thumbs.db easter egg. The six current pictures are generated placeholders.
 
+## Webring
+
+Entries live in `home.artsy.webring` in `content.json`:
+
+```json
+{
+  "kind": "Fanfic",
+  "name": "Title of the thing",
+  "url": "https://…",
+  "button": "♡ FANFIC",
+  "added": "2026-10-02",
+  "note": "Why I'm boosting it, in a line or two.",
+  "cta": "Optional: a one-off call to action"
+}
+```
+
+`kind` is free text: any new kind gets its own badge, filter chip and one of
+six colour tones automatically. `artsy.ring.kinds` holds optional presets per
+kind (a plural for its chip and a call to action, like "Get cooking" for
+recipes); kinds without one use the catch-all "Go look". `button` is the
+88x31 button's label. The ✦ new sparkle shows for 30 days after `added`.
+Add `"show": false` to hide an entry.
+
 ## Day / Night 🌞🌚
 
 The look comes from the day/night mockup (v4): soft prism light by day, a

@@ -402,6 +402,116 @@
           "height": 750,
           "show": true
         }
+      ],
+      "ring": {
+        "windowTitle": "chibimuere · Webring",
+        "intro": "Tiny corners of the internet worth a visit.",
+        "filtersLabel": "Filter entries",
+        "all": "All",
+        "why": "Why I’m boosting this:",
+        "added": "added",
+        "new": "new",
+        "boost": "Boost it",
+        "copied": "Link copied!",
+        "prev": "‹ prev",
+        "random": "random",
+        "next": "next ›",
+        "of": "of",
+        "wallTitle": "The button wall",
+        "visit": "Go look",
+        "kinds": {
+          "Fanfic": {
+            "plural": "Fanfic",
+            "cta": "Read the fic"
+          },
+          "Substack": {
+            "plural": "Substack",
+            "cta": "Read on Substack"
+          },
+          "Recipe": {
+            "plural": "Recipes",
+            "cta": "Get cooking"
+          },
+          "Podcast": {
+            "plural": "Podcasts",
+            "cta": "Listen"
+          },
+          "Article": {
+            "plural": "Articles",
+            "cta": "Read the article"
+          },
+          "Website": {
+            "plural": "Websites",
+            "cta": "Visit site"
+          },
+          "Challenge": {
+            "plural": "Challenges",
+            "cta": "Join in"
+          }
+        }
+      },
+      "webring": [
+        {
+          "kind": "Fanfic",
+          "name": "",
+          "url": "",
+          "button": "♡ FANFIC",
+          "added": "",
+          "note": "",
+          "show": false
+        },
+        {
+          "kind": "Substack",
+          "name": "The Chibi Coven",
+          "url": "https://thechibicoven.substack.com/",
+          "button": "✉ COVEN",
+          "added": "2026-10-02",
+          "note": "Placeholder boost: my own Substack, keeping this seat warm until I add a newsletter I love."
+        },
+        {
+          "kind": "Recipe",
+          "name": "",
+          "url": "",
+          "button": "♨ RECIPE",
+          "added": "",
+          "note": "",
+          "show": false
+        },
+        {
+          "kind": "Podcast",
+          "name": "",
+          "url": "",
+          "button": "◉ PODCAST",
+          "added": "",
+          "note": "",
+          "show": false
+        },
+        {
+          "kind": "Article",
+          "name": "",
+          "url": "",
+          "button": "¶ ARTICLE",
+          "added": "",
+          "note": "",
+          "show": false
+        },
+        {
+          "kind": "Website",
+          "name": "Mercury Rx",
+          "url": "https://rx.chibimuere.com/",
+          "button": "MERCURY RX",
+          "added": "2026-10-02",
+          "note": "Placeholder boost: my own Mercury retrograde tracker, standing in for a website I really like."
+        },
+        {
+          "kind": "Challenge",
+          "name": "",
+          "url": "",
+          "button": "✦ CHALLENGE",
+          "added": "",
+          "note": "",
+          "show": false
+        }
       ]
     },
     "fartsy": {
