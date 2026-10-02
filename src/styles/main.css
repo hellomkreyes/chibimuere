@@ -906,6 +906,7 @@ main,
 .portfolio-section,
 .placeholder-section,
 .artsy-section,
+.fartsy-section,
 .contact-band {
   padding-block: clamp(3.5rem, 8vw, 6.5rem);
 }
@@ -1866,6 +1867,330 @@ h2 em {
   .pics-stage img {
     height: auto;
     max-height: 50vh;
+  }
+}
+
+/* 7d. Fartsy: Dream Blunt Rotation ======================================= */
+/* A 3x3 table: chibimuere hosts the middle seat, eight guests sit around it
+   in passing order. src/js/sections/rotation.js moves the joint and fills
+   the speech bubble (smoke by day, a typed terminal line by night). */
+.rot {
+  --rot-gap: 12px;
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+}
+
+.rot-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.rot-title {
+  margin: 0;
+  font: 400 clamp(1.6rem, 3vw, 2rem) / 1.1 var(--font-coquette);
+  color: var(--title-ink, var(--ink));
+}
+
+.rot-intro {
+  margin-top: 6px;
+  color: var(--ink-soft);
+  font-size: var(--text-xs);
+}
+
+.rot-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.rot-controls[hidden],
+.rot-bubble[hidden],
+.rot-token[hidden] {
+  display: none;
+}
+
+.rot-btn {
+  min-height: 44px;
+  padding: 0 18px;
+  border: 2px solid rgba(120, 100, 90, 0.3);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  font: 700 var(--text-xs) var(--font-mono);
+  letter-spacing: 0.04em;
+  cursor: pointer;
+}
+
+.rot-btn:hover {
+  border-color: var(--accent);
+}
+
+.rot-btn[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.rot-body {
+  display: grid;
+  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.rot-table {
+  position: relative;
+  aspect-ratio: 1;
+}
+
+.rot-circle {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: var(--rot-gap);
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Passing order runs clockwise from the top left; the middle is the host's. */
+.rot-circle > :nth-child(1) { grid-area: 1 / 1; }
+.rot-circle > :nth-child(2) { grid-area: 1 / 2; }
+.rot-circle > :nth-child(3) { grid-area: 1 / 3; }
+.rot-circle > :nth-child(4) { grid-area: 2 / 3; }
+.rot-circle > :nth-child(5) { grid-area: 3 / 3; }
+.rot-circle > :nth-child(6) { grid-area: 3 / 2; }
+.rot-circle > :nth-child(7) { grid-area: 3 / 1; }
+.rot-circle > :nth-child(8) { grid-area: 2 / 1; }
+
+.rot-seat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 17px;
+  background: var(--panel);
+  font-size: 12px;
+  line-height: 1.2;
+  text-align: center;
+  transition:
+    border-color 0.4s,
+    box-shadow 0.4s;
+}
+
+.rot-seat.is-holding {
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+.rot-host {
+  position: absolute;
+  top: calc((100% - 2 * var(--rot-gap)) / 3 + var(--rot-gap));
+  left: calc((100% - 2 * var(--rot-gap)) / 3 + var(--rot-gap));
+  width: calc((100% - 2 * var(--rot-gap)) / 3);
+  height: calc((100% - 2 * var(--rot-gap)) / 3);
+  margin: 0;
+  border: 2px dashed var(--accent);
+}
+
+.rot-avatar {
+  display: grid;
+  width: clamp(36px, 8vw, 60px);
+  aspect-ratio: 1;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: linear-gradient(160deg, #ece2ff, #ffe0ec 60%, #ffeedd);
+  font-size: clamp(1.1rem, 3vw, 1.7rem);
+  line-height: 1;
+}
+
+.rot-name {
+  overflow-wrap: anywhere;
+}
+
+/* The joint: moved onto the holder's seat by rotation.js */
+.rot-token {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 44px;
+  height: 44px;
+  pointer-events: none;
+  transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.rot-token svg {
+  width: 100%;
+  height: 100%;
+  fill: var(--ink);
+}
+
+.rot-token circle {
+  fill: var(--accent);
+}
+
+.rot-token i {
+  position: absolute;
+  top: 4px;
+  left: 32px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--ink-soft);
+  opacity: 0;
+  animation: rot-puff 2s ease-out infinite;
+}
+
+.rot-token i:nth-of-type(2) {
+  left: 30px;
+  animation-delay: 0.7s;
+}
+
+.rot-token i:nth-of-type(3) {
+  top: 2px;
+  left: 34px;
+  animation-delay: 1.4s;
+}
+
+@keyframes rot-puff {
+  0% {
+    opacity: 0.7;
+    transform: translate(0, 0) scale(0.6);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-6px, -30px) scale(1.8);
+  }
+}
+
+/* The speech bubble follows the holder's row */
+.rot-bubble {
+  position: relative;
+  max-width: 400px;
+  margin-left: 14px;
+  padding: 22px 24px;
+  border: 1px solid #fff;
+  border-radius: 36px;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow:
+    0 0 0 10px rgba(255, 255, 255, 0.35),
+    0 0 40px 18px rgba(255, 255, 255, 0.55);
+  transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.rot-bubble::before {
+  position: absolute;
+  top: 34px;
+  left: -14px;
+  border: 14px solid transparent;
+  border-left: 0;
+  border-right-color: #fff;
+  content: "";
+}
+
+.rot-holder {
+  margin-bottom: 10px;
+  color: var(--ink-soft);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.rot-question {
+  color: var(--ink);
+  font: 400 clamp(1.15rem, 2.2vw, 1.5rem) / 1.25 var(--font-coquette);
+}
+
+.rot-tag {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 3px 10px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--accent);
+  font-size: 11px;
+}
+
+/* Night: square seats, a terminal bubble, gothic headings */
+:root[data-theme="night"] .rot-title {
+  color: var(--ink);
+  font-family: var(--font-gothic);
+}
+
+:root[data-theme="night"] .rot-seat,
+:root[data-theme="night"] .rot-avatar,
+:root[data-theme="night"] .rot-btn,
+:root[data-theme="night"] .rot-tag {
+  border-radius: 2px;
+}
+
+:root[data-theme="night"] .rot-avatar {
+  background: repeating-linear-gradient(135deg, #1a1620 0 1px, transparent 1px 12px), #0b0a10;
+}
+
+:root[data-theme="night"] .rot-host {
+  border-color: var(--cyan);
+}
+
+:root[data-theme="night"] .rot-btn {
+  border-color: var(--red);
+  background: var(--bg);
+}
+
+:root[data-theme="night"] .rot-btn[aria-pressed="true"] {
+  background: var(--red);
+  color: #000;
+}
+
+:root[data-theme="night"] .rot-bubble {
+  border-color: var(--cyan);
+  border-radius: 2px;
+  background: var(--bg);
+  box-shadow: none;
+}
+
+:root[data-theme="night"] .rot-bubble::before {
+  border-right-color: var(--cyan);
+}
+
+:root[data-theme="night"] .rot-question {
+  font-family: var(--font-mono);
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+}
+
+:root[data-theme="night"] .rot-question::before {
+  color: var(--red);
+  content: "> ";
+  content: "> " / "";
+}
+
+@media (max-width: 760px) {
+  /* Phones and small tablets: the bubble sits under the table and stops following rows. */
+  .rot-body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .rot-table {
+    width: min(100%, 420px);
+  }
+
+  .rot-bubble {
+    margin-left: 0;
+    transform: none !important;
+  }
+
+  .rot-bubble::before {
+    display: none;
   }
 }
 

@@ -407,7 +407,72 @@
     "fartsy": {
       "eyebrow": "Nonsense in progress",
       "title": "Fartsy",
-      "body": "Something is brewing. Check back soon."
+      "rotationTitle": "Dream Blunt Rotation",
+      "rotationIntro": "People I would happily overthink with.",
+      "host": "chibimuere",
+      "hostRole": "(host)",
+      "hostIcon": "☠︎",
+      "pass": "Puff, puff, pass",
+      "auto": "Auto-pass",
+      "autoPause": "Pause auto-pass",
+      "hasIt": "has it",
+      "rotation": [
+        {
+          "name": "Amy Poehler",
+          "icon": "🧇",
+          "question": "Galentine’s Day: what’s the ideal waffle-to-friend ratio?",
+          "tag": "#treat-yo-friends"
+        },
+        {
+          "name": "Shiny Rayquaza",
+          "icon": "🐉",
+          "question": "Do you ever miss being the regular green one, or is black and gold just who you are now?",
+          "tag": "#shiny-hunting"
+        },
+        {
+          "name": "Ilana Glazer",
+          "icon": "🛍️",
+          "question": "Rate today on the Broad City scale: quick errand, or a full odyssey across three boroughs?",
+          "tag": "#yas-queen"
+        },
+        {
+          "name": "Eren Yeager",
+          "icon": "🗡️",
+          "question": "Have you considered just… talking it out? With words?",
+          "tag": "#therapy-arc",
+          "show": false
+        },
+        {
+          "name": "Brittany Broski",
+          "icon": "🫖",
+          "question": "What’s this year’s kombucha: the thing everyone pretends to like?",
+          "tag": "#royal-court"
+        },
+        {
+          "name": "Mao Mao",
+          "icon": "🐱",
+          "question": "Is it still heroic if nobody saw you do it?",
+          "tag": "#pure-of-heart"
+        },
+        {
+          "name": "Willem Dafoe",
+          "icon": "🎭",
+          "question": "You’ve played Jesus and the Green Goblin. Who was the better coworker?",
+          "tag": "#range"
+        },
+        {
+          "name": "Keanu Reeves",
+          "icon": "🏍️",
+          "question": "My README says I hope my future boss is you. Are you hiring?",
+          "tag": "#career-goals"
+        },
+        {
+          "name": "Elsa",
+          "icon": "❄️",
+          "question": "What are you finally ready to let go of?",
+          "tag": "#let-it-go"
+        }
+      ]
     },
     "contact": {
       "eyebrow": "How to contact me:",

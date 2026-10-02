@@ -359,11 +359,44 @@
       </section>
 
       <!-- Fartsy: Dream Collabs + Blunt Rotation. Dropped at build time (with its nav link) until one has content. -->
-      <section id="fartsy" class="placeholder-section" data-copy-if="fartsy.collabs fartsy.rotation" aria-labelledby="fartsy-title">
+      <section id="fartsy" class="fartsy-section" data-copy-if="fartsy.collabs fartsy.rotation" aria-labelledby="fartsy-title">
         <div class="shell">
           <p class="eyebrow" data-copy="fartsy.eyebrow">Nonsense in progress</p>
           <h2 id="fartsy-title" data-copy="fartsy.title">Fartsy</h2>
-          <p class="placeholder-note" data-copy="fartsy.body">Something is brewing. Check back soon.</p>
+
+          <!-- Dream Blunt Rotation: chibimuere hosts the middle seat, eight guests around.
+               src/js/sections/rotation.js passes the joint and shows each guest's question. -->
+          <article class="rot" data-copy-if="fartsy.rotation" data-section="rotation" aria-labelledby="rot-title">
+            <div class="rot-head">
+              <div>
+                <h3 class="rot-title" id="rot-title" data-copy="fartsy.rotationTitle">Dream Blunt Rotation</h3>
+                <p class="rot-intro" data-copy="fartsy.rotationIntro">People I would happily overthink with.</p>
+              </div>
+              <div class="rot-controls" hidden data-rot-controls>
+                <button class="rot-btn" type="button" data-rot-pass data-copy="fartsy.pass">Puff, puff, pass</button>
+                <button class="rot-btn" type="button" aria-pressed="false" data-rot-auto data-copy-attr="data-play={{fartsy.auto}}; data-pause={{fartsy.autoPause}}" data-copy="fartsy.auto">Auto-pass</button>
+              </div>
+            </div>
+            <div class="rot-body" data-copy-attr="data-has-it={{fartsy.hasIt}}">
+              <div class="rot-table">
+                <ol class="rot-circle">
+                  <template data-copy-list="fartsy.rotation"><li class="rot-seat" data-rot-seat data-question="{{question}}" data-tag="{{tag}}"><span class="rot-avatar" aria-hidden="true">{{icon}}</span><span class="rot-name">{{name}}</span></li></template>
+                </ol>
+                <p class="rot-seat rot-host"><span class="rot-avatar" aria-hidden="true" data-copy="fartsy.hostIcon">☠︎</span><span class="rot-name"><span data-copy="fartsy.host">chibimuere</span> <span data-copy="fartsy.hostRole">(host)</span></span></p>
+                <span class="rot-token" aria-hidden="true" hidden data-rot-token>
+                  <svg viewBox="0 0 44 44" focusable="false"><rect x="6" y="18" width="30" height="9" rx="4.5" transform="rotate(-25 22 22)" /><circle cx="34" cy="15" r="4.5" /></svg>
+                  <i></i><i></i><i></i>
+                </span>
+              </div>
+              <!-- The visible bubble is decoration for sighted visitors; the status line below says the same thing once, in plain text. -->
+              <div class="rot-bubble" aria-hidden="true" hidden data-rot-bubble>
+                <p class="rot-holder"><span data-rot-holder></span> <span data-copy="fartsy.hasIt">has it</span></p>
+                <p class="rot-question" data-rot-question></p>
+                <p><span class="rot-tag" data-rot-tag></span></p>
+              </div>
+              <p class="visually-hidden" role="status" data-rot-status></p>
+            </div>
+          </article>
         </div>
       </section>
 

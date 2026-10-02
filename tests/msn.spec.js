@@ -27,6 +27,8 @@ test("a wink logs itself, plays over the page, and Skip ends it", async ({ page 
   const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
   expect(results.violations.map((v) => v.id)).toEqual([]);
 
+  // axe can outlast the ~3 s wink, so send a fresh one before using Skip.
+  await page.locator('[data-wink="butterflies"]').click();
   await page.locator("[data-wink-skip]").click();
   await expect(overlay).toBeHidden();
   await expect(page.locator("[data-wink-skip]")).toBeHidden();
