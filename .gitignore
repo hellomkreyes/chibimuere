@@ -7,3 +7,4 @@ docs/audits/**/*.html
 test-results/
 playwright-report/
 .lighthouseci/
+art-originals/
