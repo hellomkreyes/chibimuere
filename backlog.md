@@ -17,11 +17,11 @@ Last updated Oct 1, 2026. Finished items are removed as their PRs land.
 - [ ] `[priority]` Project card + case study linking out to the technical breakdown
 
 ## Sections plan (Oct 2026)
-Specs, schedule and gates live in the "chibimuere Sections: Technical Plan" doc. Phase 0 (`data-copy-if`, section loader, motion controller, PR checks) the MSN window + winks, the cookie corner, My Pictures (with placeholder art), the Dream Blunt Rotation (with placeholder questions), and the Webring (two placeholder entries) are in.
+Specs, schedule and gates live in the "chibimuere Sections: Technical Plan" doc. Phase 0 (`data-copy-if`, section loader, motion controller, PR checks), the MSN window + winks, the cookie corner, My Pictures (with placeholder art), the Dream Blunt Rotation (with placeholder questions), the Webring (two placeholder entries), and the Dream Collabs ship chart (with placeholder copy) are in.
 - [ ] My Pictures: swap the six generated placeholders (and the Thumbs.db one) for real art: originals into `art-originals/`, `npm run images`, captions + alt text in `content.json`, then hide or delete the placeholder entries and their files in `public/art/`
 - [ ] Dream Blunt Rotation: M.K. picks which placeholder questions to keep or rewrite (`home.fartsy.rotation` in `content.json`). Eren Yeager is benched (`"show": false`); real photos or illustrations can replace the emoji avatars later
 - [ ] Webring: M.K. fills in the five empty entries in `home.artsy.webring` (fanfic, recipe, podcast, article, creative challenge/event; see the README's Webring section for the fields), adds any other kinds of media as entries, and swaps the two placeholder boosts (Substack, website) for real picks. Real 88x31 button images and site thumbnails can replace the CSS ones later
-- [ ] Dream Collabs ship chart (Fartsy)
+- [ ] Dream Collabs: M.K. writes the `why` for each of the nine collabs (`home.fartsy.collabs` in `content.json`; each currently says "Placeholder…") and tunes the placeholder tags. All nine are fanon: when one happens, add `"canon": true` and a `"link"` to what you made, and the chart gives it a solid line, a heart and a burst
 - [ ] Visitor counter + Cloudflare Worker (site-wide footer). When it ships, update the cookie policy copy in `site.cookie.policy` (the Analytics row says "none" and the body says nothing is counted)
 
 ## Content & sections
