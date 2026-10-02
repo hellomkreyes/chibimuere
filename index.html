@@ -321,11 +321,40 @@
       </section>
 
       <!-- Artsy: My Pictures + Webring. Dropped at build time (with its nav link) until one has content. -->
-      <section id="artsy" class="placeholder-section" data-copy-if="artsy.pictures artsy.webring" aria-labelledby="artsy-title">
+      <section id="artsy" class="artsy-section" data-copy-if="artsy.pictures artsy.webring" aria-labelledby="artsy-title">
         <div class="shell">
           <p class="eyebrow" data-copy="artsy.eyebrow">Art in progress</p>
           <h2 id="artsy-title" data-copy="artsy.title">Artsy</h2>
-          <p class="placeholder-note" data-copy="artsy.body">Still drying. Check back soon.</p>
+
+          <!-- My Pictures: a folder window. Each thumbnail links to the full picture, so it
+               works without JS; src/js/sections/pictures.js adds select, open and the viewer. -->
+          <article class="pics" data-copy-if="artsy.pictures" data-section="pictures" aria-labelledby="pics-title">
+            <div class="pics-titlebar">
+              <span class="pics-app" aria-hidden="true">
+                <svg viewBox="0 0 26 20" focusable="false"><path d="M13 10C9 1 1 1 2 6s7 6 11 4zM13 10c4-9 12-9 11-4s-7 6-11 4zM13 10c-3 6-9 9-10 5s5-6 10-5zM13 10c3 6 9 9 10 5s-5-6-10-5z" fill="currentColor" /></svg>
+              </span>
+              <h3 class="pics-title" id="pics-title" data-copy="artsy.folder.windowTitle">chibimuere · My Pictures</h3>
+            </div>
+            <p class="pics-status">
+              <span data-pics-hint><span class="pics-hint-mouse" data-copy="artsy.folder.hint">Double-click a picture to open it</span><span class="pics-hint-touch" data-copy="artsy.folder.hintTouch">Tap a picture twice to open it</span></span>
+              <span data-pics-count hidden><span data-pics-count-num></span> <span data-copy="artsy.folder.items">items</span></span>
+            </p>
+            <ul class="pics-grid" data-pics-grid>
+              <template data-copy-list="artsy.pictures"><li><a class="pics-thumb{{#cursed}} pics-cursed{{/cursed}}" href="/art/{{src}}@2x.webp" data-pic="{{src}}" data-width="{{width}}" data-height="{{height}}"{{#cursed}} data-cursed{{/cursed}}><span class="pics-img"><picture><source type="image/avif" srcset="/art/{{src}}-thumb.avif 1x, /art/{{src}}-thumb@2x.avif 2x" /><img src="/art/{{src}}-thumb.webp" srcset="/art/{{src}}-thumb@2x.webp 2x" width="240" height="144" loading="lazy" decoding="async" alt="{{alt}}" /></picture><span class="pics-cap">{{title}}{{#year}}, {{year}}{{/year}}{{#medium}} · {{medium}}{{/medium}}</span></span><span class="pics-name">{{file}}</span></a></li></template>
+            </ul>
+            <!-- The viewer, filled in by pictures.js when a picture is opened -->
+            <div class="pics-viewer" role="region" tabindex="-1" hidden data-pics-viewer>
+              <div class="pics-stage"><picture data-pics-picture><source type="image/avif" /><img alt="" /></picture></div>
+              <p class="pics-caption" aria-live="polite" data-pics-caption></p>
+              <div class="pics-controls">
+                <button class="pics-btn" type="button" data-pics-back data-copy="artsy.folder.back">Back to all</button>
+                <button class="pics-btn" type="button" data-pics-prev data-copy="artsy.folder.previous">Previous</button>
+                <button class="pics-btn" type="button" data-pics-next data-copy="artsy.folder.next">Next</button>
+                <button class="pics-btn" type="button" data-pics-rotate data-copy="artsy.folder.rotate">Rotate</button>
+                <button class="pics-btn" type="button" aria-pressed="false" data-pics-play data-copy-attr="data-play={{artsy.folder.slideshow}}; data-pause={{artsy.folder.pause}}; data-viewing={{artsy.folder.viewing}}">Slideshow</button>
+              </div>
+            </div>
+          </article>
         </div>
       </section>
 

@@ -17,8 +17,8 @@ Last updated Oct 1, 2026. Finished items are removed as their PRs land.
 - [ ] `[priority]` Project card + case study linking out to the technical breakdown
 
 ## Sections plan (Oct 2026)
-Specs, schedule and gates live in the "chibimuere Sections: Technical Plan" doc. Phase 0 (`data-copy-if`, section loader, motion controller, PR checks) the MSN window + winks, and the cookie corner are in.
-- [ ] My Pictures folder (Artsy), with `scripts/images.js` pre-converting to AVIF + WebP at 1x/2x
+Specs, schedule and gates live in the "chibimuere Sections: Technical Plan" doc. Phase 0 (`data-copy-if`, section loader, motion controller, PR checks) the MSN window + winks, the cookie corner, and My Pictures (with placeholder art) are in.
+- [ ] My Pictures: swap the six generated placeholders (and the Thumbs.db one) for real art: originals into `art-originals/`, `npm run images`, captions + alt text in `content.json`, then hide or delete the placeholder entries and their files in `public/art/`
 - [ ] Dream Blunt Rotation conversation circle (Fartsy)
 - [ ] Webring (Artsy)
 - [ ] Dream Collabs ship chart (Fartsy)
