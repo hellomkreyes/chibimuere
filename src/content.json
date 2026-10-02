@@ -517,6 +517,65 @@
     "fartsy": {
       "eyebrow": "Nonsense in progress",
       "title": "Fartsy",
+      "collabsTitle": "Dream Collabs",
+      "collabsIntro": "The ship chart. Fanon for now, canon someday.",
+      "collabsLegend": {
+        "canon": "canon",
+        "fanon": "fanon"
+      },
+      "collabsChartLabel": "Ship chart: pick a collab to see its details",
+      "collabsCenter": "chibimuere",
+      "collabsDetails": "Ship details",
+      "collabsCanonChip": "it’s canon!!",
+      "collabsSeeWhat": "See what we made",
+      "collabsCta": "Ready to make it canon?",
+      "collabs": [
+        {
+          "name": "Ms. Rachel &amp; Mr. Aron",
+          "tags": "educational crossover, songs stuck in my head, toddler-approved",
+          "why": "Placeholder: why this is my dream collab, in two or three lines. Written by M.K. soon."
+        },
+        {
+          "name": "Chani Nicholas",
+          "tags": "astro-AU, mercury retrograde, slow burn",
+          "why": "Placeholder: why this is my dream collab, in two or three lines. Written by M.K. soon."
+        },
+        {
+          "name": "Crunchyroll",
+          "tags": "binge-watch AU, filler episodes only, dream collab",
+          "why": "Placeholder: why this is my dream collab, in two or three lines. Written by M.K. soon."
+        },
+        {
+          "name": "Michael B. Jordan",
+          "tags": "red carpet AU, enemies to collaborators, fix-it",
+          "why": "Placeholder: why this is my dream collab, in two or three lines. Written by M.K. soon."
+        },
+        {
+          "name": "Pokemon",
+          "tags": "gotta collab ’em all, nostalgia, rare pair",
+          "why": "Placeholder: why this is my dream collab, in two or three lines. Written by M.K. soon."
+        },
+        {
+          "name": "Jinx Monsoon",
+          "tags": "drag race AU, camp, crack ship but hear me out",
+          "why": "Placeholder: why this is my dream collab, in two or three lines. Written by M.K. soon."
+        },
+        {
+          "name": "NASA",
+          "tags": "to the moon, long distance, manifesting",
+          "why": "Placeholder: why this is my dream collab, in two or three lines. Written by M.K. soon."
+        },
+        {
+          "name": "Domee Shi",
+          "tags": "big feelings, red panda energy, mutual pining",
+          "why": "Placeholder: why this is my dream collab, in two or three lines. Written by M.K. soon."
+        },
+        {
+          "name": "My Chemical Romance",
+          "tags": "black parade AU, emo revival, will they won’t they",
+          "why": "Placeholder: why this is my dream collab, in two or three lines. Written by M.K. soon."
+        }
+      ],
       "rotationTitle": "Dream Blunt Rotation",
       "rotationIntro": "People I would happily overthink with.",
       "host": "chibimuere",

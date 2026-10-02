@@ -6,6 +6,7 @@ import AxeBuilder from "@axe-core/playwright";
 test.beforeEach(async ({ page }) => {
   await page.addInitScript(() => {
     localStorage.setItem("chibi-theme", "night");
+    localStorage.setItem("chibi-motion", "off"); // axe reads colours at rest, not mid-fade
     localStorage.setItem("chibi-cookie-peek", "dismissed");
   });
   await page.goto("/#artsy");
