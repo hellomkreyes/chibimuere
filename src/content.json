@@ -215,7 +215,11 @@
           "name": "Good Weather",
           "style": "sans"
         }
-      ]
+      ],
+      "cta": {
+        "text": "The brands are the highlight reel. The resume has the receipts.",
+        "button": "Read the resume"
+      }
     },
     "portfolio": {
       "eyebrow": "Selected works and curiosities",

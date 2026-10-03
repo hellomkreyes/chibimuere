@@ -11,6 +11,7 @@ test.describe("with JS", () => {
       localStorage.setItem("chibi-cookie-peek", "dismissed");
     });
     await page.goto("/#fartsy");
+    await page.locator(".ship").scrollIntoViewIfNeeded(); // sections load as they come near the viewport
     await expect(page.locator(".ship")).toHaveAttribute("data-section-ready", "");
   });
 

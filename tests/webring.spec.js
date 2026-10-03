@@ -12,6 +12,7 @@ test.beforeEach(async ({ page, context, browserName }) => {
     delete navigator.share; // test the copy-the-link path
   });
   await page.goto("/#artsy");
+  await page.locator(".ring").scrollIntoViewIfNeeded(); // sections load as they come near the viewport
   await expect(page.locator(".ring")).toHaveAttribute("data-section-ready", "");
 });
 
