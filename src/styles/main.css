@@ -2645,8 +2645,13 @@ h2 em {
 /* The chart (with JS) */
 .ship-chart {
   position: relative;
-  aspect-ratio: 584 / 440;
+  /* An explicit width: every child is absolutely positioned, so the chart has no
+     content width of its own, and Safari derives 0 from the aspect-ratio when a
+     grid item stretches. Zero width bunched all the nodes into one corner. */
+  width: 100%;
   min-width: 0;
+  align-self: start;
+  aspect-ratio: 584 / 440;
 }
 
 .ship-lines {
