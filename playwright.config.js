@@ -27,8 +27,8 @@ export default defineConfig({
   },
   projects: [
     { name: "chromium", use: { ...devices["Desktop Chrome"] } },
-    // Safari's engine: the page + axe checks only (screenshots and behavior run in Chromium).
-    { name: "webkit", use: { ...devices["Desktop Safari"] }, grep: /axe violations/ },
+    // Safari's engine: the page + axe checks, plus the Dream Collabs chart layout (screenshots and other behavior run in Chromium).
+    { name: "webkit", use: { ...devices["Desktop Safari"] }, grep: /axe violations|spread around the centre/ },
   ],
   webServer: {
     command: "npm run preview -- --port 4173 --strictPort",
