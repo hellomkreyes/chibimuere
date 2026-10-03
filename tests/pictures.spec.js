@@ -10,6 +10,7 @@ test.beforeEach(async ({ page }) => {
     localStorage.setItem("chibi-cookie-peek", "dismissed");
   });
   await page.goto("/#artsy");
+  await page.locator(".pics").scrollIntoViewIfNeeded(); // sections load as they come near the viewport
   await expect(page.locator(".pics")).toHaveAttribute("data-section-ready", "");
 });
 

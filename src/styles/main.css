@@ -2954,6 +2954,20 @@ h2 em {
   }
 }
 
+/* Resume call to action under the marquee */
+.brands-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 32px;
+  margin-top: clamp(2rem, 4vw, 3rem);
+}
+
+.brands-cta p {
+  max-width: 34rem;
+  color: var(--ink-soft);
+}
+
 /* 9. Portfolio cards ======================================================= */
 
 .portfolio-heading {

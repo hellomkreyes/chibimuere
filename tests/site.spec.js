@@ -71,6 +71,14 @@ for (const { name, path } of PAGES) {
 }
 
 test.describe("home", () => {
+  test("the resume call to action under the marquee leads to the resume page", async ({ page }) => {
+    await open(page, "/");
+    const cta = page.locator(".brands-cta").getByRole("link", { name: "Read the resume" });
+    await expect(cta).toBeVisible();
+    await cta.click();
+    await expect(page).toHaveURL(/resume\.html$/);
+  });
+
   test("every in-page link has a target, on both pages", async ({ page }) => {
     await open(page, "/");
     const ids = await page.evaluate(() => [...document.querySelectorAll("[id]")].map((el) => el.id));
