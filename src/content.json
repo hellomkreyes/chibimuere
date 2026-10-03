@@ -550,8 +550,8 @@
           "why": "Placeholder: why this is my dream collab, in two or three lines. Written by M.K. soon."
         },
         {
-          "name": "Michael B. Jordan",
-          "tags": "red carpet AU, enemies to collaborators, fix-it",
+          "name": "Manny Jacinto",
+          "tags": "modern/good place AU, bortles forever, star wars references, fight for my husband",
           "why": "Placeholder: why this is my dream collab, in two or three lines. Written by M.K. soon."
         },
         {
@@ -560,8 +560,8 @@
           "why": "Placeholder: why this is my dream collab, in two or three lines. Written by M.K. soon."
         },
         {
-          "name": "Jinx Monsoon",
-          "tags": "drag race AU, camp, crack ship but hear me out",
+          "name": "Amy Poehler",
+          "tags": "leslie knope energy, a good time hang, galentine's day",
           "why": "Placeholder: why this is my dream collab, in two or three lines. Written by M.K. soon."
         },
         {
@@ -591,10 +591,10 @@
       "hasIt": "has it",
       "rotation": [
         {
-          "name": "Amy Poehler",
-          "icon": "🧇",
-          "question": "Galentine’s Day: what’s the ideal waffle-to-friend ratio?",
-          "tag": "#treat-yo-friends"
+          "name": "Jinx Monsoon",
+          "icon": "💄",
+          "question": "Be honest: has the wig ever turned on you mid-lip-sync?",
+          "tag": "#wig-safety"
         },
         {
           "name": "Shiny Rayquaza",
@@ -609,11 +609,10 @@
           "tag": "#yas-queen"
         },
         {
-          "name": "Eren Yeager",
-          "icon": "🗡️",
-          "question": "Have you considered just… talking it out? With words?",
-          "tag": "#therapy-arc",
-          "show": false
+          "name": "Geto Suguru",
+          "icon": "🌀",
+          "question": "Real question: did the bangs come before or after the villain arc?",
+          "tag": "#character-development"
         },
         {
           "name": "Brittany Broski",
@@ -622,10 +621,10 @@
           "tag": "#royal-court"
         },
         {
-          "name": "Mao Mao",
-          "icon": "🐱",
-          "question": "Is it still heroic if nobody saw you do it?",
-          "tag": "#pure-of-heart"
+          "name": "Goncharov",
+          "icon": "🎬",
+          "question": "Did you ever think you’d be the best movie that never existed?",
+          "tag": "#lost-media"
         },
         {
           "name": "Willem Dafoe",
@@ -640,10 +639,11 @@
           "tag": "#career-goals"
         },
         {
-          "name": "Elsa",
+          "name": "Elsa from Frozen",
           "icon": "❄️",
-          "question": "What are you finally ready to let go of?",
-          "tag": "#let-it-go"
+          "question": "Have you tried a frozen chocolate ice capp before?",
+          "tag": "#let-it-go",
+          "show": false
         }
       ]
     },
