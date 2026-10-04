@@ -5,7 +5,7 @@ Last updated Oct 1, 2026. Finished items are removed as their PRs land.
 `[existing]` = from the original open threads · `[new]` = suggested during the Sep 25 review · `[priority]` = added Sep 28 after the job description review
 
 ## Up next
-1. Real content via the copy spreadsheet (`site-copy.xlsx`, kept out of git): projects, brands, resume, email
+1. Real content via the copy spreadsheet (`site-copy.xlsx`, kept out of git): projects, brands
 2. Editions Explorer, as the first real Luna Pie mission (spec: https://claude.ai/code/artifact/57a74e74-a34f-490d-9cce-4177814bac2e)
 
 ## Editions Explorer
@@ -27,8 +27,8 @@ Specs, schedule and gates live in the "chibimuere Sections: Technical Plan" doc.
 ## Content & sections
 - [ ] `[new]` Replace the scaffold placeholders with real content: the project cards (Luna Pie is card 01, Mercury RX is card 02; four placeholders to go), the brand names in the marquee, and the resume page copy. Collected in `site-copy.xlsx`
 - [ ] `[existing]` 404 page: aesthetic fancy-restaurant washroom easter egg, building on the current 404
-- [ ] `[existing]` Redo CV/Resume teaser (the homepage now has a "Read the resume" call to action under the brands marquee; the resume page itself is next, from M.K.'s resume + LinkedIn)
-- [ ] `[existing]` Resume page contact still uses the placeholder `hello@chibimuere.example` (button and print version)
+- [ ] `[existing]` Redo the CV/Resume teaser on the homepage (there's now a "Read the resume" call to action under the brands marquee)
+- [ ] `[new]` Resume page: M.K. reads it over (`resume` in `content.json`, written from the 2024 resume + LinkedIn, facts only). Check the Domaine and Endy wording (verbs like "highlights" are deliberately cautious), say which project the two W3 Awards were for, and decide whether the printed version should keep "Ways of working" (it prints two pages without it). The email is `mkmuere.codes@gmail.com` and the phone number is deliberately left off
 - [ ] `[new]` "How this was made" devlog (published on Substack, linked from its card): round notes, M.K.-vs-Claude decisions, what got overruled, the scaffold.html before/after. Could double as Project 01
 - [ ] `[new]` Case studies behind the project cards: written up on Substack as technical breakdowns (how it was built, which agent did what, where M.K. overrode them, accessibility + performance calls); the card links out (a Flip-expand preview from the deck could come later)
 

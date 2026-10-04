@@ -143,10 +143,10 @@
           <p class="eyebrow" data-copy="heading.eyebrow">The practical paperwork</p>
           <h1 id="resume-page-title" data-copy="heading.title">A record of the work.</h1>
           <p class="lede" data-copy="heading.lede">
-            A little context for the things I make, the questions I keep, and
-            the ways I like to collaborate.
+            I&apos;m M.K. Muere, a front-end tech lead and development manager in Toronto.
           </p>
-          <p class="resume-print-contact" data-copy="email">hello@chibimuere.example</p>
+          <!-- Print only: the page's contact details on paper -->
+          <p class="resume-print-contact"><span data-copy="email">mkmuere.codes@gmail.com</span><br /><span data-copy="printLinks">chibimuere.com</span></p>
         </div>
       </section>
 
@@ -171,25 +171,69 @@
         </div>
       </section>
 
-      <section class="resume-section" aria-labelledby="practice-title">
+      <section class="resume-section" aria-labelledby="work-title">
         <div class="shell resume-grid">
           <p class="section-number" aria-hidden="true">02</p>
+          <div>
+            <p class="eyebrow" data-copy="work.eyebrow">Selected work</p>
+            <h2 id="work-title" data-copy="work.title">Things I&apos;m proud of.</h2>
+            <div class="resume-detail-list">
+              <p data-copy="work.endy"><strong>Endy.com</strong> Site migration to headless Shopify.</p>
+              <p data-copy="work.munge"><strong>StudioMunge.com</strong> WordPress multisite.</p>
+              <p data-copy="work.awards"><strong>Recognition</strong> W3 Awards.</p>
+              <p data-copy="work.clients"><strong>Also worked with</strong> a few good clients.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="resume-section resume-practice" aria-labelledby="practice-title">
+        <div class="shell resume-grid">
+          <p class="section-number" aria-hidden="true">03</p>
           <div>
             <p class="eyebrow" data-copy="practice.eyebrow">Practice</p>
             <h2 id="practice-title" data-copy="practice.title">Ways of working.</h2>
             <div class="resume-detail-list">
-              <p data-copy="practice.making">
-                <strong>Making</strong> Art direction, visual identity,
-                editorial systems, and small physical objects.
-              </p>
-              <p data-copy="practice.thinking">
-                <strong>Thinking</strong> Concept development, cultural
-                research, naming, writing, and gentle problem solving.
-              </p>
-              <p data-copy="practice.collaborating">
-                <strong>Collaborating</strong> Working with curious people who
-                care about details, atmosphere, and a little strangeness.
-              </p>
+              <p data-copy="practice.leading"><strong>Leading</strong> Agile workflows and lunch &amp; learns.</p>
+              <p data-copy="practice.building"><strong>Building</strong> Shopify and headless JAMstack.</p>
+              <p data-copy="practice.caring"><strong>Caring</strong> Accessibility top of mind.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="resume-section" aria-labelledby="education-title">
+        <div class="shell resume-grid">
+          <p class="section-number" aria-hidden="true">04</p>
+          <div>
+            <p class="eyebrow" data-copy="education.eyebrow">Education</p>
+            <h2 id="education-title" data-copy="education.title">Where I learned things.</h2>
+            <div class="resume-list">
+              <template data-copy-list="education.entries">
+                <div class="resume-entry">
+                  <p class="resume-year">{{years}}</p>
+                  <div>
+                    <h3>{{role}}</h3>
+                    {{#org}}<p>{{org}}</p>{{/org}}
+                  </div>
+                </div>
+              </template>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="resume-section resume-offclock" aria-labelledby="offclock-title">
+        <div class="shell resume-grid">
+          <p class="section-number" aria-hidden="true">05</p>
+          <div>
+            <p class="eyebrow" data-copy="offClock.eyebrow">Off the clock</p>
+            <h2 id="offclock-title" data-copy="offClock.title">Other goals of mine.</h2>
+            <div class="resume-detail-list">
+              <p data-copy="offClock.goals"><strong>Corporate witchery</strong> Be the best personality hire you&apos;ve ever made.</p>
+              <p data-copy="offClock.mercury"><strong>Mercury</strong> Always warn the org when Mercury is in retrograde.</p>
+              <p data-copy="offClock.slack"><strong>Slack emoji</strong> Grow the library to scale.</p>
+              <p data-copy="offClock.elsewhere"><strong>You can also find me</strong> playing a cozy video game.</p>
             </div>
           </div>
         </div>
@@ -203,7 +247,7 @@
               Let&apos;s make<br />something odd.
             </h2>
           </div>
-          <a class="button button-light" data-copy-attr="href=mailto:{{email}}" href="mailto:hello@chibimuere.example"
+          <a class="button button-light" data-copy-attr="href=mailto:{{email}}" href="mailto:mkmuere.codes@gmail.com"
             ><span data-copy="contact.button">Say hello</span> <span aria-hidden="true">&#8599;</span></a
           >
         </div>
