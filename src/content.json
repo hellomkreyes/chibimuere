@@ -656,7 +656,7 @@
   "resume": {
     "meta": {
       "title": "CV / Resume | chibi muere",
-      "description": "The CV and resume of M.K. Muere: a front-end tech lead and development manager working in Shopify and headless JAMstack, with accessibility top of mind.",
+      "description": "The CV and resume of M.K. Muere: a front-end tech lead and development manager based in Toronto. She specializes working in Shopify and headless stacks, with accessibility as top of mind.",
       "url": "https://chibimuere.com/resume.html"
     },
     "email": "mkmuere.codes@gmail.com",
@@ -664,7 +664,7 @@
     "heading": {
       "eyebrow": "The practical paperwork",
       "title": "A record of the work.",
-      "lede": "I&apos;m M.K. Muere, a front-end tech lead and development manager in Toronto. Shopify and headless JAMstacks are my jam; I help web teams ship semantic code with accessibility top of mind, because the internet should be easy to navigate for everyone."
+      "lede": "I&apos;m M.K. Muere, a front-end tech lead and development manager in Toronto. Shopify stores and headless websites are what I build best. I also help web teams ship semantic code with accessibility top of mind, because the internet should be easy to navigate for everyone."
     },
     "experience": {
       "eyebrow": "Experience",
@@ -674,13 +674,13 @@
           "years": "2024 &mdash; now",
           "role": "Technical Lead",
           "org": "Domaine",
-          "description": "Front-end tech lead on Shopify and headless JAMstack builds, helping web teams learn industry best practices and produce semantic, accessible code."
+          "description": "Front-end tech lead for new and retaining Shopify clients. I help teams by ensuring only the best semantic, and accessible code makes it to production."
         },
         {
           "years": "2021 &mdash; 2024",
           "role": "Development Manager",
           "org": "Endy",
-          "description": "Joined as a senior developer in 2021 and became development manager in 2022. Highlights: the Endy.com migration to headless Shopify (Next.js, Sanity CMS, TypeScript), automated scheduled deployments, and an agile workflow introduced to the team."
+          "description": "Joined as a senior dev in 2021 & stepped into development manager in 2022. Highlights: migrating Endy.com to headless Shopify (Next, Sanity, TS), automated scheduled deployments, and introducing agile workflow to the marketing dept."
         },
         {
           "years": "2020 &mdash; 2021",
@@ -691,27 +691,27 @@
         {
           "years": "2018 &mdash; 2020",
           "role": "Front End Developer",
-          "org": "TWG (Deloitte Digital)",
-          "description": "WordPress, Gutenberg and Shopify theme development."
+          "org": "Deloitte Digital (formerly The Working Group)",
+          "description": "The crux of my creative and technical opinions were formed here. The people and lessons I gained in this role have influenced my career tremendously. I think of my time here fondly. (Wordpress Gutenberg, Headless Shopify)"
         },
         {
           "years": "2016 &mdash; 2018",
           "role": "Front-End Developer",
-          "org": "Office/Bureau",
-          "description": "Built highly customized, accessible, responsive WordPress sites for clients, working with designers from wireframes through QA, with browser support back to IE9. Ran team lunch &amp; learns (web accessibility, internet trends, developer lingo for non-devs) and wrote the team&apos;s internal setup guides."
+          "org": "Significant Other (formerly Office/Bureau)",
+          "description": "The company of creative geniuses that took a chance on a baby developer (me). At O/B I learned taste, creative ways to solve problems, how to cook a mean tortierre, and the importance of doing our best work for deserving clients. (WordPress, WooCommerce, a11y, bespoke designs)"
         },
         {
           "years": "2008 &mdash; 2015",
           "role": "Analyst, then Digital Designer",
           "org": "OMERS",
-          "description": "Six years in IT service, vendor and license management, then a stint in digital design. Reviewed 130+ contracts a year; $572,200 CAD in cost avoidance for 2014."
+          "description": "Six years in IT service, vendor and license management, then a stint in the digital design team. During my time there, I reviewed over 130+ contracts in the span of a year for any discrepancies; resulting in $572,200CAD of cost savings for 2014."
         }
       ]
     },
     "work": {
       "eyebrow": "Selected work",
       "title": "Things I&apos;m proud of.",
-      "endy": "<strong>Endy.com</strong> Site migration to headless Shopify with Next.js, Sanity CMS and TypeScript, automated scheduled deployments, and an agile workflow introduced to the team.",
+      "endy": "<strong>Endy.com</strong> Site migration to headless Shopify with Next.js, Sanity CMS and TypeScript, automated scheduled deployments, and introducing an agile workflow to the web team.",
       "munge": "<strong>StudioMunge.com</strong> WordPress multisite, SVG animations, custom filtering, and a custom-built intranet inventory system. Won a Gold W3 Award for Architecture &amp; Design and a Silver W3 Award for Website Features.",
       "clients": "<strong>Also worked with</strong> ELTE, Royal Conservatory, Canadian Cancer Society, Canada Learning Code, Interac, Another Room, Happy Fairy Art, OPFA, Forest Ontario and Salad King."
     },
