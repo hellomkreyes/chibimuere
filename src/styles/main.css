@@ -4199,12 +4199,14 @@ h2 em {
 
 @media print {
   @page {
-    margin: 1.5cm;
+    margin: 1.3cm;
   }
 
   .fx-layers,
   .site-header,
   .site-footer,
+  .cookie-corner,
+  .wink-overlay,
   .skip-link {
     display: none !important;
   }
@@ -4221,23 +4223,32 @@ h2 em {
     --line: rgba(17, 17, 17, 0.35);
     --accent: #63243b;
     padding: 0;
-    font-size: 10.5pt;
+    font-size: 9.5pt;
   }
 
+  :root[data-theme] .resume-page .resume-entry h3 {
+    font-size: 1.05rem;
+  }
+
+  /* Ways of working and the playful section stay on screen only: paper gets the
+     facts, without repeating the summary. */
   .resume-page .contact-band,
-  .resume-page .resume-cta {
+  .resume-page .resume-cta,
+  .resume-page .resume-practice,
+  .resume-page .resume-offclock {
     display: none;
   }
 
   .resume-page .page-heading {
-    padding: 0 0 1.5rem;
+    padding: 0 0 1rem;
     border-bottom: 2px solid var(--ink);
   }
 
-  .resume-page .page-heading h1 {
-    margin-bottom: 0.75rem;
+  :root[data-theme] .resume-page .page-heading h1 {
+    max-width: none;
+    margin-bottom: 0.4rem;
     font-family: var(--font-display);
-    font-size: 3rem;
+    font-size: 2rem;
     text-shadow: none;
   }
 
@@ -4246,28 +4257,58 @@ h2 em {
     font-weight: 700;
   }
 
+  /* Sections flow across pages; only a single entry or detail is kept whole. */
   .resume-page .resume-section {
-    padding: 1.5rem 0;
+    padding: 0.8rem 0;
     border-top: 0;
+  }
+
+  .resume-page .resume-detail-list p {
+    padding: 0.35rem 0;
     break-inside: avoid;
   }
 
-  .resume-page .resume-grid {
-    grid-template-columns: 4rem 1fr;
-    gap: 1rem;
+  .resume-page .resume-year {
+    letter-spacing: 0.04em;
+    white-space: nowrap;
   }
 
+  .resume-page .eyebrow,
   .resume-page h2 {
-    margin-bottom: 0.75rem;
+    break-after: avoid;
+  }
+
+  /* No night-theme terminal prompt on paper */
+  .resume-page .eyebrow::before {
+    display: none;
+  }
+
+  /* A one-row grid can't split across pages, so each section is a plain block on
+     paper (the decorative section numbers drop out with it). */
+  .resume-page .resume-grid {
+    display: block;
+  }
+
+  .resume-page .section-number {
+    display: none;
+  }
+
+  :root[data-theme] .resume-page h2 {
+    margin-bottom: 0.25rem;
     font-family: var(--font-display);
-    font-size: 2rem;
+    font-size: 1.3rem;
     text-shadow: none;
   }
 
+  .resume-page .resume-list,
+  .resume-page .resume-detail-list {
+    margin-top: 0.4rem;
+  }
+
   .resume-page .resume-entry {
-    grid-template-columns: 8rem 1fr;
-    gap: 1rem;
-    padding: 0.75rem 0;
+    grid-template-columns: 7.5rem 1fr;
+    gap: 0.75rem;
+    padding: 0.3rem 0;
     break-inside: avoid;
   }
 }

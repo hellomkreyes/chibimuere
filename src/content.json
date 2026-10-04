@@ -656,14 +656,15 @@
   "resume": {
     "meta": {
       "title": "CV / Resume | chibi muere",
-      "description": "The CV and resume of chibi muere.",
+      "description": "The CV and resume of M.K. Muere: a front-end tech lead and development manager based in Toronto. She specializes working in Shopify and headless stacks, with accessibility as top of mind.",
       "url": "https://chibimuere.com/resume.html"
     },
-    "email": "hello@chibimuere.example",
+    "email": "mkmuere.codes@gmail.com",
+    "printLinks": "chibimuere.com · linkedin.com/in/mkreyes · github.com/hellomkreyes",
     "heading": {
       "eyebrow": "The practical paperwork",
       "title": "A record of the work.",
-      "lede": "A little context for the things I make, the questions I keep, and the ways I like to collaborate."
+      "lede": "I&apos;m M.K. Muere, a front-end tech lead and development manager in Toronto. Shopify stores and headless websites are what I build best. I also help web teams ship semantic code with accessibility top of mind, because the internet should be easy to navigate for everyone."
     },
     "experience": {
       "eyebrow": "Experience",
@@ -671,30 +672,99 @@
       "entries": [
         {
           "years": "2024 &mdash; now",
-          "role": "Founder",
-          "org": "chibi muere",
-          "description": "Small-batch objects, visual worlds, and thoughtful experiments from a little independent studio."
+          "role": "Technical Lead",
+          "org": "Domaine",
+          "description": "Front-end tech lead for new and retaining Shopify clients. I help teams by ensuring only the best semantic, and accessible code makes it to production."
         },
         {
-          "years": "2022 &mdash; 2024",
-          "role": "Independent creative practice",
-          "org": "",
-          "description": "Identity, editorial, and digital work for people with good questions and unusual briefs."
+          "years": "2021 &mdash; 2024",
+          "role": "Development Manager",
+          "org": "Endy",
+          "description": "Joined as a senior dev in 2021 & stepped into development manager in 2022. Highlights: migrating Endy.com to headless Shopify (Next, Sanity, TS), automated scheduled deployments, and introducing agile workflow to the marketing dept."
         },
         {
-          "years": "Always",
-          "role": "Student of the almost useful",
-          "org": "",
-          "description": "Collecting references, making notes, and leaving room for surprise."
+          "years": "2020 &mdash; 2021",
+          "role": "Shopify Developer",
+          "org": "Bonsai",
+          "description": "Developed and managed Shopify storefronts of large enterprise clients."
+        },
+        {
+          "years": "2018 &mdash; 2020",
+          "role": "Front End Developer",
+          "org": "Deloitte Digital (formerly The Working Group)",
+          "description": "The crux of my creative and technical opinions were formed here. The people and lessons I gained in this role have influenced my career tremendously. I think of my time here fondly. (Wordpress Gutenberg, Headless Shopify)"
+        },
+        {
+          "years": "2016 &mdash; 2018",
+          "role": "Front-End Developer",
+          "org": "Significant Other (formerly Office/Bureau)",
+          "description": "The company of creative geniuses that took a chance on a baby developer (me). At O/B I learned taste, creative ways to solve problems, how to cook a mean tortierre, and the importance of doing our best work for deserving clients. (WordPress, WooCommerce, a11y, bespoke designs)"
+        },
+        {
+          "years": "2008 &mdash; 2015",
+          "role": "Analyst, then Digital Designer",
+          "org": "OMERS",
+          "description": "Six years in IT service, vendor and license management, then a stint in the digital design team. During my time there, I reviewed over 130+ contracts in the span of a year for any discrepancies; resulting in $572,200CAD of cost savings for 2014."
         }
       ]
+    },
+    "work": {
+      "eyebrow": "Selected work",
+      "title": "Things I&apos;m proud of.",
+      "endy": "<strong>Endy.com</strong> Site migration to headless Shopify with Next.js, Sanity CMS and TypeScript, automated scheduled deployments, and introducing an agile workflow to the web team.",
+      "munge": "<strong>StudioMunge.com</strong> WordPress multisite, SVG animations, custom filtering, and a custom-built intranet inventory system. Won a Gold W3 Award for Architecture &amp; Design and a Silver W3 Award for Website Features.",
+      "clients": "<strong>Also worked with</strong> ELTE, Royal Conservatory, Canadian Cancer Society, Canada Learning Code, Interac, Another Room, Happy Fairy Art, OPFA, Forest Ontario and Salad King."
     },
     "practice": {
       "eyebrow": "Practice",
       "title": "Ways of working.",
-      "making": "<strong>Making</strong> Art direction, visual identity, editorial systems, and small physical objects.",
-      "thinking": "<strong>Thinking</strong> Concept development, cultural research, naming, writing, and gentle problem solving.",
-      "collaborating": "<strong>Collaborating</strong> Working with curious people who care about details, atmosphere, and a little strangeness."
+      "leading": "<strong>Leading</strong> Development manager and tech lead on both agency and product teams: agile workflows, lunch &amp; learns, and internal guides that help teams learn best practices.",
+      "building": "<strong>Building</strong> Shopify and headless JAMstack with Next.js, Sanity and TypeScript, after years of WordPress, Gutenberg and custom themes.",
+      "caring": "<strong>Caring</strong> Semantic code with accessibility top of mind, so the internet is a better and easier-to-navigate space for all."
+    },
+    "education": {
+      "eyebrow": "Education",
+      "title": "Where I learned things.",
+      "entries": [
+        {
+          "years": "2018",
+          "role": "Bridge for Software Development",
+          "org": "Bridge School",
+          "description": ""
+        },
+        {
+          "years": "2016",
+          "role": "Front-end bootcamp and full stack course",
+          "org": "Juno College (HackerYou)",
+          "description": ""
+        },
+        {
+          "years": "2012 &mdash; 2013",
+          "role": "Recognition of Achievement, Japanese Language and Literature",
+          "org": "Seneca College",
+          "description": ""
+        },
+        {
+          "years": "2007 &mdash; 2011",
+          "role": "Bachelor of Technology, Graphic Communications Management",
+          "org": "Ryerson University",
+          "description": ""
+        },
+        {
+          "years": "Certified",
+          "role": "ITIL v3 Foundations",
+          "org": "",
+          "description": ""
+        }
+      ]
+    },
+    "offClock": {
+      "eyebrow": "Off the clock",
+      "title": "Other goals of mine.",
+      "goals": "<strong>Corporate witchery</strong> Be the best personality hire you&apos;ve ever made, and a trusted advocate for corporate witchery: need to make a decision? Ask my tarot cards instead of ChatGPT.",
+      "mercury": "<strong>Mercury</strong> Always warn any org I&apos;m a part of when Mercury is in retrograde.",
+      "slack": "<strong>Slack emoji</strong> Grow your Slack emoji library to scale, with the cute and funny emojis I&apos;ve collected over the years.",
+      "elsewhere": "<strong>You can also find me</strong> trying out the latest TikTok recipe, playing a cozy video game, building mechanical keyboards, writing fanfiction, or making memories with my family."
     },
     "contact": {
       "eyebrow": "Have a good question?",
