@@ -44,6 +44,24 @@ async function open(page, path, { theme = "day", motion = "on" } = {}) {
   return errors;
 }
 
+/**
+ * Sections load as they come near the viewport, and a full-page capture would race with that:
+ * the Dream Collabs chart, for one, replaces its taller no-JS list, so the page's height (and
+ * the baseline) changed from run to run. Scroll the whole page so every section is up, wait
+ * for them and for the lazy images, then return to the top, so the screenshots show the real
+ * sections and are the same every time.
+ */
+async function loadEverything(page) {
+  for (let y = 0; y < (await page.evaluate(() => document.documentElement.scrollHeight)); y += 500) {
+    await page.evaluate((top) => window.scrollTo({ top, behavior: "instant" }), y);
+    await page.waitForTimeout(120);
+  }
+  await page.waitForFunction(() => [...document.querySelectorAll("[data-section]")].every((el) => el.hasAttribute("data-section-ready")));
+  await page.waitForFunction(() => [...document.images].every((img) => img.complete));
+  await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
+  await page.evaluate(() => document.fonts.ready);
+}
+
 for (const { name, path } of PAGES) {
   for (const theme of THEMES) {
     test.describe(`${name} · ${theme}`, () => {
@@ -62,8 +80,10 @@ for (const { name, path } of PAGES) {
         await open(page, path, { theme, motion: "off" });
         // The sparkle canvas and butterfly are randomized; everything else must match.
         const options = { fullPage: true, style: "#fx, .fly { visibility: hidden !important; }" };
+        await loadEverything(page);
         await expect(page).toHaveScreenshot(`${name}-${theme}-desktop.png`, options);
         await page.setViewportSize({ width: 390, height: 844 });
+        await loadEverything(page);
         await expect(page).toHaveScreenshot(`${name}-${theme}-phone.png`, options);
       });
     });
