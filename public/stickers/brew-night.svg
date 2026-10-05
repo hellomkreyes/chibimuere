@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-8 -8 116 116" width="116" height="116">
+<path d="M16 42H80C84 64 72 86 48 86C24 86 12 64 16 42Z" fill="#4b4357" stroke="#4b4357" stroke-width="12.5" stroke-linejoin="round" stroke-linecap="round"/>
+<ellipse cx="48" cy="42" rx="32" ry="7" fill="#4b4357" stroke="#4b4357" stroke-width="12" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M30 86L26 94M66 86L70 94" fill="none" stroke="#4b4357" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16 42H80C84 64 72 86 48 86C24 86 12 64 16 42Z" fill="#14101a" stroke="#ff2a4f" stroke-width="2.5"/>
+<ellipse cx="48" cy="42" rx="32" ry="7" fill="#2a1b3a" stroke="#ff2a4f" stroke-width="2"/>
+<circle cx="38" cy="28" r="5" fill="#19e3f0" opacity="0.9"/>
+<circle cx="54" cy="22" r="3.5" fill="#19e3f0" opacity="0.9"/>
+<circle cx="60" cy="32" r="4" fill="#e8e4ee" opacity="0.9"/>
+<path d="M30 86L26 94M66 86L70 94" fill="none" stroke="#ff2a4f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M86 12L87.68 16.32L92 18L87.68 19.68L86 24L84.32 19.68L80 18L84.32 16.32Z" fill="#ff2a4f"/>
+</svg>

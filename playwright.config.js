@@ -27,8 +27,8 @@ export default defineConfig({
   },
   projects: [
     { name: "chromium", use: { ...devices["Desktop Chrome"] } },
-    // Safari's engine: the page + axe checks, plus the Dream Collabs chart layout and the icon sprite (screenshots and other behavior run in Chromium).
-    { name: "webkit", use: { ...devices["Desktop Safari"] }, grep: /axe violations|spread around the centre|icons render/ },
+    // Safari's engine: the page + axe checks, plus the Dream Collabs chart layout the icon sprite and the sticker shimmer (screenshots and other behavior run in Chromium).
+    { name: "webkit", use: { ...devices["Desktop Safari"] }, grep: /axe violations|spread around the centre|icons render|sticker shimmer/ },
   ],
   webServer: {
     command: "npm run preview -- --port 4173 --strictPort",

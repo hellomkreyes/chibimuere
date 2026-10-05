@@ -6,7 +6,7 @@ Last updated Oct 5, 2026. Finished items are removed as their PRs land.
 
 ## Before the Oct 13 call
 1. **M.K.: content population.** Real art for My Pictures, the Webring entries, the Dream Collabs "why" lines, the Rotation questions, the project cards and brand names (see the items under Sections plan and Content & sections)
-2. **Resume page stickers** (details under Resume stickers below)
+2. ~~Resume page stickers~~ done: seven stickers (cursor, browser, brackets, floppy, butterfly/moth, plus a prompt by the title and a brew in the closing band); M.K. can remove or swap any in `scripts/stickers.mjs` and the resume HTML
 3. **Homepage section layout changes.** Pending: M.K. to describe the layouts wanted; it stays in the pre-Oct 13 priorities. See "Homepage section layouts" under Content & sections
 
 ## After the Oct 13 call
@@ -14,12 +14,6 @@ Last updated Oct 5, 2026. Finished items are removed as their PRs land.
 2. Cloudflare Web Analytics (see Domain & ops), alongside the counter or later
 3. Editions Explorer, as the first real Luna Pie mission (spec: https://claude.ai/code/artifact/57a74e74-a34f-490d-9cce-4177814bac2e)
 
-## Resume stickers
-Replace the section numbers (01 to 05) on the resume page with decorative stickers.
-- [ ] `[new]` Stickers are SVG elements with a holographic, glittery shimmer that responds to scrolling down the page, in the spirit of Sandylion-style holographic and glitter stickers
-- [ ] `[new]` Day: web-development-themed icons (e.g. a cursor, a code bracket, a browser window, a pixel heart, a bug, a coffee cup…) drawn cutesy: kawaii, fairy, dainty, in the day palette
-- [ ] `[new]` Night: the same ideas cutesy but goth and dark (e.g. a bat-winged bracket, a skull cursor, a moth, a candle…), in the night palette
-- [ ] `[new]` Constraints to carry over from the rest of the site: purely decorative (`aria-hidden`), the shimmer runs through the motion controller and stops with Pause Motion and reduced motion (a still sticker remains), hidden on paper so the two-page print still holds, no layout shift, and the contrast of anything beside them still passes axe in both themes. Verify in real WebKit on CI
 
 ## Editions Explorer
 - [ ] `[priority]` Decide where it lives: a route on this site or its own subdomain (open question in the spec)

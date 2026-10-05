@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-8 -8 116 116" width="116" height="116">
+<path d="M36 26L12 50L36 74" fill="none" stroke="#ffffff" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M64 26L88 50L64 74" fill="none" stroke="#ffffff" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M50 66C30 52 36 38 44 40C48 41 50 45 50 45C50 45 52 41 56 40C64 38 70 52 50 66Z" fill="#ffffff" stroke="#ffffff" stroke-width="11.5" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M36 26L12 50L36 74" fill="none" stroke="#b9a3ff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M64 26L88 50L64 74" fill="none" stroke="#b9a3ff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M50 66C30 52 36 38 44 40C48 41 50 45 50 45C50 45 52 41 56 40C64 38 70 52 50 66Z" fill="#ff9cc6" stroke="#e07fb0" stroke-width="1.5"/>
+<path d="M50 10L51.68 14.32L56 16L51.68 17.68L50 22L48.32 17.68L44 16L48.32 14.32Z" fill="#ffd36b"/>
+<path d="M18 79L19.4 82.6L23 84L19.4 85.4L18 89L16.6 85.4L13 84L16.6 82.6Z" fill="#ff9cc6"/>
+<path d="M86 75L87.4 78.6L91 80L87.4 81.4L86 85L84.6 81.4L81 80L84.6 78.6Z" fill="#b9a3ff"/>
+</svg>
