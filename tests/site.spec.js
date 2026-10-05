@@ -71,6 +71,18 @@ for (const { name, path } of PAGES) {
 }
 
 test.describe("home", () => {
+  test("the social icons render from the sprite", async ({ page }) => {
+    await open(page, "/");
+    const icons = page.locator(".social-link svg");
+    await expect(icons).toHaveCount(5);
+    // A <use> pointing at a missing or blocked sprite draws nothing: its box stays empty.
+    await expect
+      .poll(() => icons.evaluateAll((svgs) => svgs.map((svg) => svg.getBBox().width)), { timeout: 8000 })
+      .toEqual(expect.arrayContaining([expect.any(Number)]));
+    const widths = await icons.evaluateAll((svgs) => svgs.map((svg) => Math.round(svg.getBBox().width)));
+    for (const width of widths) expect(width).toBeGreaterThan(10);
+  });
+
   test("the resume call to action under the marquee leads to the resume page", async ({ page }) => {
     await open(page, "/");
     const cta = page.locator(".brands-cta").getByRole("link", { name: "Read the resume" });
