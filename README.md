@@ -192,7 +192,11 @@ comment at the top of that file for the API.
 - Fonts are self-hosted from `public/fonts/`: Latin-subset WOFF2s of Manrope
   (variable, 200–500), Space Mono 400/700 and Pirata One, with their OFL
   licences. No Google Fonts request.
-- Social icons: inline SVGs from [Simple Icons](https://simpleicons.org) (CC0).
+- Social icons: one sprite, `public/icons.svg`, from [Simple Icons](https://simpleicons.org)
+  (CC0). Each link in `site.social.links` names its icon (`"icon": "github"`) and
+  the homepage draws it with `<use href="/icons.svg#github">`, so the outlines
+  stay out of the HTML (about 2.4 KB compressed). To add one, add a `<symbol>`
+  with that id to the sprite.
 - Link preview: `public/og-image.jpg` (1200×630) is rendered from
   `scripts/og-image/og-image.html` with `sh scripts/og-image/render.sh` (needs
   Chrome). Its address and alt text live in `content.json` under `site.og`.
