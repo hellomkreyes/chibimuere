@@ -3523,10 +3523,9 @@ h2 em {
 /* 11b. Resume stickers ===================================================== */
 /* Die-cut stickers in place of the section numbers (a cute day set, a gothy night
    set; the artwork is public/stickers/*.svg, drawn by scripts/stickers.mjs). The
-   holographic shimmer is two layers on top of the sticker, each clipped to the
-   sticker's own silhouette with a mask: a rainbow foil (::before) and glitter
-   (::after). src/js/sections/stickers.js slides them as the page scrolls by
-   setting --shine (0 to 100); without it, or with motion off, they sit still. */
+   holographic foil is a rainbow gradient layer clipped to the sticker's silhouette
+   with a mask. src/js/sections/stickers.js animates it as the page scrolls by
+   setting --shine (0 to 100); without it, or with motion off, it sits still. */
 .sticker {
   --sticker-img: var(--sticker-day);
   --shine: 50;
@@ -3547,41 +3546,17 @@ h2 em {
   filter: drop-shadow(0 6px 12px rgba(255, 42, 79, 0.28));
 }
 
-.sticker::before,
-.sticker::after {
+.sticker::before {
   position: absolute;
   inset: 0;
   content: "";
   -webkit-mask: var(--sticker-img) center / contain no-repeat;
   mask: var(--sticker-img) center / contain no-repeat;
-}
-
-/* Foil: a wide pastel rainbow, slid sideways by --shine */
-.sticker::before {
   background: linear-gradient(115deg, #ffb3e6, #b3f0ff, #fff3a8, #c9ffd9, #d9b3ff, #ffb3e6, #b3f0ff);
   background-position: calc(var(--shine) * 1%) 50%;
   background-size: 260% 260%;
   mix-blend-mode: overlay;
   opacity: 0.85;
-}
-
-/* Glitter: tiny white sparks that drift at a different rate than the foil */
-.sticker::after {
-  background-image:
-    radial-gradient(circle at 18% 26%, #fff 0 1.2px, transparent 2.4px),
-    radial-gradient(circle at 64% 18%, #fff 0 1px, transparent 2px),
-    radial-gradient(circle at 82% 62%, #fff 0 1.4px, transparent 2.6px),
-    radial-gradient(circle at 36% 78%, #fff 0 1px, transparent 2px),
-    radial-gradient(circle at 52% 48%, #fff 0 0.9px, transparent 1.8px);
-  background-size: 41px 37px, 53px 43px, 47px 59px, 61px 39px, 37px 51px;
-  background-position:
-    calc(var(--shine) * 0.9px) calc(var(--shine) * 0.4px),
-    calc(var(--shine) * -0.7px) calc(var(--shine) * 0.8px),
-    calc(var(--shine) * 0.5px) calc(var(--shine) * -0.9px),
-    calc(var(--shine) * -1.1px) calc(var(--shine) * -0.3px),
-    calc(var(--shine) * 0.3px) calc(var(--shine) * 1px);
-  mix-blend-mode: plus-lighter;
-  opacity: 0.9;
 }
 
 :root[data-theme="night"] .sticker::before {
@@ -3590,9 +3565,46 @@ h2 em {
   opacity: 0.4;
 }
 
-:root[data-theme="night"] .sticker::after {
-  opacity: 0.7;
+/* Colored sparkles: star shapes scattered around the sticker (day: yellow & pink) */
+.sticker::after {
+  position: absolute;
+  inset: -20px;
+  content: "";
+  background-image:
+    radial-gradient(1px 4px at 15% 18%, #ffd700 100%, transparent 100%),
+    radial-gradient(4px 1px at 15% 20%, #ffd700 100%, transparent 100%),
+    radial-gradient(1px 3px at 85% 23%, #ff1493 100%, transparent 100%),
+    radial-gradient(3px 1px at 85% 25%, #ff1493 100%, transparent 100%),
+    radial-gradient(1px 4px at 92% 63%, #ffd700 100%, transparent 100%),
+    radial-gradient(4px 1px at 92% 65%, #ffd700 100%, transparent 100%),
+    radial-gradient(1px 3px at 10% 78%, #ff1493 100%, transparent 100%),
+    radial-gradient(3px 1px at 10% 80%, #ff1493 100%, transparent 100%),
+    radial-gradient(1px 3px at 78% 86%, #ffd700 100%, transparent 100%),
+    radial-gradient(3px 1px at 78% 88%, #ffd700 100%, transparent 100%),
+    radial-gradient(1px 4px at 88% 13%, #ff1493 100%, transparent 100%),
+    radial-gradient(4px 1px at 88% 15%, #ff1493 100%, transparent 100%);
+  background-size: 100% 100%;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  pointer-events: none;
 }
+
+:root[data-theme="night"] .sticker::after {
+  background-image:
+    radial-gradient(1px 4px at 15% 18%, #00d9ff 100%, transparent 100%),
+    radial-gradient(4px 1px at 15% 20%, #00d9ff 100%, transparent 100%),
+    radial-gradient(1px 3px at 85% 23%, #ff1493 100%, transparent 100%),
+    radial-gradient(3px 1px at 85% 25%, #ff1493 100%, transparent 100%),
+    radial-gradient(1px 4px at 92% 63%, #00d9ff 100%, transparent 100%),
+    radial-gradient(4px 1px at 92% 65%, #00d9ff 100%, transparent 100%),
+    radial-gradient(1px 3px at 10% 78%, #ff1493 100%, transparent 100%),
+    radial-gradient(3px 1px at 10% 80%, #ff1493 100%, transparent 100%),
+    radial-gradient(1px 3px at 78% 86%, #ffd700 100%, transparent 100%),
+    radial-gradient(3px 1px at 78% 88%, #ffd700 100%, transparent 100%),
+    radial-gradient(1px 4px at 88% 13%, #00d9ff 100%, transparent 100%),
+    radial-gradient(4px 1px at 88% 15%, #00d9ff 100%, transparent 100%);
+}
+
 
 .sticker[data-sticker="cursor"] {
   --sticker-day: url("/stickers/cursor-day.svg");
