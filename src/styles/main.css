@@ -3520,6 +3520,157 @@ h2 em {
   line-height: 1;
 }
 
+/* 11b. Resume stickers ===================================================== */
+/* Die-cut stickers in place of the section numbers (a cute day set, a gothy night
+   set; the artwork is public/stickers/*.svg, drawn by scripts/stickers.mjs). The
+   holographic shimmer is two layers on top of the sticker, each clipped to the
+   sticker's own silhouette with a mask: a rainbow foil (::before) and glitter
+   (::after). src/js/sections/stickers.js slides them as the page scrolls by
+   setting --shine (0 to 100); without it, or with motion off, they sit still. */
+.sticker {
+  --sticker-img: var(--sticker-day);
+  --shine: 50;
+  --tilt: -6deg;
+  position: relative;
+  display: block;
+  flex-shrink: 0;
+  width: clamp(88px, 11vw, 132px);
+  aspect-ratio: 1;
+  background: var(--sticker-img) center / contain no-repeat;
+  filter: drop-shadow(0 6px 10px rgba(110, 63, 82, 0.3));
+  transform: rotate(var(--tilt));
+  pointer-events: none;
+}
+
+:root[data-theme="night"] .sticker {
+  --sticker-img: var(--sticker-night);
+  filter: drop-shadow(0 6px 12px rgba(255, 42, 79, 0.28));
+}
+
+.sticker::before,
+.sticker::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  -webkit-mask: var(--sticker-img) center / contain no-repeat;
+  mask: var(--sticker-img) center / contain no-repeat;
+}
+
+/* Foil: a wide pastel rainbow, slid sideways by --shine */
+.sticker::before {
+  background: linear-gradient(115deg, #ffb3e6, #b3f0ff, #fff3a8, #c9ffd9, #d9b3ff, #ffb3e6, #b3f0ff);
+  background-position: calc(var(--shine) * 1%) 50%;
+  background-size: 260% 260%;
+  mix-blend-mode: overlay;
+  opacity: 0.85;
+}
+
+/* Glitter: tiny white sparks that drift at a different rate than the foil */
+.sticker::after {
+  background-image:
+    radial-gradient(circle at 18% 26%, #fff 0 1.2px, transparent 2.4px),
+    radial-gradient(circle at 64% 18%, #fff 0 1px, transparent 2px),
+    radial-gradient(circle at 82% 62%, #fff 0 1.4px, transparent 2.6px),
+    radial-gradient(circle at 36% 78%, #fff 0 1px, transparent 2px),
+    radial-gradient(circle at 52% 48%, #fff 0 0.9px, transparent 1.8px);
+  background-size: 41px 37px, 53px 43px, 47px 59px, 61px 39px, 37px 51px;
+  background-position:
+    calc(var(--shine) * 0.9px) calc(var(--shine) * 0.4px),
+    calc(var(--shine) * -0.7px) calc(var(--shine) * 0.8px),
+    calc(var(--shine) * 0.5px) calc(var(--shine) * -0.9px),
+    calc(var(--shine) * -1.1px) calc(var(--shine) * -0.3px),
+    calc(var(--shine) * 0.3px) calc(var(--shine) * 1px);
+  mix-blend-mode: plus-lighter;
+  opacity: 0.9;
+}
+
+:root[data-theme="night"] .sticker::before {
+  background-image: linear-gradient(115deg, #ff2a4f, #7a2cff, #19e3f0, #ff2a4f, #7a2cff, #19e3f0, #ff2a4f);
+  mix-blend-mode: screen;
+  opacity: 0.4;
+}
+
+:root[data-theme="night"] .sticker::after {
+  opacity: 0.7;
+}
+
+.sticker[data-sticker="cursor"] {
+  --sticker-day: url("/stickers/cursor-day.svg");
+  --sticker-night: url("/stickers/cursor-night.svg");
+  --tilt: -8deg;
+}
+
+.sticker[data-sticker="browser"] {
+  --sticker-day: url("/stickers/browser-day.svg");
+  --sticker-night: url("/stickers/browser-night.svg");
+  --tilt: 5deg;
+}
+
+.sticker[data-sticker="brackets"] {
+  --sticker-day: url("/stickers/brackets-day.svg");
+  --sticker-night: url("/stickers/brackets-night.svg");
+  --tilt: -4deg;
+}
+
+.sticker[data-sticker="floppy"] {
+  --sticker-day: url("/stickers/floppy-day.svg");
+  --sticker-night: url("/stickers/floppy-night.svg");
+  --tilt: 7deg;
+}
+
+.sticker[data-sticker="butterfly"] {
+  --sticker-day: url("/stickers/butterfly-day.svg");
+  --sticker-night: url("/stickers/butterfly-night.svg");
+  --tilt: -6deg;
+}
+
+.sticker[data-sticker="prompt"] {
+  --sticker-day: url("/stickers/prompt-day.svg");
+  --sticker-night: url("/stickers/prompt-night.svg");
+  --tilt: 9deg;
+}
+
+.sticker[data-sticker="brew"] {
+  --sticker-day: url("/stickers/brew-day.svg");
+  --sticker-night: url("/stickers/brew-night.svg");
+  --tilt: 8deg;
+}
+
+/* Where they sit: in the numbers' old column, beside the title, and in the closing band */
+.resume-grid > .sticker {
+  align-self: start;
+  justify-self: start;
+}
+
+.page-heading .shell {
+  position: relative;
+}
+
+.sticker-heading {
+  position: absolute;
+  top: 0;
+  right: clamp(0px, 4vw, 3rem);
+  width: clamp(104px, 15vw, 180px);
+}
+
+.sticker-contact {
+  margin: 0 0 1rem;
+}
+
+@media (max-width: 700px) {
+  .sticker-heading {
+    position: static;
+    margin: 0 0 1rem;
+  }
+}
+
+@media (forced-colors: active) {
+  .sticker::before,
+  .sticker::after {
+    display: none;
+  }
+}
+
 /* 12. 404 page ============================================================= */
 
 .error-page {
@@ -4276,6 +4427,10 @@ h2 em {
   .resume-page .eyebrow,
   .resume-page h2 {
     break-after: avoid;
+  }
+
+  .resume-page .sticker {
+    display: none;
   }
 
   /* No night-theme terminal prompt on paper */

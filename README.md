@@ -140,6 +140,25 @@ recipes); kinds without one use the catch-all "Go look". `button` is the
 88x31 button's label. The ✦ new sparkle shows for 30 days after `added`.
 Add `"show": false` to hide an entry.
 
+## Resume stickers
+
+The resume page's section numbers are die-cut stickers (a cute day set and a
+gothy night set): cursor, browser window, brackets, floppy disk and
+butterfly/moth for the five sections, a prompt beside the title and a brew in
+the closing band. The artwork lives in `public/stickers/` and is drawn by
+`scripts/stickers.mjs`; edit a sticker there and run:
+
+```sh
+npm run stickers
+```
+
+Each sticker is a background image on `<span class="sticker" data-sticker="name">`
+(decorative, `aria-hidden`). The holographic shimmer is two CSS layers, foil and
+glitter, clipped to the sticker's own shape with a mask. `src/js/sections/stickers.js`
+slides them as the page scrolls by setting `--shine`; Pause Motion and reduced
+motion clear it so the stickers sit still. Stickers are hidden on paper so the
+resume still prints on two pages.
+
 ## Day / Night 🌞🌚
 
 The look comes from the day/night mockup (v4): soft prism light by day, a

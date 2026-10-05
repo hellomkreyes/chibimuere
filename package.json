@@ -9,7 +9,8 @@
     "test": "node --test 'scripts/**/*.test.js'",
     "budget": "node scripts/check-budget.js",
     "e2e": "playwright test",
-    "images": "node scripts/images.js"
+    "images": "node scripts/images.js",
+    "stickers": "node scripts/stickers.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
