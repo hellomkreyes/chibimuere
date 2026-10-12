@@ -921,6 +921,55 @@ main,
   padding-block: clamp(3.5rem, 8vw, 6.5rem);
 }
 
+/* Seams: three hairlines down each big section, behind its content (added by
+   src/js/scroll-transitions.js). They're drawn finished here; with motion on,
+   GSAP scrubs them in from the top as the section scrolls into view. */
+.has-seams {
+  position: relative;
+}
+
+.has-seams > :not(.seams) {
+  position: relative;
+  z-index: 1;
+}
+
+.seams {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.seams span {
+  position: absolute;
+  top: 0;
+  left: 25%;
+  width: 1px;
+  height: 100%;
+  background: linear-gradient(180deg, #f2c6d3, #c9dcf3 60%, transparent);
+  opacity: 0.7;
+  transform-origin: top;
+}
+
+.seams span:nth-child(2) {
+  left: 50%;
+  background: linear-gradient(180deg, #f6e4b8, #e9c9e6 60%, transparent);
+}
+
+.seams span:nth-child(3) {
+  left: 75%;
+}
+
+:root[data-theme="night"] .seams span {
+  background: linear-gradient(180deg, var(--red), transparent 85%);
+  opacity: 0.45;
+}
+
+:root[data-theme="night"] .seams span:nth-child(2) {
+  background: linear-gradient(180deg, var(--cyan), transparent 85%);
+}
+
 h2 {
   margin-bottom: 1.25rem;
   font-family: var(--font-display);
@@ -4497,6 +4546,7 @@ h2 em {
 }
 
 @media print {
+  .seams,
   .vs-layer,
   .vs-layer-fixed,
   .vs-toast,

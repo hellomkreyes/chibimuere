@@ -9,6 +9,7 @@ import { initTouch } from "./js/touch.js";
 import { initGreeting } from "./js/greeting.js";
 import { initSections } from "./js/sections.js";
 import { initViewSource } from "./js/view-source.js";
+import { initScrollTransitions } from "./js/scroll-transitions.js";
 
 syncCurrentYear();
 initMotion();
@@ -21,3 +22,4 @@ initTouch();
 initGreeting();
 initSections();
 initViewSource();
+initScrollTransitions();

@@ -201,7 +201,7 @@
           "style": "serif"
         },
         {
-          "name": "Complex",
+          "name": "Complex Canada",
           "style": "sans"
         },
         {
@@ -217,7 +217,7 @@
           "style": "sans"
         },
         {
-          "name": "Studio Munge",
+          "name": "Forests Ontario",
           "style": "script"
         },
         {
@@ -225,11 +225,11 @@
           "style": "serif"
         },
         {
-          "name": "Forests Ontario",
+          "name": "Studio Munge",
           "style": "sans"
         },
         {
-          "name": "Endy",
+          "name": "Endy Canada",
           "style": "script"
         },
         {
@@ -241,13 +241,17 @@
           "style": "sans"
         },
         {
-          "name": "ELTE",
+          "name": "ELTE & Mkt",
+          "style": "script"
+        },
+        {
+          "name": "Casper Canada",
           "style": "script"
         }
       ],
       "cta": {
-        "text": "The brands are the highlight reel. The resume has the receipts.",
-        "button": "Read the resume"
+        "text": "The brands are just the highlight reel. The resume has plenty of receipts.",
+        "button": "Read the CV/Resume"
       }
     },
     "portfolio": {
@@ -256,13 +260,14 @@
       "projects": [
         {
           "title": "Luna Pie",
-          "type": "Systems",
+          "type": "Magical Girl AI",
           "year": "2026",
           "glyph": "☾&#xFE0E;",
           "description": "Luna plans, I approve, and a small solar system of AI agents builds, tests, and reviews.",
           "link": "https://github.com/hellomkreyes/luna-pie",
           "newTab": true,
-          "writeup": ""
+          "writeup": "",
+          "show": true
         },
         {
           "title": "Mercury Rx",
@@ -272,16 +277,18 @@
           "description": "Is Mercury in the microwave? A pixel-art tracker for its retrograde and shadow phases.",
           "link": "https://rx.chibimuere.com/",
           "newTab": true,
-          "writeup": ""
+          "writeup": "",
+          "show": true
         },
         {
           "title": "The Soft Launch",
-          "type": "Archive",
+          "type": "Vibe Coding",
           "year": "2026",
           "glyph": "✦",
           "description": "A study in first impressions, folded corners, and making an entrance quietly.",
           "link": "scaffold.html",
-          "writeup": ""
+          "writeup": "",
+          "show": true
         },
         {
           "title": "Object No. 01",
@@ -290,7 +297,8 @@
           "glyph": "◌",
           "description": "A tiny visual language for things that are useful, strange, and worth keeping.",
           "link": "",
-          "writeup": ""
+          "writeup": "",
+          "show": false
         },
         {
           "title": "Small Strange Things",
@@ -299,7 +307,8 @@
           "glyph": "☽&#xFE0E;",
           "description": "An archive of overlooked details, private jokes, and beautiful little almosts.",
           "link": "",
-          "writeup": ""
+          "writeup": "",
+          "show": false
         },
         {
           "title": "Field Notes",
@@ -307,25 +316,6 @@
           "year": "2025",
           "glyph": "✷",
           "description": "Observations from the soft edges of daily life, collected without a deadline.",
-          "link": "",
-          "writeup": ""
-        },
-        {
-          "title": "Aftercare",
-          "type": "Care",
-          "year": "2025",
-          "glyph": "♡&#xFE0E;",
-          "description": "A gentle toolkit for the day after the big feeling, when everything is tender.",
-          "link": "",
-          "writeup": "",
-          "show": false
-        },
-        {
-          "title": "House of Almost",
-          "type": "Place",
-          "year": "2026",
-          "glyph": "☼&#xFE0E;",
-          "description": "A room for unfinished ideas, near-misses, and the joy of not knowing yet.",
           "link": "",
           "writeup": "",
           "show": false
