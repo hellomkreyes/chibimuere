@@ -603,14 +603,6 @@ main,
   padding: 120px var(--gutter) 64px;
 }
 
-.eyebrow {
-  margin-bottom: 1.5rem;
-  color: var(--ink-soft);
-  font-size: var(--text-xs);
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-}
-
 .panel {
   border: 1px solid var(--line);
   background: var(--panel);
@@ -948,7 +940,7 @@ h2 em {
   font-weight: 400;
 }
 
-:root[data-theme="night"] .eyebrow::before {
+:root[data-theme="night"] .contact-lead::before {
   color: var(--red);
   content: "> ";
   content: "> " / "";
@@ -3448,6 +3440,18 @@ h2 em {
   gap: clamp(2rem, 5vw, 4rem);
 }
 
+.resume-section h2 {
+  margin-bottom: 0.5rem;
+}
+
+/* The line under each resume heading ("Work, slowly collected.") */
+.resume-sub {
+  margin-bottom: 2rem;
+  color: var(--ink-soft);
+  font-family: var(--font-coquette);
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+}
+
 .resume-list,
 .resume-detail-list {
   max-width: 44rem;
@@ -4368,17 +4372,16 @@ h2 em {
     white-space: nowrap;
   }
 
-  .resume-page .eyebrow,
   .resume-page h2 {
     break-after: avoid;
   }
 
-  .resume-page .sticker {
+  /* Paper keeps the plain section names; the playful sub-lines are screen-only. */
+  .resume-page .resume-sub {
     display: none;
   }
 
-  /* No night-theme terminal prompt on paper */
-  .resume-page .eyebrow::before {
+  .resume-page .sticker {
     display: none;
   }
 
