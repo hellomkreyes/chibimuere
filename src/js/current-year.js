@@ -7,7 +7,7 @@
  *   <time data-current-year>2026</time>
  *     → becomes the visitor's current year (and its datetime attribute too).
  *
- *   <span data-years-since="1997">29</span>
+ *   <span data-years-since="1989">37</span>
  *     → becomes the number of years since 1997.
  *
  * The number in the HTML is the fallback shown without JavaScript, and it's the

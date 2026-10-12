@@ -10,6 +10,7 @@ import { initGreeting } from "./js/greeting.js";
 import { initSections } from "./js/sections.js";
 import { initViewSource } from "./js/view-source.js";
 import { initScrollTransitions } from "./js/scroll-transitions.js";
+import { initFoldSwap } from "./js/fold-swap.js";
 
 syncCurrentYear();
 initMotion();
@@ -23,3 +24,4 @@ initGreeting();
 initSections();
 initViewSource();
 initScrollTransitions();
+initFoldSwap();
