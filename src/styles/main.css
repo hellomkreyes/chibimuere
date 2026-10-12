@@ -3821,23 +3821,13 @@ h2 em {
 }
 
 /* Colored sparkles: star shapes scattered around the sticker (day: yellow & pink) */
+/* Sparkles: four-point stars drawn as a small SVG (6 per sticker, same spots as before).
+   Day: gold and pink. Night: cyan and red. */
 .sticker::after {
   position: absolute;
   inset: -20px;
   content: "";
-  background-image:
-    radial-gradient(1px 4px at 15% 18%, #ffd700 100%, transparent 100%),
-    radial-gradient(4px 1px at 15% 20%, #ffd700 100%, transparent 100%),
-    radial-gradient(1px 3px at 85% 23%, #ff1493 100%, transparent 100%),
-    radial-gradient(3px 1px at 85% 25%, #ff1493 100%, transparent 100%),
-    radial-gradient(1px 4px at 92% 63%, #ffd700 100%, transparent 100%),
-    radial-gradient(4px 1px at 92% 65%, #ffd700 100%, transparent 100%),
-    radial-gradient(1px 3px at 10% 78%, #ff1493 100%, transparent 100%),
-    radial-gradient(3px 1px at 10% 80%, #ff1493 100%, transparent 100%),
-    radial-gradient(1px 3px at 78% 86%, #ffd700 100%, transparent 100%),
-    radial-gradient(3px 1px at 78% 88%, #ffd700 100%, transparent 100%),
-    radial-gradient(1px 4px at 88% 13%, #ff1493 100%, transparent 100%),
-    radial-gradient(4px 1px at 88% 15%, #ff1493 100%, transparent 100%);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d=%27M15.00 14.50 L16.08 17.92 L19.50 19.00 L16.08 20.08 L15.00 23.50 L13.92 20.08 L10.50 19.00 L13.92 17.92Z%27 fill=%27%23ffd700%27/%3E%3Cpath d=%27M85.00 20.50 L85.84 23.16 L88.50 24.00 L85.84 24.84 L85.00 27.50 L84.16 24.84 L81.50 24.00 L84.16 23.16Z%27 fill=%27%23ff1493%27/%3E%3Cpath d=%27M92.00 59.50 L93.08 62.92 L96.50 64.00 L93.08 65.08 L92.00 68.50 L90.92 65.08 L87.50 64.00 L90.92 62.92Z%27 fill=%27%23ffd700%27/%3E%3Cpath d=%27M10.00 75.50 L10.84 78.16 L13.50 79.00 L10.84 79.84 L10.00 82.50 L9.16 79.84 L6.50 79.00 L9.16 78.16Z%27 fill=%27%23ff1493%27/%3E%3Cpath d=%27M78.00 83.50 L78.84 86.16 L81.50 87.00 L78.84 87.84 L78.00 90.50 L77.16 87.84 L74.50 87.00 L77.16 86.16Z%27 fill=%27%23ffd700%27/%3E%3Cpath d=%27M88.00 10.00 L88.96 13.04 L92.00 14.00 L88.96 14.96 L88.00 18.00 L87.04 14.96 L84.00 14.00 L87.04 13.04Z%27 fill=%27%23ff1493%27/%3E%3C/svg%3E");
   background-size: 100% 100%;
   background-position: 0 0;
   background-repeat: no-repeat;
@@ -3845,19 +3835,7 @@ h2 em {
 }
 
 :root[data-theme="night"] .sticker::after {
-  background-image:
-    radial-gradient(1px 4px at 15% 18%, #00d9ff 100%, transparent 100%),
-    radial-gradient(4px 1px at 15% 20%, #00d9ff 100%, transparent 100%),
-    radial-gradient(1px 3px at 85% 23%, #ff1493 100%, transparent 100%),
-    radial-gradient(3px 1px at 85% 25%, #ff1493 100%, transparent 100%),
-    radial-gradient(1px 4px at 92% 63%, #00d9ff 100%, transparent 100%),
-    radial-gradient(4px 1px at 92% 65%, #00d9ff 100%, transparent 100%),
-    radial-gradient(1px 3px at 10% 78%, #ff1493 100%, transparent 100%),
-    radial-gradient(3px 1px at 10% 80%, #ff1493 100%, transparent 100%),
-    radial-gradient(1px 3px at 78% 86%, #ffd700 100%, transparent 100%),
-    radial-gradient(3px 1px at 78% 88%, #ffd700 100%, transparent 100%),
-    radial-gradient(1px 4px at 88% 13%, #00d9ff 100%, transparent 100%),
-    radial-gradient(4px 1px at 88% 15%, #00d9ff 100%, transparent 100%);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d=%27M15.00 14.50 L16.08 17.92 L19.50 19.00 L16.08 20.08 L15.00 23.50 L13.92 20.08 L10.50 19.00 L13.92 17.92Z%27 fill=%27%2300d9ff%27/%3E%3Cpath d=%27M85.00 20.50 L85.84 23.16 L88.50 24.00 L85.84 24.84 L85.00 27.50 L84.16 24.84 L81.50 24.00 L84.16 23.16Z%27 fill=%27%23ff2a4f%27/%3E%3Cpath d=%27M92.00 59.50 L93.08 62.92 L96.50 64.00 L93.08 65.08 L92.00 68.50 L90.92 65.08 L87.50 64.00 L90.92 62.92Z%27 fill=%27%2300d9ff%27/%3E%3Cpath d=%27M10.00 75.50 L10.84 78.16 L13.50 79.00 L10.84 79.84 L10.00 82.50 L9.16 79.84 L6.50 79.00 L9.16 78.16Z%27 fill=%27%23ff2a4f%27/%3E%3Cpath d=%27M78.00 83.50 L78.84 86.16 L81.50 87.00 L78.84 87.84 L78.00 90.50 L77.16 87.84 L74.50 87.00 L77.16 86.16Z%27 fill=%27%2300d9ff%27/%3E%3Cpath d=%27M88.00 10.00 L88.96 13.04 L92.00 14.00 L88.96 14.96 L88.00 18.00 L87.04 14.96 L84.00 14.00 L87.04 13.04Z%27 fill=%27%23ff2a4f%27/%3E%3C/svg%3E");
 }
 
 
