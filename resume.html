@@ -143,9 +143,19 @@
           <span class="sticker sticker-heading" data-sticker="prompt" aria-hidden="true"></span>
           <p class="contact-lead" data-copy="heading.eyebrow">The practical paperwork</p>
           <h1 id="resume-page-title" data-copy="heading.title">A record of the work.</h1>
-          <p class="lede" data-copy="heading.lede">
-            I'm M.K. Muere, a front-end tech lead and development manager based in Toronto.
-          </p>
+          <div class="lede-row">
+            <p class="lede" data-copy="heading.lede">
+              I'm M.K. Muere, a front-end tech lead and development manager based in Toronto.
+            </p>
+            <!-- Opens this page in a new tab with #print, which opens the browser's print dialog (print or save as PDF). -->
+            <div class="print-cv">
+              <a class="button print-cv-link" href="#print" target="_blank" rel="noopener" aria-describedby="print-cv-hint" data-print-cv
+                ><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M4 1h8v4H4z M2 6h12a1 1 0 0 1 1 1v5h-3v3H4v-3H1V7a1 1 0 0 1 1-1zm3 5v3h6v-3z" fill="currentColor" fill-rule="evenodd" /></svg
+                ><span data-copy="heading.printCta">Print CV</span></a
+              >
+              <p class="print-cv-hint" id="print-cv-hint" data-copy="heading.printHint">Opens in a new tab: print it or save as PDF.</p>
+            </div>
+          </div>
           <!-- Print only: the page's contact details on paper -->
           <p class="resume-print-contact"><span data-copy="email">mkmuere.codes@gmail.com</span><br /><span data-copy="printLinks">chibimuere.com</span></p>
         </div>

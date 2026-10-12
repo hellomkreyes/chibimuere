@@ -11,6 +11,7 @@ import { initSections } from "./js/sections.js";
 import { initViewSource } from "./js/view-source.js";
 import { initScrollTransitions } from "./js/scroll-transitions.js";
 import { initFoldSwap } from "./js/fold-swap.js";
+import { initPrintCv } from "./js/print-cv.js";
 
 syncCurrentYear();
 initMotion();
@@ -25,3 +26,4 @@ initSections();
 initViewSource();
 initScrollTransitions();
 initFoldSwap();
+initPrintCv();
