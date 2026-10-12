@@ -448,7 +448,8 @@ main,
 
 .theme-toggle,
 .menu-toggle,
-.motion-icon {
+.motion-icon,
+.source-icon {
   margin-left: 8px;
   padding: 9px 16px;
   border: 1px solid var(--line);
@@ -469,7 +470,8 @@ main,
 
 .theme-toggle:hover,
 .menu-toggle:hover,
-.motion-icon:hover {
+.motion-icon:hover,
+.source-icon:hover {
   background: #fff;
   box-shadow:
     0 0 0 1px #fff,
@@ -488,7 +490,8 @@ main,
 }
 
 /* Pause / play motion: shows ⏸ while things move, ▶ once paused (aria-pressed="true"). */
-.motion-icon {
+.motion-icon,
+.source-icon {
   display: inline-grid;
   place-items: center;
   width: 44px;
@@ -502,7 +505,18 @@ main,
   fill: currentColor;
 }
 
-.motion-icon[aria-pressed="true"] {
+.source-icon svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
+}
+
+.motion-icon[aria-pressed="true"],
+.source-icon[aria-pressed="true"] {
   color: var(--accent);
 }
 
@@ -560,7 +574,8 @@ main,
 
 :root[data-theme="night"] .theme-toggle,
 :root[data-theme="night"] .menu-toggle,
-:root[data-theme="night"] .motion-icon {
+:root[data-theme="night"] .motion-icon,
+:root[data-theme="night"] .source-icon {
   height: auto;
   margin: 0;
   padding: 16px 20px;
@@ -575,18 +590,21 @@ main,
 
 :root[data-theme="night"] .theme-toggle:hover,
 :root[data-theme="night"] .menu-toggle:hover,
-:root[data-theme="night"] .motion-icon:hover {
+:root[data-theme="night"] .motion-icon:hover,
+:root[data-theme="night"] .source-icon:hover {
   background: var(--cyan);
   box-shadow: none;
   color: #000;
 }
 
-:root[data-theme="night"] .motion-icon {
+:root[data-theme="night"] .motion-icon,
+:root[data-theme="night"] .source-icon {
   width: auto;
   padding-inline: 18px;
 }
 
-:root[data-theme="night"] .motion-icon[aria-pressed="true"] {
+:root[data-theme="night"] .motion-icon[aria-pressed="true"],
+:root[data-theme="night"] .source-icon[aria-pressed="true"] {
   color: var(--red);
 }
 
@@ -3797,6 +3815,124 @@ h2 em {
   }
 }
 
+/* 15b. View source ======================================================== */
+/* The </> button (or the backtick key) outlines landmarks, sections and headings
+   and labels each with its tag. Labels live in two overlay layers drawn by
+   src/js/view-source.js, so no element's own position or pseudo-elements change. */
+:root {
+  --vs-line: var(--accent);
+  --vs-label-bg: var(--title-ink);
+  --vs-label-ink: #fff8f3;
+}
+
+:root[data-theme="night"] {
+  --vs-line: var(--cyan);
+  --vs-label-bg: var(--cyan);
+  --vs-label-ink: #000;
+}
+
+:root[data-view-source="on"] [data-vs-tagged] {
+  outline: 1px dashed var(--vs-line);
+  outline-offset: 3px;
+}
+
+:root[data-theme="night"][data-view-source="on"] [data-vs-tagged] {
+  outline-style: solid;
+}
+
+.vs-layer,
+.vs-layer-fixed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 8; /* over main (5), under the fixed header (10) */
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.vs-layer-fixed {
+  position: fixed;
+  z-index: 12; /* over the header and the phone's bottom bar */
+}
+
+.vs-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: calc(100vw - 8px);
+  overflow: hidden;
+  padding: 0 6px;
+  border-radius: 4px;
+  background: var(--vs-label-bg);
+  color: var(--vs-label-ink);
+  font: 400 11px/1.6 var(--font-mono);
+  letter-spacing: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.vs-label-close {
+  opacity: 0.85;
+}
+
+:root[data-theme="night"] .vs-label {
+  border-radius: 0;
+}
+
+.vs-toast {
+  position: fixed;
+  bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+  left: 50%;
+  z-index: 21; /* over the cookie corner */
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: var(--vs-label-bg);
+  color: var(--vs-label-ink);
+  font: 400 var(--text-xs) / 1.4 var(--font-mono);
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+:root[data-theme="night"] .vs-toast {
+  border-radius: 0;
+}
+
+.vs-toast-touch {
+  display: none;
+}
+
+@media (hover: none) {
+  .vs-toast-key {
+    display: none;
+  }
+
+  .vs-toast-touch {
+    display: inline;
+  }
+}
+
+@media (max-width: 700px) {
+  /* clear of the phone's bottom bar */
+  .vs-toast {
+    bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+@media (forced-colors: active) {
+  :root[data-view-source="on"] [data-vs-tagged] {
+    outline-color: CanvasText;
+  }
+
+  .vs-label,
+  .vs-toast {
+    border: 1px solid CanvasText;
+    background: Canvas;
+    color: CanvasText;
+    forced-color-adjust: none;
+  }
+}
+
 /* 16. Responsive, motion, low-power, print ================================= */
 
 @media (max-width: 860px) {
@@ -3986,7 +4122,8 @@ h2 em {
   :root[data-theme="night"] .wordmark,
   :root[data-theme="night"] .theme-toggle,
   :root[data-theme="night"] .menu-toggle,
-  :root[data-theme="night"] .motion-icon {
+  :root[data-theme="night"] .motion-icon,
+  :root[data-theme="night"] .source-icon {
     padding: 14px 12px;
   }
 
@@ -3998,7 +4135,8 @@ h2 em {
     border-left: 0;
   }
 
-  :root[data-theme="night"] .motion-icon {
+  :root[data-theme="night"] .motion-icon,
+  :root[data-theme="night"] .source-icon {
     padding-inline: 16px;
   }
 
@@ -4110,19 +4248,22 @@ h2 em {
 @media (hover: none) {
   .theme-toggle:hover,
   .menu-toggle:hover,
-  .motion-icon:hover {
+  .motion-icon:hover,
+  .source-icon:hover {
     background: rgba(255, 255, 255, 0.55);
     box-shadow: none;
   }
 
   :root[data-theme="night"] .theme-toggle:hover,
   :root[data-theme="night"] .menu-toggle:hover,
-  :root[data-theme="night"] .motion-icon:hover {
+  :root[data-theme="night"] .motion-icon:hover,
+  :root[data-theme="night"] .source-icon:hover {
     background: transparent;
     color: var(--cyan);
   }
 
-  :root[data-theme="night"] .motion-icon[aria-pressed="true"]:hover {
+  :root[data-theme="night"] .motion-icon[aria-pressed="true"]:hover,
+  :root[data-theme="night"] .source-icon[aria-pressed="true"]:hover {
     color: var(--red);
   }
 }
@@ -4172,6 +4313,7 @@ h2 em {
 .low-power .theme-toggle,
 .low-power .menu-toggle,
 .low-power .motion-icon,
+.low-power .source-icon,
 .low-power .header-actions,
 .low-power .site-nav {
   -webkit-backdrop-filter: none !important;
@@ -4297,6 +4439,13 @@ h2 em {
 }
 
 @media print {
+  .vs-layer,
+  .vs-layer-fixed,
+  .vs-toast,
+  .source-icon {
+    display: none !important;
+  }
+
   @page {
     margin: 1.3cm;
   }

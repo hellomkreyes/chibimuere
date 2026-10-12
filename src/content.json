@@ -121,7 +121,13 @@
       "readWriteup": "Read the write-up",
       "consoleGreeting": "🦋 oh hai, fellow h@x0r! you found the back door to my little cobweb.\nnow all your logs are belong to chibi.muere 💀",
       "winkSent": "You have sent a wink:",
-      "skipWink": "skip wink"
+      "skipWink": "skip wink",
+      "viewSource": "View source",
+      "viewSourceTitle": "View source (`)",
+      "viewSourceOn": "View source on: the page's sections and headings are outlined with their HTML tags. Press Escape to close.",
+      "viewSourceOff": "View source off.",
+      "viewSourceHint": "view source · press ` or Esc to close",
+      "viewSourceHintTouch": "view source · tap </> to close"
     }
   },
   "home": {
