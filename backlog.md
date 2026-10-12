@@ -1,6 +1,6 @@
 # chibimuere backlog
 
-Last updated Oct 5, 2026. Finished items are removed as their PRs land.
+Last updated Oct 11, 2026. Finished items are removed as their PRs land.
 
 `[existing]` = from the original open threads · `[new]` = suggested during the Sep 25 review · `[priority]` = added Sep 28 after the job description review
 
@@ -36,7 +36,7 @@ Specs, schedule and gates live in the "chibimuere Sections: Technical Plan" doc.
   - [ ] Webring (after Oct 13): one primary call to action per entry; a quiet small prev | random | next row; "Boost it" becomes a small share icon; the filter chips become one native `<select>`; the 88x31 wall becomes a "see all" disclosure; a wider window and a bigger thumbnail. [Same content shape. Rework is in `webring.js` (the chip loop, about 25 lines), about 300 lines of CSS, and `tests/webring.spec.js` (it uses `.ring-chip` and `[data-ring-pick]`, which will sit inside the closed disclosure). The window chrome rules are shared with My Pictures (`.pics, .ring`), so a wider webring means splitting those. Today's thumbnails are CSS-drawn tiles, so a bigger thumbnail wants real images from `scripts/images.js`.]
   - [ ] Dream Blunt Rotation conversation circle: a new layout, probably a true ring (8 avatars, the joint orbiting) or a stacked grid with the bubble below and its tail pointing at the holder. [The behavior is already built and merged (PR #26): `rotation.js` has pass, Auto-pass with play/pause, the polite live region, the motion hooks and the bubble content, all independent of layout. Only `place()` (6 lines) and the rotation CSS (about 325 lines, with 8 `nth-child` grid placements) are layout-specific. A ring is cheapest with CSS `sin()`/`cos()` and `place()` using `getBoundingClientRect`; it needs a static no-JS fallback.]
   - Cross-cutting: every layout PR changes the home screenshots (add the `update-screenshots` label), the homepage HTML has about 1.8 KB of room under the 14 KB warning line, and any layout positioned with percentages or `aspect-ratio` needs a WebKit layout test (the Dream Collabs chart collapsed only in Safari).
-- [ ] `[new]` Replace the scaffold placeholders with real content: the project cards (Luna Pie is card 01, Mercury RX is card 02; four placeholders to go), the brand names in the marquee, and the resume page copy. Collected in `site-copy.xlsx`
+- [ ] `[new]` Replace the scaffold placeholders with real content: the project cards (Luna Pie and Mercury RX are real; four placeholders to go) and the resume page copy. (The marquee now lists real clients.) Collected in `site-copy.xlsx`
 - [ ] `[existing]` 404 page: aesthetic fancy-restaurant washroom easter egg, building on the current 404
 - [ ] `[existing]` Redo CV/Resume teaser (the homepage now has a "Read the resume" call to action under the brands marquee; the resume page itself is next, from M.K.'s resume + LinkedIn)
 - [ ] `[existing]` Resume page contact still uses the placeholder `hello@chibimuere.example` (button and print version)
@@ -59,6 +59,7 @@ Specs, schedule and gates live in the "chibimuere Sections: Technical Plan" doc.
 ## Personality & easter eggs
 - [ ] `[new]` Nudge vibrates on Android (`navigator.vibrate`), gated by the motion toggle
 - [ ] `[new]` Auto night after local sunset on first visit, when no preference is saved
+- [ ] `[new]` Konami code theme (Oct 11 idea): a lino/riso/CMYK print skin, high contrast, built from the sticker sparkle colours (yellow `#ffd700`, magenta `#ff1493`, cyan `#00d9ff`) plus black. Ideas: misregistered colour layers, halftone dots, paper texture in place of grain. Needs contrast checks, motion through the motion controller, and its own toggle back out
 
 ## Quality & tooling
 - [ ] `[new]` Turn on branch protection for `main` requiring the four PR checks, once they've run green on a couple of PRs (M.K., in the repo settings; the job names are listed at the top of `.github/workflows/checks.yml`)

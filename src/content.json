@@ -186,33 +186,64 @@
       "typing": "chibimuere is typing a message"
     },
     "brands": {
-      "eyebrow": "a throwback to my past works",
       "title": "Brands I have<br><em>collaborated with.</em>",
       "body": "A few of the brands I&apos;ve worked with and for, from thoughtful collaborations to the behind-the-scenes work that helps good ideas find their shape.",
       "label": "Selected brand collaborations",
       "list": [
         {
-          "name": "Morrow",
+          "name": "Canada Learning Code",
           "style": "serif"
         },
         {
-          "name": "soft / hard",
+          "name": "Complex",
           "style": "sans"
         },
         {
-          "name": "Lumen",
+          "name": "Hot Ones",
           "style": "script"
         },
         {
-          "name": "Common Room",
-          "style": "sans"
-        },
-        {
-          "name": "Elsewhere",
+          "name": "Royal Conservatory of Music",
           "style": "serif"
         },
         {
-          "name": "Good Weather",
+          "name": "Salad King",
+          "style": "sans"
+        },
+        {
+          "name": "Studio Munge",
+          "style": "script"
+        },
+        {
+          "name": "OPFA",
+          "style": "serif"
+        },
+        {
+          "name": "Forests Ontario",
+          "style": "sans"
+        },
+        {
+          "name": "Endy",
+          "style": "script"
+        },
+        {
+          "name": "Canadian Cancer Society",
+          "style": "serif"
+        },
+        {
+          "name": "Interac",
+          "style": "sans"
+        },
+        {
+          "name": "ELTE",
+          "style": "script"
+        },
+        {
+          "name": "Another Room",
+          "style": "serif"
+        },
+        {
+          "name": "Happy Fairy Art",
           "style": "sans"
         }
       ],
@@ -222,7 +253,6 @@
       }
     },
     "portfolio": {
-      "eyebrow": "Selected works and curiosities",
       "title": "A small deck<br><em>of projects.</em>",
       "sideNote": "Six cards<br>in the making",
       "projects": [
@@ -312,7 +342,6 @@
       "studentDescription": "Collecting references, making notes, and leaving room for surprise."
     },
     "artsy": {
-      "eyebrow": "Art in progress",
       "title": "Artsy",
       "folder": {
         "windowTitle": "chibimuere · My Pictures",
@@ -501,6 +530,14 @@
         },
         {
           "kind": "Website",
+          "name": "eloyb.design",
+          "url": "https://eloyb.design/",
+          "button": "ELOY B",
+          "added": "2026-10-11",
+          "note": "Maximalist, kitsch, a little monster, and a portfolio that reads like a code comment. Proof that a personal site can be loud and still feel personal."
+        },
+        {
+          "kind": "Website",
           "name": "Mercury Rx",
           "url": "https://rx.chibimuere.com/",
           "button": "MERCURY RX",
@@ -519,7 +556,6 @@
       ]
     },
     "fartsy": {
-      "eyebrow": "Nonsense in progress",
       "title": "Fartsy",
       "collabsTitle": "Dream Collabs",
       "collabsIntro": "The ship chart. Fanon for now, canon someday.",
@@ -776,7 +812,6 @@
     "meta": {
       "title": "Page not found | chibi muere"
     },
-    "eyebrow": "404",
     "title": "This page wandered off.",
     "lede": "The address may be out of date, or the page may never have existed.",
     "button": "Back to chibi muere"

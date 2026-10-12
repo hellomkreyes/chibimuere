@@ -926,7 +926,6 @@ h2 em {
   font-weight: 400;
 }
 
-.section-number,
 .side-note {
   color: var(--ink-soft);
   font-size: var(--text-xs);
@@ -3156,12 +3155,6 @@ h2 em {
   text-transform: uppercase;
 }
 
-.card .num {
-  color: var(--ink-soft);
-  font-size: var(--text-xs);
-  letter-spacing: 0.3em;
-}
-
 /* Night: ruled grid, NO_SIGNAL placeholders, red hover */
 :root[data-theme="night"] .portfolio-grid {
   gap: 0;
@@ -3221,7 +3214,6 @@ h2 em {
 }
 
 :root[data-theme="night"] .card:is(:hover, .is-lit) .thumb::after,
-:root[data-theme="night"] .card:is(:hover, .is-lit) .num,
 :root[data-theme="night"] .card:is(:hover, .is-lit) .card-type,
 :root[data-theme="night"] .card:is(:hover, .is-lit) .card-meta p,
 :root[data-theme="night"] .card:is(:hover, .is-lit) .card-writeup {
@@ -3233,14 +3225,6 @@ h2 em {
   font-size: 34px;
   font-weight: 400;
   letter-spacing: 0;
-}
-
-:root[data-theme="night"] .card .num::before {
-  content: "[";
-}
-
-:root[data-theme="night"] .card .num::after {
-  content: "]";
 }
 
 /* 10. Contact, buttons, footer ============================================= */
@@ -3262,6 +3246,12 @@ h2 em {
 
 .contact-inner .button {
   margin-top: 2rem;
+}
+
+.contact-lead {
+  margin-bottom: 0.5rem;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
 }
 
 .contact-aside {
@@ -4393,13 +4383,9 @@ h2 em {
   }
 
   /* A one-row grid can't split across pages, so each section is a plain block on
-     paper (the decorative section numbers drop out with it). */
+     paper. */
   .resume-page .resume-grid {
     display: block;
-  }
-
-  .resume-page .section-number {
-    display: none;
   }
 
   :root[data-theme] .resume-page h2 {
