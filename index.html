@@ -138,16 +138,6 @@
           <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false"><rect x="2" y="3" width="12" height="1.5" /><rect x="2" y="7.25" width="12" height="1.5" /><rect x="2" y="11.5" width="12" height="1.5" /></svg>
         </button>
         <button
-          class="source-icon"
-          type="button"
-          data-view-source
-          aria-pressed="false"
-          data-copy-attr="aria-label={{site.ui.viewSource}}; title={{site.ui.viewSourceTitle}}"
-          aria-label="View source"
-          title="View source (`)">
-          <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M5 4.5 1.5 8 5 11.5M11 4.5 14.5 8 11 11.5M9.4 2.5 6.6 13.5" /></svg>
-        </button>
-        <button
           class="motion-icon"
           type="button"
           data-motion-toggle
@@ -191,7 +181,7 @@
           <div class="n-meta">
             <div><b data-copy="hero.roleLabel">ROLE</b><span data-copy="hero.role">WEB_DEVELOPER | TECH_LEAD</span></div>
             <div>
-              <b data-copy="hero.uptimeLabel">UPTIME</b><span data-years-since="1997">29</span> <span data-copy="hero.uptimeUnit">YRS</span>
+              <b data-copy="hero.uptimeLabel">UPTIME</b><span data-years-since="1989">37</span> <span data-copy="hero.uptimeUnit">YRS</span>
               <span class="cross" aria-hidden="true">†</span> <span data-copy="hero.uptimeSuffix">AND COUNTING</span>
             </div>
             <div>
@@ -458,9 +448,13 @@
                 <p class="rot-holder"><span data-rot-holder></span> <span data-copy="fartsy.hasIt">has it</span></p>
                 <p class="rot-question" data-rot-question></p>
                 <p><span class="rot-tag" data-rot-tag></span></p>
+                <p class="rot-scold" data-rot-scold hidden></p>
               </div>
               <p class="visually-hidden" role="status" data-rot-status></p>
             </div>
+            <!-- Clicking a seat snatches the joint out of turn ("breaking the rotation"); strings for that easter egg. -->
+            <p class="rot-broken" aria-hidden="true" hidden data-rot-broken></p>
+            <script type="application/json" data-rot-strings data-copy-json="fartsy.rotationBreak"></script>
           </article>
         </div>
       </section>
@@ -516,6 +510,19 @@
         <span class="cookie-zero" aria-hidden="true">0</span>
       </button>
     </aside>
+    <!-- View source: floats in the cookie's corner once you scroll past the top; src/js/fold-swap.js swaps them. -->
+    <button
+      class="source-fab"
+      type="button"
+      hidden
+      data-view-source
+      data-fold-swap
+      aria-pressed="false"
+      data-copy-attr="aria-label={{site.ui.viewSource}}; title={{site.ui.viewSourceTitle}}"
+      aria-label="View source"
+      title="View source (`)">
+      <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M5 4.5 1.5 8 5 11.5M11 4.5 14.5 8 11 11.5M9.4 2.5 6.6 13.5" /></svg>
+    </button>
     <!-- Strings the scripts put on the page (see src/js/copy.js) -->
     <script type="application/json" id="ui-copy" data-copy-json="site.ui"></script>
     <script type="module" src="/src/main.js"></script>

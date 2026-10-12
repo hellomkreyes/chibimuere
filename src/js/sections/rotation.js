@@ -8,6 +8,11 @@
  * out (GSAP SplitText). Both go through the motion controller, so with motion
  * off the text just appears. The visible bubble is aria-hidden; a polite
  * status line announces "X has it: question" once per pass.
+ *
+ * Easter egg: every seat is also a button. Clicking one snatches the joint out
+ * of turn, which "breaks the rotation": Auto-pass stops, the token jolts, the
+ * bubble gets a scolding and a "rotation status: broken" chip appears until
+ * someone passes properly again.
  */
 import { animateSection } from "../motion-controller.js";
 import { motionEnabled } from "../motion.js";
@@ -31,8 +36,19 @@ export default function initRotation(article) {
   const tag = bubble.querySelector("[data-rot-tag]");
   const hasIt = body.dataset.hasIt ?? "has it";
   const motion = animateSection(article, { plugins: [loadSplitText] });
+  const scold = bubble.querySelector("[data-rot-scold]");
+  const brokenChip = article.querySelector("[data-rot-broken]");
+  let strings = {};
+  try {
+    strings = JSON.parse(article.querySelector("[data-rot-strings]")?.textContent || "{}");
+  } catch {
+    strings = {};
+  }
+  const scolds = strings.scolds?.length ? strings.scolds : ["puff, puff, PASS. not puff, puff, grab."];
 
   let holder = 0;
+  let breaks = 0;
+  let restoredTimer = null;
   let timer = null;
   let playing = null;
 
@@ -67,24 +83,71 @@ export default function initRotation(article) {
     playing = played?.animation ?? null;
   };
 
-  const show = ({ announce }) => {
+  const show = ({ announce, scolding = "" }) => {
     const seat = seats[holder];
     const name = seat.querySelector(".rot-name").textContent;
     seats.forEach((s, i) => s.classList.toggle("is-holding", i === holder));
     holderName.textContent = name;
     question.textContent = seat.dataset.question;
     tag.textContent = seat.dataset.tag;
+    if (scold) {
+      scold.textContent = scolding;
+      scold.hidden = !scolding;
+    }
     place();
     if (announce) {
-      status.textContent = `${name} ${hasIt}: ${seat.dataset.question} ${seat.dataset.tag}`;
+      status.textContent = scolding
+        ? `${name} ${strings.snatched ?? "snatched it"}. ${scolding} ${seat.dataset.question}`
+        : `${name} ${hasIt}: ${seat.dataset.question} ${seat.dataset.tag}`;
       animateBubble();
     }
+  };
+
+  const setChip = (text) => {
+    clearTimeout(restoredTimer);
+    if (!brokenChip) return;
+    brokenChip.textContent = text;
+    brokenChip.hidden = !text;
   };
 
   const pass = () => {
     holder = (holder + 1) % seats.length;
     show({ announce: true });
+    if (article.hasAttribute("data-broken")) {
+      article.removeAttribute("data-broken");
+      setChip(strings.restored ?? "rotation restored");
+      restoredTimer = setTimeout(() => setChip(""), 3500);
+    }
   };
+
+  // The easter egg: grabbing it out of turn.
+  const jolt = () =>
+    motion.play((gsap) =>
+      gsap
+        .timeline()
+        .fromTo(token, { rotation: -28 }, { rotation: 0, duration: 0.9, ease: "elastic.out(1, 0.3)" })
+        .fromTo(table, { x: -6 }, { x: 0, duration: 0.5, ease: "elastic.out(1.2, 0.25)" }, 0)
+    );
+
+  const snatch = (index) => {
+    setAuto(false);
+    breaks += 1;
+    const already = index === holder;
+    holder = index;
+    article.setAttribute("data-broken", "");
+    setChip(strings.broken ?? "rotation status: broken");
+    show({ announce: true, scolding: already ? (strings.alreadyHas ?? scolds[0]) : scolds[(breaks - 1) % scolds.length] });
+    jolt();
+  };
+
+  seats.forEach((seat, index) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "rot-grab";
+    button.setAttribute("aria-label", `${strings.grab ?? "Snatch it for"} ${seat.querySelector(".rot-name").textContent}`);
+    button.addEventListener("click", () => snatch(index));
+    seat.append(button);
+  });
 
   const setAuto = (on) => {
     clearInterval(timer);

@@ -18,7 +18,7 @@ import { ui } from "./copy.js";
 const root = document.documentElement;
 const TAGGED = "header, nav, main, section, article, aside, footer, h1, h2, h3, figure, [role='dialog']";
 const CLOSES = new Set(["main", "section", "article"]);
-const SKIP = ".fx-layers, .vs-layer, .vs-layer-fixed, [hidden], [aria-hidden='true']";
+const SKIP = ".fx-layers, .vs-layer, .vs-layer-fixed, [hidden], [inert], [aria-hidden='true']";
 
 let buttons = [];
 let layer = null;
@@ -79,7 +79,7 @@ function draw() {
   for (const element of document.querySelectorAll(TAGGED)) {
     if (element.closest(SKIP)) continue;
     const rect = element.getBoundingClientRect();
-    if (rect.width < 2 || rect.height < 2) continue;
+    if (rect.width < 2 || rect.height < 2 || getComputedStyle(element).visibility === "hidden") continue;
 
     const fixed = inFixedBox(element);
     const target = fixed ? fixedLayer : layer;

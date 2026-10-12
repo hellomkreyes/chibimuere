@@ -18,7 +18,10 @@ const svg = (body) =>
 
 // DAY — glass arrow: frosted translucent body, iridescent rim, specular highlight, soft shadow.
 const ARROW = "M4 3 L4 23 L9.2 18.3 L12.6 26 L16 24.5 L12.7 17 L19.5 17 Z";
-const glass = (bodyStops, sparkle) =>
+// Disabled: a little "no" sign tucked under the arrow's tail.
+const NOPE_DAY =
+  '<g filter="url(#s)"><circle cx="23.5" cy="23.5" r="5.6" fill="#fff" stroke="#b5566f" stroke-width="1.8"/><path d="M19.6 27.4 27.4 19.6" stroke="#b5566f" stroke-width="1.8" stroke-linecap="round"/></g>';
+const glass = (bodyStops, sparkle, badge = "") =>
   svg(`<defs>
     <linearGradient id="f" x1="0" y1="0" x2="1" y2="1">${bodyStops}</linearGradient>
     <linearGradient id="e" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f7b8c8"/><stop offset=".35" stop-color="#f6e89a"/><stop offset=".65" stop-color="#a9d8f5"/><stop offset="1" stop-color="#cbb8f2"/></linearGradient>
@@ -26,7 +29,8 @@ const glass = (bodyStops, sparkle) =>
     <path d="${ARROW}" fill="url(#f)" stroke="#5a4e46" stroke-opacity=".5" stroke-width="1.6" stroke-linejoin="round" filter="url(#s)"/>
     <path d="${ARROW}" fill="none" stroke="url(#e)" stroke-width="1" stroke-linejoin="round"/>
     <path d="M5.7 6.6 L5.7 13.5 L9.8 10.1 Z" fill="#fff" opacity=".95"/>
-    ${sparkle ? '<path d="M24 3 L25 7 L29 8 L25 9 L24 13 L23 9 L19 8 L23 7 Z" fill="#fff" stroke="#e9b9c9" stroke-width=".6"/>' : ""}`);
+    ${sparkle ? '<path d="M24 3 L25 7 L29 8 L25 9 L24 13 L23 9 L19 8 L23 7 Z" fill="#fff" stroke="#e9b9c9" stroke-width=".6"/>' : ""}
+    ${badge}`);
 
 // NIGHT — 1-bit pixel arrow, dithered fill, red/cyan channel split.
 const PIXEL_MAP = [
@@ -47,7 +51,16 @@ const PIXEL_MAP = [
   ".....XOOX",
   "......XX",
 ];
-const pixel = (fillA, fillB, split) => {
+// Disabled at night: a red pixel X in the bottom-right corner.
+const NOPE_NIGHT = (() => {
+  const points = [];
+  for (let i = 0; i < 5; i++) points.push([19 + i * 2, 19 + i * 2], [27 - i * 2, 19 + i * 2]);
+  // Black outline first, then the red X on top, so neighbours don't cover each other.
+  const outline = points.map(([x, y]) => `<rect x="${x - 1}" y="${y - 1}" width="5" height="5" fill="#000"/>`).join("");
+  const cross = points.map(([x, y]) => `<rect x="${x}" y="${y}" width="3" height="3" fill="#ff2a4f"/>`).join("");
+  return outline + cross;
+})();
+const pixel = (fillA, fillB, split, badge = "") => {
   const size = 2;
   const offsetX = 4;
   const offsetY = 1;
@@ -66,7 +79,7 @@ const pixel = (fillA, fillB, split) => {
       else fill += `<rect x="${X}" y="${Y}" width="2" height="2" fill="${(x + y) % 2 ? fillB : fillA}"/>`;
     })
   );
-  return svg(`<g shape-rendering="crispEdges"><g opacity=".75">${ghost}</g>${outline}${fill}</g>`);
+  return svg(`<g shape-rendering="crispEdges"><g opacity=".75">${ghost}</g>${outline}${fill}${badge}</g>`);
 };
 
 export function initCursors() {
@@ -92,6 +105,17 @@ export function initCursors() {
       "pointer"
     )
   );
+  // Disabled: the frosted arrow goes dull and gets a "no" sign.
+  set(
+    "--cur-day-disabled",
+    url(
+      glass('<stop offset="0" stop-color="#ece6e2" stop-opacity=".95"/><stop offset="1" stop-color="#d9d0cc" stop-opacity=".9"/>', false, NOPE_DAY),
+      4,
+      3,
+      "not-allowed"
+    )
+  );
   set("--cur-night", url(pixel("#f0f0f5", "#a9a9b6", true), 4, 1, "auto"));
   set("--cur-night-hover", url(pixel("#ff2a4f", "#b3122f", false), 4, 1, "pointer"));
+  set("--cur-night-disabled", url(pixel("#5d5a66", "#3a3844", false, NOPE_NIGHT), 4, 1, "not-allowed"));
 }

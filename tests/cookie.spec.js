@@ -38,3 +38,22 @@ test("the cookie opens the policy; Escape closes it and returns focus; no axe vi
   await expect(jar).toBeFocused();
   await expect(jar).toHaveAttribute("aria-expanded", "false");
 });
+
+test("the cookie and the view-source button swap places past the top of the page", async ({ page }) => {
+  await page.addInitScript(() => localStorage.setItem("chibi-cookie-peek", "dismissed"));
+  await page.goto("/");
+  const jar = page.locator("[data-cookie-jar]");
+  const source = page.getByRole("button", { name: "View source" });
+  await expect(jar).toBeVisible();
+  await expect(source).toBeHidden();
+
+  await page.evaluate(() => window.scrollTo(0, window.innerHeight));
+  await expect(page.locator("html")).toHaveAttribute("data-fold", "below");
+  await expect(source).toBeVisible();
+  await expect(jar).toBeHidden();
+
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await expect(page.locator("html")).toHaveAttribute("data-fold", "top");
+  await expect(jar).toBeVisible();
+  await expect(source).toBeHidden();
+});
