@@ -239,18 +239,17 @@
         </div>
       </section>
 
-      <section class="contact-band" aria-labelledby="resume-contact-title">
+      <!-- Contact: same band as the home page (copy and social links match index.html). -->
+      <section id="contact" class="contact-band" aria-labelledby="contact-title">
         <div class="shell contact-inner">
-          <span class="sticker sticker-contact" data-sticker="brew" aria-hidden="true"></span>
-          <div>
-            <p class="contact-lead" data-copy="contact.eyebrow">Have a good question?</p>
-            <h2 id="resume-contact-title" data-copy="contact.title">
-              Let&apos;s make<br />something odd.
-            </h2>
-          </div>
-          <a class="button button-light" data-copy-attr="href=mailto:{{email}}" href="mailto:mkmuere.codes@gmail.com"
-            ><span data-copy="contact.button">Say hello</span> <span aria-hidden="true">&#8599;</span></a
-          >
+          <p class="contact-lead" data-copy="contact.eyebrow">How to contact me:</p>
+          <h2 id="contact-title" data-copy="contact.title">don't.</h2>
+          <p class="contact-aside" data-copy="contact.aside">(or haunt me on socials)</p>
+          <ul class="social-links" data-copy-attr="aria-label={{site.social.label}}" aria-label="Social links">
+            <template data-copy-list="site.social.links">
+              <li><a class="button social-link" href="{{url}}" target="_blank" rel="me noopener"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/icons.svg#{{icon}}" /></svg><span class="visually-hidden">{{name}} {{site.social.newTab}}</span></a></li>
+            </template>
+          </ul>
         </div>
       </section>
     </main>

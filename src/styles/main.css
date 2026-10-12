@@ -1205,20 +1205,11 @@ h2 em {
   grid-area: you;
 }
 
-/* Two-column layout: the "you" picture stretches to the height of the compose
-   box beside it. (The single-column block below makes it a chip.) */
+/* Two-column layout: the compose box stretches to the height of the "you"
+   picture beside it. (The single-column block below stacks them instead.) */
 @media (min-width: 861px) {
-  .msn-pic-you {
+  .msn-compose {
     align-self: stretch;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .msn-pic-you .msn-pic-glyph {
-    flex: 1;
-    height: auto;
-    min-height: 0;
-    aspect-ratio: auto;
   }
 }
 
