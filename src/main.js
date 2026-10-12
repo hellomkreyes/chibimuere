@@ -8,6 +8,7 @@ import { initNudge } from "./js/nudge.js";
 import { initTouch } from "./js/touch.js";
 import { initGreeting } from "./js/greeting.js";
 import { initSections } from "./js/sections.js";
+import { initViewSource } from "./js/view-source.js";
 
 syncCurrentYear();
 initMotion();
@@ -19,3 +20,4 @@ initNudge();
 initTouch();
 initGreeting();
 initSections();
+initViewSource();
