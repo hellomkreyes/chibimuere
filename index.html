@@ -267,7 +267,6 @@
       <!-- Brands -->
       <section id="portfolio" class="brands-section" aria-labelledby="brands-title">
         <div class="shell brands-intro">
-          <p class="eyebrow" data-copy="brands.eyebrow">In good company</p>
           <h2 id="brands-title" data-copy="brands.title">Brands I have<br /><em>collaborated with.</em></h2>
           <p data-copy="brands.body">
             A few of the brands I&apos;ve worked with and for, from thoughtful
@@ -295,8 +294,6 @@
         <div class="shell">
           <div class="portfolio-heading">
             <div>
-              <p class="section-number" aria-hidden="true">02</p>
-              <p class="eyebrow" data-copy="portfolio.eyebrow">Selected works and curiosities</p>
               <h2 id="portfolio-title" data-copy="portfolio.title">
                 A small deck<br /><em>of projects.</em>
               </h2>
@@ -316,7 +313,6 @@
                     <p>{{description}}</p>
                     {{#writeup}}<a class="card-writeup" href="{{writeup}}" target="_blank" rel="noopener">{{site.ui.readWriteup}}<span aria-hidden="true"> ↗</span><span class="visually-hidden"> {{site.social.newTab}}</span></a>{{/writeup}}
                   </div>
-                  <span class="num" aria-hidden="true">{{@num}}</span>
                 </div>
               </article>
             </template>
@@ -327,7 +323,6 @@
       <!-- Artsy: My Pictures + Webring. Dropped at build time (with its nav link) until one has content. -->
       <section id="artsy" class="artsy-section" data-copy-if="artsy.pictures artsy.webring" aria-labelledby="artsy-title">
         <div class="shell">
-          <p class="eyebrow" data-copy="artsy.eyebrow">Art in progress</p>
           <h2 id="artsy-title" data-copy="artsy.title">Artsy</h2>
 
           <!-- My Pictures: a folder window. Each thumbnail links to the full picture, so it
@@ -399,7 +394,6 @@
       <!-- Fartsy: Dream Collabs + Blunt Rotation. Dropped at build time (with its nav link) until one has content. -->
       <section id="fartsy" class="fartsy-section" data-copy-if="fartsy.collabs fartsy.rotation" aria-labelledby="fartsy-title">
         <div class="shell">
-          <p class="eyebrow" data-copy="fartsy.eyebrow">Nonsense in progress</p>
           <h2 id="fartsy-title" data-copy="fartsy.title">Fartsy</h2>
 
           <!-- Dream Collabs: a ship chart with chibimuere at the centre. Every collab is a list item with its
@@ -464,7 +458,7 @@
       <!-- Contact -->
       <section id="contact" class="contact-band" aria-labelledby="contact-title">
         <div class="shell contact-inner">
-          <p class="eyebrow" data-copy="contact.eyebrow">How to contact me:</p>
+          <p class="contact-lead" data-copy="contact.eyebrow">How to contact me:</p>
           <h2 id="contact-title" data-copy="contact.title">don't.</h2>
           <p class="contact-aside" data-copy="contact.aside">(but if you must)</p>
           <ul class="social-links" data-copy-attr="aria-label={{site.social.label}}" aria-label="Social links">

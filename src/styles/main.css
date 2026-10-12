@@ -603,14 +603,6 @@ main,
   padding: 120px var(--gutter) 64px;
 }
 
-.eyebrow {
-  margin-bottom: 1.5rem;
-  color: var(--ink-soft);
-  font-size: var(--text-xs);
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-}
-
 .panel {
   border: 1px solid var(--line);
   background: var(--panel);
@@ -926,7 +918,6 @@ h2 em {
   font-weight: 400;
 }
 
-.section-number,
 .side-note {
   color: var(--ink-soft);
   font-size: var(--text-xs);
@@ -949,7 +940,7 @@ h2 em {
   font-weight: 400;
 }
 
-:root[data-theme="night"] .eyebrow::before {
+:root[data-theme="night"] .contact-lead::before {
   color: var(--red);
   content: "> ";
   content: "> " / "";
@@ -3156,12 +3147,6 @@ h2 em {
   text-transform: uppercase;
 }
 
-.card .num {
-  color: var(--ink-soft);
-  font-size: var(--text-xs);
-  letter-spacing: 0.3em;
-}
-
 /* Night: ruled grid, NO_SIGNAL placeholders, red hover */
 :root[data-theme="night"] .portfolio-grid {
   gap: 0;
@@ -3221,7 +3206,6 @@ h2 em {
 }
 
 :root[data-theme="night"] .card:is(:hover, .is-lit) .thumb::after,
-:root[data-theme="night"] .card:is(:hover, .is-lit) .num,
 :root[data-theme="night"] .card:is(:hover, .is-lit) .card-type,
 :root[data-theme="night"] .card:is(:hover, .is-lit) .card-meta p,
 :root[data-theme="night"] .card:is(:hover, .is-lit) .card-writeup {
@@ -3233,14 +3217,6 @@ h2 em {
   font-size: 34px;
   font-weight: 400;
   letter-spacing: 0;
-}
-
-:root[data-theme="night"] .card .num::before {
-  content: "[";
-}
-
-:root[data-theme="night"] .card .num::after {
-  content: "]";
 }
 
 /* 10. Contact, buttons, footer ============================================= */
@@ -3262,6 +3238,12 @@ h2 em {
 
 .contact-inner .button {
   margin-top: 2rem;
+}
+
+.contact-lead {
+  margin-bottom: 0.5rem;
+  color: var(--ink-soft);
+  font-size: 1.05rem;
 }
 
 .contact-aside {
@@ -3456,6 +3438,18 @@ h2 em {
   display: grid;
   grid-template-columns: 0.35fr 1fr;
   gap: clamp(2rem, 5vw, 4rem);
+}
+
+.resume-section h2 {
+  margin-bottom: 0.5rem;
+}
+
+/* The line under each resume heading ("Work, slowly collected.") */
+.resume-sub {
+  margin-bottom: 2rem;
+  color: var(--ink-soft);
+  font-family: var(--font-coquette);
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
 }
 
 .resume-list,
@@ -4436,28 +4430,23 @@ h2 em {
     white-space: nowrap;
   }
 
-  .resume-page .eyebrow,
   .resume-page h2 {
     break-after: avoid;
+  }
+
+  /* Paper keeps the plain section names; the playful sub-lines are screen-only. */
+  .resume-page .resume-sub {
+    display: none;
   }
 
   .resume-page .sticker {
     display: none;
   }
 
-  /* No night-theme terminal prompt on paper */
-  .resume-page .eyebrow::before {
-    display: none;
-  }
-
   /* A one-row grid can't split across pages, so each section is a plain block on
-     paper (the decorative section numbers drop out with it). */
+     paper. */
   .resume-page .resume-grid {
     display: block;
-  }
-
-  .resume-page .section-number {
-    display: none;
   }
 
   :root[data-theme] .resume-page h2 {
