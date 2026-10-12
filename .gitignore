@@ -9,3 +9,4 @@ playwright-report/
 .lighthouseci/
 art-originals/
 .claude/handoffs/
+.claude/handoff-nudge-state.json
