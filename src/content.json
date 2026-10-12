@@ -669,7 +669,22 @@
           "tag": "#let-it-go",
           "show": false
         }
-      ]
+      ],
+      "rotationBreak": {
+        "grab": "Snatch it for",
+        "snatched": "snatched it",
+        "alreadyHas": "they already have it. greedy.",
+        "scolds": [
+          "puff, puff, PASS. not puff, puff, grab.",
+          "that's not how a rotation works.",
+          "the circle is sacred and you have broken it.",
+          "rotation etiquette violation logged.",
+          "you've been fined one (1) snack.",
+          "chibimuere is disappointed but not surprised."
+        ],
+        "broken": "rotation status: broken 💔",
+        "restored": "rotation restored. thank you for your cooperation ✌️"
+      }
     },
     "contact": {
       "eyebrow": "How to contact me:",

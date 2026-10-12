@@ -10,7 +10,10 @@ for (const theme of ["day", "night"]) {
       localStorage.setItem("chibi-cookie-peek", "dismissed");
     }, theme);
     await page.goto("/");
+    // The </> floats in the cookie's corner once you scroll down.
+    await page.evaluate(() => window.scrollTo(0, window.innerHeight));
     const button = page.getByRole("button", { name: "View source" });
+    await expect(button).toBeVisible();
     await expect(button).toHaveAttribute("aria-pressed", "false");
     await expect(page.locator(".vs-label")).toHaveCount(0);
 

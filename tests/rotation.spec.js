@@ -50,3 +50,26 @@ test("Auto-pass passes on its own and can be paused", async ({ page }) => {
   await page.waitForTimeout(3600);
   await expect(page.locator(".rot-seat.is-holding .rot-name")).toHaveText(holding);
 });
+
+test("clicking a seat snatches it out of turn and breaks the rotation", async ({ page }) => {
+  await openRotation(page, { theme: "day", motion: "off" });
+  const seats = page.locator("[data-rot-seat]");
+  const name = (await seats.nth(4).locator(".rot-name").textContent()).trim();
+  await page.getByRole("button", { name: `Snatch it for ${name}` }).click();
+
+  await expect(seats.nth(4)).toHaveClass(/is-holding/);
+  await expect(page.locator(".rot")).toHaveAttribute("data-broken", "");
+  await expect(page.locator("[data-rot-broken]")).toHaveText("rotation status: broken 💔");
+  await expect(page.locator("[data-rot-scold]")).toBeVisible();
+  await expect(page.locator("[data-rot-status]")).toContainText(`${name} snatched it.`);
+
+  // Passing properly restores the rotation.
+  await page.getByRole("button", { name: "Puff, puff, pass" }).click();
+  await expect(seats.nth(5)).toHaveClass(/is-holding/);
+  await expect(page.locator(".rot")).not.toHaveAttribute("data-broken", "");
+  await expect(page.locator("[data-rot-broken]")).toContainText("rotation restored");
+  await expect(page.locator("[data-rot-scold]")).toBeHidden();
+
+  const { violations } = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
+  expect(violations.map((v) => v.id)).toEqual([]);
+});
