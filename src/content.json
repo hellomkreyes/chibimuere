@@ -814,9 +814,9 @@
       "elsewhere": "<strong>You can also find me</strong> trying out the latest TikTok recipe, playing a cozy video game, building mechanical keyboards, writing fanfiction, or making memories with my family."
     },
     "contact": {
-      "eyebrow": "Have a good question?",
-      "title": "Let&apos;s make<br />something odd.",
-      "button": "Say hello"
+      "eyebrow": "How to contact me:",
+      "title": "don&apos;t.",
+      "aside": "(or haunt me on socials)"
     }
   },
   "notFound": {
