@@ -526,6 +526,14 @@
         },
         {
           "kind": "Website",
+          "name": "footer.design",
+          "url": "https://www.footer.design/",
+          "button": "FOOTER",
+          "added": "2026-10-12",
+          "note": "Placeholder boost: M.K. to write why this one's here."
+        },
+        {
+          "kind": "Website",
           "name": "Mercury Rx",
           "url": "https://rx.chibimuere.com/",
           "button": "MERCURY RX",

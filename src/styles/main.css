@@ -1205,6 +1205,17 @@ h2 em {
   grid-area: you;
 }
 
+/* Two-column layout: the display picture stretches to the height of the
+   conversation log beside it. (The single-column block below makes it a chip.) */
+.msn-pic-them {
+  align-self: stretch;
+}
+
+.msn-pic-them .msn-pic-glyph {
+  height: 100%;
+  aspect-ratio: auto;
+}
+
 .msn-pic-glyph {
   display: grid;
   aspect-ratio: 1;
@@ -3082,7 +3093,7 @@ h2 em {
   display: flex;
   width: max-content;
   align-items: center;
-  animation: brands-marquee 28s linear infinite;
+  animation: brands-marquee 64s linear infinite;
 }
 
 .brands:hover .brands-track {
@@ -3109,21 +3120,8 @@ h2 em {
   letter-spacing: 0;
 }
 
-.brand-logo-serif,
-.brand-logo-script {
-  color: var(--ink);
-  font-family: var(--font-display);
-  font-size: 1.35rem;
-  font-weight: 300;
-  letter-spacing: -0.01em;
-  text-transform: none;
-}
-
-.brand-logo-script {
-  font-size: 1.5rem;
-  font-style: italic;
-  font-weight: 200;
-}
+/* Every brand uses the .brand-logo type above (the COMPLEX CANADA look). The
+   "style" key in content.json is no longer used for type. */
 
 :root[data-theme="night"] .brands {
   background: var(--card);
@@ -3133,19 +3131,6 @@ h2 em {
   color: var(--red);
   content: "†";
   content: "†" / "";
-}
-
-:root[data-theme="night"] .brand-logo-serif,
-:root[data-theme="night"] .brand-logo-script {
-  font-family: var(--font-gothic);
-  font-size: 1.6rem;
-  font-style: normal;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-}
-
-:root[data-theme="night"] .brand-logo-script {
-  color: var(--red);
 }
 
 @keyframes brands-marquee {
@@ -4204,15 +4189,31 @@ h2 em {
   }
 
   .msn-pic-glyph,
-  .msn-pic-you .msn-pic-glyph {
+  .msn-pic-you .msn-pic-glyph,
+  .msn-pic-them .msn-pic-glyph {
     width: 48px;
+    height: auto;
     margin: 0;
     font-size: 1.5rem;
+    aspect-ratio: 1;
   }
 
   .msn-pic figcaption {
     margin: 0;
     text-align: left;
+  }
+}
+
+/* The folded menu drops down from the header, so the header has to sit above the
+   floating view-source / cookie buttons (z 20) or they cover its links. The
+   view-source labels stay above the header. */
+@media (max-width: 1140px) {
+  .site-header {
+    z-index: 25;
+  }
+
+  .vs-layer-fixed {
+    z-index: 26;
   }
 }
 
