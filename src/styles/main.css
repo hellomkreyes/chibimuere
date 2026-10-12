@@ -1712,10 +1712,12 @@ h2 em {
 }
 
 @media (max-width: 700px) {
-  /* Phones: sit above the bottom button bar. */
+  /* Phones: sit above the bottom button bar, and line up with the ☰ menu's icon
+     (both start at the page gutter). */
   .cookie-corner,
   .source-fab {
     bottom: calc(84px + env(safe-area-inset-bottom, 0px));
+    left: var(--gutter);
   }
 }
 
@@ -3822,12 +3824,12 @@ h2 em {
 
 /* Colored sparkles: star shapes scattered around the sticker (day: yellow & pink) */
 /* Sparkles: four-point stars drawn as a small SVG (6 per sticker, same spots as before).
-   Day: gold and pink. Night: cyan and red. */
+   Day: gold and cyan (no magenta, which reads as red in day). Night: cyan and red. */
 .sticker::after {
   position: absolute;
   inset: -20px;
   content: "";
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d=%27M15.00 14.50 L16.08 17.92 L19.50 19.00 L16.08 20.08 L15.00 23.50 L13.92 20.08 L10.50 19.00 L13.92 17.92Z%27 fill=%27%23ffd700%27/%3E%3Cpath d=%27M85.00 20.50 L85.84 23.16 L88.50 24.00 L85.84 24.84 L85.00 27.50 L84.16 24.84 L81.50 24.00 L84.16 23.16Z%27 fill=%27%23ff1493%27/%3E%3Cpath d=%27M92.00 59.50 L93.08 62.92 L96.50 64.00 L93.08 65.08 L92.00 68.50 L90.92 65.08 L87.50 64.00 L90.92 62.92Z%27 fill=%27%23ffd700%27/%3E%3Cpath d=%27M10.00 75.50 L10.84 78.16 L13.50 79.00 L10.84 79.84 L10.00 82.50 L9.16 79.84 L6.50 79.00 L9.16 78.16Z%27 fill=%27%23ff1493%27/%3E%3Cpath d=%27M78.00 83.50 L78.84 86.16 L81.50 87.00 L78.84 87.84 L78.00 90.50 L77.16 87.84 L74.50 87.00 L77.16 86.16Z%27 fill=%27%23ffd700%27/%3E%3Cpath d=%27M88.00 10.00 L88.96 13.04 L92.00 14.00 L88.96 14.96 L88.00 18.00 L87.04 14.96 L84.00 14.00 L87.04 13.04Z%27 fill=%27%23ff1493%27/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E<path d=%27M15.00 10.00 L17.38 14.62 L22.00 17.00 L17.38 19.38 L15.00 24.00 L12.62 19.38 L8.00 17.00 L12.62 14.62Z%27 fill=%27%23ffd700%27/><path d=%27M85.00 15.50 L87.21 19.79 L91.50 22.00 L87.21 24.21 L85.00 28.50 L82.79 24.21 L78.50 22.00 L82.79 19.79Z%27 fill=%27%2338d6ea%27/><path d=%27M91.00 57.00 L93.38 61.62 L98.00 64.00 L93.38 66.38 L91.00 71.00 L88.62 66.38 L84.00 64.00 L88.62 61.62Z%27 fill=%27%23ffd700%27/><path d=%27M11.00 73.50 L13.21 77.79 L17.50 80.00 L13.21 82.21 L11.00 86.50 L8.79 82.21 L4.50 80.00 L8.79 77.79Z%27 fill=%27%2338d6ea%27/><path d=%27M79.00 80.00 L81.04 83.96 L85.00 86.00 L81.04 88.04 L79.00 92.00 L76.96 88.04 L73.00 86.00 L76.96 83.96Z%27 fill=%27%23ffd700%27/><path d=%27M88.00 6.00 L90.04 9.96 L94.00 12.00 L90.04 14.04 L88.00 18.00 L85.96 14.04 L82.00 12.00 L85.96 9.96Z%27 fill=%27%2338d6ea%27/>%3C/svg%3E");
   background-size: 100% 100%;
   background-position: 0 0;
   background-repeat: no-repeat;
@@ -3835,7 +3837,7 @@ h2 em {
 }
 
 :root[data-theme="night"] .sticker::after {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d=%27M15.00 14.50 L16.08 17.92 L19.50 19.00 L16.08 20.08 L15.00 23.50 L13.92 20.08 L10.50 19.00 L13.92 17.92Z%27 fill=%27%2300d9ff%27/%3E%3Cpath d=%27M85.00 20.50 L85.84 23.16 L88.50 24.00 L85.84 24.84 L85.00 27.50 L84.16 24.84 L81.50 24.00 L84.16 23.16Z%27 fill=%27%23ff2a4f%27/%3E%3Cpath d=%27M92.00 59.50 L93.08 62.92 L96.50 64.00 L93.08 65.08 L92.00 68.50 L90.92 65.08 L87.50 64.00 L90.92 62.92Z%27 fill=%27%2300d9ff%27/%3E%3Cpath d=%27M10.00 75.50 L10.84 78.16 L13.50 79.00 L10.84 79.84 L10.00 82.50 L9.16 79.84 L6.50 79.00 L9.16 78.16Z%27 fill=%27%23ff2a4f%27/%3E%3Cpath d=%27M78.00 83.50 L78.84 86.16 L81.50 87.00 L78.84 87.84 L78.00 90.50 L77.16 87.84 L74.50 87.00 L77.16 86.16Z%27 fill=%27%2300d9ff%27/%3E%3Cpath d=%27M88.00 10.00 L88.96 13.04 L92.00 14.00 L88.96 14.96 L88.00 18.00 L87.04 14.96 L84.00 14.00 L87.04 13.04Z%27 fill=%27%23ff2a4f%27/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E<path d=%27M15.00 10.00 L17.38 14.62 L22.00 17.00 L17.38 19.38 L15.00 24.00 L12.62 19.38 L8.00 17.00 L12.62 14.62Z%27 fill=%27%2300d9ff%27/><path d=%27M85.00 15.50 L87.21 19.79 L91.50 22.00 L87.21 24.21 L85.00 28.50 L82.79 24.21 L78.50 22.00 L82.79 19.79Z%27 fill=%27%23ff2a4f%27/><path d=%27M91.00 57.00 L93.38 61.62 L98.00 64.00 L93.38 66.38 L91.00 71.00 L88.62 66.38 L84.00 64.00 L88.62 61.62Z%27 fill=%27%2300d9ff%27/><path d=%27M11.00 73.50 L13.21 77.79 L17.50 80.00 L13.21 82.21 L11.00 86.50 L8.79 82.21 L4.50 80.00 L8.79 77.79Z%27 fill=%27%23ff2a4f%27/><path d=%27M79.00 80.00 L81.04 83.96 L85.00 86.00 L81.04 88.04 L79.00 92.00 L76.96 88.04 L73.00 86.00 L76.96 83.96Z%27 fill=%27%2300d9ff%27/><path d=%27M88.00 6.00 L90.04 9.96 L94.00 12.00 L90.04 14.04 L88.00 18.00 L85.96 14.04 L82.00 12.00 L85.96 9.96Z%27 fill=%27%23ff2a4f%27/>%3C/svg%3E");
 }
 
 
