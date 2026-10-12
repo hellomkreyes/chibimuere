@@ -711,7 +711,9 @@
     "heading": {
       "eyebrow": "The practical paperwork",
       "title": "A record of the work.",
-      "lede": "I&apos;m M.K. Muere, a front-end tech lead and development manager in Toronto. Shopify stores and headless websites are what I build best. I also help web teams ship semantic code with accessibility top of mind, because the internet should be easy to navigate for everyone."
+      "lede": "I&apos;m M.K. Muere, a front-end tech lead and development manager in Toronto. Shopify stores and headless websites are what I build best. I also help web teams ship semantic code with accessibility top of mind, because the internet should be easy to navigate for everyone.",
+      "printCta": "Print CV",
+      "printHint": "Opens in a new tab: print it or save as PDF."
     },
     "experience": {
       "eyebrow": "Experience",

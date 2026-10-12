@@ -3893,6 +3893,56 @@ h2 em {
   position: relative;
 }
 
+/* Resume hero: the lede with the Print CV button beside it (stacked on phones). */
+.lede-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.lede-row .lede {
+  margin: 0;
+}
+
+.print-cv {
+  display: grid;
+  justify-items: start;
+  gap: 0.5rem;
+}
+
+.print-cv-link {
+  min-height: 44px;
+  color: var(--ink);
+}
+
+.print-cv-link svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+
+.print-cv-hint {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 12px;
+}
+
+@media (min-width: 48rem) {
+  .lede-row {
+    flex-direction: row;
+    align-items: flex-end;
+    gap: clamp(1.5rem, 4vw, 3rem);
+  }
+
+  .lede-row .lede {
+    flex: 0 1 34rem;
+  }
+
+  .print-cv {
+    flex: none;
+  }
+}
+
 .sticker-heading {
   position: absolute;
   top: 0;
@@ -4772,6 +4822,7 @@ h2 em {
   /* Ways of working and the playful section stay on screen only: paper gets the
      facts, without repeating the summary. */
   .resume-page .contact-band,
+  .resume-page .print-cv,
   .resume-page .resume-cta,
   .resume-page .resume-practice,
   .resume-page .resume-offclock {
