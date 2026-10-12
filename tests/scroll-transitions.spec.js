@@ -24,6 +24,21 @@ test("headings split while motion is on and come back whole when it's paused", a
   expect(errors).toEqual([]);
 });
 
+test("the Artsy windows rise into place while motion is on and sit still when it's paused", async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem("chibi-motion", "on");
+    localStorage.setItem("chibi-cookie-peek", "dismissed");
+  });
+  await page.goto("/");
+  const windowEl = page.locator(".artsy-section > .shell > .pics");
+  await windowEl.scrollIntoViewIfNeeded();
+  await expect.poll(() => windowEl.evaluate((el) => el.style.transform)).not.toBe("");
+
+  await page.locator(".motion-icon").click();
+  await expect.poll(() => windowEl.evaluate((el) => el.style.transform)).toBe("");
+  await expect.poll(() => windowEl.evaluate((el) => el.style.opacity)).toBe("");
+});
+
 test("with reduced motion the seams are drawn and nothing is split", async ({ page }) => {
   await page.emulateMedia({ reducedMotion: "reduce" });
   await page.goto("/resume.html");

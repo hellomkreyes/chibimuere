@@ -1736,12 +1736,45 @@ h2 em {
   backdrop-filter: var(--panel-blur);
 }
 
+/* Sized like a desktop Finder window, not a sidebar widget: the grid scrolls
+   inside it, so the thumbnails keep their size on wide screens. */
+.pics {
+  display: flex;
+  flex-direction: column;
+  min-height: clamp(460px, 68vh, 700px);
+}
+
 .pics-titlebar {
   display: flex;
   align-items: center;
   gap: 10px;
   padding: 8px 12px;
   border-bottom: 1px solid var(--line);
+}
+
+/* Window controls, decorative only (the window itself can't close). */
+.win-dots {
+  display: inline-flex;
+  gap: 6px;
+  margin-right: 4px;
+}
+
+.win-dots i {
+  width: 10px;
+  height: 10px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--bg);
+}
+
+.win-dots i:first-child {
+  border-color: var(--accent);
+}
+
+:root[data-theme="night"] .win-dots i {
+  border-color: var(--red);
+  border-radius: 0;
+  background: transparent;
 }
 
 .pics-app {
@@ -1784,10 +1817,14 @@ h2 em {
 
 .pics-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  align-content: start;
+  flex: 1;
+  gap: 18px;
+  min-height: 0;
   margin: 0;
-  padding: 14px;
+  padding: 20px;
+  overflow: auto;
   list-style: none;
 }
 
@@ -1886,7 +1923,7 @@ h2 em {
 
 .pics-stage {
   display: grid;
-  height: min(60vh, 520px);
+  height: min(66vh, 620px);
   place-items: center;
   overflow: hidden;
 }
@@ -1896,7 +1933,7 @@ h2 em {
   width: auto;
   height: auto;
   max-width: 100%;
-  max-height: min(60vh, 520px);
+  max-height: min(66vh, 620px);
   border-radius: 12px;
   transition: transform 0.4s ease;
 }
@@ -2252,6 +2289,41 @@ h2 em {
 .ring-b88[aria-current="true"] {
   border-color: var(--accent);
   box-shadow: 0 0 0 3px var(--accent);
+}
+
+/* Cinematic: the button wall is a strip of film, with sprocket holes top and bottom. */
+.ring-wall {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  background:
+    radial-gradient(circle, var(--bg) 2.5px, transparent 3px) top 4px left 8px / 14px 10px repeat-x,
+    radial-gradient(circle, var(--bg) 2.5px, transparent 3px) bottom 4px left 8px / 14px 10px repeat-x,
+    var(--panel);
+}
+
+.ring-wall .ring-buttons {
+  padding: 8px 0;
+}
+
+/* Letterbox: each featured entry sits between thin bars, like a frame. */
+.ring-entry {
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
+}
+
+.ring-entry:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+@media (max-width: 700px) {
+  .ring-entry {
+    flex-direction: column;
+  }
+
+  .ring-thumb {
+    width: 100%;
+  }
 }
 
 /* Six tones, assigned per kind by webring.js (a hash of the kind's name), so

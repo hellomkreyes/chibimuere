@@ -17,6 +17,8 @@ import { animateSection } from "./motion-controller.js";
 
 const SECTIONS = ".brands-section, .portfolio-section, .artsy-section, .fartsy-section, .contact-band, .resume-section";
 const HEADING = ":scope > .shell h2";
+// The Artsy windows (My Pictures, Webring) rise into place as they scroll in: one cinematic beat.
+const WINDOWS = ":scope > .shell > .pics, :scope > .shell > .ring";
 
 // The motion controller registers whatever these resolve to (module.default); keep the classes too.
 let ScrollTrigger = null;
@@ -54,6 +56,16 @@ function register(section) {
         ease: "none",
         stagger: 0.18,
         scrollTrigger: { trigger: section, start: "top bottom", end: "top 25%", scrub: 0.6 },
+      });
+
+      // Transform and opacity only: the window rises and clears as you scroll, and rewinds when you scroll back.
+      section.querySelectorAll(WINDOWS).forEach((win) => {
+        gsap.from(win, {
+          y: 56,
+          opacity: 0.25,
+          ease: "none",
+          scrollTrigger: { trigger: win, start: "top 92%", end: "top 55%", scrub: 0.6 },
+        });
       });
 
       if (!heading || !SplitText) return undefined;
