@@ -19,14 +19,16 @@ const svg = (body) =>
 // DAY — glass arrow: frosted translucent body, iridescent rim, specular highlight, soft shadow.
 const ARROW = "M4 3 L4 23 L9.2 18.3 L12.6 26 L16 24.5 L12.7 17 L19.5 17 Z";
 // Disabled: a little "no" sign tucked under the arrow's tail.
-const NOPE_DAY =
-  '<g filter="url(#s)"><circle cx="23.5" cy="23.5" r="5.6" fill="#fff" stroke="#b5566f" stroke-width="1.8"/><path d="M19.6 27.4 27.4 19.6" stroke="#b5566f" stroke-width="1.8" stroke-linecap="round"/></g>';
+// Shadows are offset copies, not SVG filters: browsers don't reliably draw
+// filters inside cursor images, and when the SVG is rejected the OS arrow shows.
+const SHADOW = '<g fill="#5a4e46" fill-opacity=".3">';
+const NOPE_DAY = `${SHADOW}<circle cx="23.5" cy="25" r="5.6"/></g><circle cx="23.5" cy="23.5" r="5.6" fill="#fff" stroke="#b5566f" stroke-width="1.8"/><path d="M19.6 27.4 27.4 19.6" stroke="#b5566f" stroke-width="1.8" stroke-linecap="round"/>`;
 const glass = (bodyStops, sparkle, badge = "") =>
   svg(`<defs>
     <linearGradient id="f" x1="0" y1="0" x2="1" y2="1">${bodyStops}</linearGradient>
-    <linearGradient id="e" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f7b8c8"/><stop offset=".35" stop-color="#f6e89a"/><stop offset=".65" stop-color="#a9d8f5"/><stop offset="1" stop-color="#cbb8f2"/></linearGradient>
-    <filter id="s" x="-50%" y="-50%" width="200%" height="200%"><feDropShadow dy="1.5" stdDeviation="1.4" flood-color="#5a4e46" flood-opacity=".35"/></filter></defs>
-    <path d="${ARROW}" fill="url(#f)" stroke="#5a4e46" stroke-opacity=".5" stroke-width="1.6" stroke-linejoin="round" filter="url(#s)"/>
+    <linearGradient id="e" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f7b8c8"/><stop offset=".35" stop-color="#f6e89a"/><stop offset=".65" stop-color="#a9d8f5"/><stop offset="1" stop-color="#cbb8f2"/></linearGradient></defs>
+    ${SHADOW}<path d="${ARROW}" transform="translate(0 1.5)"/></g>
+    <path d="${ARROW}" fill="url(#f)" stroke="#5a4e46" stroke-opacity=".5" stroke-width="1.6" stroke-linejoin="round"/>
     <path d="${ARROW}" fill="none" stroke="url(#e)" stroke-width="1" stroke-linejoin="round"/>
     <path d="M5.7 6.6 L5.7 13.5 L9.8 10.1 Z" fill="#fff" opacity=".95"/>
     ${sparkle ? '<path d="M24 3 L25 7 L29 8 L25 9 L24 13 L23 9 L19 8 L23 7 Z" fill="#fff" stroke="#e9b9c9" stroke-width=".6"/>' : ""}

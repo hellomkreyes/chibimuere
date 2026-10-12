@@ -3093,7 +3093,7 @@ h2 em {
   display: flex;
   width: max-content;
   align-items: center;
-  animation: brands-marquee 28s linear infinite;
+  animation: brands-marquee 64s linear infinite;
 }
 
 .brands:hover .brands-track {
