@@ -59,6 +59,7 @@ Specs, schedule and gates live in the "chibimuere Sections: Technical Plan" doc.
 ## Personality & easter eggs
 - [ ] `[new]` Nudge vibrates on Android (`navigator.vibrate`), gated by the motion toggle
 - [ ] `[new]` Auto night after local sunset on first visit, when no preference is saved
+- [ ] `[new]` From the v5 mock, not scheduled yet: an ASCII death's-head moth by the contact section (#3) and a glitch footer signature that keeps the AI-overlords joke (#4). Mock: Project doc `claude/mockups/view-source-mockup-v5.html`
 - [ ] `[new]` Konami code theme (Oct 11 idea): a lino/riso/CMYK print skin, high contrast, built from the sticker sparkle colours (yellow `#ffd700`, magenta `#ff1493`, cyan `#00d9ff`) plus black. Ideas: misregistered colour layers, halftone dots, paper texture in place of grain. Needs contrast checks, motion through the motion controller, and its own toggle back out
 
 ## Quality & tooling
