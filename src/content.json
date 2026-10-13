@@ -1,11 +1,11 @@
 {
   "site": {
-    "name": "chibi muere",
-    "homeLabel": "chibi muere home",
+    "name": "chibi.muere",
+    "homeLabel": "chibi.muere home",
     "skipLink": "Skip to content",
     "og": {
       "image": "https://chibimuere.com/og-image.jpg",
-      "imageAlt": "chibi muere, split in two: \"chibi\" in soft plum on a pastel day side, \"muere\" in glitchy chrome on a black night side. chibimuere.com"
+      "imageAlt": "chibi.muere, split in two: \"chibi\" in soft plum on a pastel day side, \"muere\" in glitchy chrome on a black night side. chibimuere.com"
     },
     "nav": {
       "label": "Primary navigation",
@@ -39,7 +39,7 @@
       "toDay": "return to day"
     },
     "footer": {
-      "copyright": "&copy; 3005 chibi muere",
+      "copyright": "&copy; 3005 chibi.muere",
       "credit": "Made in collaboration with the AI overlords",
       "pauseMotion": "pause motion"
     },
@@ -132,8 +132,8 @@
   },
   "home": {
     "meta": {
-      "title": "chibi muere",
-      "description": "chibi muere is a web developer, tech momager, and child of the internet. Welcome to my little cobweb in this vast world wide web.",
+      "title": "chibi.muere",
+      "description": "chibi.muere is a web developer, tech momager, and child of the internet. Welcome to my little cobweb in this vast world wide web.",
       "url": "https://chibimuere.com/"
     },
     "hero": {
@@ -702,7 +702,7 @@
   },
   "resume": {
     "meta": {
-      "title": "CV / Resume | chibi muere",
+      "title": "CV / Resume | chibi.muere",
       "description": "The CV and resume of M.K. Muere: a front-end tech lead and development manager based in Toronto. She specializes working in Shopify and headless stacks, with accessibility as top of mind.",
       "url": "https://chibimuere.com/resume.html"
     },
@@ -823,10 +823,10 @@
   },
   "notFound": {
     "meta": {
-      "title": "Page not found | chibi muere"
+      "title": "Page not found | chibi.muere"
     },
     "title": "This page wandered off.",
     "lede": "The address may be out of date, or the page may never have existed.",
-    "button": "Back to chibi muere"
+    "button": "Back to chibi.muere"
   }
 }
