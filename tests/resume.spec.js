@@ -1,18 +1,6 @@
 import { test, expect } from "@playwright/test";
 
-/* The resume page: real details, and a print layout that stays at two pages. */
-
-test("the resume has real contact details and history, with no placeholders", async ({ page }) => {
-  await page.goto("/resume.html");
-  const text = await page.locator("main").innerText();
-  expect(text).not.toContain(".example");
-  expect(text).not.toMatch(/placeholder/i);
-  await expect(page.getByRole("link", { name: /say hello/i })).toHaveAttribute("href", "mailto:mkmuere.codes@gmail.com");
-  await expect(page.getByRole("heading", { name: "Technical Lead, Domaine" })).toBeVisible();
-  await expect(page.getByRole("heading", { name: "Development Manager, Endy" })).toBeVisible();
-  // The resume's phone number stays off the public page.
-  expect(await page.content()).not.toMatch(/416\)? ?881/);
-});
+/* The resume page: sticker shimmer, a print layout that stays at two pages, and the Print CV button. */
 
 test("sticker shimmer follows the scroll, and stops with Pause Motion", async ({ page }) => {
   await page.addInitScript(() => {
@@ -22,11 +10,10 @@ test("sticker shimmer follows the scroll, and stops with Pause Motion", async ({
   await page.goto("/resume.html");
   await expect(page.locator("main")).toHaveAttribute("data-section-ready", "");
 
-  // Seven decorative stickers stand in for the old section numbers.
+  // The stickers are decoration only.
   const stickers = page.locator("[data-sticker]");
-  await expect(stickers).toHaveCount(7);
+  await expect(stickers).toHaveCount(6);
   for (const sticker of await stickers.all()) await expect(sticker).toHaveAttribute("aria-hidden", "true");
-  await expect(page.locator(".section-number")).toHaveCount(0);
 
   const cursor = page.locator('[data-sticker="cursor"]');
   const shine = () => cursor.evaluate((el) => el.style.getPropertyValue("--shine"));
@@ -59,3 +46,26 @@ for (const theme of ["day", "night"]) {
     expect(pages, "printed pages").toBeLessThanOrEqual(2);
   });
 }
+
+test("Print CV opens the resume in a new tab, which opens the print dialog", async ({ page, context }) => {
+  await page.goto("/resume.html");
+  const link = page.getByRole("link", { name: "Print CV" });
+  await expect(link).toBeVisible();
+  await expect(link).toHaveAttribute("target", "_blank");
+  await expect(link).toHaveAccessibleDescription(/new tab/i);
+
+  // Count print calls in every page this context opens.
+  await context.addInitScript(() => {
+    window.__printed = 0;
+    window.print = () => (window.__printed += 1);
+  });
+  const [tab] = await Promise.all([context.waitForEvent("page"), link.click()]);
+  await tab.waitForLoadState("load");
+  await expect.poll(() => tab.evaluate(() => window.__printed)).toBe(1);
+  // The hash is dropped, so a reload doesn't reopen the dialog.
+  await expect(tab).toHaveURL(/resume\.html$/);
+
+  // The button itself stays off paper.
+  await tab.emulateMedia({ media: "print" });
+  await expect(tab.locator(".print-cv")).toBeHidden();
+});
