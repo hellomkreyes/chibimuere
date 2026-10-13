@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <title>chibi muere</title>
+  <title>chibi.muere</title>
   <!-- Night: the same shape as a moth on a dead screen, with a red/cyan channel split -->
   <rect width="64" height="64" rx="16" fill="#07060a"/>
   <rect x=".5" y=".5" width="63" height="63" rx="15.5" fill="none" stroke="#3a3a44"/>

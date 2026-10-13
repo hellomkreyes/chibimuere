@@ -6,7 +6,7 @@
 import { ui } from "./copy.js";
 
 const FALLBACK =
-  "🦋 oh hi, curious dev! you found the back door to my little cobweb.\nlook around, poke things, try not to break anything. xo, chibi muere";
+  "🦋 oh hi, curious dev! you found the back door to my little cobweb.\nlook around, poke things, try not to break anything. xo, chibi.muere";
 
 let hasLogged = false;
 
