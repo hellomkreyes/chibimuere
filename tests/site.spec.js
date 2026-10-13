@@ -105,7 +105,7 @@ test.describe("home", () => {
 
   test("the resume call to action under the marquee leads to the resume page", async ({ page }) => {
     await open(page, "/");
-    const cta = page.locator(".brands-cta").getByRole("link", { name: /resume/i });
+    const cta = page.locator('.brands-cta a[href*="resume.html"]');
     await expect(cta).toBeVisible();
     await cta.click();
     await expect(page).toHaveURL(/resume\.html$/);
