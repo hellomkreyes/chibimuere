@@ -144,10 +144,10 @@
         "day": "portfolio",
         "night": "CHIBI.SYS",
         "node": "NODE://PORTFOLIO",
-        "live": "● LIVE"
+        "live": "● CHRONICALLY ONLINE"
       },
       "eyebrow": "a tiny vessel of big ideas",
-      "lede": "I am a tech witch and a child of the internet. Join me as I try to reclaim the artistry, mystery, and stupidity of this matrix that we love.",
+      "lede": "I am a tech witch and a child of the internet. Come join me as I try to reclaim the artistry, mystery, and stupidity of this matrix that we know and love.",
       "roleLabel": "ROLE",
       "role": "WEB_DEVELOPER | TECH_LEAD",
       "uptimeLabel": "UPTIME",
@@ -157,16 +157,16 @@
     },
     "bio": {
       "windowTitle": "chibi.muere · Conversation",
-      "title": "just a smol death",
-      "presence": "online",
+      "title": "a smol death",
+      "presence": "online somewhere",
       "nowPlaying": "Cute without the E by Taking Back Sunday",
       "conversationLabel": "Conversation",
-      "stranger": "xXstrangerXx",
+      "stranger": "xx_l33r0y_j3nk1ns_xx",
       "me": "chibi.muere",
       "says": "says:",
       "strangerLine": "a/s/l?",
       "reply": "16/m/viridian city",
-      "body": "Hello 👋 my name is M.K. Muere - my last name means death! 💀 I am a web developer from Toronto, ON. My specialty is leading agile tech teams, and building unique yet accessible e-commerce experiences. <br/><br/>Formality aside, I practice in digital witchcraft and general internet buffoonery.",
+      "body": "Sup 👋 my name is M.K. Muere &amp; yes, my last name means death! 💀 I like to lead engineering teams and build cool shit on the internet. I&apos;ve worked in both agency and product over the last 10 years, and have been a child of the internet for even longer!  <br/><br/>Formality aside, I practice in digital witchcraft and internet buffoonery.",
       "nudge": "nudge",
       "winks": [
         {
@@ -188,24 +188,24 @@
         }
       ],
       "noReply": "you can&apos;t reply to this one. (see how to <a href='#contact'>contact me</a>)",
-      "you": "you",
+      "you": "l33r0y",
       "typing": "chibi.muere is typing a message"
     },
     "brands": {
       "title": "Brands I have<br><em>collaborated with.</em>",
-      "body": "A few of the brands I&apos;ve worked with and for, from thoughtful collaborations to the behind-the-scenes work that helps good ideas find their shape.",
-      "label": "Selected brand collaborations",
+      "body": "Here are a few notable brands I&apos;ve worked with and for; from thoughtful collaborations to the behind-the-scenes work that helps good ideas find their shape.",
+      "label": "Collabs include:",
       "list": [
         {
           "name": "Canada Learning Code",
           "style": "serif"
         },
         {
-          "name": "Complex Canada",
+          "name": "COMPLEX",
           "style": "sans"
         },
         {
-          "name": "Hot Ones",
+          "name": "Hot Ones / First We Feast",
           "style": "script"
         },
         {
@@ -221,15 +221,15 @@
           "style": "script"
         },
         {
-          "name": "OPFA",
+          "name": "Studio Munge",
           "style": "serif"
         },
         {
-          "name": "Studio Munge",
+          "name": "OPFA",
           "style": "sans"
         },
         {
-          "name": "Endy Canada",
+          "name": "Endy.ca",
           "style": "script"
         },
         {
@@ -241,7 +241,7 @@
           "style": "sans"
         },
         {
-          "name": "ELTE & Mkt",
+          "name": "ELTE",
           "style": "script"
         },
         {
@@ -250,13 +250,13 @@
         }
       ],
       "cta": {
-        "text": "The brands are just the highlight reel. The resume has plenty of receipts.",
+        "text": "The brands are just the highlight reel. My resume page has plenty of receipts! Interested in seeing case studies? Keep scrolling below 👇",
         "button": "Read the CV/Resume"
       }
     },
     "portfolio": {
       "title": "A small deck<br><em>of projects.</em>",
-      "sideNote": "Six cards<br>in the making",
+      "sideNote": "# cards<br>in the making",
       "projects": [
         {
           "title": "Luna Pie",
@@ -285,7 +285,7 @@
           "type": "Vibe Coding",
           "year": "2026",
           "glyph": "✦",
-          "description": "A study in first impressions, folded corners, and making an entrance quietly.",
+          "description": "A study in first impressions and making an entrance quietly. This is the first iteration of chibimuere.com, before Claude(tte) and I went through a long iterative design flow.",
           "link": "scaffold.html",
           "writeup": "",
           "show": true
@@ -711,8 +711,8 @@
     "heading": {
       "eyebrow": "The practical paperwork",
       "title": "A record of the work.",
-      "lede": "I&apos;m M.K. Muere, a front-end tech lead and development manager in Toronto. Shopify stores and headless websites are what I build best. I also help web teams ship semantic code with accessibility top of mind, because the internet should be easy to navigate for everyone.",
-      "printCta": "Print CV",
+      "lede": "I&apos;m M.K. Muere, a front-end tech lead and development manager based in Toronto. Shopify stores and headless websites are what I build best. I also help web teams ship semantic code with accessibility top of mind, because the internet should be easy to navigate for everyone.",
+      "printCta": "Print the CV",
       "printHint": "Opens in a new tab: print it or save as PDF."
     },
     "experience": {
@@ -753,23 +753,23 @@
           "years": "2008 &mdash; 2015",
           "role": "Analyst, then Digital Designer",
           "org": "OMERS",
-          "description": "Six years in IT service, vendor and license management, then a stint in the digital design team. During my time there, I reviewed over 130+ contracts in the span of a year for any discrepancies; resulting in $572,200CAD of cost savings for 2014."
+          "description": "Six years in IT service, vendor and license management, then a stint in the digital design team. During my time there, I reviewed over 130+ contracts in the span of a year for any discrepancies; resulting in $572K CAD of cost savings for 2014."
         }
       ]
     },
     "work": {
       "eyebrow": "Selected work",
       "title": "Things I&apos;m proud of.",
-      "endy": "<strong>Endy.com</strong> Site migration to headless Shopify with Next.js, Sanity CMS and TypeScript, automated scheduled deployments, and introducing an agile workflow to the web team.",
-      "munge": "<strong>StudioMunge.com</strong> WordPress multisite, SVG animations, custom filtering, and a custom-built intranet inventory system. Won a Gold W3 Award for Architecture &amp; Design and a Silver W3 Award for Website Features.",
-      "clients": "<strong>Also worked with</strong> ELTE, Royal Conservatory, Canadian Cancer Society, Canada Learning Code, Interac, Another Room, Happy Fairy Art, OPFA, Forest Ontario and Salad King."
+      "endy": "<strong>Endy.com</strong> Site migration to headless Shopify with Next.js, Sanity CMS and TypeScript, automated scheduled deployments, and introducing an agile workflow to the Growth department.",
+      "munge": "<strong>StudioMunge.com</strong> WordPress multisite, SVG animations, custom filtering, and a custom-built intranet inventory system. Won a Gold W3 Award for Architecture &amp; Design, Silver W3 Award for Website Features, and nominated for a Webby Award.",
+      "clients": "<strong>Also worked with</strong> ELTE, Mkt, Royal Conservatory of Music, Canadian Cancer Society, Canada Learning Code, Interac, Another Room, Happy Fairy Art, OPFA, Forest Ontario and Salad King."
     },
     "practice": {
       "eyebrow": "Practice",
       "title": "Ways of working.",
       "leading": "<strong>Leading</strong> Development manager and tech lead on both agency and product teams: agile workflows, lunch &amp; learns, and internal guides that help teams learn best practices.",
-      "building": "<strong>Building</strong> Shopify and headless JAMstack with Next.js, Sanity and TypeScript, after years of WordPress, Gutenberg and custom themes.",
-      "caring": "<strong>Caring</strong> Semantic code with accessibility top of mind, so the internet is a better and easier-to-navigate space for all."
+      "building": "<strong>Building</strong> Shopify and headless JAMstack with Next.js, Sanity and TypeScript. At the end of the day, the tools don&apos;t matter, as long as the website is accessible, performant, and has smol moments of memorable delight.",
+      "caring": "<strong>Caring</strong> Semantic code with accessibility top of mind. I want to make the internet a better and easier-to-navigate space for everyone."
     },
     "education": {
       "eyebrow": "Education",
@@ -777,27 +777,27 @@
       "entries": [
         {
           "years": "2018",
-          "role": "Bridge for Software Development",
+          "role": "Software Development",
           "org": "Bridge School",
-          "description": ""
+          "description": "Selected students of a women-only cohort hosted at Tulip. It was an accessible, judgement-free, and female-friendly space to learn software development."
         },
         {
           "years": "2016",
-          "role": "Front-end bootcamp and full stack course",
+          "role": "Web Bootcamp",
           "org": "Juno College (HackerYou)",
-          "description": ""
+          "description": "Where I learned to turn a passion into a career. At HackerYou I learned frontend development fundamentals in the span of 3 months. I also took part-time courses for fullstack development."
         },
         {
           "years": "2012 &mdash; 2013",
-          "role": "Recognition of Achievement, Japanese Language and Literature",
+          "role": "Recognition of Achievement",
           "org": "Seneca College",
-          "description": ""
+          "description": "In Japanese Language and Literature. This is my participation trophy to humble brag that I know enough Japanese, to confidently order off a sushi menu."
         },
         {
           "years": "2007 &mdash; 2011",
-          "role": "Bachelor of Technology, Graphic Communications Management",
+          "role": "Graphic Communications Management",
           "org": "Ryerson University",
-          "description": ""
+          "description": "Bachelor of Technology. Girl, I went to school for print design and ended up in web development. Feel free to ask me how I got here, lol."
         },
         {
           "years": "Certified",
@@ -810,9 +810,9 @@
     "offClock": {
       "eyebrow": "Off the clock",
       "title": "Other goals of mine.",
-      "goals": "<strong>Corporate witchery</strong> Be the best personality hire you&apos;ve ever made, and a trusted advocate for corporate witchery: need to make a decision? Ask my tarot cards instead of ChatGPT.",
-      "mercury": "<strong>Mercury</strong> Always warn any org I&apos;m a part of when Mercury is in retrograde.",
-      "slack": "<strong>Slack emoji</strong> Grow your Slack emoji library to scale, with the cute and funny emojis I&apos;ve collected over the years.",
+      "goals": "<strong>Corporate witchery</strong> Need to make a decision? Ask my tarot cards instead of ChatGPT.",
+      "mercury": "<strong>Your favourite coworker</strong> Be the best personality hire you&apos;ve ever made, and be your cheerleader at work and in life.",
+      "slack": "<strong>Slack emoji diversity</strong> Grow your Slack emoji library to scale, with the cute and funny emojis I&apos;ve collected over the years.",
       "elsewhere": "<strong>You can also find me</strong> trying out the latest TikTok recipe, playing a cozy video game, building mechanical keyboards, writing fanfiction, or making memories with my family."
     },
     "contact": {
