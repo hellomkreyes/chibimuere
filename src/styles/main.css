@@ -4819,10 +4819,11 @@ h2 em {
     font-size: 1.05rem;
   }
 
-  /* Ways of working and the playful section stay on screen only: paper gets the
-     facts, without repeating the summary. */
+  /* Ways of working, the playful section and the education asides stay on screen
+     only: paper gets the facts, without repeating the summary. */
   .resume-page .contact-band,
   .resume-page .print-cv,
+  .resume-page .resume-aside,
   .resume-page .resume-cta,
   .resume-page .resume-practice,
   .resume-page .resume-offclock {

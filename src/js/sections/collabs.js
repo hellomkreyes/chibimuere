@@ -51,7 +51,7 @@ export default function initCollabs(ship) {
   const items = [...ship.querySelectorAll("[data-ship]")];
   if (!chart || !panel || !items.length) return;
 
-  const { center = "chibimuere", canon: canonWord = "canon", fanon: fanonWord = "fanon", canonChip = "it’s canon!!", chartLabel = "" } = ship.dataset;
+  const { center = "chibi.muere", canon: canonWord = "canon", fanon: fanonWord = "fanon", canonChip = "it’s canon!!", chartLabel = "" } = ship.dataset;
   const collabs = items.map((item) => ({
     item,
     canon: item.hasAttribute("data-canon"),
