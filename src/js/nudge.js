@@ -29,7 +29,7 @@ export function initNudge() {
     count += 1;
     addLine(ui("nudgeSent", "You have just sent a nudge!"));
     if (count === MAX_NUDGES) {
-      addLine(ui("nudgeMuted", "chibimuere has muted nudges. rude."));
+      addLine(ui("nudgeMuted", "chibi.muere has muted nudges. rude."));
       button.disabled = true;
     }
 

@@ -117,7 +117,7 @@
       "pauseMotion": "Pause motion",
       "playMotion": "Play motion",
       "nudgeSent": "You have just sent a nudge!",
-      "nudgeMuted": "chibimuere has muted nudges. rude.",
+      "nudgeMuted": "chibi.muere has muted nudges. rude.",
       "readWriteup": "Read the write-up",
       "consoleGreeting": "🦋 oh hai, fellow h@x0r! you found the back door to my little cobweb.\nnow all your logs are belong to chibi.muere 💀",
       "winkSent": "You have sent a wink:",
@@ -156,13 +156,13 @@
       "statusLabel": "STATUS"
     },
     "bio": {
-      "windowTitle": "chibimuere · Conversation",
+      "windowTitle": "chibi.muere · Conversation",
       "title": "just a smol death",
       "presence": "online",
       "nowPlaying": "Cute without the E by Taking Back Sunday",
       "conversationLabel": "Conversation",
       "stranger": "xXstrangerXx",
-      "me": "chibimuere",
+      "me": "chibi.muere",
       "says": "says:",
       "strangerLine": "a/s/l?",
       "reply": "16/m/viridian city",
@@ -189,7 +189,7 @@
       ],
       "noReply": "you can&apos;t reply to this one. (see how to <a href='#contact'>contact me</a>)",
       "you": "you",
-      "typing": "chibimuere is typing a message"
+      "typing": "chibi.muere is typing a message"
     },
     "brands": {
       "title": "Brands I have<br><em>collaborated with.</em>",
@@ -332,7 +332,7 @@
     "artsy": {
       "title": "Artsy",
       "folder": {
-        "windowTitle": "chibimuere · My Pictures",
+        "windowTitle": "chibi.muere · My Pictures",
         "hint": "Double-click a picture to open it",
         "hintTouch": "Tap a picture twice to open it",
         "items": "items",
@@ -425,7 +425,7 @@
         }
       ],
       "ring": {
-        "windowTitle": "chibimuere · Webring",
+        "windowTitle": "chibi.muere · Webring",
         "intro": "Tiny corners of the internet worth a visit.",
         "filtersLabel": "Filter entries",
         "all": "All",
@@ -560,7 +560,7 @@
         "fanon": "fanon"
       },
       "collabsChartLabel": "Ship chart: pick a collab to see its details",
-      "collabsCenter": "chibimuere",
+      "collabsCenter": "chibi.muere",
       "collabsDetails": "Ship details",
       "collabsCanonChip": "it’s canon!!",
       "collabsSeeWhat": "See what we made",
@@ -614,7 +614,7 @@
       ],
       "rotationTitle": "Dream Blunt Rotation",
       "rotationIntro": "People I would happily overthink with.",
-      "host": "chibimuere",
+      "host": "chibi.muere",
       "hostRole": "(host)",
       "hostIcon": "☠︎",
       "pass": "Puff, puff, pass",
@@ -688,7 +688,7 @@
           "the circle is sacred and you have broken it.",
           "rotation etiquette violation logged.",
           "you've been fined one (1) snack.",
-          "chibimuere is disappointed but not surprised."
+          "chibi.muere is disappointed but not surprised."
         ],
         "broken": "rotation status: broken 💔",
         "restored": "rotation restored. thank you for your cooperation ✌️"
