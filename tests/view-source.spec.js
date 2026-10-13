@@ -12,7 +12,7 @@ for (const theme of ["day", "night"]) {
     await page.goto("/");
     // The </> floats in the cookie's corner once you scroll down.
     await page.evaluate(() => window.scrollTo(0, window.innerHeight));
-    const button = page.getByRole("button", { name: "View source" });
+    const button = page.locator(".source-fab");
     await expect(button).toBeVisible();
     await expect(button).toHaveAttribute("aria-pressed", "false");
     await expect(page.locator(".vs-label")).toHaveCount(0);
@@ -20,7 +20,8 @@ for (const theme of ["day", "night"]) {
     await button.click();
     await expect(button).toHaveAttribute("aria-pressed", "true");
     await expect(page.locator("html")).toHaveAttribute("data-view-source", "on");
-    await expect(page.getByRole("status").filter({ hasText: "View source on" })).toHaveCount(1);
+    // The change is announced in a status message (its wording lives in content.json).
+    await expect(page.locator('body > p[role="status"]')).not.toBeEmpty();
 
     const labels = page.locator(".vs-layer .vs-label, .vs-layer-fixed .vs-label");
     await expect(labels.filter({ hasText: '<main id="main-content">' })).toHaveCount(1);

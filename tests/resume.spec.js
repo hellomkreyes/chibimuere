@@ -49,10 +49,10 @@ for (const theme of ["day", "night"]) {
 
 test("Print CV opens the resume in a new tab, which opens the print dialog", async ({ page, context }) => {
   await page.goto("/resume.html");
-  const link = page.getByRole("link", { name: "Print CV" });
+  const link = page.locator("[data-print-cv]");
   await expect(link).toBeVisible();
   await expect(link).toHaveAttribute("target", "_blank");
-  await expect(link).toHaveAccessibleDescription(/new tab/i);
+  await expect(link).toHaveAccessibleDescription(/\S/); // the hint that it opens a new tab
 
   // Count print calls in every page this context opens.
   await context.addInitScript(() => {

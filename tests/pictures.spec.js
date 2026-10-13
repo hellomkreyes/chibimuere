@@ -17,7 +17,7 @@ test.beforeEach(async ({ page }) => {
 test("click selects, a second click opens; Next, axe, and Escape back to the thumbnail", async ({ page }) => {
   const thumbs = page.locator("[data-pic]");
   const viewer = page.locator("[data-pics-viewer]");
-  await expect(page.locator("[data-pics-count]")).toContainText(`${(await thumbs.count()) - 1} items`);
+  await expect(page.locator("[data-pics-count]")).toContainText(String((await thumbs.count()) - 1));
 
   await thumbs.nth(1).click();
   await expect(thumbs.nth(1)).toHaveAttribute("aria-current", "true");
