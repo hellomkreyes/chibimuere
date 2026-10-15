@@ -4898,3 +4898,165 @@ h2 em {
     break-inside: avoid;
   }
 }
+
+/* 9b. Case studies ========================================================= */
+
+.cases-section {
+  margin-top: clamp(3rem, 6vw, 5rem);
+}
+
+.cases-heading h2 {
+  margin-bottom: 0.5rem;
+}
+
+.cases-intro {
+  max-width: 40rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  color: var(--ink-soft);
+}
+
+/* Phones: a swipeable row, one card at a time with the next one peeking.
+   Wider screens switch to a plain grid (2 columns, then 3) and the stars go. */
+.cases-track {
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 4px 2px 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  list-style: none;
+  scrollbar-width: none;
+}
+
+.cases-track::-webkit-scrollbar {
+  display: none;
+}
+
+.cases-track:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 4px;
+}
+
+.case-slide {
+  display: flex;
+  flex: 0 0 84%;
+  scroll-snap-align: start;
+}
+
+.case-card {
+  flex: 1;
+}
+
+.case-card .thumb {
+  aspect-ratio: 16 / 9;
+}
+
+.case-meta {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 6px;
+  padding: 0 8px;
+}
+
+.case-meta > p:not(.card-type) {
+  color: var(--ink-soft);
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+.case-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 14px;
+  margin: auto 0 0;
+  padding: 6px 0 0;
+  list-style: none;
+}
+
+.case-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--accent);
+  font-size: 15px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: var(--cur-hover);
+}
+
+.case-links a:focus-visible,
+.case-star:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.case-pager {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  margin-top: 18px;
+}
+
+.case-star {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--ink-soft);
+  cursor: var(--cur-hover);
+}
+
+.case-star svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+  opacity: 0.45;
+  transition:
+    transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 0.3s;
+}
+
+.case-star[aria-current="true"] {
+  color: var(--accent);
+}
+
+.case-star[aria-current="true"] svg {
+  opacity: 1;
+  transform: scale(1.3);
+}
+
+@media (min-width: 721px) {
+  .cases-track {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+
+  .case-slide {
+    flex: none;
+  }
+
+  .case-pager {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .cases-track {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-star svg {
+    transition: none;
+  }
+}

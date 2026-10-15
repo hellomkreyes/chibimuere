@@ -12,6 +12,7 @@ import { initViewSource } from "./js/view-source.js";
 import { initScrollTransitions } from "./js/scroll-transitions.js";
 import { initFoldSwap } from "./js/fold-swap.js";
 import { initPrintCv } from "./js/print-cv.js";
+import { initCases } from "./js/cases.js";
 
 syncCurrentYear();
 initMotion();
@@ -27,3 +28,4 @@ initViewSource();
 initScrollTransitions();
 initFoldSwap();
 initPrintCv();
+initCases();
