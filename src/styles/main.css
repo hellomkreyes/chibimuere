@@ -416,10 +416,6 @@ main,
   white-space: nowrap;
 }
 
-.wordmark-dot {
-  color: var(--accent);
-}
-
 .header-actions {
   display: flex;
   align-items: center;
