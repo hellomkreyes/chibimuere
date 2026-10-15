@@ -158,7 +158,7 @@
     "bio": {
       "windowTitle": "chibi.muere · Conversation",
       "title": "a smol death",
-      "presence": "online somewhere",
+      "presence": "online",
       "nowPlaying": "Cute without the E by Taking Back Sunday",
       "conversationLabel": "Conversation",
       "stranger": "xx_l33r0y_j3nk1ns_xx",
@@ -193,15 +193,15 @@
     },
     "brands": {
       "title": "Brands I have<br><em>collaborated with.</em>",
-      "body": "Here are a few notable brands I&apos;ve worked with and for; from thoughtful collaborations to the behind-the-scenes work that helps good ideas find their shape.",
+      "body": "Here are some brands I've worked with and for; from thoughtful collaborations to the behind-the-scenes work that helps good ideas find their shape.",
       "label": "Collabs include:",
       "list": [
         {
-          "name": "Canada Learning Code",
+          "name": "COMPLEX",
           "style": "serif"
         },
         {
-          "name": "COMPLEX",
+          "name": "Canada Learning Code",
           "style": "sans"
         },
         {
@@ -229,15 +229,15 @@
           "style": "sans"
         },
         {
-          "name": "Endy.ca",
+          "name": "Endy Mattresses",
           "style": "script"
         },
         {
-          "name": "Canadian Cancer Society",
+          "name": "Interac",
           "style": "serif"
         },
         {
-          "name": "Interac",
+          "name": "Canadian Cancer Society",
           "style": "sans"
         },
         {
@@ -256,14 +256,14 @@
     },
     "portfolio": {
       "title": "A small deck<br><em>of projects.</em>",
-      "sideNote": "# cards<br>in the making",
+      "sideNote": "The cards<br>in the making",
       "projects": [
         {
           "title": "Luna Pie",
-          "type": "Magical Girl AI",
+          "type": "Shoujo Tech",
           "year": "2026",
           "glyph": "☾&#xFE0E;",
-          "description": "Luna plans, I approve, and a small solar system of AI agents builds, tests, and reviews.",
+          "description": "A magical girl layer for Pi. Luna plans, I approve, and a smol mighty team of celestial agents build, test, and review.",
           "link": "https://github.com/hellomkreyes/luna-pie",
           "newTab": true,
           "writeup": "",
@@ -271,12 +271,22 @@
         },
         {
           "title": "Mercury Rx",
-          "type": "Tracker",
+          "type": "Retrograde Tracker",
           "year": "2026",
           "glyph": "☿&#xFE0E;",
-          "description": "Is Mercury in the microwave? A pixel-art tracker for its retrograde and shadow phases.",
+          "description": "Is Mercury in the microwave? This is a pixel-art tracker for its retrograde and shadow phases.",
           "link": "https://rx.chibimuere.com/",
           "newTab": true,
+          "writeup": "",
+          "show": true
+        },
+        {
+          "title": "Kaidenpa",
+          "type": "Haunted TV",
+          "year": "2024",
+          "glyph": "◌",
+          "description": "A GSAP experimentation in haunted websites and cursed video tapes.",
+          "link": "",
           "writeup": "",
           "show": true
         },
@@ -285,20 +295,10 @@
           "type": "Vibe Coding",
           "year": "2026",
           "glyph": "✦",
-          "description": "A study in first impressions and making an entrance quietly. This is the first iteration of chibimuere.com, before Claude(tte) and I went through a long iterative design flow.",
+          "description": "A study in first impressions. This is the startiing iteration of chibimuere.com and my first stab at vibe coding.",
           "link": "scaffold.html",
           "writeup": "",
           "show": true
-        },
-        {
-          "title": "Object No. 01",
-          "type": "Identity",
-          "year": "2024",
-          "glyph": "◌",
-          "description": "A tiny visual language for things that are useful, strange, and worth keeping.",
-          "link": "",
-          "writeup": "",
-          "show": false
         },
         {
           "title": "Small Strange Things",
@@ -332,7 +332,7 @@
     "artsy": {
       "title": "Artsy",
       "folder": {
-        "windowTitle": "chibi.muere · My Pictures",
+        "windowTitle": "chibi.muere · Camera Reel",
         "hint": "Double-click a picture to open it",
         "hintTouch": "Tap a picture twice to open it",
         "items": "items",
@@ -348,10 +348,10 @@
         {
           "src": "img-0042",
           "file": "IMG_0042.jpg",
-          "title": "Placeholder No. 1 (moon study)",
+          "title": "Bookstore Manga Wall",
           "year": "2026",
-          "medium": "generated pixels",
-          "alt": "Placeholder art: a plum crescent moon in a lilac and peach haze.",
+          "medium": "manga mural inspo",
+          "alt": "Indigo Books in Markville Mall. This is my inspo to paint our own manga mural @ home.",
           "width": 1000,
           "height": 750,
           "show": true
@@ -359,10 +359,10 @@
         {
           "src": "final-final-v3",
           "file": "final_FINAL_v3.png",
-          "title": "Placeholder No. 2 (butterfly effect)",
+          "title": "My Favourite Sweater",
           "year": "2026",
-          "medium": "generated pixels",
-          "alt": "Placeholder art: a pink butterfly with two small butterflies, lilac and orange, on a pastel gradient.",
+          "medium": "rap slayers",
+          "alt": "My fav sweater featuring the most iconic rap tour of the Y2K (yes, Frieren the slayer).",
           "width": 600,
           "height": 800,
           "show": true
@@ -370,10 +370,10 @@
         {
           "src": "sketchbook-scan-07",
           "file": "sketchbook_scan_07.jpg",
-          "title": "Placeholder No. 3 (warm-up lines)",
+          "title": "Go Smol or Go Home",
           "year": "2026",
-          "medium": "generated pixels",
-          "alt": "Placeholder art: thin curved plum lines with a hollow circle in the middle, on cream paper.",
+          "medium": "dedication",
+          "alt": "The time I dressed up as Stewie for my business presentation. Mind you this was during my last year of university.",
           "width": 1000,
           "height": 750,
           "show": true
@@ -381,10 +381,10 @@
         {
           "src": "dont-look",
           "file": "dont_look.bmp",
-          "title": "Placeholder No. 4 (the watcher)",
+          "title": "The Art Wall",
           "year": "2026",
-          "medium": "generated pixels",
-          "alt": "Placeholder art: a single wide-open eye with a lilac iris on a pink background.",
+          "medium": "anime prints",
+          "alt": "Our collection of artwork from our favourite artists of our favourite animes.",
           "width": 800,
           "height": 800,
           "show": true
@@ -392,10 +392,10 @@
         {
           "src": "moodboard-2",
           "file": "moodboard (2).png",
-          "title": "Placeholder No. 5 (mood, pending)",
+          "title": "Rooftop Tower",
           "year": "2026",
-          "medium": "generated pixels",
-          "alt": "Placeholder art: six tilted pastel swatches arranged in a grid, like a moodboard.",
+          "medium": "home office",
+          "alt": "My little coding corner of our house. This is where mama goes to make that bread.",
           "width": 1000,
           "height": 750,
           "show": true
@@ -403,10 +403,10 @@
         {
           "src": "untitled-witchy",
           "file": "untitled_witchy.png",
-          "title": "Placeholder No. 6 (hat check)",
+          "title": "Fuji-san",
           "year": "2026",
-          "medium": "generated pixels",
-          "alt": "Placeholder art: a black witch hat on a dark plum gradient, with a small amber light below it.",
+          "medium": "photo pixels",
+          "alt": "I could not believe the view. So I took a picture of it. Taken in Tokyo Skytree, winter 2024.",
           "width": 600,
           "height": 800,
           "show": true
@@ -414,10 +414,10 @@
         {
           "src": "thumbs-db",
           "file": "Thumbs.db",
-          "title": "you found my secret thumbnail cache. this is the cursed early stuff.",
+          "title": "pitbull affirmations",
           "year": "",
           "medium": "",
-          "alt": "Placeholder art: glitchy red and cyan scan lines on black, with the words rawr XD.",
+          "alt": "lock in diva, pitbull believes in you.",
           "cursed": true,
           "width": 1000,
           "height": 750,
@@ -568,48 +568,48 @@
       "collabs": [
         {
           "name": "Ms. Rachel &amp; Mr. Aron",
-          "tags": "educational crossover, songs stuck in my head, toddler-approved",
-          "why": "Placeholder: why this is my dream collab, in two or three lines. Written by M.K. soon."
+          "tags": "toddler-approved, big feelings are ok",
+          "why": "What better way to give back to the couple I owe child support to. Mydream is to collab with Ms. Rachel and Mr. Aron for an internet project that doubles as a kids learning resource."
         },
         {
           "name": "Chani Nicholas",
-          "tags": "astro-AU, mercury retrograde, slow burn",
-          "why": "Placeholder: why this is my dream collab, in two or three lines. Written by M.K. soon."
+          "tags": "mercury retrograde, slow orbital burn",
+          "why": "From her 2019 book launch, to using the CHANI app on the daily. What I wouldn't give for a chance to work with the original tech witch herself."
         },
         {
-          "name": "Crunchyroll",
-          "tags": "binge-watch AU, filler episodes only, dream collab",
-          "why": "Placeholder: why this is my dream collab, in two or three lines. Written by M.K. soon."
+          "name": "Rick Astley",
+          "tags": "never giving you up, never letting you down",
+          "why": "Sir Rick, please. Let's roll with the punches together."
         },
         {
           "name": "Manny Jacinto",
-          "tags": "modern/good place AU, bortles forever, star wars references, fight for my husband",
-          "why": "Placeholder: why this is my dream collab, in two or three lines. Written by M.K. soon."
+          "tags": "bortles forever, star wars references, fight for my husband",
+          "why": "The man my man tells me not to worry about. I very much worry all the time LOL. Let's be coworkers?"
         },
         {
           "name": "Pokemon",
           "tags": "gotta collab ’em all, nostalgia, rare pair",
-          "why": "Placeholder: why this is my dream collab, in two or three lines. Written by M.K. soon."
+          "why": "The source of many of my childhood dreams. This collab would make 7 year old M.K.'s entire year and adult M.K.'s life."
         },
         {
-          "name": "Amy Poehler",
-          "tags": "leslie knope energy, a good time hang, galentine's day",
-          "why": "Placeholder: why this is my dream collab, in two or three lines. Written by M.K. soon."
+          "name": "Quinta Brunson",
+          "tags": "short queens, internet fame, teaching the children",
+          "why": "Two short queens taking over the world? We love to see them coming. Also, Quinta, please, I love you. Can I be a character on Abbott? I've taught kids how to code before."
         },
         {
-          "name": "NASA",
-          "tags": "to the moon, long distance, manifesting",
-          "why": "Placeholder: why this is my dream collab, in two or three lines. Written by M.K. soon."
+          "name": "Tokyo Smoke",
+          "tags": "puff puff fall in love",
+          "why": "Long time customer, first time collaborator. Let's make it happen."
         },
         {
           "name": "Domee Shi",
-          "tags": "big feelings, red panda energy, mutual pining",
-          "why": "Placeholder: why this is my dream collab, in two or three lines. Written by M.K. soon."
+          "tags": "red panda energy, mutual pining",
+          "why": "Put us in a room together, and I think we can come up with something nostalgia heavy, sincere, and a great outlet for breaking generational curses. "
         },
         {
           "name": "My Chemical Romance",
           "tags": "black parade AU, emo revival, will they won’t they",
-          "why": "Placeholder: why this is my dream collab, in two or three lines. Written by M.K. soon."
+          "why": "DO YOU NEED SOMEONE TO MAKE YOUR BROADWAY WEBSITE?"
         }
       ],
       "rotationTitle": "Dream Blunt Rotation",
