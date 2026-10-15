@@ -289,6 +289,43 @@
         </div>
       </section>
 
+      <!-- Case studies: between the brands CTA and the project deck. One list: a row on wide screens, a swipeable carousel on phones. -->
+      <section class="cases-section" aria-labelledby="cases-title">
+        <div class="shell">
+          <div class="cases-heading">
+            <h2 id="cases-title" data-copy="cases.title">Case studies</h2>
+            <p class="cases-intro" data-copy="cases.intro">The receipts behind the brands above.</p>
+          </div>
+          <div class="cases" data-cases>
+            <ol class="cases-track" tabindex="0" data-cases-track data-copy-attr="aria-label={{cases.trackLabel}}" aria-label="Case study cards">
+              <!-- One slide per content.json cases.cards item. Up to three links per card. -->
+              <template data-copy-list="cases.cards">
+                <li class="case-slide" data-case-slide>
+                  <article class="card case-card">
+                    <div class="thumb" aria-hidden="true"></div>
+                    <div class="case-meta">
+                      <p class="card-type">{{tag}}</p>
+                      <h3>{{title}}</h3>
+                      <p>{{body}}</p>
+                      <ul class="case-links">
+                        {{#links.0}}<li><a href="{{links.0.url}}" target="_blank" rel="noopener">{{links.0.label}}<span class="visually-hidden"> {{site.social.newTab}}</span></a></li>{{/links.0}}
+                        {{#links.1}}<li><a href="{{links.1.url}}" target="_blank" rel="noopener">{{links.1.label}}<span class="visually-hidden"> {{site.social.newTab}}</span></a></li>{{/links.1}}
+                        {{#links.2}}<li><a href="{{links.2.url}}" target="_blank" rel="noopener">{{links.2.label}}<span class="visually-hidden"> {{site.social.newTab}}</span></a></li>{{/links.2}}
+                      </ul>
+                    </div>
+                  </article>
+                </li>
+              </template>
+            </ol>
+            <nav class="case-pager" data-cases-pager data-copy-attr="aria-label={{cases.pagerLabel}}" aria-label="Choose a case study">
+              <template data-copy-list="cases.cards">
+                <button class="case-star" type="button" data-case-star aria-label="{{pager}}"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5 L14.38 9.62 L19 12 L14.38 14.38 L12 19 L9.62 14.38 L5 12 L9.62 9.62Z" /></svg></button>
+              </template>
+            </nav>
+          </div>
+        </div>
+      </section>
+
       <!-- Portfolio -->
       <section class="portfolio-section" aria-labelledby="portfolio-title">
         <div class="shell">

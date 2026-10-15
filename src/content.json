@@ -254,6 +254,58 @@
         "button": "Read the CV/Resume"
       }
     },
+    "cases": {
+      "title": "Case studies",
+      "intro": "The receipts behind the brands above: what I built, who I built it with, and the part I owned.",
+      "trackLabel": "Case study cards, swipe or use the stars below",
+      "pagerLabel": "Choose a case study",
+      "cards": [
+        {
+          "tag": "Solo build with senior dev oversight · Webby, w3award",
+          "title": "Studio Munge",
+          "body": "Solo build, my third project out of bootcamp. Worked directly with the in-studio designer and the studio's design and marketing teams, with oversight from a senior developer.",
+          "pager": "Show Studio Munge",
+          "links": [
+            {
+              "label": "w3award (Bureau)",
+              "url": "https://www.w3award.com/winners/gallery/?event=1015&award=1&search=bureau&id=39868"
+            },
+            {
+              "label": "Webby",
+              "url": "https://winners.webbyawards.com/2018/websites/general-websites/architecture-design/45086/studio-munge"
+            },
+            {
+              "label": "Significant Other",
+              "url": "https://significantother.ca/work/studio-munge"
+            }
+          ]
+        },
+        {
+          "tag": "Technical lead · Shopify, headless",
+          "title": "Endy headless rebuild",
+          "body": "Wrote the technical plan and brought in Rangle for the rebuild. Oversaw major milestones, demoed to stakeholders, and planned how to keep the live Shopify site running through the migration.",
+          "pager": "Show Endy headless rebuild",
+          "links": [
+            {
+              "label": "Rangle case study",
+              "url": "https://rangle.io/cases/endy-headless-ecommerce"
+            }
+          ]
+        },
+        {
+          "tag": "Solo build · Animation, editorial design",
+          "title": "OPFA: the future of Ontario's forests",
+          "body": "Solo build. Owned the animation and a responsive, editorial design for a dry subject: how do you make it browsable?",
+          "pager": "Show OPFA",
+          "links": [
+            {
+              "label": "Significant Other",
+              "url": "https://significantother.ca/work/the-future-of-ontarios-forests"
+            }
+          ]
+        }
+      ]
+    },
     "portfolio": {
       "title": "A small deck<br><em>of projects.</em>",
       "sideNote": "The cards<br>in the making",
