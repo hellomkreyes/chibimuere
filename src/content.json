@@ -158,7 +158,7 @@
     "bio": {
       "windowTitle": "chibi.muere · Conversation",
       "title": "a smol death",
-      "presence": "online",
+      "presence": "online somewhere",
       "nowPlaying": "Cute without the E by Taking Back Sunday",
       "conversationLabel": "Conversation",
       "stranger": "xx_l33r0y_j3nk1ns_xx",
@@ -282,9 +282,9 @@
         },
         {
           "tag": "Technical lead · Shopify, headless",
-          "title": "Endy headless rebuild",
+          "title": "Endy.com headless rebuild",
           "body": "Wrote the technical plan and brought in Rangle for the rebuild. Oversaw major milestones, demoed to stakeholders, and planned how to keep the live Shopify site running through the migration.",
-          "pager": "Show Endy headless rebuild",
+          "pager": "Show Endy.com headless rebuild",
           "links": [
             {
               "label": "Rangle case study",
@@ -293,9 +293,9 @@
           ]
         },
         {
-          "tag": "Solo build · Animation, editorial design",
+          "tag": "Solo build with senior dev oversight · Animation, editorial design",
           "title": "OPFA: the future of Ontario's forests",
-          "body": "Solo build. Owned the animation and a responsive, editorial design for a dry subject: how do you make it browsable?",
+          "body": "Solo build, with a senior developer reviewing bugs and PRs. Owned the animation and a responsive, editorial design that brings a respected field into a visual, browsable form.",
           "pager": "Show OPFA",
           "links": [
             {
