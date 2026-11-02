@@ -81,8 +81,8 @@
         "title": "psst. 0 cookies here.",
         "day": "The only thing tracking you here is my curiosity.",
         "night": "no cookies. only ghosts. someone already bit this one.",
-        "accept": "Accept all 0",
-        "alsoAccept": "Also accept",
+        "accept": "Accept all",
+        "alsoAccept": "Accept none",
         "close": "Dismiss the cookie note"
       },
       "policy": {
@@ -107,15 +107,15 @@
             "value": "none"
           }
         ],
-        "body": "Nothing is counted and nobody is followed. Your choices: there&apos;s nothing to choose. Enjoy.",
+        "body": "Nothing is counted and nobody is followed. Do we really need any more surveillance? Enjoy.",
         "close": "Close the cookie policy"
       }
     },
     "ui": {
       "menuOpen": "Open navigation menu",
       "menuClose": "Close navigation menu",
-      "pauseMotion": "Pause motion",
-      "playMotion": "Play motion",
+      "pauseMotion": "Pause website motion",
+      "playMotion": "Play website motion",
       "nudgeSent": "You have just sent a nudge!",
       "nudgeMuted": "chibi.muere has muted nudges. rude.",
       "readWriteup": "Read the write-up",
@@ -133,7 +133,7 @@
   "home": {
     "meta": {
       "title": "chibi.muere",
-      "description": "chibi.muere is a web developer, tech momager, and child of the internet. Welcome to my little cobweb in this vast world wide web.",
+      "description": "M.K. Muere is an agile Tech Lead and child of the internet. Welcome to my little cobweb in our vast world wide web.",
       "url": "https://chibimuere.com/"
     },
     "hero": {
@@ -158,7 +158,7 @@
     "bio": {
       "windowTitle": "chibi.muere · Conversation",
       "title": "a smol death",
-      "presence": "online somewhere",
+      "presence": "online",
       "nowPlaying": "Cute without the E by Taking Back Sunday",
       "conversationLabel": "Conversation",
       "stranger": "xx_l33r0y_j3nk1ns_xx",
@@ -229,7 +229,7 @@
           "style": "sans"
         },
         {
-          "name": "Endy.com",
+          "name": "Endy Mattresses",
           "style": "script"
         },
         {
@@ -478,7 +478,7 @@
       ],
       "ring": {
         "windowTitle": "chibi.muere · Webring",
-        "intro": "Tiny corners of the internet worth a visit.",
+        "intro": "The bounties of my internet foraging. Please peruse 🙂‍↕️",
         "filtersLabel": "Filter entries",
         "all": "All",
         "why": "Why I’m boosting this:",
@@ -606,7 +606,7 @@
     "fartsy": {
       "title": "Fartsy",
       "collabsTitle": "Dream Collabs",
-      "collabsIntro": "The ship chart. Fanon for now, canon someday.",
+      "collabsIntro": "The dream collaboration list. If I can have the chance to work with any of these folks at some point in time, then life would be like a movie. 🎥",
       "collabsLegend": {
         "canon": "canon",
         "fanon": "fanon"
@@ -656,7 +656,7 @@
         {
           "name": "Domee Shi",
           "tags": "red panda energy, mutual pining",
-          "why": "Put us in a room together, and I think we can come up with something nostalgia heavy, sincere, and a great outlet for breaking generational curses. "
+          "why": "Put us in a room together, and I think we can come up with something nostalgia heavy, sincere, and a great outlet for breaking generational curses."
         },
         {
           "name": "My Chemical Romance",
@@ -670,39 +670,39 @@
       "hostRole": "(host)",
       "hostIcon": "☠︎",
       "pass": "Puff, puff, pass",
-      "auto": "Auto-pass",
+      "auto": "Magic auto-pass",
       "autoPause": "Pause auto-pass",
       "hasIt": "has it",
       "rotation": [
         {
           "name": "Jinx Monsoon",
           "icon": "💄",
-          "question": "Be honest: has the wig ever turned on you mid-lip-sync?",
-          "tag": "#wig-safety"
+          "question": "From one daughter of Hecate to another, are you channeling Judy Garland during Snatch Game?",
+          "tag": "#witchcraft #andbadbitchery"
         },
         {
           "name": "Shiny Rayquaza",
           "icon": "🐉",
-          "question": "Do you ever miss being the regular green one, or is black and gold just who you are now?",
-          "tag": "#shiny-hunting"
+          "question": "Kyogre… smash or pass? 👁️👄👁️",
+          "tag": "#deletemysearchhistory"
         },
         {
           "name": "Ilana Glazer",
           "icon": "🛍️",
-          "question": "Rate today on the Broad City scale: quick errand, or a full odyssey across three boroughs?",
+          "question": "Okay but weed moms should be more normalized than wine moms, right?",
           "tag": "#yas-queen"
         },
         {
           "name": "Geto Suguru",
           "icon": "🌀",
-          "question": "Real question: did the bangs come before or after the villain arc?",
-          "tag": "#character-development"
+          "question": "Your crash-out was valid. And what conditioner do you use?",
+          "tag": "#marryme #forgetgojo"
         },
         {
-          "name": "Brittany Broski",
-          "icon": "🫖",
-          "question": "What’s this year’s kombucha: the thing everyone pretends to like?",
-          "tag": "#royal-court"
+          "name": "Sailor Moon",
+          "icon": "🌙",
+          "question": "Babe, settle this once and for all. Mamo-chan or Seiya?",
+          "tag": "#teamseiya"
         },
         {
           "name": "Goncharov",
@@ -711,10 +711,10 @@
           "tag": "#lost-media"
         },
         {
-          "name": "Willem Dafoe",
-          "icon": "🎭",
-          "question": "You’ve played Jesus and the Green Goblin. Who was the better coworker?",
-          "tag": "#range"
+          "name": "Prince Vegeta",
+          "icon": "👑",
+          "question": "I need parenting advice. How do you control your anger in front of your two kids?",
+          "tag": "#takethisbabyaway #iamthebaby"
         },
         {
           "name": "Keanu Reeves",
@@ -723,11 +723,11 @@
           "tag": "#career-goals"
         },
         {
-          "name": "Elsa from Frozen",
-          "icon": "❄️",
-          "question": "Have you tried a frozen chocolate ice capp before?",
+          "name": "Emilia Clarke",
+          "icon": "🔥",
+          "question": "If you wrote the ending to GOT Season 8, how would you end it?",
           "tag": "#let-it-go",
-          "show": false
+          "show": true
         }
       ],
       "rotationBreak": {
@@ -755,7 +755,7 @@
   "resume": {
     "meta": {
       "title": "CV / Resume | chibi.muere",
-      "description": "The CV and resume of M.K. Muere: a front-end tech lead and development manager based in Toronto. She specializes working in Shopify and headless stacks, with accessibility as top of mind.",
+      "description": "The CV and resume of M.K. Muere: a tech lead and web dev manager based in Toronto. She specializes working in Shopify and headless e-commerce, with accessibility at top of mind.",
       "url": "https://chibimuere.com/resume.html"
     },
     "email": "mkmuere.codes@gmail.com",
@@ -763,7 +763,7 @@
     "heading": {
       "eyebrow": "The practical paperwork",
       "title": "A record of the work.",
-      "lede": "I&apos;m M.K. Muere, a front-end tech lead and development manager based in Toronto. Shopify stores and headless websites are what I build best. I also help web teams ship semantic code with accessibility top of mind, because the internet should be easy to navigate for everyone.",
+      "lede": "I&apos;m M.K. Muere, a front-end tech lead and development manager based in Toronto. Shopify stores and headless websites are what I build best. I help lead web teams to ship semantic and accessible code, because the internet should be easy to navigate for everyone.",
       "printCta": "Print the CV",
       "printHint": "Opens in a new tab: print it or save as PDF."
     },
@@ -877,8 +877,8 @@
     "meta": {
       "title": "Page not found | chibi.muere"
     },
-    "title": "This page wandered off.",
-    "lede": "The address may be out of date, or the page may never have existed.",
+    "title": "We lost the sauce.",
+    "lede": "The address may be out of date, or the page may never have existed. Or it now lives in the back rooms. 👀",
     "button": "Back to chibi.muere"
   }
 }
