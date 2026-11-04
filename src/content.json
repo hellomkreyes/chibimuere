@@ -195,6 +195,7 @@
       "title": "Brands I have<br><em>collaborated with.</em>",
       "body": "Here are some brands I've worked with and for; from thoughtful collaborations to the behind-the-scenes work that helps good ideas find their shape.",
       "label": "Collabs include:",
+      "scrollLabel": "Brand collaborations. Scroll sideways to see them all.",
       "list": [
         {
           "name": "COMPLEX",

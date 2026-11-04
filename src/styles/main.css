@@ -3402,6 +3402,58 @@ h2 em {
   }
 }
 
+/* Motion paused: the drift stops (see "Motion off" at the end of this file), so
+   the window becomes a strip you scroll sideways: swipe, trackpad, scrollbar or
+   arrow keys. The looped copy is dropped (one list, nothing repeats) and the
+   edge fade is removed so the first and last brand are never half hidden.
+   src/js/brands-strip.js adds the tab stop. Two selectors, same as "Motion
+   off": the visitor's choice, or the OS setting when they haven't chosen. */
+:root[data-motion="off"] .brands-window {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ink-soft) transparent;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+:root[data-motion="off"] .brands-track > [aria-hidden="true"] {
+  display: none;
+}
+
+:root[data-motion="off"] .brand-logo {
+  scroll-snap-align: start;
+}
+
+:root[data-motion="off"] .brands-window:focus-visible {
+  outline-offset: -3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root:not([data-motion="on"]) .brands-window {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    scrollbar-width: thin;
+    scrollbar-color: var(--ink-soft) transparent;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  :root:not([data-motion="on"]) .brands-track > [aria-hidden="true"] {
+    display: none;
+  }
+
+  :root:not([data-motion="on"]) .brand-logo {
+    scroll-snap-align: start;
+  }
+
+  :root:not([data-motion="on"]) .brands-window:focus-visible {
+    outline-offset: -3px;
+  }
+}
+
 /* Resume call to action under the marquee */
 .brands-cta {
   display: flex;

@@ -145,4 +145,27 @@ test.describe("home", () => {
     await page.reload();
     await expect(page.locator("html")).toHaveAttribute("data-motion", "off");
   });
+
+  test("with motion paused, the brands marquee scrolls sideways and can be reached by keyboard", async ({ page }) => {
+    await open(page, "/", { motion: "off" });
+    const strip = page.locator(".brands-window");
+    await strip.scrollIntoViewIfNeeded();
+    // One list, not the looped copy, and nothing is cut off: the strip scrolls to the last brand.
+    await expect(page.locator(".brands-track .brand-logo:visible")).toHaveCount(13);
+    await expect(strip).toHaveAttribute("role", "region");
+    expect(await strip.evaluate((el) => el.scrollWidth > el.clientWidth)).toBe(true);
+    // Arrow keys scroll it once focused.
+    await strip.focus();
+    await page.keyboard.press("ArrowRight");
+    await page.keyboard.press("ArrowRight");
+    await expect.poll(() => strip.evaluate((el) => el.scrollLeft)).toBeGreaterThan(0);
+    // The last brand can be scrolled fully into view.
+    await strip.evaluate((el) => el.scrollTo({ left: el.scrollWidth, behavior: "instant" }));
+    const lastLogo = page.locator(".brands-track .brand-logo:visible").last();
+    await expect(lastLogo).toBeInViewport({ ratio: 0.95 });
+    // Playing again hands it back to the marquee: no tab stop, no scrolling.
+    await page.locator(".motion-toggle").click();
+    await expect(strip).not.toHaveAttribute("tabindex", /.*/);
+    await expect(strip).toHaveCSS("overflow-x", "hidden");
+  });
 });
