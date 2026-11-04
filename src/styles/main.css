@@ -2397,15 +2397,18 @@ h2 em {
    the speech bubble (smoke by day, a typed terminal line by night). */
 .rot {
   --rot-gap: 12px;
+  --rot-cols: minmax(0, 420px) minmax(0, 1fr); /* shared by the header and the body so they line up */
+  --rot-col-gap: 28px;
+  --rot-tail: 14px; /* the bubble's speech tail; the controls get the same inset */
   margin-top: clamp(1.5rem, 3vw, 2.5rem);
 }
 
+/* Same two columns as .rot-body: title over the table, controls over the bubble. */
 .rot-head {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: var(--rot-cols);
+  align-items: end;
+  gap: 16px var(--rot-col-gap);
   margin-bottom: 24px;
 }
 
@@ -2425,6 +2428,7 @@ h2 em {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  margin-left: var(--rot-tail); /* left edge matches the bubble's box, not its tail */
 }
 
 .rot-controls[hidden],
@@ -2457,8 +2461,8 @@ h2 em {
 
 .rot-body {
   display: grid;
-  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
-  gap: 28px;
+  grid-template-columns: var(--rot-cols);
+  gap: var(--rot-col-gap);
   align-items: start;
 }
 
@@ -2678,7 +2682,7 @@ h2 em {
 .rot-bubble {
   position: relative;
   max-width: 400px;
-  margin-left: 14px;
+  margin-left: var(--rot-tail);
   padding: 22px 24px;
   border: 1px solid #fff;
   border-radius: 36px;
@@ -2776,10 +2780,51 @@ h2 em {
   content: "> " / "";
 }
 
+/* Desktop only: the bubble spans its whole column, out to the container's right edge,
+   and the question is set at headline scale. Phones keep the notification card below. */
+@media (min-width: 761px) {
+  .rot-bubble {
+    max-width: none;
+    padding: clamp(24px, 3vw, 40px) clamp(28px, 3.5vw, 48px);
+    border-radius: 48px;
+  }
+
+  .rot-bubble::before {
+    top: 48px;
+  }
+
+  .rot-holder {
+    margin-bottom: 14px;
+    font-size: 12px;
+  }
+
+  .rot-question {
+    font-size: clamp(2.25rem, 3.8vw, 4rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .rot-tag {
+    margin-top: 20px;
+    font-size: 13px;
+  }
+
+  /* Night's mono face runs wider, so it gets a smaller headline size. */
+  :root[data-theme="night"] .rot-bubble {
+    border-radius: 2px;
+  }
+
+  :root[data-theme="night"] .rot-question {
+    font-size: clamp(1.75rem, 3.4vw, 3.25rem);
+    letter-spacing: -0.03em;
+  }
+}
+
 @media (max-width: 760px) {
   /* Phones and small tablets: the bubble sits under the table and stops following rows. */
-  .rot-body {
-    grid-template-columns: minmax(0, 1fr);
+  .rot {
+    --rot-cols: minmax(0, 1fr);
+    --rot-tail: 0px;
   }
 
   .rot-table {
@@ -2787,12 +2832,135 @@ h2 em {
   }
 
   .rot-bubble {
-    margin-left: 0;
     transform: none !important;
   }
 
   .rot-bubble::before {
     display: none;
+  }
+
+  /* Mobile-app mode ------------------------------------------------------
+     Controls become a segmented dock (big thumb targets), seats become
+     home-screen app icons, and the bubble reads like a notification card.
+     Markup and tab order are unchanged; this is all presentation. */
+  .rot-head {
+    margin-bottom: 16px;
+  }
+
+  .rot-controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #fff;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 6px 24px rgba(110, 63, 82, 0.12);
+  }
+
+  .rot-btn {
+    min-height: 52px;
+    padding: 0 12px;
+    border: 2px solid transparent;
+    border-radius: 18px;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  /* Primary action: filled. Auto-pass stays a quiet tile until it's switched on. */
+  .rot-btn[data-rot-pass] {
+    background: var(--ink);
+    color: var(--bg);
+  }
+
+  .rot-seat {
+    gap: 6px;
+    padding: 10px 6px 8px;
+    border-color: transparent;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.45);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .rot-seat.is-holding {
+    border-color: var(--accent);
+  }
+
+  /* App-icon squircle instead of a circle. */
+  .rot-avatar {
+    width: clamp(46px, 14vw, 58px);
+    border: 0;
+    border-radius: 24%;
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.9) inset,
+      0 4px 10px rgba(110, 63, 82, 0.18);
+    font-size: clamp(1.4rem, 6.5vw, 1.8rem);
+  }
+
+  .rot-name {
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .rot-bubble {
+    max-width: none;
+    border-radius: 28px;
+    padding: 18px 20px;
+    box-shadow:
+      0 0 0 6px rgba(255, 255, 255, 0.35),
+      0 10px 30px rgba(110, 63, 82, 0.14);
+  }
+
+  /* Press feedback like a native tap, only for people who allow motion. */
+  @media (prefers-reduced-motion: no-preference) {
+    .rot-btn,
+    .rot-seat {
+      transition:
+        transform 0.15s ease-out,
+        border-color 0.4s,
+        box-shadow 0.4s;
+    }
+
+    .rot-btn:active,
+    .rot-seat:has(.rot-grab:active) {
+      transform: scale(0.95);
+    }
+  }
+
+  /* Night keeps its edges: a terminal dock rather than a glass one. */
+  :root[data-theme="night"] .rot-controls {
+    border-color: var(--line);
+    border-radius: 2px;
+    background: var(--bg);
+    box-shadow: none;
+  }
+
+  :root[data-theme="night"] .rot-btn[data-rot-pass] {
+    border-color: var(--red);
+    background: var(--red);
+    color: #000;
+  }
+
+  :root[data-theme="night"] .rot-btn[aria-pressed="true"] {
+    border-color: var(--cyan);
+    background: var(--cyan);
+    color: #000;
+  }
+
+  :root[data-theme="night"] .rot-seat {
+    border-color: var(--line);
+    border-radius: 2px;
+    background: var(--panel);
+  }
+
+  :root[data-theme="night"] .rot-seat.is-holding {
+    border-color: var(--red);
+  }
+
+  :root[data-theme="night"] .rot-avatar {
+    border-radius: 2px;
+    box-shadow: none;
   }
 }
 
