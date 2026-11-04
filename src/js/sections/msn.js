@@ -9,6 +9,7 @@
  */
 import { animateSection } from "../motion-controller.js";
 import { addLogLine } from "../nudge.js";
+import { initMsnArrival } from "../msn-arrival.js";
 import { ui } from "../copy.js";
 
 const SVG = "http://www.w3.org/2000/svg";
@@ -105,7 +106,9 @@ export default function initMsn(win) {
   const log = win.querySelector("[data-msn-log]");
   const buttons = win.querySelectorAll("[data-wink]");
   const skip = document.querySelector("[data-wink-skip]");
-  if (!log || !buttons.length) return;
+  if (!log) return;
+  initMsnArrival(win, log);
+  if (!buttons.length) return;
 
   const overlay = document.createElement("div");
   overlay.className = "wink-overlay";

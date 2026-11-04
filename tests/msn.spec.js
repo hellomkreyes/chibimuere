@@ -47,3 +47,27 @@ test("with motion off, a wink only adds the log line", async ({ page }) => {
   await expect(page.locator(".wink-overlay")).toBeHidden();
   await expect(page.locator("[data-wink-skip]")).toBeHidden();
 });
+
+/* Arrival: the latest message slides in when the window scrolls into view. */
+
+const latestLine = (page) => page.locator("[data-msn-log] .msn-line:not(.msn-system)").last();
+
+test("the latest message waits offscreen, then slides in when the window scrolls into view", async ({ page }) => {
+  await page.addInitScript(() => {
+    localStorage.setItem("chibi-theme", "day");
+    localStorage.setItem("chibi-motion", "on");
+  });
+  await page.goto("/");
+  await expect(page.locator("[data-msn]")).toHaveAttribute("data-section-ready", "");
+  // Section code loads a screen early; the message stays tucked away until the window is in view.
+  await expect(latestLine(page)).toHaveCSS("opacity", "0");
+
+  await page.locator("[data-msn]").scrollIntoViewIfNeeded();
+  await expect(latestLine(page)).toHaveCSS("opacity", "1");
+  await expect(latestLine(page)).toBeVisible();
+});
+
+test("with motion off, the latest message is simply there", async ({ page }) => {
+  await openBio(page, { theme: "day", motion: "off" });
+  await expect(latestLine(page)).toHaveCSS("opacity", "1");
+});
