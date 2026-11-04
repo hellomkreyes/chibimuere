@@ -2774,7 +2774,7 @@ h2 em {
   }
 
   .rot-question {
-    font-size: clamp(2.75rem, 5vw, 4.75rem);
+    font-size: clamp(2.25rem, 3.8vw, 4rem);
     line-height: 1.05;
     letter-spacing: -0.02em;
   }
