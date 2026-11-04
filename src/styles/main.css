@@ -2755,6 +2755,46 @@ h2 em {
   content: "> " / "";
 }
 
+/* Desktop only: the bubble spans its whole column, out to the container's right edge,
+   and the question is set at headline scale. Phones keep the notification card below. */
+@media (min-width: 761px) {
+  .rot-bubble {
+    max-width: none;
+    padding: clamp(24px, 3vw, 40px) clamp(28px, 3.5vw, 48px);
+    border-radius: 48px;
+  }
+
+  .rot-bubble::before {
+    top: 48px;
+  }
+
+  .rot-holder {
+    margin-bottom: 14px;
+    font-size: 12px;
+  }
+
+  .rot-question {
+    font-size: clamp(2.75rem, 5vw, 4.75rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .rot-tag {
+    margin-top: 20px;
+    font-size: 13px;
+  }
+
+  /* Night's mono face runs wider, so it gets a smaller headline size. */
+  :root[data-theme="night"] .rot-bubble {
+    border-radius: 2px;
+  }
+
+  :root[data-theme="night"] .rot-question {
+    font-size: clamp(1.75rem, 3.4vw, 3.25rem);
+    letter-spacing: -0.03em;
+  }
+}
+
 @media (max-width: 760px) {
   /* Phones and small tablets: the bubble sits under the table and stops following rows. */
   .rot {
