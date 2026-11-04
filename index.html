@@ -275,8 +275,10 @@
           </p>
         </div>
         <div class="brands" role="group" data-copy-attr="aria-label={{brands.label}}" aria-label="Selected brand collaborations">
-          <div class="shell brands-window">
-            <!-- The list runs twice for a seamless loop; the copy is hidden from screen readers. -->
+          <div class="shell brands-window" data-copy-attr="data-scroll-label={{brands.scrollLabel}}" data-scroll-label="Brand collaborations. Scroll sideways to see them all.">
+            <!-- The list runs twice for a seamless loop; the copy is hidden from screen readers
+                 and dropped entirely when motion is paused (the strip then scrolls sideways;
+                 see src/js/brands-strip.js). -->
             <div class="brands-track">
               <template data-copy-list="brands.list"><span class="brand-logo brand-logo-{{style}}">{{name}}</span></template>
               <template data-copy-list="brands.list"><span aria-hidden="true" class="brand-logo brand-logo-{{style}}">{{name}}</span></template>

@@ -1,4 +1,5 @@
 import { initMotion } from "./js/motion.js";
+import { initBrandsStrip } from "./js/brands-strip.js";
 import { initTheme } from "./js/theme.js";
 import { initNav } from "./js/nav.js";
 import { initCursors } from "./js/cursors.js";
@@ -16,6 +17,7 @@ import { initCases } from "./js/cases.js";
 
 syncCurrentYear();
 initMotion();
+initBrandsStrip();
 initTheme();
 initNav();
 initCursors();
