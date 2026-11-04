@@ -1222,6 +1222,18 @@ h2 em {
   font-size: 2.5rem;
 }
 
+/* Photo display pictures fill the frame; the frame keeps its border and radius. */
+.msn-pic-glyph {
+  overflow: hidden;
+}
+
+.msn-pic-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .msn-pic figcaption {
   margin-top: 6px;
   color: var(--ink-soft);
@@ -2588,6 +2600,19 @@ h2 em {
   background: linear-gradient(160deg, #ece2ff, #ffe0ec 60%, #ffeedd);
   font-size: clamp(1.1rem, 3vw, 1.7rem);
   line-height: 1;
+}
+
+/* The host seat wears a photo: clipped to the seat's circle (square in night). */
+.rot-avatar-photo {
+  overflow: hidden;
+  background: #ffe600;
+}
+
+.rot-avatar-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .rot-name {
