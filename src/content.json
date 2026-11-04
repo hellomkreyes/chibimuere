@@ -693,10 +693,10 @@
           "tag": "#yas-queen"
         },
         {
-          "name": "Geto Suguru",
-          "icon": "🌀",
-          "question": "Your crash-out was valid. And what conditioner do you use?",
-          "tag": "#marryme #forgetgojo"
+          "name": "Emilia Clarke",
+          "icon": "🔥",
+          "question": "If you wrote the ending to GOT Season 8, how would you end it?",
+          "tag": "#let-it-go"
         },
         {
           "name": "Sailor Moon",
@@ -721,13 +721,6 @@
           "icon": "🏍️",
           "question": "My README says I hope my future boss is you. Are you hiring?",
           "tag": "#career-goals"
-        },
-        {
-          "name": "Emilia Clarke",
-          "icon": "🔥",
-          "question": "If you wrote the ending to GOT Season 8, how would you end it?",
-          "tag": "#let-it-go",
-          "show": true
         }
       ],
       "rotationBreak": {
