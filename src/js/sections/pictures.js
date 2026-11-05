@@ -9,14 +9,23 @@
  * The viewer has Back to all, Previous, Next, Rotate and a Slideshow toggle;
  * focus moves into it on open and back to the thumbnail on close (Escape
  * closes too). The item count leaves out Thumbs.db.
+ *
+ * The folder list on the left filters the grid (All pictures, the trips, the
+ * Recycle Bin). Hidden items (the Recycle Bin and Thumbs.db) stay out of every
+ * folder until "Show hidden items" is ticked. Without JS the list stays
+ * hidden and every shown picture is a plain link.
  */
 const SLIDE_MS = 3000;
 
 export default function initPictures(win) {
+  const body = win.querySelector(".pics-body");
+  const folderNav = win.querySelector("[data-pics-folders]");
+  const picks = [...win.querySelectorAll("[data-folder-pick]")];
+  const toggle = win.querySelector("[data-pics-hidden-toggle]");
   const grid = win.querySelector("[data-pics-grid]");
   const viewer = win.querySelector("[data-pics-viewer]");
   const thumbs = [...win.querySelectorAll("[data-pic]")];
-  if (!grid || !viewer || !thumbs.length) return;
+  if (!body || !grid || !viewer || !thumbs.length) return;
 
   const stage = viewer.querySelector(".pics-stage");
   const source = viewer.querySelector("[data-pics-picture] source");
@@ -27,11 +36,10 @@ export default function initPictures(win) {
   const hintMarkup = hint?.innerHTML;
 
   const count = win.querySelector("[data-pics-count]");
-  if (count) {
-    count.querySelector("[data-pics-count-num]").textContent = thumbs.filter((t) => !t.hasAttribute("data-cursed")).length;
-    count.hidden = false;
-  }
+  const shown = (thumb) => !thumb.parentElement.hidden;
 
+  let folder = "all";
+  let showHidden = false;
   let selected = -1;
   let current = 0;
   let turns = 0;
@@ -55,6 +63,24 @@ export default function initPictures(win) {
     img.style.transform = turns ? `rotate(${turns * 90}deg) scale(${scale})` : "";
   };
 
+  // Folder + "Show hidden items" decide which thumbnails are on the grid.
+  const filter = () => {
+    picks.forEach((pick) => {
+      const id = pick.dataset.folderPick;
+      if (pick.classList.contains("pics-folder-bin")) pick.hidden = !showHidden;
+      pick.setAttribute("aria-pressed", String(id === folder));
+    });
+    thumbs.forEach((thumb) => {
+      const inFolder = folder === "all" || thumb.dataset.folder === folder;
+      thumb.parentElement.hidden = !(inFolder && (showHidden || !thumb.parentElement.hasAttribute("data-bin")));
+    });
+    if (selected >= 0 && !shown(thumbs[selected])) select(-1);
+    if (count) {
+      count.querySelector("[data-pics-count-num]").textContent = thumbs.filter((t) => shown(t) && !t.hasAttribute("data-cursed")).length;
+      count.hidden = false;
+    }
+  };
+
   const render = () => {
     const thumb = thumbs[current];
     const slug = thumb.dataset.pic;
@@ -67,9 +93,13 @@ export default function initPictures(win) {
     img.alt = thumb.querySelector("img")?.alt ?? "";
     const strong = document.createElement("strong");
     strong.textContent = file;
+    const where = thumb.dataset.where;
     const rest = document.createElement("span");
-    rest.textContent = ` · ${thumb.querySelector(".pics-cap")?.textContent ?? ""}`;
-    caption.replaceChildren(strong, rest);
+    rest.textContent = where ? ` · ${where}` : "";
+    const line = document.createElement("span");
+    line.className = "pics-caption-line";
+    line.textContent = thumb.querySelector(".pics-cap")?.textContent ?? "";
+    caption.replaceChildren(strong, rest, line);
     viewer.setAttribute("aria-label", `${play.dataset.viewing ?? "Viewing"} ${file}`);
     if (hint) hint.textContent = file;
     turns = 0;
@@ -83,8 +113,12 @@ export default function initPictures(win) {
     play.textContent = play.dataset.play ?? "Slideshow";
   };
 
+  // Previous and Next skip whatever the folder (or a hidden item) has filtered out.
   const step = (by) => {
-    current = (current + by + thumbs.length) % thumbs.length;
+    let next = current;
+    do next = (next + by + thumbs.length) % thumbs.length;
+    while (!shown(thumbs[next]) && next !== current);
+    current = next;
     render();
   };
 
@@ -92,7 +126,7 @@ export default function initPictures(win) {
     current = index;
     select(index);
     render();
-    grid.hidden = true;
+    body.hidden = true;
     viewer.hidden = false;
     viewer.focus();
   };
@@ -100,7 +134,7 @@ export default function initPictures(win) {
   const close = () => {
     stopSlideshow();
     viewer.hidden = true;
-    grid.hidden = false;
+    body.hidden = false;
     if (hint) hint.innerHTML = hintMarkup;
     select(current);
     thumbs[current].focus();
@@ -118,6 +152,20 @@ export default function initPictures(win) {
       if (viewer.hidden) open(index);
     });
   });
+
+  picks.forEach((pick) =>
+    pick.addEventListener("click", () => {
+      folder = pick.dataset.folderPick;
+      filter();
+    }),
+  );
+  toggle?.addEventListener("change", () => {
+    showHidden = toggle.checked;
+    if (!showHidden && folder === "bin") folder = "all";
+    filter();
+  });
+  if (folderNav) folderNav.hidden = false;
+  filter();
 
   viewer.querySelector("[data-pics-back]").addEventListener("click", close);
   viewer.querySelector("[data-pics-prev]").addEventListener("click", () => step(-1));

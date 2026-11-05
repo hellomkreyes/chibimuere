@@ -52,12 +52,23 @@ function readable(file, scratch) {
   return jpg;
 }
 
-async function convert(file, slug, scratch) {
+// content.json can set "focus" on a picture to steer the thumbnail crop: a word ("top",
+// "centre", "bottom", "left"...) or a number from 0 to 1 for how far down the subject sits
+// (a head 20% of the way down is 0.2). Without it, sharp picks the busiest part.
+const GRAVITY = { top: "north", centre: "centre", center: "centre", bottom: "south", left: "west", right: "east" };
+
+async function convert(file, slug, scratch, focus) {
   const input = readable(file, scratch);
   for (const { suffix, width, height, fit } of SIZES) {
-    const base = sharp(input)
+    let base = sharp(input)
       .rotate()
-      .resize({ width, height, fit, position: sharp.strategy.attention, withoutEnlargement: true });
+      .resize({ width, height, fit, position: GRAVITY[focus] ?? sharp.strategy.attention, withoutEnlargement: true });
+    if (typeof focus === "number" && fit === "cover") {
+      // Scale to the tile's width, then cut a window centred on the subject.
+      const { data, info } = await sharp(input).rotate().resize({ width }).toBuffer({ resolveWithObject: true });
+      const top = Math.min(Math.max(Math.round(focus * info.height - height / 2), 0), Math.max(info.height - height, 0));
+      base = sharp(data).extract({ left: 0, top, width, height: Math.min(height, info.height) });
+    }
     await base.clone().avif({ quality: 50, effort: 6 }).toFile(join(OUT, `${slug}${suffix}.avif`));
     await base.clone().webp({ quality: 78 }).toFile(join(OUT, `${slug}${suffix}.webp`));
   }
@@ -87,8 +98,9 @@ try {
   for (const name of files) {
     const file = join(SOURCE, name);
     const slug = slugify(name);
+    const focus = pictures.find((picture) => picture.src === slug)?.focus;
     if (isStale(file, slug)) {
-      await convert(file, slug, scratch);
+      await convert(file, slug, scratch, focus);
       console.log(`✓ ${name} → ${OUT}/${slug}*`);
     } else {
       console.log(`· ${name} (up to date)`);
@@ -101,9 +113,9 @@ try {
       entry = {
         src: slug,
         file: cursed ? "Thumbs.db" : name,
-        title: "",
-        year: "",
-        medium: "",
+        folder: "",
+        where: "",
+        caption: "",
         alt: "",
         ...(cursed && { cursed: true }),
         show: false,
