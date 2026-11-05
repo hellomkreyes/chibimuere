@@ -1822,12 +1822,115 @@ h2 em {
   }
 }
 
+/* Folder list: a chip row above the grid on phones, a sidebar from 861px up */
+.pics-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.pics-folders {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px 0;
+}
+
+.pics-folders[hidden] {
+  display: none;
+}
+
+.pics-folder {
+  min-height: 44px;
+  padding: 0 14px;
+  border: 2px solid rgba(120, 100, 90, 0.3);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--ink);
+  font: 700 var(--text-xs) var(--font-mono);
+  letter-spacing: 0.02em;
+  cursor: var(--cur-hover);
+}
+
+.pics-folder[hidden] {
+  display: none;
+}
+
+.pics-folder:hover {
+  border-color: var(--accent);
+}
+
+.pics-folder[aria-pressed="true"] {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.pics-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  color: var(--ink-soft);
+  font-size: var(--text-xs);
+  cursor: var(--cur-hover);
+}
+
+.pics-toggle input {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--accent);
+  cursor: var(--cur-hover);
+}
+
+@media (min-width: 861px) {
+  .pics-body {
+    flex-direction: row;
+  }
+
+  .pics-folders {
+    flex: 0 0 210px;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: stretch;
+    padding: 20px 0 20px 20px;
+  }
+
+  .pics-folder {
+    border-radius: 12px;
+    text-align: left;
+  }
+
+  .pics-toggle {
+    margin-top: auto;
+  }
+}
+
+:root[data-theme="night"] .pics-folder {
+  border-color: var(--red);
+  border-radius: 2px;
+}
+
+:root[data-theme="night"] .pics-folder[aria-pressed="true"] {
+  background: var(--red);
+  color: #000;
+}
+
+.pics-caption .pics-caption-line {
+  display: block;
+  margin-top: 4px;
+  color: var(--ink);
+}
+
 .pics-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   align-content: start;
   flex: 1;
   gap: 18px;
+  min-width: 0;
   min-height: 0;
   margin: 0;
   padding: 20px;
@@ -1835,6 +1938,7 @@ h2 em {
   list-style: none;
 }
 
+.pics-body[hidden],
 .pics-grid[hidden],
 .pics-viewer[hidden],
 [data-pics-count][hidden] {
@@ -1887,6 +1991,12 @@ h2 em {
   color: var(--ink);
   font-size: 11px;
   line-height: 1.4;
+  /* two lines on the tile; the viewer shows the whole caption */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
   opacity: 0;
   transform: translateY(100%);
   transition:

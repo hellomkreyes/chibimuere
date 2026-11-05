@@ -376,11 +376,17 @@
             </div>
             <p class="pics-status">
               <span data-pics-hint><span class="pics-hint-mouse" data-copy="artsy.folder.hint">Double-click a picture to open it</span><span class="pics-hint-touch" data-copy="artsy.folder.hintTouch">Tap a picture twice to open it</span></span>
-              <span data-pics-count hidden><span data-pics-count-num></span> <span data-copy="artsy.folder.items">items</span></span>
+              <span data-pics-count aria-live="polite" hidden><span data-pics-count-num></span> <span data-copy="artsy.folder.items">items</span></span>
             </p>
-            <ul class="pics-grid" data-pics-grid>
-              <template data-copy-list="artsy.pictures"><li><a class="pics-thumb{{#cursed}} pics-cursed{{/cursed}}" href="/art/{{src}}@2x.webp" data-pic="{{src}}" data-width="{{width}}" data-height="{{height}}"{{#cursed}} data-cursed{{/cursed}}><span class="pics-img"><picture><source type="image/avif" srcset="/art/{{src}}-thumb.avif 1x, /art/{{src}}-thumb@2x.avif 2x" /><img src="/art/{{src}}-thumb.webp" srcset="/art/{{src}}-thumb@2x.webp 2x" width="240" height="144" loading="lazy" decoding="async" alt="{{alt}}" /></picture><span class="pics-cap">{{title}}{{#year}}, {{year}}{{/year}}{{#medium}} · {{medium}}{{/medium}}</span></span><span class="pics-name">{{file}}</span></a></li></template>
-            </ul>
+            <div class="pics-body">
+              <nav class="pics-folders" aria-label="Folders" data-pics-folders hidden>
+                <template data-copy-list="artsy.folders"><button class="pics-folder{{#bin}} pics-folder-bin{{/bin}}" type="button" data-folder-pick="{{id}}"{{#bin}} hidden{{/bin}}>{{label}}</button></template>
+                <label class="pics-toggle"><input type="checkbox" data-pics-hidden-toggle /> <span data-copy="artsy.folder.showHidden">Show hidden items</span></label>
+              </nav>
+              <ul class="pics-grid" data-pics-grid>
+                <template data-copy-list="artsy.pictures"><li{{#bin}} hidden data-bin{{/bin}}><a class="pics-thumb{{#cursed}} pics-cursed{{/cursed}}" href="/art/{{src}}@2x.webp" data-pic="{{src}}" data-folder="{{folder}}" data-where="{{where}}" data-width="{{width}}" data-height="{{height}}"{{#cursed}} data-cursed{{/cursed}}><span class="pics-img"><picture><source type="image/avif" srcset="/art/{{src}}-thumb.avif 1x, /art/{{src}}-thumb@2x.avif 2x" /><img src="/art/{{src}}-thumb.webp" srcset="/art/{{src}}-thumb@2x.webp 2x" width="240" height="144" loading="lazy" decoding="async" alt="{{alt}}" /></picture><span class="pics-cap">{{caption}}</span></span><span class="pics-name">{{file}}</span></a></li></template>
+              </ul>
+            </div>
             <!-- The viewer, filled in by pictures.js when a picture is opened -->
             <div class="pics-viewer" role="region" tabindex="-1" hidden data-pics-viewer>
               <div class="pics-stage"><picture data-pics-picture><source type="image/avif" /><img alt="" /></picture></div>

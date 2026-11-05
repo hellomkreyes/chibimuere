@@ -395,85 +395,160 @@
         "rotate": "Rotate",
         "slideshow": "Slideshow",
         "pause": "Pause slideshow",
-        "viewing": "Viewing"
+        "viewing": "Viewing",
+        "foldersLabel": "Folders",
+        "showHidden": "Show hidden items"
       },
       "pictures": [
         {
-          "src": "img-0042",
-          "file": "IMG_0042.jpg",
-          "title": "Bookstore Manga Wall",
-          "year": "2026",
-          "medium": "manga mural inspo",
-          "alt": "Indigo Books in Markville Mall. This is my inspo to paint our own manga mural @ home.",
-          "width": 1000,
-          "height": 750,
-          "show": true
-        },
-        {
-          "src": "final-final-v3",
-          "file": "final_FINAL_v3.png",
-          "title": "My Favourite Sweater",
-          "year": "2026",
-          "medium": "rap slayers",
-          "alt": "My fav sweater featuring the most iconic rap tour of the Y2K (yes, Frieren the slayer).",
+          "src": "party-ice-ginza",
+          "file": "party_ice_ginza.jpg",
+          "folder": "japan_2024",
+          "where": "Ginza, Tokyo",
+          "caption": "Party Ice: the single most purchased item (by me) of our Japan trip.",
+          "alt": "Selfie with half the face hidden behind a clear plastic cup labelled Party Ice, with Japanese text on it.",
           "width": 600,
           "height": 800,
           "show": true
         },
         {
-          "src": "sketchbook-scan-07",
-          "file": "sketchbook_scan_07.jpg",
-          "title": "Go Smol or Go Home",
-          "year": "2026",
-          "medium": "dedication",
-          "alt": "The time I dressed up as Stewie for my business presentation. Mind you this was during my last year of university.",
-          "width": 1000,
-          "height": 750,
+          "src": "fuji-senpai",
+          "file": "fuji-senpai_x_tokyo-san.jpg",
+          "folder": "japan_2024",
+          "where": "SkyTree, Tokyo",
+          "caption": "Fuji-senpai looking pretty next to Tokyo-san.",
+          "alt": "Snow-capped Mount Fuji rising above hazy blue mountains behind dense Tokyo skyscrapers.",
+          "width": 640,
+          "height": 800,
+          "show": true,
+          "focus": 0.27
+        },
+        {
+          "src": "ramen-manual",
+          "file": "ramen_manual_v2.png",
+          "folder": "japan_2024",
+          "where": "Uber Eats, Tokyo",
+          "caption": "Ramen delivery because baby Momo was sleeping. Even with the hand-drawn instructions, we still messed it up.",
+          "alt": "Two takeout ramen bowls and a seaweed pack above a hand-illustrated six-step Japanese instruction leaflet.",
+          "width": 369,
+          "height": 800,
           "show": true
         },
         {
-          "src": "dont-look",
-          "file": "dont_look.bmp",
-          "title": "The Art Wall",
-          "year": "2026",
-          "medium": "anime prints",
-          "alt": "Our collection of artwork from our favourite artists of our favourite animes.",
+          "src": "tbp-toronto-2025",
+          "file": "tbp_toronto_2025.jpg",
+          "folder": "games_and_concerts",
+          "where": "Toronto, 2025",
+          "caption": "The Black Parade, Famous Last Words. It was never a phase mama.",
+          "alt": "My Chemical Romance live in an arena: the singer in a studded black military jacket fills a big screen above the small band on stage.",
+          "width": 600,
+          "height": 800,
+          "show": true
+        },
+        {
+          "src": "lnd-mc",
+          "file": "lnd_mc_valko_gone.jpg",
+          "folder": "games_and_concerts",
+          "where": "Love and Deepspace",
+          "caption": "My MC in her best fit. Haven't played since the Valko cancellation. Moment of silence for our wolf boyfriend.",
+          "alt": "Love and Deepspace game screen: a 3D character with a short black bob in a white floral top and skirt, holding two white pistols against a red starry backdrop.",
+          "focus": 0.2,
+          "width": 450,
+          "height": 800,
+          "show": true
+        },
+        {
+          "src": "pokopia-cubone",
+          "file": "pokopia_cubone.jpg",
+          "folder": "games_and_concerts",
+          "where": "Pokopia",
+          "caption": "Cubone misses its mom. I want to adopt all the Cubones. No further questions.",
+          "alt": "Pokopia screenshot at night: a purple-haired character beside a Cubone at a gravestone with flowers and a giant apple; the dialogue box reads Mom prob'ly woulda liked a place like this too.",
+          "width": 600,
+          "height": 800,
+          "show": true
+        },
+        {
+          "src": "stewie-ent",
+          "file": "stewie_ENT_2011.jpg",
+          "folder": "throwback_2011",
+          "where": "Ryerson, 2011",
+          "caption": "Still my best theatre act to this day. Costume courtesy of Staples and Dollarama.",
+          "alt": "Screenshot of a 2011 Facebook photo: a smiling woman's face through a paper Stewie Griffin head cutout, yellow shirt, red straps.",
           "width": 800,
           "height": 800,
           "show": true
         },
         {
-          "src": "moodboard-2",
-          "file": "moodboard (2).png",
-          "title": "Rooftop Tower",
-          "year": "2026",
-          "medium": "home office",
-          "alt": "My little coding corner of our house. This is where mama goes to make that bread.",
-          "width": 1000,
-          "height": 750,
+          "src": "crystal-ballroom",
+          "file": "crystal_ballroom_2011.jpg",
+          "folder": "throwback_2011",
+          "where": "King Edward Hotel, 2011",
+          "caption": "The abandoned Crystal Ballroom. University shenanigans, location: haunted.",
+          "alt": "Huge empty ballroom with tall windows and a peeling ceiling; a woman with glasses and a red scarf looks down at her camera on the right.",
+          "width": 800,
+          "height": 800,
           "show": true
         },
         {
-          "src": "untitled-witchy",
-          "file": "untitled_witchy.png",
-          "title": "Fuji-san",
-          "year": "2026",
-          "medium": "photo pixels",
-          "alt": "I could not believe the view. So I took a picture of it. Taken in Tokyo Skytree, winter 2024.",
-          "width": 600,
+          "src": "up-in-the-smoke",
+          "file": "up_in_the_smoke_2000.jpg",
+          "folder": "bin",
+          "where": "Helltofa.com (RIP)",
+          "caption": "Up In The Smoke 2000, now featuring an elf. Gone now, eeeeeeep. Overpriced. I'd make it myself next time.",
+          "alt": "Back of a black hoodie printed with a polaroid-style group photo of four men and an anime elf girl with long silver hair, captioned Up In The Smoke 2000.",
+          "bin": true,
+          "width": 721,
           "height": 800,
+          "show": true
+        },
+        {
+          "src": "indigo-manga-wall",
+          "file": "indigo_markville_manga_wall.jpg",
+          "folder": "bin",
+          "where": "Indigo, Markville Mall",
+          "caption": "Keeping this as inspo for a future personal manga wall!",
+          "alt": "Black-and-white manga panels of race cars and characters mounted above red bookshelves in a bookstore's manga section.",
+          "bin": true,
+          "width": 800,
+          "height": 800,
+          "show": true
+        },
+        {
+          "src": "timmies-bad-bunny",
+          "file": "timmies_bad_bunny.png",
+          "folder": "bin",
+          "where": "",
+          "caption": "Remember when Bad Bunny claimed Canáda at the Superbowl?",
+          "alt": "Black-line stick figure in a woven straw hat with a Puerto Rican flag patch reading Benito Bowl, balancing a Tim Hortons cup on a stick.",
+          "bin": true,
+          "width": 800,
+          "height": 800,
+          "show": true
+        },
+        {
+          "src": "kirby-cybertruck",
+          "file": "kirby_cybertruck_concord.jpg",
+          "folder": "bin",
+          "where": "Concord",
+          "caption": "Randomly spotted this Kirby Cybertruck. And just... why?",
+          "alt": "A pink Cybertruck wrapped in Kirby artwork parked in an overcast Concord parking lot.",
+          "bin": true,
+          "width": 1000,
+          "height": 628,
           "show": true
         },
         {
           "src": "thumbs-db",
           "file": "Thumbs.db",
-          "title": "pitbull affirmations",
-          "year": "",
-          "medium": "",
-          "alt": "lock in diva, pitbull believes in you.",
+          "folder": "",
+          "where": "",
+          "caption": "Mom-era Michael Jackson: famous, hermit-adjacent, three kids deep. I get it.",
+          "alt": "A man in aviator sunglasses and a blue jacket holding a toddler, flanked by two children in school uniforms covering parts of their faces.",
           "cursed": true,
-          "width": 1000,
-          "height": 750,
+          "bin": true,
+          "width": 720,
+          "height": 540,
           "show": true
         }
       ],
@@ -601,6 +676,29 @@
           "added": "",
           "note": "",
           "show": false
+        }
+      ],
+      "folders": [
+        {
+          "id": "all",
+          "label": "All pictures"
+        },
+        {
+          "id": "japan_2024",
+          "label": "japan_2024"
+        },
+        {
+          "id": "games_and_concerts",
+          "label": "games_and_concerts"
+        },
+        {
+          "id": "throwback_2011",
+          "label": "throwback_2011"
+        },
+        {
+          "id": "bin",
+          "label": "Recycle Bin",
+          "bin": true
         }
       ]
     },

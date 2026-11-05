@@ -1,11 +1,11 @@
 # chibimuere backlog
 
-Last updated Oct 11, 2026. Finished items are removed as their PRs land.
+Last updated Nov 4, 2026. Finished items are removed as their PRs land.
 
 `[existing]` = from the original open threads · `[new]` = suggested during the Sep 25 review · `[priority]` = added Sep 28 after the job description review
 
 ## Before the Oct 13 call
-1. **M.K.: content population.** Real art for My Pictures, the Webring entries, the Dream Collabs "why" lines, the Rotation questions, the project cards and brand names (see the items under Sections plan and Content & sections)
+1. **M.K.: content population.** The Webring entries, the Dream Collabs "why" lines, the Rotation questions, the project cards and brand names (see the items under Sections plan and Content & sections)
 2. ~~Resume page stickers~~ done: seven stickers (cursor, browser, brackets, floppy, butterfly/moth, plus a prompt by the title and a brew in the closing band); M.K. can remove or swap any in `scripts/stickers.mjs` and the resume HTML
 3. **Homepage section layout changes.** Pending: M.K. to describe the layouts wanted; it stays in the pre-Oct 13 priorities. See "Homepage section layouts" under Content & sections
 
@@ -25,7 +25,6 @@ Last updated Oct 11, 2026. Finished items are removed as their PRs land.
 
 ## Sections plan (Oct 2026)
 Specs, schedule and gates live in the "chibimuere Sections: Technical Plan" doc. Phase 0 (`data-copy-if`, section loader, motion controller, PR checks), the MSN window + winks, the cookie corner, My Pictures (with placeholder art), the Dream Blunt Rotation (with placeholder questions), the Webring (two placeholder entries), and the Dream Collabs ship chart (with placeholder copy) are in.
-- [ ] My Pictures: swap the six generated placeholders (and the Thumbs.db one) for real art: originals into `art-originals/`, `npm run images`, captions + alt text in `content.json`, then hide or delete the placeholder entries and their files in `public/art/`
 - [ ] Dream Blunt Rotation: M.K. picks which placeholder questions to keep or rewrite (`home.fartsy.rotation` in `content.json`). Eren Yeager is benched (`"show": false`, the table seats eight); real photos or illustrations can replace the emoji avatars later
 - [ ] Webring: M.K. fills in the five empty entries in `home.artsy.webring` (fanfic, recipe, podcast, article, creative challenge/event; see the README's Webring section for the fields), adds any other kinds of media as entries, and swaps the two placeholder boosts (Substack, website) for real picks. Real 88x31 button images and site thumbnails can replace the CSS ones later
 - [ ] Dream Collabs: M.K. writes the `why` for each of the nine collabs (`home.fartsy.collabs` in `content.json`; each currently says "Placeholder…") and tunes the placeholder tags. All nine are fanon: when one happens, add `"canon": true` and a `"link"` to what you made, and the chart gives it a solid line, a heart and a burst

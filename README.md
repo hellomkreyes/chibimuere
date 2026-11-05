@@ -113,9 +113,17 @@ npm run images   # needs the originals in art-originals/
 `scripts/images.js` makes AVIF + WebP thumbnails and full-size copies at 1x
 and 2x, turns photos upright, strips all metadata (GPS included), converts
 HEIC on macOS, and adds an entry per new picture to `home.artsy.pictures` in
-`content.json` with `"show": false`. Fill in `title`, `year`, `medium` and
-`alt`, then set `"show": true`. An original named `thumbs-db` becomes the
-Thumbs.db easter egg. The six current pictures are generated placeholders.
+`content.json` with `"show": false`. Fill in `folder`, `where` (the place or
+game, shown after the filename), `caption` (the one-liner) and `alt`, then
+set `"show": true`. An original named `thumbs-db` becomes the Thumbs.db
+easter egg.
+
+Folders come from `home.artsy.folders`. A picture with `"bin": true` is
+hidden until the visitor ticks "Show hidden items" (the Recycle Bin folder
+and Thumbs.db work this way). If a thumbnail crop cuts off the subject, add
+`"focus"` to the entry (`"top"`, `"bottom"`, or a number from 0 to 1 for how
+far down the subject sits, like `0.2` for a head near the top) and run
+`npm run images` again after deleting that picture's files in `public/art/`.
 
 ## Webring
 

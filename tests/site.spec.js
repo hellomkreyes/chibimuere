@@ -57,7 +57,7 @@ async function loadEverything(page) {
     await page.waitForTimeout(120);
   }
   await page.waitForFunction(() => [...document.querySelectorAll("[data-section]")].every((el) => el.hasAttribute("data-section-ready")));
-  await page.waitForFunction(() => [...document.images].every((img) => img.complete));
+  await page.waitForFunction(() => [...document.images].filter((img) => img.checkVisibility()).every((img) => img.complete));
   await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
   await page.evaluate(() => document.fonts.ready);
 }
