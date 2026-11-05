@@ -50,6 +50,20 @@ test("Auto-pass passes on its own and can be paused", async ({ page }) => {
   await expect(page.locator(".rot-seat.is-holding .rot-name")).toHaveText(holding);
 });
 
+test("clicking the next seat in order is a proper pass, not an error", async ({ page }) => {
+  await openRotation(page, { theme: "day", motion: "off" });
+  const seats = page.locator("[data-rot-seat]");
+  await seats.nth(1).locator(".rot-grab").click();
+  await expect(seats.nth(1)).toHaveClass(/is-holding/);
+  await expect(page.locator(".rot")).not.toHaveAttribute("data-broken", "");
+  await expect(page.locator("[data-rot-scold]")).toBeHidden();
+  await expect(page.locator("[data-rot-broken]")).toBeHidden();
+
+  await seats.nth(2).locator(".rot-grab").click(); // and the one after that
+  await expect(seats.nth(2)).toHaveClass(/is-holding/);
+  await expect(page.locator(".rot")).not.toHaveAttribute("data-broken", "");
+});
+
 test("clicking a seat snatches it out of turn and breaks the rotation", async ({ page }) => {
   await openRotation(page, { theme: "day", motion: "off" });
   const seats = page.locator("[data-rot-seat]");

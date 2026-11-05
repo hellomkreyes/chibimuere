@@ -49,27 +49,22 @@ test("Enter opens a picture, and every thumbnail links to a real file", async ({
   }
 });
 
-test("folders filter the grid, and the Recycle Bin and Thumbs.db stay hidden until asked", async ({ page }) => {
+test("folders filter the grid, and the Recycle Bin is always there but keeps its items to itself", async ({ page }) => {
   const shown = page.locator("li:not([hidden]) > [data-pic]");
   const count = page.locator("[data-pics-count-num]");
   await expect(count).toHaveText("8");
-  await expect(page.locator('[data-folder-pick="bin"]')).toBeHidden();
+  await expect(page.getByRole("button", { name: "Recycle Bin" })).toBeVisible();
+  await expect(page.getByLabel("Show hidden items")).toHaveCount(0);
 
   await page.getByRole("button", { name: "japan_2024" }).click();
   await expect(shown).toHaveCount(3);
   await expect(page.getByRole("button", { name: "japan_2024" })).toHaveAttribute("aria-pressed", "true");
 
-  await page.getByLabel("Show hidden items").check();
-  await page.getByRole("button", { name: "All pictures" }).click();
-  await expect(shown).toHaveCount(13);
-  await expect(count).toHaveText("12"); // Thumbs.db is not counted
-
   await page.getByRole("button", { name: "Recycle Bin" }).click();
-  await expect(shown).toHaveCount(4);
+  await expect(shown).toHaveCount(5); // the bin's four plus the loose Thumbs.db
+  await expect(count).toHaveText("4"); // Thumbs.db is not counted
 
-  // Back to hidden: the bin folder goes away and the grid returns to All
-  await page.getByLabel("Show hidden items").uncheck();
-  await expect(page.locator('[data-folder-pick="bin"]')).toBeHidden();
+  await page.getByRole("button", { name: "All pictures" }).click();
   await expect(shown).toHaveCount(8);
 });
 

@@ -9,8 +9,9 @@
  * off the text just appears. The visible bubble is aria-hidden; a polite
  * status line announces "X has it: question" once per pass.
  *
- * Easter egg: every seat is also a button. Clicking one snatches the joint out
- * of turn, which "breaks the rotation": Auto-pass stops, the token jolts, the
+ * Easter egg: every seat is also a button. Clicking the next seat in order is
+ * just a pass. Clicking any other one snatches the joint out of turn, which
+ * "breaks the rotation": Auto-pass stops, the token jolts, the
  * bubble gets a scolding and a "rotation status: broken" chip appears until
  * someone passes properly again.
  */
@@ -145,7 +146,8 @@ export default function initRotation(article) {
     button.type = "button";
     button.className = "rot-grab";
     button.setAttribute("aria-label", `${strings.grab ?? "Snatch it for"} ${seat.querySelector(".rot-name").textContent}`);
-    button.addEventListener("click", () => snatch(index));
+    // The seat that is next in the rotation is a proper pass; any other seat is a snatch.
+    button.addEventListener("click", () => (index === (holder + 1) % seats.length ? pass() : snatch(index)));
     seat.append(button);
   });
 

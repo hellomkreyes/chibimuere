@@ -339,11 +339,13 @@
             </div>
             <p class="side-note" data-copy="portfolio.sideNote">Six cards<br />in the making</p>
           </div>
-          <div class="portfolio-grid">
+          <div class="projects" data-cases>
+          <div class="portfolio-grid" tabindex="0" data-cases-track data-copy-attr="aria-label={{portfolio.trackLabel}}" aria-label="Project cards">
             <!-- One card per content.json portfolio.projects item. The year is a project date,
-                 not "this year", so it stays out of the current-year script. -->
+                 not "this year", so it stays out of the current-year script. On phones the grid
+                 becomes a swipeable row (cases.js), like the case studies. -->
             <template data-copy-list="portfolio.projects">
-              <article class="card">
+              <article class="card" data-case-slide>
                 <div class="thumb" aria-hidden="true"><span class="thumb-glyph">{{glyph}}</span></div>
                 <div class="card-meta">
                   <div>
@@ -355,6 +357,12 @@
                 </div>
               </article>
             </template>
+          </div>
+          <nav class="case-pager" data-cases-pager data-copy-attr="aria-label={{portfolio.pagerLabel}}" aria-label="Choose a project">
+            <template data-copy-list="portfolio.projects">
+              <button class="case-star" type="button" data-case-star aria-label="{{title}}"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 5 L14.38 9.62 L19 12 L14.38 14.38 L12 19 L9.62 14.38 L5 12 L9.62 9.62Z" /></svg></button>
+            </template>
+          </nav>
           </div>
         </div>
       </section>
@@ -380,8 +388,7 @@
             </p>
             <div class="pics-body">
               <nav class="pics-folders" aria-label="Folders" data-pics-folders hidden>
-                <template data-copy-list="artsy.folders"><button class="pics-folder{{#bin}} pics-folder-bin{{/bin}}" type="button" data-folder-pick="{{id}}"{{#bin}} hidden{{/bin}}>{{label}}</button></template>
-                <label class="pics-toggle"><input type="checkbox" data-pics-hidden-toggle /> <span data-copy="artsy.folder.showHidden">Show hidden items</span></label>
+                <template data-copy-list="artsy.folders"><button class="pics-folder{{#bin}} pics-folder-bin{{/bin}}" type="button" data-folder-pick="{{id}}">{{label}}</button></template>
               </nav>
               <ul class="pics-grid" data-pics-grid>
                 <template data-copy-list="artsy.pictures"><li{{#bin}} hidden data-bin{{/bin}}><a class="pics-thumb{{#cursed}} pics-cursed{{/cursed}}" href="/art/{{src}}@2x.webp" data-pic="{{src}}" data-folder="{{folder}}" data-where="{{where}}" data-width="{{width}}" data-height="{{height}}"{{#cursed}} data-cursed{{/cursed}}><span class="pics-img"><picture><source type="image/avif" srcset="/art/{{src}}-thumb.avif 1x, /art/{{src}}-thumb@2x.avif 2x" /><img src="/art/{{src}}-thumb.webp" srcset="/art/{{src}}-thumb@2x.webp 2x" width="240" height="144" loading="lazy" decoding="async" alt="{{alt}}" /></picture><span class="pics-cap">{{caption}}</span></span><span class="pics-name">{{file}}</span></a></li></template>
