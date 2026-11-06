@@ -11,9 +11,9 @@
  * closes too). The item count leaves out Thumbs.db.
  *
  * The folder list on the left filters the grid (All pictures, the trips, the
- * Recycle Bin). Hidden items (the Recycle Bin and Thumbs.db) stay out of every
- * folder until "Show hidden items" is ticked. Without JS the list stays
- * hidden and every shown picture is a plain link.
+ * Recycle Bin). The Recycle Bin button is always there; what is in the bin
+ * (and Thumbs.db) only shows up when the bin is open, never under All pictures.
+ * Without JS the list stays hidden and every shown picture is a plain link.
  */
 const SLIDE_MS = 3000;
 
@@ -21,7 +21,6 @@ export default function initPictures(win) {
   const body = win.querySelector(".pics-body");
   const folderNav = win.querySelector("[data-pics-folders]");
   const picks = [...win.querySelectorAll("[data-folder-pick]")];
-  const toggle = win.querySelector("[data-pics-hidden-toggle]");
   const grid = win.querySelector("[data-pics-grid]");
   const viewer = win.querySelector("[data-pics-viewer]");
   const thumbs = [...win.querySelectorAll("[data-pic]")];
@@ -39,7 +38,6 @@ export default function initPictures(win) {
   const shown = (thumb) => !thumb.parentElement.hidden;
 
   let folder = "all";
-  let showHidden = false;
   let selected = -1;
   let current = 0;
   let turns = 0;
@@ -63,16 +61,16 @@ export default function initPictures(win) {
     img.style.transform = turns ? `rotate(${turns * 90}deg) scale(${scale})` : "";
   };
 
-  // Folder + "Show hidden items" decide which thumbnails are on the grid.
+  // The open folder decides which thumbnails are on the grid; bin items only live in the bin.
   const filter = () => {
     picks.forEach((pick) => {
       const id = pick.dataset.folderPick;
-      if (pick.classList.contains("pics-folder-bin")) pick.hidden = !showHidden;
       pick.setAttribute("aria-pressed", String(id === folder));
     });
     thumbs.forEach((thumb) => {
-      const inFolder = folder === "all" || thumb.dataset.folder === folder;
-      thumb.parentElement.hidden = !(inFolder && (showHidden || !thumb.parentElement.hasAttribute("data-bin")));
+      const isBin = thumb.parentElement.hasAttribute("data-bin");
+      const inFolder = folder === "bin" ? isBin : folder === "all" ? !isBin : thumb.dataset.folder === folder;
+      thumb.parentElement.hidden = !inFolder;
     });
     if (selected >= 0 && !shown(thumbs[selected])) select(-1);
     if (count) {
@@ -159,11 +157,6 @@ export default function initPictures(win) {
       filter();
     }),
   );
-  toggle?.addEventListener("change", () => {
-    showHidden = toggle.checked;
-    if (!showHidden && folder === "bin") folder = "all";
-    filter();
-  });
   if (folderNav) folderNav.hidden = false;
   filter();
 

@@ -1,14 +1,15 @@
 /*
- * Case studies: on phones the cards are a swipeable row and the stars below
+ * Carousels (case studies and project cards): on phones the cards are a swipeable row and the stars below
  * jump to one card. The star that matches the card in view is marked
  * aria-current, whether the reader tapped a star, swiped or used the keyboard.
  * On wider screens the stars are hidden and the cards sit in a grid.
  */
 
 export function initCases() {
-  const root = document.querySelector("[data-cases]");
-  if (!root) return;
+  document.querySelectorAll("[data-cases]").forEach(initCarousel);
+}
 
+function initCarousel(root) {
   const track = root.querySelector("[data-cases-track]");
   const slides = [...root.querySelectorAll("[data-case-slide]")];
   const stars = [...root.querySelectorAll("[data-case-star]")];

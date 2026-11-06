@@ -310,6 +310,8 @@
     "portfolio": {
       "title": "A small deck<br><em>of projects.</em>",
       "sideNote": "The cards<br>in the making",
+      "trackLabel": "Project cards, swipe or use the stars below",
+      "pagerLabel": "Choose a project",
       "projects": [
         {
           "title": "Luna Pie",
@@ -396,8 +398,7 @@
         "slideshow": "Slideshow",
         "pause": "Pause slideshow",
         "viewing": "Viewing",
-        "foldersLabel": "Folders",
-        "showHidden": "Show hidden items"
+        "foldersLabel": "Folders"
       },
       "pictures": [
         {
