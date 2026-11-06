@@ -52,31 +52,36 @@ test("Enter opens a picture, and every thumbnail links to a real file", async ({
 test("folders filter the grid, and the Recycle Bin is always there but keeps its items to itself", async ({ page }) => {
   const shown = page.locator("li:not([hidden]) > [data-pic]");
   const count = page.locator("[data-pics-count-num]");
-  await expect(count).toHaveText("8");
+  await expect(count).toHaveText("7");
   await expect(page.getByRole("button", { name: "Recycle Bin" })).toBeVisible();
   await expect(page.getByLabel("Show hidden items")).toHaveCount(0);
 
   await page.getByRole("button", { name: "japan_2024" }).click();
-  await expect(shown).toHaveCount(3);
+  await expect(shown).toHaveCount(1);
   await expect(page.getByRole("button", { name: "japan_2024" })).toHaveAttribute("aria-pressed", "true");
 
+  await page.getByRole("button", { name: "fandom_irl" }).click();
+  await expect(shown).toHaveCount(2);
+
   await page.getByRole("button", { name: "Recycle Bin" }).click();
-  await expect(shown).toHaveCount(5); // the bin's four plus the loose Thumbs.db
-  await expect(count).toHaveText("4"); // Thumbs.db is not counted
+  await expect(shown).toHaveCount(4); // the bin's three plus the loose Thumbs.db
+  await expect(count).toHaveText("3"); // Thumbs.db is not counted
 
   await page.getByRole("button", { name: "All pictures" }).click();
-  await expect(shown).toHaveCount(8);
+  await expect(shown).toHaveCount(7);
 });
 
 test("Previous and Next stay inside the open folder", async ({ page }) => {
-  await page.getByRole("button", { name: "throwback_2011" }).click();
+  await page.getByRole("button", { name: "games_and_concerts" }).click();
   const shown = page.locator("li:not([hidden]) > [data-pic]");
   await shown.first().focus();
   await page.keyboard.press("Enter");
   const caption = page.locator("[data-pics-caption]");
-  await expect(caption).toContainText("stewie_ENT_2011.jpg");
+  await expect(caption).toContainText("tbp_toronto_2025.jpg");
   await page.locator("[data-pics-next]").click();
-  await expect(caption).toContainText("crystal_ballroom_2011.jpg");
+  await expect(caption).toContainText("lnd_mc_valko_gone.jpg");
   await page.locator("[data-pics-next]").click();
-  await expect(caption).toContainText("stewie_ENT_2011.jpg");
+  await expect(caption).toContainText("pokopia_cubone.jpg");
+  await page.locator("[data-pics-next]").click();
+  await expect(caption).toContainText("tbp_toronto_2025.jpg");
 });
