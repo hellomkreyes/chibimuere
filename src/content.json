@@ -410,10 +410,11 @@
         {
           "src": "party-ice-ginza",
           "file": "party_ice_ginza.jpg",
-          "folder": "japan_2024",
+          "folder": "bin",
           "where": "Ginza, Tokyo",
           "caption": "Party Ice: the single most purchased item (by me) of our Japan trip.",
           "alt": "Selfie with half the face hidden behind a clear plastic cup labelled Party Ice, with Japanese text on it.",
+          "bin": true,
           "width": 600,
           "height": 800,
           "show": true
@@ -429,17 +430,6 @@
           "height": 800,
           "show": true,
           "focus": 0.27
-        },
-        {
-          "src": "ramen-manual",
-          "file": "ramen_manual_v2.png",
-          "folder": "japan_2024",
-          "where": "Uber Eats, Tokyo",
-          "caption": "Ramen delivery because baby Momo was sleeping. Even with the hand-drawn instructions, we still messed it up.",
-          "alt": "Two takeout ramen bowls and a seaweed pack above a hand-illustrated six-step Japanese instruction leaflet.",
-          "width": 369,
-          "height": 800,
-          "show": true
         },
         {
           "src": "tbp-toronto-2025",
@@ -478,10 +468,11 @@
         {
           "src": "stewie-ent",
           "file": "stewie_ENT_2011.jpg",
-          "folder": "throwback_2011",
+          "folder": "bin",
           "where": "Ryerson, 2011",
           "caption": "Still my best theatre act to this day. Costume courtesy of Staples and Dollarama.",
           "alt": "Screenshot of a 2011 Facebook photo: a smiling woman's face through a paper Stewie Griffin head cutout, yellow shirt, red straps.",
+          "bin": true,
           "width": 800,
           "height": 800,
           "show": true
@@ -498,25 +489,12 @@
           "show": true
         },
         {
-          "src": "up-in-the-smoke",
-          "file": "up_in_the_smoke_2000.jpg",
-          "folder": "bin",
-          "where": "Helltofa.com (RIP)",
-          "caption": "Up In The Smoke 2000, now featuring an elf. Gone now, eeeeeeep. Overpriced. I'd make it myself next time.",
-          "alt": "Back of a black hoodie printed with a polaroid-style group photo of four men and an anime elf girl with long silver hair, captioned Up In The Smoke 2000.",
-          "bin": true,
-          "width": 721,
-          "height": 800,
-          "show": true
-        },
-        {
           "src": "indigo-manga-wall",
           "file": "indigo_markville_manga_wall.jpg",
-          "folder": "bin",
+          "folder": "fandom_irl",
           "where": "Indigo, Markville Mall",
           "caption": "Keeping this as inspo for a future personal manga wall!",
           "alt": "Black-and-white manga panels of race cars and characters mounted above red bookshelves in a bookstore's manga section.",
-          "bin": true,
           "width": 800,
           "height": 800,
           "show": true
@@ -536,11 +514,10 @@
         {
           "src": "kirby-cybertruck",
           "file": "kirby_cybertruck_concord.jpg",
-          "folder": "bin",
+          "folder": "fandom_irl",
           "where": "Concord",
           "caption": "Randomly spotted this Kirby Cybertruck. And just... why?",
           "alt": "A pink Cybertruck wrapped in Kirby artwork parked in an overcast Concord parking lot.",
-          "bin": true,
           "width": 1000,
           "height": 628,
           "show": true
@@ -701,6 +678,10 @@
         {
           "id": "throwback_2011",
           "label": "throwback_2011"
+        },
+        {
+          "id": "fandom_irl",
+          "label": "fandom_irl"
         },
         {
           "id": "bin",
