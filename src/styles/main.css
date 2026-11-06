@@ -70,6 +70,9 @@
 }
 
 :root {
+  /* Room the fixed announcement bar takes at the top; 0 when it's dismissed.
+     announcement.js replaces the estimate with the bar's real height. */
+  --announce-h: 0px;
   --font-display: "Manrope", system-ui, sans-serif;
   --font-mono: "Space Mono", ui-monospace, monospace;
   --font-gothic: "Pirata One", "Manrope", serif;
@@ -133,7 +136,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5.5rem;
+  scroll-padding-top: calc(5.5rem + var(--announce-h));
   cursor: var(--cur);
 }
 
@@ -405,6 +408,85 @@ main,
   background: rgba(247, 243, 238, 0.72);
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
+}
+
+/* Announcement bar. Fixed along the top (it scrolls away with the page on phones);
+   the header and the page make room for it through --announce-h. */
+:root.has-announcement {
+  --announce-h: calc(44px + env(safe-area-inset-top, 0px));
+}
+
+body {
+  padding-top: var(--announce-h);
+}
+
+.site-header {
+  top: var(--announce-h);
+}
+
+/* The bar covers the notch, so the header doesn't reserve it a second time. */
+:root.has-announcement .site-header {
+  border-top-width: 0;
+}
+
+.announcement-bar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 27; /* above the header (25) and view-source labels (26); never overlaps a nav link */
+  display: none;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: env(safe-area-inset-top, 0px) 44px 0; /* side room matches the 44px close button, so the text stays centred */
+  background: var(--ink);
+  color: var(--bg);
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  line-height: 1.4;
+  text-align: center;
+}
+
+:root.has-announcement .announcement-bar {
+  display: flex;
+}
+
+.announcement-text {
+  margin: 0;
+  padding-block: 8px;
+}
+
+.announcement-close {
+  position: absolute;
+  top: env(safe-area-inset-top, 0px);
+  right: max(4px, env(safe-area-inset-right, 0px));
+  display: grid;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: none;
+  color: inherit;
+  cursor: var(--cur-hover);
+}
+
+.announcement-close:hover {
+  background: color-mix(in srgb, var(--bg) 18%, transparent);
+}
+
+.announcement-close:focus-visible {
+  outline: 2px solid var(--bg);
+  outline-offset: -4px;
+}
+
+@media (max-width: 700px) {
+  /* Phones: scrolls away with the wordmark, like the rest of the top of the page. */
+  .announcement-bar {
+    position: absolute;
+  }
 }
 
 .wordmark {
@@ -1352,7 +1434,7 @@ h2 em {
 .wink-skip {
   position: fixed;
   z-index: 91;
-  top: 84px;
+  top: calc(84px + var(--announce-h)); /* keeps its place below the header */
   right: 20px;
   background: var(--bg);
 }
@@ -5148,6 +5230,7 @@ h2 em {
   }
 
   .fx-layers,
+  .announcement-bar,
   .site-header,
   .site-footer,
   .cookie-corner,

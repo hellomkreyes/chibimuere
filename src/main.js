@@ -14,6 +14,7 @@ import { initScrollTransitions } from "./js/scroll-transitions.js";
 import { initFoldSwap } from "./js/fold-swap.js";
 import { initPrintCv } from "./js/print-cv.js";
 import { initCases } from "./js/cases.js";
+import { initAnnouncement } from "./js/announcement.js";
 
 syncCurrentYear();
 initMotion();
@@ -31,3 +32,4 @@ initScrollTransitions();
 initFoldSwap();
 initPrintCv();
 initCases();
+initAnnouncement();

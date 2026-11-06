@@ -56,6 +56,12 @@
           theme = window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "night" : "day";
         }
         root.dataset.theme = theme;
+        // Announcement bar: on until the visitor dismisses it (per session).
+        try {
+          if (sessionStorage.getItem("chibi-announcement") !== "dismissed") root.classList.add("has-announcement");
+        } catch (e) {
+          root.classList.add("has-announcement");
+        }
         if (motion === "on" || motion === "off") root.dataset.motion = motion;
         if (theme === "night") {
           document.querySelector('meta[name="theme-color"]').content = "#07060a";
@@ -110,6 +116,24 @@
           <g class="wing wr"><path d="M50 50 C70 10 98 18 92 42 C98 60 78 80 50 56Z" /></g>
         </svg>
       </div>
+    </div>
+
+    <!-- Announcement bar: copy in content.json (site.announcement). Shown unless dismissed this session. -->
+    <div class="announcement-bar" role="region" data-copy-attr="aria-label={{site.announcement.label}}" aria-label="Site announcement" data-announcement>
+      <p class="announcement-text">
+        <span data-copy="site.announcement.text">Site is still under construction</span>
+        <span aria-hidden="true" data-copy="site.announcement.emoji">🚧</span>
+      </p>
+      <button
+        class="announcement-close"
+        type="button"
+        data-announcement-close
+        data-copy-attr="aria-label={{site.announcement.dismiss}}"
+        aria-label="Dismiss announcement">
+        <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false">
+          <path d="M3 3l10 10M13 3L3 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+        </svg>
+      </button>
     </div>
 
     <header class="site-header">

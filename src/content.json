@@ -34,6 +34,12 @@
         "label": "Contact"
       }
     },
+    "announcement": {
+      "label": "Site announcement",
+      "text": "Site is still under construction",
+      "emoji": "🚧",
+      "dismiss": "Dismiss announcement"
+    },
     "theme": {
       "toNight": "enter night",
       "toDay": "return to day"

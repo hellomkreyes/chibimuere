@@ -19,6 +19,7 @@ Working notes for chibimuere.com. Read this before changing the site.
 
 - The mobile header (`.site-header`) sits at z 25 below 1140px, so the folded menu falls over the floating view-source (`.source-fab`) and cookie corner (both z 20).
 - View-source labels (`.vs-layer-fixed`) stay above the header (z 26).
+- The announcement bar (`.announcement-bar`) sits at z 27, above the header, and the header moves down by `--announce-h` instead of sliding under it, so it never covers a nav link. On phones (700px and under) it scrolls away with the wordmark.
 - Never let a floating control cover a nav link. If a control overlaps, the nav wins.
 
 ## Marquee
