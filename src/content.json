@@ -38,6 +38,7 @@
       "label": "Site announcement",
       "text": "Site is still under construction",
       "emoji": "🚧",
+      "dust": "Please pardon our dust",
       "dismiss": "Dismiss announcement"
     },
     "theme": {

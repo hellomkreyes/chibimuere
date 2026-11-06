@@ -102,10 +102,18 @@
 
     <!-- Announcement bar: copy in content.json (site.announcement). Shown unless dismissed this session. -->
     <div class="announcement-bar" role="region" data-copy-attr="aria-label={{site.announcement.label}}" aria-label="Site announcement" data-announcement>
-      <p class="announcement-text">
-        <span data-copy="site.announcement.text">Site is still under construction</span>
-        <span aria-hidden="true" data-copy="site.announcement.emoji">🚧</span>
-      </p>
+      <!-- One real message for screen readers. announcement.js repeats it as aria-hidden copies
+           to fill a looping marquee; with motion paused only this one shows, centred. -->
+      <div class="announcement-marquee">
+        <div class="announcement-track" data-announcement-track>
+          <p class="announcement-item" data-announcement-item>
+            <span data-copy="site.announcement.text">Site is still under construction</span>
+            <span aria-hidden="true" data-copy="site.announcement.emoji">🚧</span>
+            <span data-copy="site.announcement.dust">Please pardon our dust</span>
+            <span aria-hidden="true" data-copy="site.announcement.emoji">🚧</span>
+          </p>
+        </div>
+      </div>
       <button
         class="announcement-close"
         type="button"

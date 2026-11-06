@@ -410,10 +410,12 @@ main,
   backdrop-filter: blur(12px);
 }
 
-/* Announcement bar. Fixed along the top (it scrolls away with the page on phones);
-   the header and the page make room for it through --announce-h. */
+/* Announcement bar: a 90s "under construction" strip. Hazard-yellow with caution
+   tape along both edges and a looping marquee. Fixed along the top (it scrolls
+   away with the page on phones); the header and the page make room for it
+   through --announce-h. */
 :root.has-announcement {
-  --announce-h: calc(44px + env(safe-area-inset-top, 0px));
+  --announce-h: calc(48px + env(safe-area-inset-top, 0px));
 }
 
 body {
@@ -429,56 +431,195 @@ body {
   border-top-width: 0;
 }
 
+/* Day: black on hazard yellow (about 13:1). Night: neon yellow on the dark page (about 17:1). */
 .announcement-bar {
+  --announce-bg: #ffd400;
+  --announce-fg: #1a1410;
+  --announce-tape: #1a1410;
+
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
   z-index: 27; /* above the header (25) and view-source labels (26); never overlaps a nav link */
   display: none;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  min-height: 44px;
-  padding: env(safe-area-inset-top, 0px) 44px 0; /* side room matches the 44px close button, so the text stays centred */
-  background: var(--ink);
-  color: var(--bg);
+  min-height: 48px;
+  padding-top: env(safe-area-inset-top, 0px);
+  background: var(--announce-bg);
+  color: var(--announce-fg);
   font-family: var(--font-mono);
   font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.14em;
   line-height: 1.4;
-  text-align: center;
+  text-transform: uppercase;
+}
+
+:root[data-theme="night"] .announcement-bar {
+  --announce-bg: #07060a;
+  --announce-fg: #ffe600;
+  --announce-tape: #ffe600;
+
+  text-shadow: 0 0 10px rgba(255, 230, 0, 0.55);
+  box-shadow: 0 2px 18px rgba(255, 230, 0, 0.25);
 }
 
 :root.has-announcement .announcement-bar {
   display: flex;
 }
 
-.announcement-text {
+/* Caution tape along the top and bottom edges. The stripes march sideways. */
+.announcement-bar::before,
+.announcement-bar::after {
+  display: block;
+  flex: none;
+  height: 6px;
+  background: repeating-linear-gradient(-45deg, var(--announce-tape) 0 9px, transparent 9px 18px);
+  background-size: 25.46px 100%; /* one stripe pair, so the loop below has no jump */
+  content: "";
+  animation: announcement-tape 1.2s linear infinite;
+}
+
+.announcement-bar::after {
+  animation-direction: reverse;
+}
+
+@keyframes announcement-tape {
+  to {
+    background-position-x: 25.46px;
+  }
+}
+
+.announcement-marquee {
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+  padding-right: 44px; /* the close button's room, so text never slides under it */
+}
+
+.announcement-track {
+  display: flex;
+  width: max-content;
+  min-width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.announcement-half {
+  display: flex;
+  flex: none;
+}
+
+.announcement-item {
   margin: 0;
-  padding-block: 8px;
+  padding: 8px 0;
+  white-space: nowrap;
+}
+
+.announcement-item > * + * {
+  margin-left: 0.9em;
+}
+
+.announcement-item::after {
+  margin-inline: 2.2em; /* gap before the next copy */
+  content: "";
+}
+
+/* Looping: the second half is an exact copy, so sliding half the track is seamless.
+   Paused on hover or while the close button has focus. */
+.announcement-track.is-marquee {
+  justify-content: flex-start;
+  animation: announcement-slide var(--announce-dur, 30s) linear infinite;
+}
+
+.announcement-bar:hover .announcement-track,
+.announcement-bar:focus-within .announcement-track {
+  animation-play-state: paused;
+}
+
+@keyframes announcement-slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Motion paused (footer toggle or reduced motion): no copies, no tape march, just
+   the one message, centred and still. */
+:root[data-motion="off"] .announcement-track {
+  justify-content: center;
+  transform: none;
+}
+
+:root[data-motion="off"] .announcement-half + .announcement-half,
+:root[data-motion="off"] .announcement-item[aria-hidden="true"] {
+  display: none;
+}
+
+:root[data-motion="off"] .announcement-item::after {
+  display: none;
+}
+
+:root[data-motion="off"] .announcement-item {
+  white-space: normal;
+  text-align: center;
+}
+
+:root[data-motion="off"] .announcement-marquee {
+  padding-inline: 44px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root:not([data-motion="on"]) .announcement-track {
+    justify-content: center;
+    transform: none;
+  }
+
+  :root:not([data-motion="on"]) .announcement-half + .announcement-half,
+  :root:not([data-motion="on"]) .announcement-item[aria-hidden="true"] {
+    display: none;
+  }
+
+  :root:not([data-motion="on"]) .announcement-item::after {
+    display: none;
+  }
+
+  :root:not([data-motion="on"]) .announcement-item {
+    white-space: normal;
+    text-align: center;
+  }
+
+  :root:not([data-motion="on"]) .announcement-marquee {
+    padding-inline: 44px;
+  }
 }
 
 .announcement-close {
   position: absolute;
-  top: env(safe-area-inset-top, 0px);
-  right: max(4px, env(safe-area-inset-right, 0px));
+  top: calc(env(safe-area-inset-top, 0px) + 6px); /* sits between the two strips of tape */
+  right: max(0px, env(safe-area-inset-right, 0px));
+  bottom: 6px;
   display: grid;
   width: 44px;
-  height: 44px;
+  height: auto;
   padding: 0;
   place-items: center;
   border: 0;
-  border-radius: 50%;
-  background: none;
+  background: var(--announce-bg); /* solid, so the marquee never shows through */
   color: inherit;
   cursor: var(--cur-hover);
 }
 
 .announcement-close:hover {
-  background: color-mix(in srgb, var(--bg) 18%, transparent);
+  background: color-mix(in srgb, var(--announce-fg) 18%, var(--announce-bg));
 }
 
 .announcement-close:focus-visible {
-  outline: 2px solid var(--bg);
+  outline: 2px solid var(--announce-fg);
   outline-offset: -4px;
 }
 
