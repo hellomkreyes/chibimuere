@@ -337,15 +337,17 @@
                 <li class="case-slide" data-case-slide>
                   <article class="card case-card">
                     <div class="thumb" aria-hidden="true"></div>
-                    <div class="case-meta">
-                      <p class="card-type">{{tag}}</p>
-                      <h3>{{title}}</h3>
-                      <p>{{body}}</p>
-                      <ul class="case-links">
-                        {{#links.0}}<li><a href="{{links.0.url}}" target="_blank" rel="noopener">{{links.0.label}}<span class="visually-hidden"> {{site.social.newTab}}</span></a></li>{{/links.0}}
-                        {{#links.1}}<li><a href="{{links.1.url}}" target="_blank" rel="noopener">{{links.1.label}}<span class="visually-hidden"> {{site.social.newTab}}</span></a></li>{{/links.1}}
-                        {{#links.2}}<li><a href="{{links.2.url}}" target="_blank" rel="noopener">{{links.2.label}}<span class="visually-hidden"> {{site.social.newTab}}</span></a></li>{{/links.2}}
-                      </ul>
+                    <div class="card-meta">
+                      <div>
+                        <p class="card-type">{{tag}}</p>
+                        <h3>{{title}}</h3>
+                        <p>{{body}}</p>
+                        <ul class="case-links">
+                          {{#links.0}}<li><a href="{{links.0.url}}" target="_blank" rel="noopener">{{links.0.label}}<span class="visually-hidden"> {{site.social.newTab}}</span></a></li>{{/links.0}}
+                          {{#links.1}}<li><a href="{{links.1.url}}" target="_blank" rel="noopener">{{links.1.label}}<span class="visually-hidden"> {{site.social.newTab}}</span></a></li>{{/links.1}}
+                          {{#links.2}}<li><a href="{{links.2.url}}" target="_blank" rel="noopener">{{links.2.label}}<span class="visually-hidden"> {{site.social.newTab}}</span></a></li>{{/links.2}}
+                        </ul>
+                      </div>
                     </div>
                   </article>
                 </li>
@@ -523,7 +525,7 @@
                 <ol class="rot-circle">
                   <template data-copy-list="fartsy.rotation"><li class="rot-seat" data-rot-seat data-question="{{question}}" data-tag="{{tag}}"><span class="rot-avatar" aria-hidden="true">{{icon}}</span><span class="rot-name">{{name}}</span></li></template>
                 </ol>
-                <p class="rot-seat rot-host"><span class="rot-avatar rot-avatar-photo" aria-hidden="true"><picture><source type="image/avif" srcset="/avatars/host-yellow.avif 1x, /avatars/host-yellow@2x.avif 2x" /><img class="rot-avatar-img" src="/avatars/host-yellow.webp" srcset="/avatars/host-yellow.webp 1x, /avatars/host-yellow@2x.webp 2x" width="60" height="60" alt="" loading="lazy" decoding="async" /></picture></span><span class="rot-name"><span data-copy="fartsy.host">chibi.muere</span> <span data-copy="fartsy.hostRole">(host)</span></span></p>
+                <p class="rot-seat rot-host" data-rot-host data-copy-attr="data-label={{fartsy.hostBubble.label}}; data-question={{fartsy.hostBubble.question}}; data-tag={{fartsy.hostBubble.tag}}; data-grab={{fartsy.hostBubble.grab}}"><span class="rot-avatar rot-avatar-photo" aria-hidden="true"><picture><source type="image/avif" srcset="/avatars/host-yellow.avif 1x, /avatars/host-yellow@2x.avif 2x" /><img class="rot-avatar-img" src="/avatars/host-yellow.webp" srcset="/avatars/host-yellow.webp 1x, /avatars/host-yellow@2x.webp 2x" width="60" height="60" alt="" loading="lazy" decoding="async" /></picture></span><span class="rot-name"><span data-copy="fartsy.host">chibi.muere</span> <span data-copy="fartsy.hostRole">(host)</span></span></p>
                 <span class="rot-token" aria-hidden="true" hidden data-rot-token>
                   <svg viewBox="0 0 44 44" focusable="false"><rect x="6" y="18" width="30" height="9" rx="4.5" transform="rotate(-25 22 22)" /><circle cx="34" cy="15" r="4.5" /></svg>
                   <i></i><i></i><i></i>
@@ -531,7 +533,7 @@
               </div>
               <!-- The visible bubble is decoration for sighted visitors; the status line below says the same thing once, in plain text. -->
               <div class="rot-bubble" aria-hidden="true" hidden data-rot-bubble>
-                <p class="rot-holder"><span data-rot-holder></span> <span data-copy="fartsy.hasIt">has it</span></p>
+                <p class="rot-holder"><span data-rot-holder></span> <span data-rot-has-it data-copy="fartsy.hasIt">has it</span></p>
                 <p class="rot-question" data-rot-question></p>
                 <p><span class="rot-tag" data-rot-tag></span></p>
                 <p class="rot-scold" data-rot-scold hidden></p>

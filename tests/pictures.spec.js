@@ -56,14 +56,12 @@ test("folders filter the grid, and the Recycle Bin is always there but keeps its
   await expect(page.getByRole("button", { name: "Recycle Bin" })).toBeVisible();
   await expect(page.getByLabel("Show hidden items")).toHaveCount(0);
 
-  await page.getByRole("button", { name: "japan_2024" }).click();
-  await expect(shown).toHaveCount(1);
-  await expect(page.getByRole("button", { name: "japan_2024" })).toHaveAttribute("aria-pressed", "true");
-
-  await page.getByRole("button", { name: "fandom_irl" }).click();
-  await expect(shown).toHaveCount(2);
+  // Only two folders: All pictures and the Recycle Bin.
+  await expect(page.locator("[data-folder-pick]")).toHaveCount(2);
+  await expect(page.getByRole("button", { name: "All pictures" })).toHaveAttribute("aria-pressed", "true");
 
   await page.getByRole("button", { name: "Recycle Bin" }).click();
+  await expect(page.getByRole("button", { name: "Recycle Bin" })).toHaveAttribute("aria-pressed", "true");
   await expect(shown).toHaveCount(4); // the bin's three plus the loose Thumbs.db
   await expect(count).toHaveText("3"); // Thumbs.db is not counted
 
@@ -72,16 +70,14 @@ test("folders filter the grid, and the Recycle Bin is always there but keeps its
 });
 
 test("Previous and Next stay inside the open folder", async ({ page }) => {
-  await page.getByRole("button", { name: "games_and_concerts" }).click();
+  await page.getByRole("button", { name: "Recycle Bin" }).click();
   const shown = page.locator("li:not([hidden]) > [data-pic]");
+  const total = await shown.count();
   await shown.first().focus();
   await page.keyboard.press("Enter");
   const caption = page.locator("[data-pics-caption]");
-  await expect(caption).toContainText("tbp_toronto_2025.jpg");
-  await page.locator("[data-pics-next]").click();
-  await expect(caption).toContainText("lnd_mc_valko_gone.jpg");
-  await page.locator("[data-pics-next]").click();
-  await expect(caption).toContainText("pokopia_cubone.jpg");
-  await page.locator("[data-pics-next]").click();
-  await expect(caption).toContainText("tbp_toronto_2025.jpg");
+  const first = await caption.textContent();
+  // Stepping Next once per visible item loops back to where it started: nothing leaks in from All pictures.
+  for (let i = 0; i < total; i += 1) await page.locator("[data-pics-next]").click();
+  await expect(caption).toHaveText(first);
 });
