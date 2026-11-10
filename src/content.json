@@ -523,6 +523,78 @@
           "show": true
         },
         {
+          "src": "night-shift-desk",
+          "file": "night_shift_desk.jpg",
+          "folder": "",
+          "where": "Home office",
+          "caption": "The night shift: sunset lamp on, Glamour Bops powering every commit, a bunch of things in the works.",
+          "alt": "Dim desk at night with a purple sunset lamp, fairy lights, a laptop showing this site, a monitor with a Spotify playlist and a glowing rainbow keyboard on a cloud wrist rest, with handwritten arrow labels such as \"the bad bitches board\" and \"Glamour Bops: powering every commit\".",
+          "show": true,
+          "width": 600,
+          "height": 800,
+          "focus": 0.4
+        },
+        {
+          "src": "bad-bitches-board",
+          "file": "bad_bitches_board.jpg",
+          "folder": "",
+          "where": "Home office",
+          "caption": "The bad bitches board: BAMF Sailor Moon, Sailor Saturn destroying the world from the heart, and Sade every day.",
+          "alt": "A collage wall of dark art, Sailor Moon prints and stickers in a blue border above a laptop, with handwritten arrow labels: \"back rolls?\" on a face-mask sticker, \"BAMF Sailor Moon\", \"Pedro Pascal: here for moral support\", \"destroy the world, but from your heart\" on a Sailor Saturn silhouette, and \"Sade every day\".",
+          "show": true,
+          "width": 600,
+          "height": 800,
+          "focus": 0.5
+        },
+        {
+          "src": "pink-corner",
+          "file": "pink_corner_pegboard.jpg",
+          "folder": "",
+          "where": "Home office",
+          "caption": "The pink corner. BakuDeku and SatoSugu keep watch over my BL and dead boyfriends shrine.",
+          "alt": "A corner desk with a pink pegboard of figures, UNO decks and flowers, a laptop, a monitor of file icons, a rainbow keyboard and a pink fan, with handwritten arrow labels: \"My Hero Academia UNO (BakuDeku, my fav ship)\", \"Jujutsu Kaisen bike duo: SatoSugu, another fav ship\", \"First bouquet I made & gave to my husbando\", \"My BL & dead boyfriends shrine\" and \"Menopause defense: personal weather control\".",
+          "show": true,
+          "width": 600,
+          "height": 800,
+          "focus": 0.3
+        },
+        {
+          "src": "but-did-you-die",
+          "file": "but_did_you_die_corner.jpg",
+          "folder": "",
+          "where": "Home office",
+          "caption": "The official motto, over the Chibi Tower: phase 1, under construction since forever.",
+          "alt": "A white wall with an orange neon sign reading \"But Did You Die?\", a mauve arched to-do board titled Chibi Tower, a rattan shelf of figures, a cabinet and two kids' folding chairs, with handwritten arrow labels including \"My patron saints of But Did You Die?\" and \"VIP seating (ages 2 to 5)\".",
+          "show": true,
+          "width": 600,
+          "height": 800,
+          "focus": 0.22
+        },
+        {
+          "src": "council-of-waifus",
+          "file": "council_of_waifus.jpg",
+          "folder": "",
+          "where": "Living room",
+          "caption": "A wall of prints, a council of waifus judging silently, and a toddler art gallery wing. The Switch is for nap-time gaming only.",
+          "alt": "A living room wall of framed anime and illustration prints above a TV, with shelves of figures, and handwritten arrow labels: \"the council of waifus, judging silently\", \"Levi, in ink\", \"My dead boyfriends shelf\", \"Council of cuties: Piplup & friends\" and \"the toddler art gallery wing\".",
+          "show": true,
+          "width": 1000,
+          "height": 750,
+          "focus": 0.4
+        },
+        {
+          "src": "himmel-blue",
+          "file": "himmel_blue.jpg",
+          "folder": "",
+          "where": "Home office",
+          "caption": "Frieren: 1000 years old, still unbothered. Himmel blue 😭",
+          "alt": "Close-up of a Frieren figure, an elf with white twin tails, a blue scarf and a white double-breasted coat, lit by pink, purple and blue neon strips, with handwritten labels \"Frieren: 1000 years old, still unbothered\" and \"Himmel blue\".",
+          "show": true,
+          "width": 600,
+          "height": 800,
+          "focus": 0.25
+        },
+        {
           "src": "thumbs-db",
           "file": "Thumbs.db",
           "folder": "",

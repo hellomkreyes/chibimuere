@@ -52,7 +52,7 @@ test("Enter opens a picture, and every thumbnail links to a real file", async ({
 test("folders filter the grid, and the Recycle Bin is always there but keeps its items to itself", async ({ page }) => {
   const shown = page.locator("li:not([hidden]) > [data-pic]");
   const count = page.locator("[data-pics-count-num]");
-  await expect(count).toHaveText("7");
+  await expect(count).toHaveText("13");
   await expect(page.getByRole("button", { name: "Recycle Bin" })).toBeVisible();
   await expect(page.getByLabel("Show hidden items")).toHaveCount(0);
 
@@ -68,7 +68,7 @@ test("folders filter the grid, and the Recycle Bin is always there but keeps its
   await expect(count).toHaveText("3"); // Thumbs.db is not counted
 
   await page.getByRole("button", { name: "All pictures" }).click();
-  await expect(shown).toHaveCount(7);
+  await expect(shown).toHaveCount(13);
 });
 
 test("Previous and Next stay inside the open folder", async ({ page }) => {
