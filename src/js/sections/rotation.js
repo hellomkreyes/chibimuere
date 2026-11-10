@@ -32,10 +32,12 @@ export default function initRotation(article) {
   const autoButton = article.querySelector("[data-rot-auto]");
   if (!seats.length || !table || !token || !bubble) return;
 
+  const host = article.querySelector("[data-rot-host]");
   const holderName = bubble.querySelector("[data-rot-holder]");
   const question = bubble.querySelector("[data-rot-question]");
   const tag = bubble.querySelector("[data-rot-tag]");
   const hasIt = body.dataset.hasIt ?? "has it";
+  const holderLabel = bubble.querySelector("[data-rot-has-it]");
   const motion = animateSection(article, { plugins: [loadSplitText] });
   const scold = bubble.querySelector("[data-rot-scold]");
   const brokenChip = article.querySelector("[data-rot-broken]");
@@ -88,6 +90,8 @@ export default function initRotation(article) {
     const seat = seats[holder];
     const name = seat.querySelector(".rot-name").textContent;
     seats.forEach((s, i) => s.classList.toggle("is-holding", i === holder));
+    host?.classList.remove("is-holding");
+    holderLabel?.removeAttribute("hidden");
     holderName.textContent = name;
     question.textContent = seat.dataset.question;
     tag.textContent = seat.dataset.tag;
@@ -150,6 +154,30 @@ export default function initRotation(article) {
     button.addEventListener("click", () => (index === (holder + 1) % seats.length ? pass() : snatch(index)));
     seat.append(button);
   });
+
+  // The host's own seat: tapping it opens the host's stash in the bubble. It is not a pass, so it
+  // never breaks the rotation, but it does stop Auto-pass so there is time to read.
+  if (host?.dataset.question) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "rot-grab";
+    button.setAttribute("aria-label", host.dataset.grab ?? host.querySelector(".rot-name").textContent);
+    button.addEventListener("click", () => {
+      setAuto(false);
+      holderName.textContent = host.dataset.label;
+      holderLabel?.setAttribute("hidden", "");
+      question.textContent = host.dataset.question;
+      tag.textContent = host.dataset.tag;
+      scold.hidden = true;
+      seats.forEach((s) => s.classList.remove("is-holding"));
+      host.classList.add("is-holding");
+      const maxTop = Math.max(0, table.offsetHeight - bubble.offsetHeight);
+      bubble.style.transform = `translateY(${Math.min(host.offsetTop, maxTop)}px)`;
+      status.textContent = `${host.dataset.label}: ${host.dataset.question} ${host.dataset.tag}`;
+      animateBubble();
+    });
+    host.append(button);
+  }
 
   const setAuto = (on) => {
     clearInterval(timer);

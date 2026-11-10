@@ -4024,7 +4024,8 @@ h2 em {
 :root[data-theme="night"] .card:is(:hover, .is-lit) .thumb::after,
 :root[data-theme="night"] .card:is(:hover, .is-lit) .card-type,
 :root[data-theme="night"] .card:is(:hover, .is-lit) .card-meta p,
-:root[data-theme="night"] .card:is(:hover, .is-lit) .card-writeup {
+:root[data-theme="night"] .card:is(:hover, .is-lit) .card-writeup,
+:root[data-theme="night"] .card:is(:hover, .is-lit) .case-links a {
   color: #000;
 }
 
@@ -5531,21 +5532,18 @@ h2 em {
   flex: 1;
 }
 
-.case-card .thumb {
-  aspect-ratio: 16 / 9;
-}
-
-.case-meta {
+/* Case cards reuse the project card look (.card, .card-meta, .thumb); only the links row is their own. */
+.case-card .card-meta > div {
   display: flex;
-  flex: 1;
   flex-direction: column;
-  gap: 6px;
-  padding: 0 8px;
+  flex: 1;
+  align-self: stretch;
 }
 
-.case-meta > p:not(.card-type) {
+.case-card .card-meta p:not(.card-type) {
+  margin-top: 6px;
   color: var(--ink-soft);
-  font-size: 15px;
+  font-size: var(--text-xs);
   line-height: 1.55;
 }
 

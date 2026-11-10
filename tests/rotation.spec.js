@@ -92,3 +92,18 @@ test("clicking a seat snatches it out of turn and breaks the rotation", async ({
   const { violations } = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa", "wcag21aa", "wcag22aa"]).analyze();
   expect(violations.map((v) => v.id)).toEqual([]);
 });
+
+test("tapping the host's box opens the host's stash without breaking the rotation", async ({ page }) => {
+  await openRotation(page, { theme: "day", motion: "off" });
+  await page.locator("[data-rot-host] .rot-grab").click();
+
+  await expect(page.locator("[data-rot-host]")).toHaveClass(/is-holding/);
+  await expect(page.locator("[data-rot-question]")).not.toBeEmpty();
+  await expect(page.locator("[data-rot-status]")).not.toBeEmpty();
+  await expect(page.locator(".rot")).not.toHaveAttribute("data-broken", "");
+  await expect(page.locator("[data-rot-auto]")).toHaveAttribute("aria-pressed", "false");
+
+  // Passing carries on from the seat that held the joint, and the host's box lets go.
+  await page.locator("[data-rot-pass]").click();
+  await expect(page.locator("[data-rot-host]")).not.toHaveClass(/is-holding/);
+});
