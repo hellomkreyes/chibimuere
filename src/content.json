@@ -83,19 +83,19 @@
     },
     "cookie": {
       "label": "Cookies",
-      "jar": "Bitten cookie: 0 cookies. Open the cookie policy",
+      "jar": "Bitten: 0 cookies. Open the site policy",
       "peek": {
         "title": "psst. 0 cookies here.",
         "day": "The only thing tracking you here is my curiosity.",
         "night": "no cookies. only ghosts. someone already bit this one.",
         "accept": "Accept all",
         "alsoAccept": "Accept none",
-        "close": "Dismiss the cookie note"
+        "close": "Dismiss."
       },
       "policy": {
         "eyebrow": "Cookie policy (it&apos;s short)",
         "titleDay": "Nothing but crumbs.",
-        "titleNight": "crumbs only.",
+        "titleNight": "none for you glen coco.",
         "rows": [
           {
             "name": "Cookies",
@@ -156,7 +156,7 @@
       "eyebrow": "a tiny vessel of big ideas",
       "lede": "I am a tech witch and a child of the internet. Come join me as I try to reclaim the artistry, mystery, and stupidity of this matrix that we know and love.",
       "roleLabel": "ROLE",
-      "role": "WEB_DEVELOPER | TECH_LEAD",
+      "role": "WEB_ENGINEER | TECH_WITCH",
       "uptimeLabel": "UPTIME",
       "uptimeUnit": "YRS",
       "uptimeSuffix": "AND COUNTING",
@@ -200,7 +200,7 @@
     },
     "brands": {
       "title": "Brands I have<br><em>collaborated with.</em>",
-      "body": "Here are some brands I've worked with and for; from thoughtful collaborations to the behind-the-scenes work that helps good ideas find their shape.",
+      "body": "Here are some brands I've worked with and for; from collaborations to behind-the-scenes work that helps thoughtful ideas take shape.",
       "label": "Collabs include:",
       "scrollLabel": "Brand collaborations. Scroll sideways to see them all.",
       "list": [
@@ -264,7 +264,7 @@
     },
     "cases": {
       "title": "Case studies",
-      "intro": "The receipts behind the brands above: what I built, who I built it with, and the part I owned.",
+      "intro": "A few receipts of the webs I've helped shaped in the wild.",
       "trackLabel": "Case study cards, swipe or use the stars below",
       "pagerLabel": "Choose a case study",
       "cards": [
@@ -321,17 +321,6 @@
       "pagerLabel": "Choose a project",
       "projects": [
         {
-          "title": "Luna Pie",
-          "type": "Shoujo Tech",
-          "year": "2026",
-          "glyph": "☾&#xFE0E;",
-          "description": "A magical girl layer for Pi. Luna plans, I approve, and a smol mighty team of celestial agents build, test, and review.",
-          "link": "https://github.com/hellomkreyes/luna-pie",
-          "newTab": true,
-          "writeup": "",
-          "show": true
-        },
-        {
           "title": "Mercury Rx",
           "type": "Retrograde Tracker",
           "year": "2026",
@@ -349,6 +338,17 @@
           "glyph": "◌",
           "description": "A GSAP experimentation in haunted websites and cursed video tapes.",
           "link": "https://tv.chibimuere.com/",
+          "writeup": "",
+          "show": true
+        },
+        {
+          "title": "Luna Pie",
+          "type": "Shoujo Tech",
+          "year": "2026",
+          "glyph": "☾&#xFE0E;",
+          "description": "A magical girl layer for Pi. Luna plans, I approve, and a smol mighty team of celestial agents build, test, and review.",
+          "link": "https://github.com/hellomkreyes/luna-pie",
+          "newTab": true,
           "writeup": "",
           "show": true
         },
