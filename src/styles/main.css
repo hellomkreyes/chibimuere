@@ -5547,6 +5547,11 @@ h2 em {
   line-height: 1.55;
 }
 
+/* Role line sits under the title (Studio Munge layout), so it gets top spacing, not bottom. */
+.case-card .card-type {
+  margin: 12px 0 0;
+}
+
 .case-links {
   display: flex;
   flex-wrap: wrap;

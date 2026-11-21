@@ -269,45 +269,45 @@
       "pagerLabel": "Choose a case study",
       "cards": [
         {
-          "tag": "Solo build with senior dev oversight · Webby, w3award",
+          "role": "Lead developer",
           "title": "Studio Munge",
-          "body": "Solo build, my third project out of bootcamp. Worked directly with the in-studio designer and the studio's design and marketing teams, with oversight from a senior developer.",
+          "body": "My third project out of bootcamp; a solo build with lots of trust and oversight from my senior lead. Clean lines, smooth animations, and a responsive design that works on any device.",
           "pager": "Show Studio Munge",
           "links": [
             {
-              "label": "w3award (Bureau)",
+              "label": "Read the case study",
+              "url": "https://significantother.ca/work/studio-munge"
+            },
+            {
+              "label": "Our w3awards",
               "url": "https://www.w3award.com/winners/gallery/?event=1015&award=1&search=bureau&id=39868"
             },
             {
-              "label": "Webby",
+              "label": "Webby nomination",
               "url": "https://winners.webbyawards.com/2018/websites/general-websites/architecture-design/45086/studio-munge"
-            },
-            {
-              "label": "Significant Other",
-              "url": "https://significantother.ca/work/studio-munge"
             }
           ]
         },
         {
-          "tag": "Technical lead · Shopify, headless",
-          "title": "Endy.com headless rebuild",
-          "body": "Wrote the technical plan and brought in Rangle for the rebuild. Oversaw major milestones, demoed to stakeholders, and planned how to keep the live Shopify site running through the migration.",
-          "pager": "Show Endy.com headless rebuild",
+          "role": "Technical lead",
+          "title": "Endy.com Headless Rebuild",
+          "body": "Cleaning up shop for this household Canadian name. My plan was from 2 stores to 1, from monolithic to headless, and from waterfall to agile. Our dev team teamed up with Rangle to make the vision happen! This is the type of work I find most fulfilling.",
+          "pager": "Show Endy.com Headless Rebuild",
           "links": [
             {
-              "label": "Rangle case study",
+              "label": "Read the case study",
               "url": "https://rangle.io/cases/endy-headless-ecommerce"
             }
           ]
         },
         {
-          "tag": "Solo build with senior dev oversight · Animation, editorial design",
+          "role": "Solo build",
           "title": "OPFA: the future of Ontario's forests",
           "body": "Solo build, with a senior developer reviewing bugs and PRs. Owned the animation and a responsive, editorial design that brings a respected field into a visual, browsable form.",
           "pager": "Show OPFA",
           "links": [
             {
-              "label": "Significant Other",
+              "label": "Read the case study",
               "url": "https://significantother.ca/work/the-future-of-ontarios-forests"
             }
           ]
